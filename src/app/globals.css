@@ -1645,3 +1645,6 @@ html[dir="rtl"] .xstat__n { text-align: right; }
 .marquee--logos .marquee__track li::before { content: none; }
 .marquee--logos .marquee__track li img { height: 48px; width: auto; max-width: 160px; object-fit: contain; display: block; }
 @media (max-width: 760px) { .marquee--logos .marquee__track li img { height: 36px; max-width: 120px; } .marquee--logos .marquee__group { gap: 40px; padding-inline-end: 40px; } }
+/* Nov 12, 2026: a long unbroken word in a service card never widens its column on laptops */
+.offer__grid > li { min-width: 0; }
+.offer__grid .ocard { min-width: 0; overflow-wrap: anywhere; }
