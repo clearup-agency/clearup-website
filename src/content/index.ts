@@ -8,7 +8,7 @@ export const INSTAGRAM = 'https://instagram.com/clearup.agency';
 export const FOUNDER_IG = 'https://instagram.com/abd.ulmenem';
 
 // Testimonial videos: 'local' plays /media/*.mp4 inline (default); 'instagram' opens the original reel
-// (used for the light tab.bot preview).
+// (used for the light static preview).
 export const VIDEO_MODE: 'local' | 'instagram' = process.env.NEXT_PUBLIC_VIDEO_MODE === 'instagram' ? 'instagram' : 'local';
 export const IG_REELS: Record<string, string> = {
   'story-masahat': 'https://www.instagram.com/reel/Del5aadglDH/',

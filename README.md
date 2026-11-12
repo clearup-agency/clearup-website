@@ -1,6 +1,5 @@
 # ClearUp — Website Concept · نموذج موقع ClearUp
 
-**Preview:** https://clearup-concept.sites.tab.bot/ar/ (English: https://clearup-concept.sites.tab.bot/en/)
 
 > هذا نموذج تصميم (Concept) حي وقابل للتطوير، وليس الموقع النهائي. كل نص بين [أقواس] وبخلفية مخططة هو مكان فارغ عن قصد ويجب أن يملأه ClearUp بمعلومة حقيقية.
 > This is a working design concept, not the final site. Anything in [brackets] with a striped background is an intentional placeholder for a real, approved fact from ClearUp.
@@ -193,7 +192,7 @@ All SEO (sitemap, robots, canonical + hreflang, Open Graph/Twitter cards, JSON-L
 
 **What's already in the site**
 - `/sitemap.xml` — `/ar/` + `/en/` (and any page the admin adds), `lastModified` from the last admin save, hreflang `ar` / `en` / `x-default`.
-- `/robots.txt` — while `SEO_INDEXABLE` is not `true` (or the URL is a `*.vercel.app` / `*.netlify.app` / `*.pages.dev` / `*.sites.tab.bot` preview, or a Vercel preview build): `Disallow: /` **and** `<meta name="robots" content="noindex, nofollow">` on every page. With `SEO_INDEXABLE=true` on the real domain: allow all, disallow `/admin` + `/api/`, `Sitemap:` line.
+- `/robots.txt` — while `SEO_INDEXABLE` is not `true` (or the URL is a `*.vercel.app` / `*.netlify.app` / `*.pages.dev` preview, or a Vercel preview build): `Disallow: /` **and** `<meta name="robots" content="noindex, nofollow">` on every page. With `SEO_INDEXABLE=true` on the real domain: allow all, disallow `/admin` + `/api/`, `Sitemap:` line.
 - Per-language title/description from «إعدادات الموقع» → «محركات البحث» (fallbacks in `src/lib/seo.ts`), canonical, `<html lang dir>`, `metadataBase` = `NEXT_PUBLIC_SITE_URL`.
 - Share cards: `/brand/og-ar.jpg`, `/brand/og-en.jpg` (1200×630, Thmanyah). An image uploaded in the CMS («صورة المشاركة») replaces both.
 - JSON-LD on the homepage: `Organization` + `ProfessionalService` (name, logo, url, email, WhatsApp, city, `sameAs` = the socials in the CMS) and `WebSite`. Only data the admin entered — no ratings or invented address.

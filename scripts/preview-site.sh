@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Builds the light static preview (the one published at clearup-concept.sites.tab.bot) into site/.
+# Builds the light static preview into site/.
 # Static export (homepage only, no admin), Instagram links instead of mp4 files, RSC payload files removed.
 # Content: from the database when DATABASE_URL is set (.env.local), else seed/content.json.
 set -euo pipefail

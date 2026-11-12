@@ -7,11 +7,11 @@ import type { Raw } from '@/lib/cms';
      NEXT_PUBLIC_SITE_URL  the public address, e.g. https://clearupagency.com (no trailing slash)
      SEO_INDEXABLE         "true" only on the official domain. Anything else → robots.txt "Disallow: /"
                            and <meta name="robots" content="noindex"> on every page, so a preview copy
-                           (*.vercel.app, *.netlify.app, *.sites.tab.bot) never gets indexed as a duplicate. */
+                           (*.vercel.app, *.netlify.app) never gets indexed as a duplicate. */
 
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000').replace(/\/+$/, '');
 
-const PREVIEW_HOST = /(\.vercel\.app|\.netlify\.app|\.pages\.dev|\.sites\.tab\.bot)$/i;
+const PREVIEW_HOST = /(\.vercel\.app|\.netlify\.app|\.pages\.dev)$/i;
 
 /** true only when SEO_INDEXABLE=true AND the site URL is not a preview host (and not a Vercel preview build). */
 export function isIndexable(): boolean {
