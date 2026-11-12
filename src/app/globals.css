@@ -1648,3 +1648,8 @@ html[dir="rtl"] .xstat__n { text-align: right; }
 /* Nov 12, 2026: a long unbroken word in a service card never widens its column on laptops */
 .offer__grid > li { min-width: 0; }
 .offer__grid .ocard { min-width: 0; overflow-wrap: anywhere; }
+/* Nov 12, 2026: services scroll — التحدي / ماذا نفعل / كيف نعمل / ماذا تحصل عليه side by side so the whole text fits the pinned screen */
+.system--svc .stage__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 36px; max-width: 980px; }
+.system--svc .stage__grid > .stage__blk { min-width: 0; }
+.system--svc .stage__grid .stage__fits, .system--svc .stage__grid .stage__what { max-width: none; }
+@media (max-width: 760px) { .system--svc .stage__grid { grid-template-columns: 1fr; gap: 0; } }

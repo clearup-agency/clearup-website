@@ -194,10 +194,12 @@ export function ServicesScroll({ head, items, lang, labels }: { head: Head; item
               {player(it, 'stage__vid-m')}
             </div>
             {/* Nov 12, 2026 (ClearUp's content file): التحدي / ماذا نفعل / كيف نعمل / ماذا تحصل عليه, each when filled */}
-            {it.challenge && <><p className="stage__lbl">{labels.challenge}</p><p className="stage__fits stage__pl">{it.challenge}</p></>}
-            {it.desc && (it.challenge ? <><p className="stage__lbl">{labels.what}</p><p className="stage__what stage__pl">{it.desc}</p></> : <p className="stage__what">{it.desc}</p>)}
-            {it.how && <><p className="stage__lbl">{labels.how}</p><p className="stage__fits stage__pl">{it.how}</p></>}
-            {it.gets && <><p className="stage__lbl">{labels.get}</p><p className="stage__fits stage__pl">{it.gets}</p></>}
+            <div className="stage__grid">
+              {it.challenge && <div className="stage__blk"><p className="stage__lbl">{labels.challenge}</p><p className="stage__fits stage__pl">{it.challenge}</p></div>}
+              {it.desc && (it.challenge ? <div className="stage__blk"><p className="stage__lbl">{labels.what}</p><p className="stage__what stage__pl">{it.desc}</p></div> : <div className="stage__blk"><p className="stage__what">{it.desc}</p></div>)}
+              {it.how && <div className="stage__blk"><p className="stage__lbl">{labels.how}</p><p className="stage__fits stage__pl">{it.how}</p></div>}
+              {it.gets && <div className="stage__blk"><p className="stage__lbl">{labels.get}</p><p className="stage__fits stage__pl">{it.gets}</p></div>}
+            </div>
             {incl.length > 0 && <><p className="stage__lbl">{labels.incl}</p><ul className="stage__out">{incl.map((x, k) => <li key={k}>{x}</li>)}</ul></>}
             {it.fits && <><p className="stage__lbl">{labels.fit}</p><p className="stage__fits stage__pl">{it.fits}</p></>}
             {/* «…ست مراحل» pointed at the six-stage section this scroll replaces (#system, hidden): left out here */}
