@@ -3259,6 +3259,30 @@
           "group": "content"
         },
         {
+          "name": "lblChallenge",
+          "title": "عنوان «التحدي»",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "lblWhat",
+          "title": "عنوان «ماذا نفعل»",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "lblHow",
+          "title": "عنوان «كيف نعمل»",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "lblGet",
+          "title": "عنوان «ماذا تحصل عليه»",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
           "name": "items",
           "title": "الخدمات",
           "type": "array",
@@ -3285,8 +3309,28 @@
                   "type": "string"
                 },
                 {
+                  "name": "short",
+                  "title": "سطر مختصر (لكرت الرئيسية)",
+                  "type": "localeText"
+                },
+                {
+                  "name": "challenge",
+                  "title": "التحدي",
+                  "type": "localeText"
+                },
+                {
                   "name": "desc",
-                  "title": "الوصف",
+                  "title": "ماذا نفعل (الوصف)",
+                  "type": "localeText"
+                },
+                {
+                  "name": "how",
+                  "title": "كيف نعمل",
+                  "type": "localeText"
+                },
+                {
+                  "name": "gets",
+                  "title": "ماذا تحصل عليه",
                   "type": "localeText"
                 },
                 {
@@ -3301,7 +3345,7 @@
                 },
                 {
                   "name": "fits",
-                  "title": "تناسب",
+                  "title": "لمن تناسب",
                   "type": "localeText"
                 },
                 {

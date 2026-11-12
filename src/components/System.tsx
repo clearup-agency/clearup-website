@@ -167,12 +167,12 @@ export default function System({ d }: { d: Dict }) {
 }
 
 type SvcVid = { _key?: string; video?: string | null; link?: string | null; poster?: { src: string } | null; label?: string; name?: string };
-export type SvcItem = { _key?: string; id?: string; title?: string; en?: string; desc?: string; includes?: string[]; fits?: string; videos?: SvcVid[]; more?: string; moreHref?: string };
+export type SvcItem = { _key?: string; id?: string; title?: string; en?: string; challenge?: string; desc?: string; how?: string; gets?: string; includes?: string[]; fits?: string; videos?: SvcVid[]; more?: string; moreHref?: string };
 
 /** «خدماتنا» in the sticky scroll (Nov 11, 2026 — Mohamed: the Services page shows the five services the way it
  *  showed the six stages, in order, each with its full explanation and its video). The same StageScroll; the text
  *  and the videos are the services section's own (admin: «الخدمات»), nothing is copied. A video opens full screen. */
-export function ServicesScroll({ head, items, lang, labels }: { head: Head; items: SvcItem[]; lang: 'ar' | 'en'; labels: { incl: string; fit: string; proof: string } }) {
+export function ServicesScroll({ head, items, lang, labels }: { head: Head; items: SvcItem[]; lang: 'ar' | 'en'; labels: { incl: string; fit: string; proof: string; challenge?: string; what?: string; how?: string; get?: string } }) {
   const n = items.length;
   const vidOf = (it: SvcItem) => (it.videos ?? []).find((v) => v && (v.video || v.link));
   const player = (it: SvcItem, cls: string) => {
@@ -193,9 +193,13 @@ export function ServicesScroll({ head, items, lang, labels }: { head: Head; item
               <h3 className="stage__name">{it.title}{it.en && <bdi className="stage__en" dir="ltr">{it.en}</bdi>}</h3>
               {player(it, 'stage__vid-m')}
             </div>
-            {it.desc && <p className="stage__what">{it.desc}</p>}
+            {/* Nov 12, 2026 (ClearUp's content file): التحدي / ماذا نفعل / كيف نعمل / ماذا تحصل عليه, each when filled */}
+            {it.challenge && <><p className="stage__lbl">{labels.challenge}</p><p className="stage__fits stage__pl">{it.challenge}</p></>}
+            {it.desc && (it.challenge ? <><p className="stage__lbl">{labels.what}</p><p className="stage__what stage__pl">{it.desc}</p></> : <p className="stage__what">{it.desc}</p>)}
+            {it.how && <><p className="stage__lbl">{labels.how}</p><p className="stage__fits stage__pl">{it.how}</p></>}
+            {it.gets && <><p className="stage__lbl">{labels.get}</p><p className="stage__fits stage__pl">{it.gets}</p></>}
             {incl.length > 0 && <><p className="stage__lbl">{labels.incl}</p><ul className="stage__out">{incl.map((x, k) => <li key={k}>{x}</li>)}</ul></>}
-            {it.fits && <><p className="stage__lbl">{labels.fit}</p><p className="stage__fits">{it.fits}</p></>}
+            {it.fits && <><p className="stage__lbl">{labels.fit}</p><p className="stage__fits stage__pl">{it.fits}</p></>}
             {/* «…ست مراحل» pointed at the six-stage section this scroll replaces (#system, hidden): left out here */}
             {it.more && it.moreHref && it.moreHref !== '#system' && <a className="link stage__more" href={it.moreHref}>{it.more}</a>}
           </>

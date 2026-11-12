@@ -1636,3 +1636,6 @@ html[dir="rtl"] .xstat__n { text-align: right; }
 
 /* Services «من الفرصة إلى النمو» (Mohamed, Nov 11): the whole path line reads purple, not only its drawn part */
 .pg--services .proc:not(:is(.tone--dark, .tone--purple) > .proc) .gp__rail { stroke: color-mix(in srgb, var(--purple) 70%, transparent); stroke-width: 2.5; stroke-dasharray: none; }
+
+/* Nov 12, 2026: service parts keep the line breaks they were written with */
+.stage__pl, .oserv__pl { white-space: pre-line; }
