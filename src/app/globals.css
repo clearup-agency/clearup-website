@@ -1639,3 +1639,9 @@ html[dir="rtl"] .xstat__n { text-align: right; }
 
 /* Nov 12, 2026: service parts keep the line breaks they were written with */
 .stage__pl, .oserv__pl { white-space: pre-line; }
+/* Nov 12, 2026: the clients' strip with logos */
+.marquee--logos .marquee__group { gap: 64px; padding-inline-end: 64px; align-items: center; }
+.marquee--logos .marquee__track li { display: flex; align-items: center; opacity: .9; }
+.marquee--logos .marquee__track li::before { content: none; }
+.marquee--logos .marquee__track li img { height: 48px; width: auto; max-width: 160px; object-fit: contain; display: block; }
+@media (max-width: 760px) { .marquee--logos .marquee__track li img { height: 36px; max-width: 120px; } .marquee--logos .marquee__group { gap: 40px; padding-inline-end: 40px; } }

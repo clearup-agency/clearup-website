@@ -285,6 +285,27 @@
           "group": "content"
         },
         {
+          "name": "logos",
+          "title": "شعارات العملاء (إذا انضافت، الشريط بيعرض الشعارات بدل الأسماء)",
+          "type": "array",
+          "group": "content",
+          "of": [
+            {
+              "type": "image",
+              "options": {
+                "compress": "logo"
+              },
+              "fields": [
+                {
+                  "name": "alt",
+                  "title": "اسم العميل",
+                  "type": "localeString"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "name": "note",
           "title": "ملاحظة صغيرة",
           "type": "localeString",

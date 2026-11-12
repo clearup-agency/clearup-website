@@ -6,7 +6,10 @@ import type { Dict } from '@/lib/dict';
    the other way. Paused on hover (mouse only) and still for reduced motion. */
 const MIN_PER_GROUP = 10;
 export default function Clients({ d }: { d: Dict }) {
-  const list = (d.clients.names ?? []).filter((n) => typeof n === 'string' && n.trim());
+  // Nov 12, 2026 (ClearUp's logo files): when logos are added, the strip shows the logos; otherwise the names
+  const logos = (((d.clients as any).logos ?? []) as { src?: string; alt?: string; width?: number; height?: number }[]).filter((l) => l && l.src);
+  const names = (d.clients.names ?? []).filter((n) => typeof n === 'string' && n.trim());
+  const list: (string | { src?: string; alt?: string; width?: number; height?: number })[] = logos.length ? logos : names;
   if (!list.length) return null;
   const reps = Math.max(1, Math.ceil(MIN_PER_GROUP / list.length));
   const group = Array.from({ length: reps }, () => list).flat();
@@ -15,11 +18,11 @@ export default function Clients({ d }: { d: Dict }) {
     <section className="clients" aria-label={d.clients.label}>
       <div className="wrap clients__in">
         <p className="clients__label">{d.clients.label}{d.clients.note && <span className={d.clients.note.includes('[') ? 'ph-inline' : 'clients__note'}>{d.clients.note}</span>}</p>
-        <div className="marquee">
+        <div className={'marquee' + (logos.length ? ' marquee--logos' : '')}>
           <div className="marquee__track" style={{ ['--dur' as string]: secs + 's' }}>
             {[0, 1].map((g) => (
               <ul key={g} className="marquee__group" aria-hidden={g === 1 ? true : undefined}>
-                {group.map((n, i) => (<li key={i} aria-hidden={g === 1 || i >= list.length ? true : undefined}>{n}</li>))}
+                {group.map((n, i) => (<li key={i} aria-hidden={g === 1 || i >= list.length ? true : undefined}>{typeof n === 'string' ? n : <img src={n.src} alt={n.alt || ''} width={n.width} height={n.height} loading="lazy" decoding="async" />}</li>))}
               </ul>
             ))}
           </div>
