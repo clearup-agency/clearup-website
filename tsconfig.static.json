@@ -1,0 +1,5 @@
+{
+  "//": "Static export (STATIC_EXPORT=1): same as tsconfig.json minus .next/dev/types — a running `next dev` writes route types there that include the admin (*.dyn.tsx) routes, which the static build leaves out, so type checking failed whenever the dev server was running.",
+  "extends": "./tsconfig.json",
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"]
+}

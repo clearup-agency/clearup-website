@@ -1,0 +1,4914 @@
+{
+  "sections": [
+    {
+      "name": "heroSection",
+      "title": "الواجهة الرئيسية (Hero)",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "media",
+          "title": "الصور والفيديو"
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "initialValue": false,
+          "description": "يخفي القسم من الموقع بدون حذفه.",
+          "group": "settings"
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل system. روابط القائمة تستخدمه: #system"
+        },
+        {
+          "name": "kicker",
+          "title": "السطر الصغير فوق العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "title",
+          "title": "العنوان الكبير (سطر لكل عنصر)",
+          "type": "array",
+          "of": [
+            {
+              "type": "localeString"
+            }
+          ],
+          "group": "content"
+        },
+        {
+          "name": "strike",
+          "title": "الكلمة المشطوبة",
+          "description": "كلمة من العنوان تُشطب بخط بنفسجي (اكتبها كما هي في العنوان)",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "system",
+          "title": "النص الصغير على اليسار",
+          "description": "مثل The Clear Up System™",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "lead",
+          "title": "الفقرة تحت العنوان",
+          "type": "localeText",
+          "group": "content"
+        },
+        {
+          "name": "cta",
+          "title": "نص الزر الرئيسي",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "whatsapp",
+          "title": "نص زر واتساب",
+          "description": "الرقم نفسه من «إعدادات الموقع»",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "note",
+          "title": "ملاحظة تحت الأزرار",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "stats",
+          "title": "الأرقام أسفل الواجهة",
+          "type": "array",
+          "of": [
+            {
+              "type": "object",
+              "name": "stat",
+              "title": "رقم",
+              "fields": [
+                {
+                  "name": "v",
+                  "title": "الرقم",
+                  "description": "مثل 100+ أو $4.7M+",
+                  "type": "localeString"
+                },
+                {
+                  "name": "l",
+                  "title": "وصف الرقم",
+                  "type": "localeString"
+                },
+                {
+                  "name": "src",
+                  "title": "مصدر الرقم",
+                  "type": "string",
+                  "initialValue": "none",
+                  "options": {
+                    "layout": "radio",
+                    "direction": "horizontal",
+                    "list": [
+                      {
+                        "title": "بدون وسم",
+                        "value": "none"
+                      },
+                      {
+                        "title": "من موقعهم (يحتاج تأكيد)",
+                        "value": "site"
+                      },
+                      {
+                        "title": "من إنستغرام",
+                        "value": "ig"
+                      },
+                      {
+                        "title": "فارغ — رقم مطلوب",
+                        "value": "ph"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "group": "content"
+        },
+        {
+          "name": "clip",
+          "title": "فيديو الواجهة (انترو أو رأي عميل)",
+          "type": "object",
+          "group": "media",
+          "fields": [
+            {
+              "name": "name",
+              "title": "الاسم",
+              "type": "localeString"
+            },
+            {
+              "name": "role",
+              "title": "المنصب · الشركة",
+              "type": "localeString"
+            },
+            {
+              "name": "play",
+              "title": "نص التشغيل",
+              "type": "localeString"
+            },
+            {
+              "name": "poster",
+              "title": "صورة الغلاف (عمودية 9:16)",
+              "type": "image",
+              "options": {
+                "hotspot": true
+              },
+              "fields": [
+                {
+                  "name": "alt",
+                  "title": "وصف الصورة (للمكفوفين ومحركات البحث)",
+                  "type": "localeString"
+                }
+              ]
+            },
+            {
+              "name": "posterAt",
+              "title": "الغلاف: لقطة من الفيديو عند الثانية",
+              "description": "فارغ = 12.6 ث (لقطة نظيفة بدون كتابة). اكتب 0 لاستخدام «صورة الغلاف» المرفوعة.",
+              "type": "number"
+            },
+            {
+              "name": "video",
+              "title": "ملف الفيديو (mp4)",
+              "type": "file",
+              "options": {
+                "accept": "video/mp4"
+              }
+            },
+            {
+              "name": "videoUrl",
+              "title": "أو رابط الفيديو (إنستغرام / يوتيوب)",
+              "type": "url"
+            }
+          ]
+        },
+        {
+          "name": "canvas",
+          "title": "خلفية الواجهة (صور البيزنس موديل كانفس)",
+          "description": "9 مربعات بالترتيب: الشركاء، الأنشطة، الموارد، القيمة، العلاقة مع العملاء، القنوات، شرائح العملاء، التكاليف، الإيرادات. تظهر خافتة بالأبيض والأسود تحت طبقة غامقة. مربع بدون صورة يعرض الصورة التجريبية.",
+          "type": "array",
+          "group": "media",
+          "of": [
+            {
+              "type": "object",
+              "name": "block",
+              "title": "مربع",
+              "fields": [
+                {
+                  "name": "image",
+                  "title": "الصورة",
+                  "type": "image",
+                  "options": {
+                    "hotspot": true
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "clientsSection",
+      "title": "شريط العملاء",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "media",
+          "title": "الصور والفيديو"
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "initialValue": false,
+          "description": "يخفي القسم من الموقع بدون حذفه.",
+          "group": "settings"
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل system. روابط القائمة تستخدمه: #system"
+        },
+        {
+          "name": "label",
+          "title": "العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "names",
+          "title": "أسماء العملاء (تتحرك في شريط)",
+          "type": "array",
+          "of": [
+            {
+              "type": "localeString"
+            }
+          ],
+          "options": {
+            "hideable": true
+          },
+          "description": "👁 جنب كل اسم: يخفيه عن الزوار بدون ما ينحذف، واضغطه مرة ثانية ليرجع.",
+          "group": "content"
+        },
+        {
+          "name": "note",
+          "title": "ملاحظة صغيرة",
+          "type": "localeString",
+          "group": "content"
+        }
+      ]
+    },
+    {
+      "name": "problemSection",
+      "title": "المشكلة",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "media",
+          "title": "الصور والفيديو"
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "initialValue": false,
+          "description": "يخفي القسم من الموقع بدون حذفه.",
+          "group": "settings"
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل system. روابط القائمة تستخدمه: #system"
+        },
+        {
+          "name": "index",
+          "title": "الرقم الصغير (مثل 01)",
+          "description": "يظهر بجانب عنوان القسم",
+          "type": "string",
+          "group": "content"
+        },
+        {
+          "name": "eyebrow",
+          "title": "العنوان الصغير فوق العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "title",
+          "title": "العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "items",
+          "title": "النقاط",
+          "type": "array",
+          "group": "content",
+          "of": [
+            {
+              "type": "object",
+              "name": "painItem",
+              "fields": [
+                {
+                  "name": "k",
+                  "title": "العنوان",
+                  "type": "localeString"
+                },
+                {
+                  "name": "t",
+                  "title": "الشرح",
+                  "type": "localeText"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "boolean",
+          "initialValue": false,
+          "group": "settings",
+          "name": "turnHidden",
+          "title": "إخفاء «الجملة الختامية» وما تحتها",
+          "description": "يخفي جملة «المشكلة ليست في التصميم…» والاقتباس وعمودي قبل/بعد، بدون حذف النص."
+        },
+        {
+          "name": "turn",
+          "title": "الجملة الختامية",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "quote",
+          "title": "جملة تحت العنوان الختامي (اقتباس)",
+          "type": "localeText",
+          "group": "content"
+        },
+        {
+          "name": "quoteBy",
+          "title": "صاحب الاقتباس",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "beforeTitle",
+          "title": "عنوان عمود «قبل»",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "before",
+          "title": "قبل — بدون نظام (كل بند لحاله)",
+          "type": "array",
+          "group": "content",
+          "of": [
+            {
+              "type": "localeString"
+            }
+          ]
+        },
+        {
+          "name": "afterTitle",
+          "title": "عنوان عمود «بعد»",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "after",
+          "title": "بعد — ما يبقى لديك (كل بند لحاله)",
+          "type": "array",
+          "group": "content",
+          "of": [
+            {
+              "type": "localeString"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "systemSection",
+      "title": "مراحل النظام (The Clear Up System™)",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "media",
+          "title": "الصور والفيديو"
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "initialValue": false,
+          "description": "يخفي القسم من الموقع بدون حذفه.",
+          "group": "settings"
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل system. روابط القائمة تستخدمه: #system"
+        },
+        {
+          "name": "compact",
+          "title": "نسخة مختصرة (للرئيسية)",
+          "type": "boolean",
+          "initialValue": false,
+          "group": "settings",
+          "description": "تعرض المراحل الست في سطر واحد مع رابط للنظام كاملاً في صفحة الخدمات."
+        },
+        {
+          "name": "index",
+          "title": "الرقم الصغير (مثل 01)",
+          "description": "يظهر بجانب عنوان القسم",
+          "type": "string",
+          "group": "content"
+        },
+        {
+          "name": "eyebrow",
+          "title": "العنوان الصغير فوق العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "title",
+          "title": "العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "lead",
+          "title": "الفقرة",
+          "type": "localeText",
+          "group": "content"
+        },
+        {
+          "name": "hint",
+          "title": "تلميح التفاعل",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "resultLabel",
+          "title": "عنوان «النتيجة»",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "deliverLabel",
+          "title": "عنوان «ما نسلّمه»",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "stages",
+          "title": "المراحل",
+          "type": "array",
+          "group": "content",
+          "of": [
+            {
+              "type": "object",
+              "name": "stage",
+              "fields": [
+                {
+                  "name": "n",
+                  "title": "الرقم (01)",
+                  "type": "string"
+                },
+                {
+                  "name": "name",
+                  "title": "اسم المرحلة",
+                  "type": "localeString"
+                },
+                {
+                  "name": "en",
+                  "title": "الاسم الصغير بالإنجليزي",
+                  "type": "localeString"
+                },
+                {
+                  "name": "what",
+                  "title": "ماذا نفعل",
+                  "type": "localeText"
+                },
+                {
+                  "name": "out",
+                  "title": "ما نسلّمه",
+                  "type": "array",
+                  "of": [
+                    {
+                      "type": "localeString"
+                    }
+                  ]
+                },
+                {
+                  "name": "proof",
+                  "title": "الدليل / النتيجة",
+                  "type": "localeString"
+                },
+                {
+                  "name": "proofSrc",
+                  "title": "مصدر الدليل",
+                  "type": "string",
+                  "initialValue": "none",
+                  "options": {
+                    "layout": "radio",
+                    "direction": "horizontal",
+                    "list": [
+                      {
+                        "title": "بدون وسم",
+                        "value": "none"
+                      },
+                      {
+                        "title": "من موقعهم (يحتاج تأكيد)",
+                        "value": "site"
+                      },
+                      {
+                        "title": "من إنستغرام",
+                        "value": "ig"
+                      },
+                      {
+                        "title": "فارغ — رقم مطلوب",
+                        "value": "ph"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "more",
+          "title": "نص رابط «النظام كاملاً» (في النسخة المختصرة)",
+          "type": "localeString",
+          "group": "content"
+        }
+      ]
+    },
+    {
+      "name": "resultsSection",
+      "title": "النتائج (دراسات الحالة)",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "media",
+          "title": "الصور والفيديو"
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "initialValue": false,
+          "description": "يخفي القسم من الموقع بدون حذفه.",
+          "group": "settings"
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل system. روابط القائمة تستخدمه: #system"
+        },
+        {
+          "name": "index",
+          "title": "الرقم الصغير (مثل 01)",
+          "description": "يظهر بجانب عنوان القسم",
+          "type": "string",
+          "group": "content"
+        },
+        {
+          "name": "eyebrow",
+          "title": "العنوان الصغير فوق العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "title",
+          "title": "العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "lead",
+          "title": "الفقرة",
+          "type": "localeText",
+          "group": "content"
+        },
+        {
+          "name": "cases",
+          "title": "الحالات",
+          "type": "array",
+          "group": "content",
+          "description": "الحالة بشكل «لوحة» تأخذ عرض الصفحة كاملاً، و«أرقام» و«فيديو» تظهر جنب بعض.",
+          "of": [
+            {
+              "type": "object",
+              "name": "case",
+              "fields": [
+                {
+                  "name": "style",
+                  "title": "شكل العرض",
+                  "type": "string",
+                  "initialValue": "numbers",
+                  "options": {
+                    "layout": "radio",
+                    "direction": "horizontal",
+                    "list": [
+                      {
+                        "title": "لوحة نتائج كبيرة",
+                        "value": "dashboard"
+                      },
+                      {
+                        "title": "جدار أرقام",
+                        "value": "numbers"
+                      },
+                      {
+                        "title": "فيديو + أرقام",
+                        "value": "video"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "client",
+                  "title": "اسم العميل",
+                  "type": "localeString"
+                },
+                {
+                  "name": "sector",
+                  "title": "المجال",
+                  "type": "localeString"
+                },
+                {
+                  "name": "period",
+                  "title": "المدة",
+                  "type": "localeString"
+                },
+                {
+                  "name": "problem",
+                  "title": "المشكلة",
+                  "type": "localeText"
+                },
+                {
+                  "name": "built",
+                  "title": "ماذا بنينا",
+                  "type": "array",
+                  "of": [
+                    {
+                      "type": "localeString"
+                    }
+                  ]
+                },
+                {
+                  "name": "metrics",
+                  "title": "الأرقام",
+                  "type": "array",
+                  "of": [
+                    {
+                      "type": "object",
+                      "name": "metric",
+                      "title": "رقم",
+                      "fields": [
+                        {
+                          "name": "v",
+                          "title": "الرقم",
+                          "type": "localeString"
+                        },
+                        {
+                          "name": "l",
+                          "title": "الوصف",
+                          "type": "localeString"
+                        },
+                        {
+                          "name": "src",
+                          "title": "مصدر الرقم",
+                          "type": "string",
+                          "initialValue": "none",
+                          "options": {
+                            "layout": "radio",
+                            "direction": "horizontal",
+                            "list": [
+                              {
+                                "title": "بدون وسم",
+                                "value": "none"
+                              },
+                              {
+                                "title": "من موقعهم (يحتاج تأكيد)",
+                                "value": "site"
+                              },
+                              {
+                                "title": "من إنستغرام",
+                                "value": "ig"
+                              },
+                              {
+                                "title": "فارغ — رقم مطلوب",
+                                "value": "ph"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "image",
+                  "title": "صورة / غلاف الفيديو",
+                  "description": "لشكل «فيديو + أرقام»",
+                  "type": "image",
+                  "options": {
+                    "hotspot": true
+                  },
+                  "fields": [
+                    {
+                      "name": "alt",
+                      "title": "وصف الصورة (للمكفوفين ومحركات البحث)",
+                      "type": "localeString"
+                    }
+                  ]
+                },
+                {
+                  "name": "note",
+                  "title": "ملاحظة صغيرة تحت الأرقام",
+                  "type": "localeText"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "more",
+          "title": "نص رابط «شاهد القصة»",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "want",
+          "title": "نص الزر في الأسفل",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "dash",
+          "title": "نصوص لوحة النتائج",
+          "type": "object",
+          "group": "settings",
+          "options": {
+            "collapsible": true,
+            "collapsed": true
+          },
+          "fields": [
+            {
+              "name": "title",
+              "title": "عنوان اللوحة",
+              "type": "localeString"
+            },
+            {
+              "name": "curve",
+              "title": "وصف المنحنى",
+              "type": "localeString"
+            },
+            {
+              "name": "from",
+              "title": "بداية المحور",
+              "type": "localeString"
+            },
+            {
+              "name": "to",
+              "title": "نهاية المحور",
+              "type": "localeString"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "servicesSection",
+      "title": "الخدمات",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "media",
+          "title": "الصور والفيديو"
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "initialValue": false,
+          "description": "يخفي القسم من الموقع بدون حذفه.",
+          "group": "settings"
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل system. روابط القائمة تستخدمه: #system"
+        },
+        {
+          "name": "index",
+          "title": "الرقم الصغير (مثل 01)",
+          "description": "يظهر بجانب عنوان القسم",
+          "type": "string",
+          "group": "content"
+        },
+        {
+          "name": "eyebrow",
+          "title": "العنوان الصغير فوق العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "title",
+          "title": "العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "groups",
+          "title": "مجموعات الخدمات",
+          "type": "array",
+          "group": "content",
+          "of": [
+            {
+              "type": "object",
+              "name": "serviceGroup",
+              "fields": [
+                {
+                  "name": "k",
+                  "title": "اسم المجموعة",
+                  "type": "localeString"
+                },
+                {
+                  "name": "en",
+                  "title": "الاسم الصغير بالإنجليزي",
+                  "type": "localeString"
+                },
+                {
+                  "name": "items",
+                  "title": "الخدمات",
+                  "type": "array",
+                  "of": [
+                    {
+                      "type": "localeString"
+                    }
+                  ]
+                },
+                {
+                  "name": "proof",
+                  "title": "الدليل",
+                  "type": "localeString"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "auditSection",
+      "title": "تدقيق الوضوح (أسئلة)",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "media",
+          "title": "الصور والفيديو"
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "initialValue": false,
+          "description": "يخفي القسم من الموقع بدون حذفه.",
+          "group": "settings"
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل system. روابط القائمة تستخدمه: #system"
+        },
+        {
+          "name": "index",
+          "title": "الرقم الصغير (مثل 01)",
+          "description": "يظهر بجانب عنوان القسم",
+          "type": "string",
+          "group": "content"
+        },
+        {
+          "name": "eyebrow",
+          "title": "العنوان الصغير فوق العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "title",
+          "title": "العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "lead",
+          "title": "الفقرة",
+          "type": "localeText",
+          "group": "content"
+        },
+        {
+          "name": "qs",
+          "title": "الأسئلة",
+          "type": "array",
+          "group": "content",
+          "description": "النتيجة تعتمد على السؤال 3 (الخيار 4) والسؤال 4 (الخيار 3) والسؤال 5 — إذا غيّرت ترتيب الأسئلة راجع ملاحظة المطوّر.",
+          "of": [
+            {
+              "type": "object",
+              "name": "question",
+              "fields": [
+                {
+                  "name": "q",
+                  "title": "السؤال",
+                  "type": "localeString"
+                },
+                {
+                  "name": "a",
+                  "title": "الإجابات",
+                  "type": "array",
+                  "of": [
+                    {
+                      "type": "localeString"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "next",
+          "title": "نص «التالي»",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "result",
+          "title": "عنوان النتيجة",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "leaks",
+          "title": "النتائج المحتملة",
+          "type": "object",
+          "group": "content",
+          "fields": [
+            {
+              "name": "data",
+              "title": "لا توجد أرقام",
+              "type": "localeText"
+            },
+            {
+              "name": "follow",
+              "title": "العملاء يضيعون",
+              "type": "localeText"
+            },
+            {
+              "name": "channel",
+              "title": "قناة واحدة",
+              "type": "localeText"
+            }
+          ]
+        },
+        {
+          "name": "book",
+          "title": "نص زر الحجز",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "restart",
+          "title": "نص «أعد التدقيق»",
+          "type": "localeString",
+          "group": "content"
+        }
+      ]
+    },
+    {
+      "name": "ninetySection",
+      "title": "أول 90 يوماً",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "media",
+          "title": "الصور والفيديو"
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "initialValue": false,
+          "description": "يخفي القسم من الموقع بدون حذفه.",
+          "group": "settings"
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل system. روابط القائمة تستخدمه: #system"
+        },
+        {
+          "name": "index",
+          "title": "الرقم الصغير (مثل 01)",
+          "description": "يظهر بجانب عنوان القسم",
+          "type": "string",
+          "group": "content"
+        },
+        {
+          "name": "eyebrow",
+          "title": "العنوان الصغير فوق العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "title",
+          "title": "العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "steps",
+          "title": "الخطوات",
+          "type": "array",
+          "group": "content",
+          "of": [
+            {
+              "type": "object",
+              "name": "step",
+              "fields": [
+                {
+                  "name": "w",
+                  "title": "الفترة",
+                  "type": "localeString"
+                },
+                {
+                  "name": "t",
+                  "title": "العنوان",
+                  "type": "localeString"
+                },
+                {
+                  "name": "d",
+                  "title": "الشرح",
+                  "type": "localeText"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "note",
+          "title": "ملاحظة",
+          "type": "localeString",
+          "group": "content"
+        }
+      ]
+    },
+    {
+      "name": "founderSection",
+      "title": "المؤسس والفريق",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "media",
+          "title": "الصور والفيديو"
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "initialValue": false,
+          "description": "يخفي القسم من الموقع بدون حذفه.",
+          "group": "settings"
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل system. روابط القائمة تستخدمه: #system"
+        },
+        {
+          "name": "index",
+          "title": "الرقم الصغير (مثل 01)",
+          "description": "يظهر بجانب عنوان القسم",
+          "type": "string",
+          "group": "content"
+        },
+        {
+          "name": "eyebrow",
+          "title": "العنوان الصغير فوق العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "name",
+          "title": "الاسم",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "role",
+          "title": "المنصب",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "quote",
+          "title": "الجملة القصيرة (الاقتباس)",
+          "type": "localeText",
+          "group": "content"
+        },
+        {
+          "name": "body",
+          "title": "رسالة المؤسس",
+          "type": "localeText",
+          "group": "content",
+          "description": "سطر فاضي بين الفقرات = فقرة جديدة."
+        },
+        {
+          "name": "sign",
+          "title": "التوقيع تحت الرسالة",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "bio",
+          "title": "نبذة أطول (اختيارية)",
+          "type": "localeText",
+          "group": "content"
+        },
+        {
+          "name": "photo",
+          "title": "الصورة",
+          "type": "image",
+          "options": {
+            "hotspot": true
+          },
+          "fields": [
+            {
+              "name": "alt",
+              "title": "وصف الصورة (للمكفوفين ومحركات البحث)",
+              "type": "localeString"
+            }
+          ],
+          "group": "media",
+          "description": "بدون صورة: مكان الصورة ما بيظهر، والنص بياخد العرض كامل."
+        },
+        {
+          "name": "photoCaption",
+          "title": "تعليق الصورة",
+          "type": "localeString",
+          "group": "media"
+        },
+        {
+          "name": "ig",
+          "title": "نص رابط إنستغرام",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "igHandle",
+          "title": "اسم الحساب (بدون @)",
+          "type": "string",
+          "group": "content"
+        },
+        {
+          "name": "team",
+          "title": "عنوان الفريق",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "members",
+          "title": "أعضاء الفريق (الاسم · المنصب)",
+          "type": "array",
+          "of": [
+            {
+              "type": "localeString"
+            }
+          ],
+          "group": "content"
+        },
+        {
+          "name": "teamNote",
+          "title": "ملاحظة الفريق",
+          "type": "localeString",
+          "group": "content"
+        }
+      ]
+    },
+    {
+      "name": "testimonialsSection",
+      "title": "آراء العملاء (فيديو)",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "media",
+          "title": "الصور والفيديو"
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "initialValue": false,
+          "description": "يخفي القسم من الموقع بدون حذفه.",
+          "group": "settings"
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل system. روابط القائمة تستخدمه: #system"
+        },
+        {
+          "name": "index",
+          "title": "الرقم الصغير (مثل 01)",
+          "description": "يظهر بجانب عنوان القسم",
+          "type": "string",
+          "group": "content"
+        },
+        {
+          "name": "eyebrow",
+          "title": "العنوان الصغير فوق العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "title",
+          "title": "العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "items",
+          "title": "القصص (الأولى تظهر كبيرة)",
+          "type": "array",
+          "group": "content",
+          "of": [
+            {
+              "type": "object",
+              "name": "story",
+              "fields": [
+                {
+                  "name": "name",
+                  "title": "الاسم",
+                  "type": "localeString"
+                },
+                {
+                  "name": "role",
+                  "title": "المنصب · الشركة",
+                  "type": "localeString"
+                },
+                {
+                  "name": "poster",
+                  "title": "صورة الغلاف (عمودية 9:16)",
+                  "type": "image",
+                  "options": {
+                    "hotspot": true
+                  },
+                  "fields": [
+                    {
+                      "name": "alt",
+                      "title": "وصف الصورة (للمكفوفين ومحركات البحث)",
+                      "type": "localeString"
+                    }
+                  ]
+                },
+                {
+                  "name": "video",
+                  "title": "ملف الفيديو (mp4)",
+                  "type": "file",
+                  "options": {
+                    "accept": "video/mp4"
+                  }
+                },
+                {
+                  "name": "videoUrl",
+                  "title": "رابط الفيديو (إنستغرام / يوتيوب)",
+                  "type": "url",
+                  "description": "يُستخدم إذا لم يُرفع ملف، أو في النسخة الخفيفة"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "quote",
+          "title": "اقتباس القصة المميزة",
+          "type": "localeText",
+          "group": "content"
+        },
+        {
+          "name": "featured",
+          "title": "وسم «قصة مميزة»",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "watch",
+          "title": "نص «شاهد الفيديو»",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "tap",
+          "title": "نص «اضغط للتشغيل»",
+          "type": "localeString",
+          "group": "settings"
+        },
+        {
+          "name": "close",
+          "title": "نص «إغلاق»",
+          "type": "localeString",
+          "group": "settings"
+        },
+        {
+          "name": "onIg",
+          "title": "نص «افتح على إنستغرام»",
+          "type": "localeString",
+          "group": "settings"
+        }
+      ]
+    },
+    {
+      "name": "faqSection",
+      "title": "الأسئلة الشائعة",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "media",
+          "title": "الصور والفيديو"
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "initialValue": false,
+          "description": "يخفي القسم من الموقع بدون حذفه.",
+          "group": "settings"
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل system. روابط القائمة تستخدمه: #system"
+        },
+        {
+          "name": "index",
+          "title": "الرقم الصغير (مثل 01)",
+          "description": "يظهر بجانب عنوان القسم",
+          "type": "string",
+          "group": "content"
+        },
+        {
+          "name": "eyebrow",
+          "title": "العنوان الصغير فوق العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "title",
+          "title": "العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "items",
+          "title": "الأسئلة",
+          "type": "array",
+          "group": "content",
+          "of": [
+            {
+              "type": "object",
+              "name": "faqItem",
+              "fields": [
+                {
+                  "name": "q",
+                  "title": "السؤال",
+                  "type": "localeString"
+                },
+                {
+                  "name": "a",
+                  "title": "الجواب",
+                  "description": "النص بين [قوسين] يظهر كمكان فارغ مخطط",
+                  "type": "localeText"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "description": "الأسئلة واحدة لكل الموقع: بتنكتب مرة وحدة بقسم «الأسئلة الشائعة» بصفحة الخدمات، وكل صفحة فيها هذا القسم (مثل الرئيسية) بتعرض نفس الأسئلة بنفس الشكل. كل سؤال وجواب هنا يدخل كمان في بيانات جوجل والذكاء الاصطناعي (FAQ). اكتب كل جواب كامل ومفهوم لحاله."
+    },
+    {
+      "name": "finalCtaSection",
+      "title": "الدعوة الأخيرة (احجز مكالمة)",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "media",
+          "title": "الصور والفيديو"
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "initialValue": false,
+          "description": "يخفي القسم من الموقع بدون حذفه.",
+          "group": "settings"
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل system. روابط القائمة تستخدمه: #system"
+        },
+        {
+          "name": "title",
+          "title": "العنوان (سطر لكل عنصر)",
+          "type": "array",
+          "of": [
+            {
+              "type": "localeString"
+            }
+          ],
+          "group": "content"
+        },
+        {
+          "name": "yes",
+          "title": "زر «نعم»",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "notYet",
+          "title": "زر «ليس بعد»",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "notYetMsg",
+          "title": "رسالة «ليس بعد»",
+          "type": "localeText",
+          "group": "content"
+        },
+        {
+          "name": "fields",
+          "title": "حقول النموذج (العناوين)",
+          "type": "object",
+          "group": "content",
+          "fields": [
+            {
+              "name": "name",
+              "title": "الاسم",
+              "type": "localeString"
+            },
+            {
+              "name": "phone",
+              "title": "الهاتف / واتساب",
+              "type": "localeString"
+            },
+            {
+              "name": "email",
+              "title": "الإيميل",
+              "type": "localeString",
+              "description": "فارغ = «الإيميل» / Email"
+            },
+            {
+              "name": "company",
+              "title": "الشركة (اختياري)",
+              "type": "localeString"
+            },
+            {
+              "name": "message",
+              "title": "الرسالة (اختياري)",
+              "type": "localeString",
+              "description": "فارغ = «رسالتك» / Your message"
+            }
+          ]
+        },
+        {
+          "name": "submit",
+          "title": "زر الإرسال",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "promise",
+          "title": "الوعد تحت الزر",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "whatsapp",
+          "title": "نص رابط واتساب",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "sending",
+          "title": "نص الزر أثناء الإرسال",
+          "type": "localeString",
+          "group": "content",
+          "description": "فارغ = «جاري الإرسال…»"
+        },
+        {
+          "name": "success",
+          "title": "رسالة النجاح بعد الإرسال",
+          "type": "localeText",
+          "group": "content",
+          "description": "فارغ = «وصل طلبك، رح نتواصل معك قريباً»"
+        },
+        {
+          "name": "error",
+          "title": "رسالة الخطأ (لو ما انبعتت)",
+          "type": "localeText",
+          "group": "content",
+          "description": "تظهر مع زر واتساب فيه رسالة الزائر جاهزة. فارغ = «تعذّر إرسال رسالتك الآن. راسلنا مباشرة على واتساب وسنرد عليك.»"
+        },
+        {
+          "name": "errorWhatsapp",
+          "title": "زر واتساب مع رسالة الخطأ",
+          "type": "localeString",
+          "group": "content",
+          "description": "فارغ = «أرسلها على واتساب»"
+        }
+      ]
+    },
+    {
+      "name": "textImageSection",
+      "title": "نص + صورة (قسم حر)",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "media",
+          "title": "الصور والفيديو"
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "initialValue": false,
+          "description": "يخفي القسم من الموقع بدون حذفه.",
+          "group": "settings"
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل system. روابط القائمة تستخدمه: #system"
+        },
+        {
+          "name": "index",
+          "title": "الرقم الصغير (مثل 01)",
+          "description": "يظهر بجانب عنوان القسم",
+          "type": "string",
+          "group": "content"
+        },
+        {
+          "name": "eyebrow",
+          "title": "العنوان الصغير فوق العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "title",
+          "title": "العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "body",
+          "title": "النص",
+          "type": "localeBlock",
+          "group": "content"
+        },
+        {
+          "name": "image",
+          "title": "الصورة",
+          "type": "image",
+          "options": {
+            "hotspot": true
+          },
+          "fields": [
+            {
+              "name": "alt",
+              "title": "وصف الصورة (للمكفوفين ومحركات البحث)",
+              "type": "localeString"
+            }
+          ],
+          "group": "media"
+        },
+        {
+          "name": "imageSide",
+          "title": "مكان الصورة",
+          "type": "string",
+          "group": "settings",
+          "initialValue": "end",
+          "options": {
+            "layout": "radio",
+            "direction": "horizontal",
+            "list": [
+              {
+                "title": "بعد النص",
+                "value": "end"
+              },
+              {
+                "title": "قبل النص",
+                "value": "start"
+              }
+            ]
+          }
+        },
+        {
+          "name": "theme",
+          "title": "الخلفية",
+          "type": "string",
+          "group": "settings",
+          "initialValue": "light",
+          "options": {
+            "layout": "radio",
+            "direction": "horizontal",
+            "list": [
+              {
+                "title": "فاتحة",
+                "value": "light"
+              },
+              {
+                "title": "بيضاء (كرت)",
+                "value": "card"
+              },
+              {
+                "title": "داكنة",
+                "value": "dark"
+              },
+              {
+                "title": "بنفسجية",
+                "value": "purple"
+              }
+            ]
+          }
+        },
+        {
+          "name": "cta",
+          "title": "زر (اختياري)",
+          "type": "object",
+          "group": "content",
+          "fields": [
+            {
+              "name": "label",
+              "title": "نص الزر",
+              "type": "localeString"
+            },
+            {
+              "name": "href",
+              "title": "الرابط",
+              "description": "مثل #book أو https://…",
+              "type": "string"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gallerySection",
+      "title": "معرض صور",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "media",
+          "title": "الصور والفيديو"
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "initialValue": false,
+          "description": "يخفي القسم من الموقع بدون حذفه.",
+          "group": "settings"
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل system. روابط القائمة تستخدمه: #system"
+        },
+        {
+          "name": "index",
+          "title": "الرقم الصغير (مثل 01)",
+          "description": "يظهر بجانب عنوان القسم",
+          "type": "string",
+          "group": "content"
+        },
+        {
+          "name": "eyebrow",
+          "title": "العنوان الصغير فوق العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "title",
+          "title": "العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "images",
+          "title": "الصور",
+          "type": "array",
+          "group": "media",
+          "options": {
+            "layout": "grid"
+          },
+          "of": [
+            {
+              "type": "image",
+              "options": {
+                "hotspot": true
+              },
+              "fields": [
+                {
+                  "name": "caption",
+                  "title": "تعليق",
+                  "type": "localeString"
+                },
+                {
+                  "name": "alt",
+                  "title": "وصف الصورة",
+                  "type": "localeString"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "columns",
+          "title": "عدد الأعمدة",
+          "type": "number",
+          "group": "settings",
+          "initialValue": 3,
+          "options": {
+            "list": [
+              2,
+              3,
+              4
+            ],
+            "layout": "radio",
+            "direction": "horizontal"
+          }
+        }
+      ]
+    },
+    {
+      "name": "statsSection",
+      "title": "شريط أرقام",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "media",
+          "title": "الصور والفيديو"
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "initialValue": false,
+          "description": "يخفي القسم من الموقع بدون حذفه.",
+          "group": "settings"
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل system. روابط القائمة تستخدمه: #system"
+        },
+        {
+          "name": "index",
+          "title": "الرقم الصغير (مثل 01)",
+          "description": "يظهر بجانب عنوان القسم",
+          "type": "string",
+          "group": "content"
+        },
+        {
+          "name": "eyebrow",
+          "title": "العنوان الصغير فوق العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "title",
+          "title": "العنوان (اختياري)",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "lead",
+          "title": "السطر بجانب العنوان (اختياري)",
+          "type": "localeText",
+          "group": "content"
+        },
+        {
+          "name": "items",
+          "title": "الأرقام",
+          "type": "array",
+          "of": [
+            {
+              "type": "object",
+              "name": "stat",
+              "title": "رقم",
+              "fields": [
+                {
+                  "name": "v",
+                  "title": "الرقم",
+                  "description": "مثل 100+ أو $4.7M+",
+                  "type": "localeString"
+                },
+                {
+                  "name": "l",
+                  "title": "وصف الرقم",
+                  "type": "localeString"
+                },
+                {
+                  "name": "src",
+                  "title": "مصدر الرقم",
+                  "type": "string",
+                  "initialValue": "none",
+                  "options": {
+                    "layout": "radio",
+                    "direction": "horizontal",
+                    "list": [
+                      {
+                        "title": "بدون وسم",
+                        "value": "none"
+                      },
+                      {
+                        "title": "من موقعهم (يحتاج تأكيد)",
+                        "value": "site"
+                      },
+                      {
+                        "title": "من إنستغرام",
+                        "value": "ig"
+                      },
+                      {
+                        "title": "فارغ — رقم مطلوب",
+                        "value": "ph"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "group": "content"
+        },
+        {
+          "name": "placeholder4",
+          "title": "الرقم الرابع المؤقت (+100 علامة تجارية)",
+          "description": "يظهر فقط إذا كان عندك 3 أرقام، حتى يأكّد العميل رقماً رابعاً (أضفه كرقم رابع فيحلّ محلّه).",
+          "type": "boolean",
+          "initialValue": true,
+          "group": "content"
+        }
+      ]
+    },
+    {
+      "name": "clientStoriesSection",
+      "title": "أعمال العملاء (ستوري)",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "media",
+          "title": "العملاء وأعمالهم"
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "initialValue": false,
+          "description": "يخفي القسم من الموقع بدون حذفه.",
+          "group": "settings"
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل system. روابط القائمة تستخدمه: #system"
+        },
+        {
+          "name": "index",
+          "title": "الرقم الصغير (مثل 01)",
+          "description": "يظهر بجانب عنوان القسم",
+          "type": "string",
+          "group": "content"
+        },
+        {
+          "name": "eyebrow",
+          "title": "العنوان الصغير فوق العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "title",
+          "title": "العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "lead",
+          "title": "الفقرة تحت العنوان",
+          "type": "localeText",
+          "group": "content"
+        },
+        {
+          "name": "hint",
+          "title": "ملاحظة صغيرة تحت الشعارات",
+          "description": "مثل: اضغط على أي شعار لتشاهد أعمالنا معه",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "mirror",
+          "title": "اعرض نفس العملاء من قسم الستوري الأول",
+          "type": "boolean",
+          "initialValue": false,
+          "group": "media",
+          "description": "فعّلها في صفحة «أعمالنا» لتظهر نفس العملاء المضافين في الصفحة الرئيسية بدون إدخالهم مرتين (القائمة تحتها تُترك فارغة)."
+        },
+        {
+          "name": "clients",
+          "title": "العملاء (دائرة لكل عميل، بالترتيب)",
+          "type": "array",
+          "group": "media",
+          "description": "أضف عميلاً: اسمه + شعاره، ثم أعماله بالترتيب (صورة أو فيديو لكل عمل). اسحب لتغيير الترتيب.",
+          "of": [
+            {
+              "type": "object",
+              "name": "storyClient",
+              "title": "عميل",
+              "fields": [
+                {
+                  "name": "name",
+                  "title": "اسم العميل",
+                  "type": "localeString"
+                },
+                {
+                  "name": "logo",
+                  "title": "الشعار (مربع — يظهر داخل دائرة)",
+                  "type": "image",
+                  "options": {
+                    "compress": "logo"
+                  },
+                  "fields": [
+                    {
+                      "name": "alt",
+                      "title": "وصف الشعار",
+                      "type": "localeString"
+                    }
+                  ]
+                },
+                {
+                  "name": "items",
+                  "title": "الأعمال (تُعرض بهذا الترتيب)",
+                  "type": "array",
+                  "options": {
+                    "bulk": "story"
+                  },
+                  "of": [
+                    {
+                      "type": "object",
+                      "name": "storyItem",
+                      "title": "عمل",
+                      "fields": [
+                        {
+                          "name": "caption",
+                          "title": "وصف قصير (اختياري)",
+                          "type": "localeString"
+                        },
+                        {
+                          "name": "image",
+                          "title": "صورة (عمودية 9:16 الأفضل)",
+                          "type": "image",
+                          "options": {
+                            "compress": "story"
+                          },
+                          "fields": [
+                            {
+                              "name": "alt",
+                              "title": "وصف الصورة (للمكفوفين)",
+                              "type": "localeString"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "video",
+                          "title": "أو فيديو MP4 (يُستخدم بدل الصورة)",
+                          "type": "file",
+                          "options": {
+                            "accept": "video/mp4",
+                            "compress": "story"
+                          }
+                        },
+                        {
+                          "name": "link",
+                          "title": "أو رابط YouTube / Instagram (يُعرض من مصدره)",
+                          "type": "url",
+                          "description": "روابط Google Drive الصقها في «إضافة من رابط» أو خانة الصورة/الفيديو لتُستورد وتُضغط."
+                        },
+                        {
+                          "name": "duration",
+                          "title": "مدة عرض الصورة بالثواني",
+                          "description": "فارغ = 5 ثوانٍ. الفيديو يُعرض بطوله.",
+                          "type": "number"
+                        },
+                        {
+                          "name": "source",
+                          "title": "المصدر (يملؤه النظام)",
+                          "type": "string",
+                          "description": "youtube / instagram / drive / upload"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "slug",
+                  "title": "رابط صفحة العميل (يُكتب تلقائياً من الاسم الإنجليزي)",
+                  "type": "string"
+                },
+                {
+                  "name": "caseKey",
+                  "title": "قصة العميل القديمة المرتبطة (يملؤه النظام)",
+                  "type": "string"
+                },
+                {
+                  "name": "testimonial",
+                  "title": "رأي العميل",
+                  "type": "object",
+                  "fields": [
+                    {
+                      "name": "quote",
+                      "title": "الاقتباس (جملة أو جملتين)",
+                      "type": "localeText"
+                    },
+                    {
+                      "name": "name",
+                      "title": "اسم الشخص",
+                      "type": "localeString"
+                    },
+                    {
+                      "name": "role",
+                      "title": "منصبه",
+                      "type": "localeString"
+                    },
+                    {
+                      "type": "object",
+                      "title": "فيديو رأي العميل",
+                      "fields": [
+                        {
+                          "name": "caption",
+                          "title": "وصف قصير (اختياري)",
+                          "type": "localeString"
+                        },
+                        {
+                          "name": "image",
+                          "title": "صورة (عمودية 9:16 الأفضل)",
+                          "type": "image",
+                          "options": {
+                            "compress": "story"
+                          },
+                          "fields": [
+                            {
+                              "name": "alt",
+                              "title": "وصف الصورة (للمكفوفين)",
+                              "type": "localeString"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "video",
+                          "title": "أو فيديو MP4 (يُستخدم بدل الصورة)",
+                          "type": "file",
+                          "options": {
+                            "accept": "video/mp4",
+                            "compress": "story"
+                          }
+                        },
+                        {
+                          "name": "link",
+                          "title": "أو رابط YouTube / Instagram (يُعرض من مصدره)",
+                          "type": "url",
+                          "description": "روابط Google Drive الصقها في «إضافة من رابط» أو خانة الصورة/الفيديو لتُستورد وتُضغط."
+                        },
+                        {
+                          "name": "duration",
+                          "title": "مدة عرض الصورة بالثواني",
+                          "description": "فارغ = 5 ثوانٍ. الفيديو يُعرض بطوله.",
+                          "type": "number"
+                        },
+                        {
+                          "name": "source",
+                          "title": "المصدر (يملؤه النظام)",
+                          "type": "string",
+                          "description": "youtube / instagram / drive / upload"
+                        }
+                      ],
+                      "name": "item"
+                    }
+                  ]
+                },
+                {
+                  "name": "story",
+                  "title": "قصة المشروع",
+                  "type": "object",
+                  "fields": [
+                    {
+                      "name": "challenge",
+                      "title": "التحدي",
+                      "type": "localeText"
+                    },
+                    {
+                      "name": "solution",
+                      "title": "الحل: ماذا فعلنا",
+                      "type": "localeText"
+                    },
+                    {
+                      "name": "results",
+                      "title": "النتائج (رقم + وصف)",
+                      "type": "array",
+                      "of": [
+                        {
+                          "type": "object",
+                          "name": "metric",
+                          "title": "نتيجة",
+                          "fields": [
+                            {
+                              "name": "v",
+                              "title": "الرقم",
+                              "type": "localeString"
+                            },
+                            {
+                              "name": "l",
+                              "title": "الوصف",
+                              "type": "localeString"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "cover",
+                      "title": "صورة الغلاف (اختيارية)",
+                      "type": "image",
+                      "options": {
+                        "compress": "story"
+                      },
+                      "fields": [
+                        {
+                          "name": "alt",
+                          "title": "وصف الصورة",
+                          "type": "localeString"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "removedCases",
+          "title": "قصص قديمة محذوفة من «العملاء» (يملؤه النظام)",
+          "type": "array",
+          "of": [
+            {
+              "type": "string"
+            }
+          ],
+          "group": "media"
+        }
+      ]
+    },
+    {
+      "name": "pageHeadSection",
+      "title": "رأس الصفحة (العنوان الرئيسي)",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "media",
+          "title": "الصور والفيديو"
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "initialValue": false,
+          "description": "يخفي القسم من الموقع بدون حذفه.",
+          "group": "settings"
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل system. روابط القائمة تستخدمه: #system"
+        },
+        {
+          "name": "eyebrow",
+          "title": "العنوان الصغير فوق العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "title",
+          "title": "عنوان الصفحة (H1)",
+          "type": "localeString",
+          "group": "content",
+          "description": "العنوان الكبير — واحد لكل صفحة، ومهم لمحركات البحث"
+        },
+        {
+          "name": "summary",
+          "title": "ملخص الصفحة (أول جملة)",
+          "type": "localeText",
+          "group": "content",
+          "description": "جملة أو جملتين بسيطتين تبدأ بها الصفحة وتذكر اسم ClearUp. يقرأها الزائر وجوجل وأدوات الذكاء الاصطناعي (ChatGPT وPerplexity وGemini) ويقتبسون منها. فارغ = ما بتظهر."
+        },
+        {
+          "name": "lead",
+          "title": "سطر تعريفي",
+          "type": "localeText",
+          "group": "content"
+        },
+        {
+          "name": "facts",
+          "title": "معلومات الشركة (سطر صغير تحت العنوان)",
+          "type": "array",
+          "group": "content",
+          "of": [
+            {
+              "type": "localeString"
+            }
+          ],
+          "description": "كل معلومة لحالها، مثل: سجل تجاري رقم 60784 · تأسست 2023. تظهر كبطاقات صغيرة تحت السطر التعريفي. فارغ = ما بتظهر."
+        }
+      ]
+    },
+    {
+      "name": "proofSection",
+      "title": "عملاؤنا يحكون (فيديوهات آراء العملاء)",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "media",
+          "title": "الصور والفيديو"
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "initialValue": false,
+          "description": "يخفي القسم من الموقع بدون حذفه.",
+          "group": "settings"
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل system. روابط القائمة تستخدمه: #system"
+        },
+        {
+          "name": "index",
+          "title": "الرقم الصغير (مثل 01)",
+          "type": "string",
+          "group": "content",
+          "description": "يظهر بجانب عنوان القسم"
+        },
+        {
+          "name": "eyebrow",
+          "title": "العنوان الصغير",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "title",
+          "title": "العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "lead",
+          "title": "سطر تعريفي",
+          "type": "localeText",
+          "group": "content"
+        },
+        {
+          "name": "read",
+          "title": "(لم يعد مستخدماً)",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "all",
+          "title": "نص زر «كل الأعمال» (بالرئيسية)",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "limit",
+          "title": "عدد الفيديوهات بالرئيسية",
+          "type": "number",
+          "initialValue": 3,
+          "group": "content",
+          "description": "كم فيديو يظهر بالصفحة الرئيسية (الباقي بصفحة «أعمالنا»). الافتراضي 3."
+        },
+        {
+          "name": "allTestimonials",
+          "title": "نص رابط «شوف كل الآراء» (بالرئيسية)",
+          "type": "localeString",
+          "group": "content",
+          "description": "يظهر تحت الفيديوهات بالرئيسية لما يكون في فيديوهات أكثر من العدد. فاضي = «شوف كل الآراء»."
+        },
+        {
+          "name": "order",
+          "title": "ترتيب الفيديوهات",
+          "type": "array",
+          "of": [
+            {
+              "type": "string"
+            }
+          ],
+          "group": "content",
+          "description": "يعبّى من قائمة الفيديوهات (اسحب لتغيير الترتيب)."
+        },
+        {
+          "name": "onHome",
+          "title": "الفيديوهات اللي بتظهر بالرئيسية",
+          "type": "array",
+          "of": [
+            {
+              "type": "string"
+            }
+          ],
+          "group": "content",
+          "description": "يعبّى من مفاتيح «يظهر بالرئيسية»."
+        },
+        {
+          "name": "fullStory",
+          "title": "نص زر «القصة كاملة» على البطاقة",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "lblChallenge",
+          "title": "عنوان «التحدي» داخل القصة",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "lblSolution",
+          "title": "عنوان «الحل» داخل القصة",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "lblResult",
+          "title": "عنوان «النتيجة» داخل القصة",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "lblPage",
+          "title": "نص زر «صفحة العميل» داخل القصة",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "lblClose",
+          "title": "نص زر الإغلاق (لقارئ الشاشة)",
+          "type": "localeString",
+          "group": "content"
+        }
+      ]
+    },
+    {
+      "name": "servicesTeaserSection",
+      "title": "الخدمات باختصار",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "media",
+          "title": "الصور والفيديو"
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "initialValue": false,
+          "description": "يخفي القسم من الموقع بدون حذفه.",
+          "group": "settings"
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل system. روابط القائمة تستخدمه: #system"
+        },
+        {
+          "name": "eyebrow",
+          "title": "العنوان الصغير",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "title",
+          "title": "العنوان",
+          "type": "localeString",
+          "group": "content",
+          "description": "المجموعات الأربع تُقرأ تلقائياً من قسم «الخدمات» في صفحة الخدمات"
+        },
+        {
+          "name": "more",
+          "title": "نص الرابط لصفحة الخدمات",
+          "type": "localeString",
+          "group": "content"
+        }
+      ]
+    },
+    {
+      "name": "workIndexSection",
+      "title": "قائمة الأعمال (كل قصص العملاء)",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "media",
+          "title": "الصور والفيديو"
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "initialValue": false,
+          "description": "يخفي القسم من الموقع بدون حذفه.",
+          "group": "settings"
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل system. روابط القائمة تستخدمه: #system"
+        },
+        {
+          "name": "read",
+          "title": "نص رابط كل قصة",
+          "type": "localeString",
+          "group": "content",
+          "description": "القصص نفسها تُدار من «قصص العملاء» في مبدّل الصفحات"
+        },
+        {
+          "name": "empty",
+          "title": "النص عندما لا توجد قصص",
+          "type": "localeString",
+          "group": "content"
+        }
+      ]
+    },
+    {
+      "name": "teamSection",
+      "title": "الفريق",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "media",
+          "title": "الصور والفيديو"
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "initialValue": false,
+          "description": "يخفي القسم من الموقع بدون حذفه.",
+          "group": "settings"
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل system. روابط القائمة تستخدمه: #system"
+        },
+        {
+          "name": "eyebrow",
+          "title": "العنوان الصغير",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "title",
+          "title": "العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "members",
+          "title": "أعضاء الفريق",
+          "type": "array",
+          "group": "content",
+          "description": "القسم مخفي عن الزوار حتى تضيف أول عضو باسم.",
+          "of": [
+            {
+              "type": "object",
+              "name": "member",
+              "title": "عضو",
+              "fields": [
+                {
+                  "name": "name",
+                  "title": "الاسم",
+                  "type": "localeString"
+                },
+                {
+                  "name": "role",
+                  "title": "المنصب",
+                  "type": "localeString"
+                },
+                {
+                  "name": "photo",
+                  "title": "الصورة",
+                  "type": "image",
+                  "options": {
+                    "hotspot": true
+                  },
+                  "fields": [
+                    {
+                      "name": "alt",
+                      "title": "وصف الصورة (للمكفوفين ومحركات البحث)",
+                      "type": "localeString"
+                    }
+                  ],
+                  "group": "content"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "note",
+          "title": "ملاحظة صغيرة تحت الفريق",
+          "type": "localeString",
+          "group": "content"
+        }
+      ]
+    },
+    {
+      "name": "manifestoSection",
+      "title": "للرؤساء التنفيذيين الشجعان فقط (قيمنا)",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "media",
+          "title": "الصور والفيديو"
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "initialValue": false,
+          "description": "يخفي القسم من الموقع بدون حذفه.",
+          "group": "settings"
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل system. روابط القائمة تستخدمه: #system"
+        },
+        {
+          "name": "kicker",
+          "title": "السطر الصغير",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "lines",
+          "title": "الجمل الكبيرة",
+          "type": "array",
+          "group": "content",
+          "of": [
+            {
+              "type": "localeString"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ctaBandSection",
+      "title": "دعوة الحجز (مختصرة)",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "media",
+          "title": "الصور والفيديو"
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "initialValue": false,
+          "description": "يخفي القسم من الموقع بدون حذفه.",
+          "group": "settings"
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل system. روابط القائمة تستخدمه: #system"
+        },
+        {
+          "name": "title",
+          "title": "العنوان (سطر لكل عنصر)",
+          "type": "array",
+          "group": "content",
+          "of": [
+            {
+              "type": "localeString"
+            }
+          ]
+        },
+        {
+          "name": "lead",
+          "title": "سطر تحت العنوان",
+          "type": "localeText",
+          "group": "content",
+          "description": "نص بين [أقواس] لا يظهر للزوار حتى تكتبه"
+        },
+        {
+          "name": "cta",
+          "title": "نص الزر (يفتح صفحة التواصل)",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "whatsapp",
+          "title": "نص زر واتساب",
+          "type": "localeString",
+          "group": "content"
+        }
+      ]
+    },
+    {
+      "name": "contactInfoSection",
+      "title": "طرق التواصل المباشر",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "media",
+          "title": "الصور والفيديو"
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "initialValue": false,
+          "description": "يخفي القسم من الموقع بدون حذفه.",
+          "group": "settings"
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل system. روابط القائمة تستخدمه: #system"
+        },
+        {
+          "name": "title",
+          "title": "العنوان",
+          "type": "localeString",
+          "group": "content",
+          "description": "الرقم والإيميل والمدينة والحسابات من «إعدادات الموقع» → التواصل"
+        },
+        {
+          "name": "whatsapp",
+          "title": "عنوان واتساب",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "email",
+          "title": "عنوان الإيميل",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "city",
+          "title": "عنوان المكان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "social",
+          "title": "عنوان الحسابات",
+          "type": "localeString",
+          "group": "content"
+        }
+      ]
+    },
+    {
+      "name": "workStoriesSection",
+      "title": "من شغلنا / ورا الكواليس (ستوري)",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "media",
+          "title": "الصور والفيديو"
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "group": "settings",
+          "initialValue": false,
+          "description": "يخفي القسم من الموقع بدون حذفه."
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل system. روابط القائمة تستخدمه: #system"
+        },
+        {
+          "name": "index",
+          "title": "الرقم الصغير (مثل 01)",
+          "type": "string",
+          "group": "content",
+          "description": "يظهر بجانب عنوان القسم"
+        },
+        {
+          "name": "eyebrow",
+          "title": "العنوان الصغير فوق العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "title",
+          "title": "العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "lead",
+          "title": "سطر تعريفي",
+          "type": "localeText",
+          "group": "content"
+        },
+        {
+          "name": "groups",
+          "title": "الستوريات (كل دائرة = مجموعة)",
+          "type": "array",
+          "group": "media",
+          "of": [
+            {
+              "type": "object",
+              "name": "workGroup",
+              "title": "دائرة ستوري",
+              "fields": [
+                {
+                  "name": "name",
+                  "title": "الاسم تحت الدائرة",
+                  "type": "localeString"
+                },
+                {
+                  "name": "cover",
+                  "title": "صورة الدائرة (اختيارية — وإلا لقطة من أول فيديو)",
+                  "type": "image",
+                  "options": {
+                    "hotspot": true
+                  },
+                  "fields": [
+                    {
+                      "name": "alt",
+                      "title": "وصف الصورة (للمكفوفين ومحركات البحث)",
+                      "type": "localeString"
+                    }
+                  ]
+                },
+                {
+                  "name": "items",
+                  "title": "الفيديوهات والصور",
+                  "type": "array",
+                  "of": [
+                    {
+                      "type": "object",
+                      "name": "storyItem",
+                      "title": "فيديو أو صورة",
+                      "fields": [
+                        {
+                          "name": "video",
+                          "title": "ملف الفيديو (mp4)",
+                          "type": "file",
+                          "options": {
+                            "accept": "video/mp4"
+                          }
+                        },
+                        {
+                          "name": "image",
+                          "title": "أو صورة (عمودية 9:16)",
+                          "type": "image",
+                          "options": {
+                            "hotspot": true
+                          },
+                          "fields": [
+                            {
+                              "name": "alt",
+                              "title": "وصف الصورة (للمكفوفين ومحركات البحث)",
+                              "type": "localeString"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "link",
+                          "title": "أو رابط (إنستغرام / يوتيوب)",
+                          "type": "url"
+                        },
+                        {
+                          "name": "caption",
+                          "title": "سطر تحت الستوري",
+                          "type": "localeString",
+                          "description": "بدون أرقام غير مؤكدة."
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "offeringsSection",
+      "title": "الخدمات الخمس (مصدر واحد)",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "media",
+          "title": "الصور والفيديو"
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "group": "settings",
+          "initialValue": false,
+          "description": "يخفي القسم من الموقع بدون حذفه."
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل system. روابط القائمة تستخدمه: #system"
+        },
+        {
+          "name": "index",
+          "title": "الرقم الصغير (مثل 01)",
+          "type": "string",
+          "group": "content",
+          "description": "يظهر بجانب عنوان القسم"
+        },
+        {
+          "name": "eyebrow",
+          "title": "العنوان الصغير فوق العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "title",
+          "title": "العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "lead",
+          "title": "سطر تعريفي",
+          "type": "localeText",
+          "group": "content"
+        },
+        {
+          "name": "compact",
+          "title": "نسخة مختصرة (كروت تودّي لصفحة الخدمات)",
+          "type": "boolean",
+          "group": "settings",
+          "initialValue": false,
+          "description": "الرئيسية: مختصرة. صفحة الخدمات: كاملة. المحتوى نفسه بيجي من قسم صفحة الخدمات."
+        },
+        {
+          "type": "boolean",
+          "group": "settings",
+          "initialValue": false,
+          "name": "scroll",
+          "title": "عرض الخدمات بالتمرير (خدمة خدمة مع شرحها وفيديوها)",
+          "description": "نفس قسم التمرير الثابت: كل خدمة تظهر بشرحها الكامل وفيديوها وأنت تنزل."
+        },
+        {
+          "name": "all",
+          "title": "نص زر «كل الخدمات» (بالنسخة المختصرة)",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "incl",
+          "title": "عنوان «تشمل»",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "fit",
+          "title": "عنوان «تناسب»",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "proof",
+          "title": "عنوان الفيديوهات المثبتة",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "items",
+          "title": "الخدمات",
+          "type": "array",
+          "group": "content",
+          "of": [
+            {
+              "type": "object",
+              "name": "offer",
+              "title": "خدمة",
+              "fields": [
+                {
+                  "name": "id",
+                  "title": "رابط الخدمة (إنجليزي، مثل marketing)",
+                  "type": "string"
+                },
+                {
+                  "name": "title",
+                  "title": "اسم الخدمة",
+                  "type": "localeString"
+                },
+                {
+                  "name": "en",
+                  "title": "الاسم بالإنجليزي (سطر صغير)",
+                  "type": "string"
+                },
+                {
+                  "name": "desc",
+                  "title": "الوصف",
+                  "type": "localeText"
+                },
+                {
+                  "name": "includes",
+                  "title": "تشمل (كل بند لحاله)",
+                  "type": "array",
+                  "of": [
+                    {
+                      "type": "localeString"
+                    }
+                  ]
+                },
+                {
+                  "name": "fits",
+                  "title": "تناسب",
+                  "type": "localeText"
+                },
+                {
+                  "name": "more",
+                  "title": "نص رابط إضافي (اختياري)",
+                  "type": "localeString"
+                },
+                {
+                  "name": "moreHref",
+                  "title": "الرابط الإضافي",
+                  "type": "string"
+                },
+                {
+                  "name": "videos",
+                  "title": "فيديوهات مثبتة على الخدمة",
+                  "type": "array",
+                  "of": [
+                    {
+                      "type": "object",
+                      "name": "pinVideo",
+                      "title": "فيديو",
+                      "fields": [
+                        {
+                          "name": "label",
+                          "title": "النص على الفيديو",
+                          "type": "localeString"
+                        },
+                        {
+                          "name": "name",
+                          "title": "اسم العميل / صاحب الفيديو",
+                          "type": "localeString"
+                        },
+                        {
+                          "name": "video",
+                          "title": "ملف الفيديو (mp4)",
+                          "type": "file",
+                          "options": {
+                            "accept": "video/mp4"
+                          }
+                        },
+                        {
+                          "name": "poster",
+                          "title": "صورة الغلاف (عمودية)",
+                          "type": "image",
+                          "options": {
+                            "hotspot": true
+                          },
+                          "fields": [
+                            {
+                              "name": "alt",
+                              "title": "وصف الصورة (للمكفوفين ومحركات البحث)",
+                              "type": "localeString"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "link",
+                          "title": "أو رابط (إنستغرام / يوتيوب)",
+                          "type": "url"
+                        },
+                        {
+                          "name": "hide",
+                          "title": "إخفاء هذا الفيديو عن الزوار",
+                          "type": "boolean",
+                          "initialValue": false,
+                          "description": "يختفي من الموقع بدون ما ينحذف. رجّعها «لا» ليرجع يظهر."
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "toolsSection",
+      "title": "أدوات نستخدمها",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "media",
+          "title": "الصور والفيديو"
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "group": "settings",
+          "initialValue": false,
+          "description": "يخفي القسم من الموقع بدون حذفه."
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل system. روابط القائمة تستخدمه: #system"
+        },
+        {
+          "name": "index",
+          "title": "الرقم الصغير (مثل 01)",
+          "type": "string",
+          "group": "content",
+          "description": "يظهر بجانب عنوان القسم"
+        },
+        {
+          "name": "eyebrow",
+          "title": "العنوان الصغير فوق العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "title",
+          "title": "العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "lead",
+          "title": "سطر تعريفي",
+          "type": "localeText",
+          "group": "content"
+        },
+        {
+          "name": "items",
+          "title": "الأدوات",
+          "type": "array",
+          "group": "content",
+          "of": [
+            {
+              "type": "object",
+              "name": "tool",
+              "title": "أداة",
+              "fields": [
+                {
+                  "name": "name",
+                  "title": "اسم الأداة بالعربي",
+                  "type": "localeString"
+                },
+                {
+                  "name": "en",
+                  "title": "الاسم بالإنجليزي",
+                  "type": "string"
+                },
+                {
+                  "name": "desc",
+                  "title": "سطر شرح",
+                  "type": "localeText"
+                },
+                {
+                  "name": "image",
+                  "title": "رسمة الأداة (SVG أو صورة)",
+                  "type": "image",
+                  "fields": [
+                    {
+                      "name": "alt",
+                      "title": "وصف الصورة (للمكفوفين ومحركات البحث)",
+                      "type": "localeString"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "fitSection",
+      "title": "لا تناسبك إذا / تناسبك إذا",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "media",
+          "title": "الصور والفيديو"
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "group": "settings",
+          "initialValue": false,
+          "description": "يخفي القسم من الموقع بدون حذفه."
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل system. روابط القائمة تستخدمه: #system"
+        },
+        {
+          "name": "index",
+          "title": "الرقم الصغير (مثل 01)",
+          "type": "string",
+          "group": "content",
+          "description": "يظهر بجانب عنوان القسم"
+        },
+        {
+          "name": "eyebrow",
+          "title": "العنوان الصغير فوق العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "title",
+          "title": "العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "lead",
+          "title": "سطر تعريفي",
+          "type": "localeText",
+          "group": "content"
+        },
+        {
+          "name": "noTitle",
+          "title": "عنوان العمود الأول",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "no",
+          "title": "لا تناسبك إذا… (كل بند لحاله)",
+          "type": "array",
+          "group": "content",
+          "of": [
+            {
+              "type": "localeString"
+            }
+          ]
+        },
+        {
+          "name": "yesTitle",
+          "title": "عنوان العمود الثاني",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "yes",
+          "title": "وتناسبك إذا… (كل بند لحاله)",
+          "type": "array",
+          "group": "content",
+          "of": [
+            {
+              "type": "localeString"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "processSection",
+      "title": "كيف نعمل (المسار والمراحل)",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "media",
+          "title": "الصور والفيديو"
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "group": "settings",
+          "initialValue": false,
+          "description": "يخفي القسم من الموقع بدون حذفه."
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل system. روابط القائمة تستخدمه: #system"
+        },
+        {
+          "name": "index",
+          "title": "الرقم الصغير (مثل 01)",
+          "type": "string",
+          "group": "content",
+          "description": "يظهر بجانب عنوان القسم"
+        },
+        {
+          "name": "eyebrow",
+          "title": "العنوان الصغير فوق العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "title",
+          "title": "العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "lead",
+          "title": "سطر تعريفي",
+          "type": "localeText",
+          "group": "content"
+        },
+        {
+          "name": "path",
+          "title": "المسار (كل خطوة لحالها)",
+          "type": "array",
+          "group": "content",
+          "of": [
+            {
+              "type": "localeString"
+            }
+          ]
+        },
+        {
+          "name": "steps",
+          "title": "مراحل العمل مع العميل",
+          "type": "array",
+          "group": "content",
+          "of": [
+            {
+              "type": "object",
+              "name": "step",
+              "title": "مرحلة",
+              "fields": [
+                {
+                  "name": "t",
+                  "title": "اسم المرحلة",
+                  "type": "localeString"
+                },
+                {
+                  "name": "d",
+                  "title": "الشرح",
+                  "type": "localeText"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "productsSection",
+      "title": "منتجاتنا",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "media",
+          "title": "الصور والفيديو"
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "group": "settings",
+          "initialValue": false,
+          "description": "يخفي القسم من الموقع بدون حذفه."
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل system. روابط القائمة تستخدمه: #system"
+        },
+        {
+          "name": "index",
+          "title": "الرقم الصغير (مثل 01)",
+          "type": "string",
+          "group": "content",
+          "description": "يظهر بجانب عنوان القسم"
+        },
+        {
+          "name": "eyebrow",
+          "title": "العنوان الصغير فوق العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "title",
+          "title": "العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "lead",
+          "title": "سطر تعريفي",
+          "type": "localeText",
+          "group": "content"
+        },
+        {
+          "name": "items",
+          "title": "المنتجات",
+          "type": "array",
+          "group": "content",
+          "of": [
+            {
+              "type": "object",
+              "name": "product",
+              "title": "منتج",
+              "fields": [
+                {
+                  "name": "name",
+                  "title": "اسم المنتج",
+                  "type": "localeString"
+                },
+                {
+                  "name": "badge",
+                  "title": "شارة (مثل «قريباً»)",
+                  "type": "localeString"
+                },
+                {
+                  "name": "desc",
+                  "title": "الوصف",
+                  "type": "localeText"
+                },
+                {
+                  "name": "cta",
+                  "title": "نص الزر",
+                  "type": "localeString"
+                },
+                {
+                  "name": "href",
+                  "title": "رابط الزر (بدون رابط = بدون زر)",
+                  "type": "string"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "caseStudy",
+      "title": "قصة عميل",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "القصة",
+          "default": true
+        },
+        {
+          "name": "media",
+          "title": "الصور والفيديو"
+        },
+        {
+          "name": "seo",
+          "title": "محركات البحث"
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذه القصة",
+          "type": "boolean",
+          "initialValue": false,
+          "description": "تختفي من الموقع (صفحتها وبطاقتها) بدون حذفها.",
+          "group": "settings"
+        },
+        {
+          "name": "client",
+          "title": "اسم العميل",
+          "type": "localeString",
+          "group": "content",
+          "description": "يظهر كعنوان صفحة القصة"
+        },
+        {
+          "name": "slug",
+          "title": "رابط الصفحة",
+          "type": "string",
+          "group": "settings",
+          "description": "أحرف إنجليزية صغيرة وأرقام و - فقط، مثل al-noon ← /ar/work/al-noon/ . فارغ = من اسم العميل بالإنجليزي."
+        },
+        {
+          "name": "featured",
+          "title": "مميّزة (تظهر في الرئيسية)",
+          "type": "boolean",
+          "initialValue": true,
+          "group": "settings"
+        },
+        {
+          "name": "industry",
+          "title": "المجال",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "period",
+          "title": "المدة",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "summary",
+          "title": "سطر مختصر (يظهر تحت الاسم وعلى البطاقة)",
+          "type": "localeText",
+          "group": "content"
+        },
+        {
+          "name": "problem",
+          "title": "المشكلة",
+          "type": "localeText",
+          "group": "content"
+        },
+        {
+          "name": "did",
+          "title": "ماذا فعلنا",
+          "type": "array",
+          "group": "content",
+          "of": [
+            {
+              "type": "localeString"
+            }
+          ]
+        },
+        {
+          "name": "result",
+          "title": "النتيجة",
+          "type": "localeText",
+          "group": "content"
+        },
+        {
+          "name": "metrics",
+          "title": "الأرقام",
+          "type": "array",
+          "group": "content",
+          "description": "رقم حقيقي فقط. ما بين [أقواس] لا يظهر للزوار.",
+          "of": [
+            {
+              "type": "object",
+              "name": "metric",
+              "title": "رقم",
+              "fields": [
+                {
+                  "name": "v",
+                  "title": "الرقم",
+                  "type": "localeString",
+                  "description": "مثل 8× أو 60"
+                },
+                {
+                  "name": "l",
+                  "title": "وصف الرقم",
+                  "type": "localeString"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "testimonial",
+          "title": "كلام العميل",
+          "type": "object",
+          "group": "content",
+          "fields": [
+            {
+              "name": "quote",
+              "title": "الاقتباس",
+              "type": "localeText"
+            },
+            {
+              "name": "name",
+              "title": "الاسم",
+              "type": "localeString"
+            },
+            {
+              "name": "role",
+              "title": "المنصب",
+              "type": "localeString"
+            }
+          ]
+        },
+        {
+          "name": "cover",
+          "title": "صورة الغلاف (البطاقة)",
+          "type": "image",
+          "options": {
+            "hotspot": true
+          },
+          "fields": [
+            {
+              "name": "alt",
+              "title": "وصف الصورة (للمكفوفين ومحركات البحث)",
+              "type": "localeString"
+            }
+          ],
+          "group": "media"
+        },
+        {
+          "name": "logo",
+          "title": "شعار العميل",
+          "type": "image",
+          "options": {
+            "hotspot": true
+          },
+          "fields": [
+            {
+              "name": "alt",
+              "title": "وصف الصورة (للمكفوفين ومحركات البحث)",
+              "type": "localeString"
+            }
+          ],
+          "group": "media"
+        },
+        {
+          "name": "videos",
+          "title": "الفيديوهات (ملف mp4 أو رابط يوتيوب/إنستغرام)",
+          "type": "array",
+          "group": "media",
+          "description": "ارفع ملف الفيديو ليشتغل فوراً لما الزائر يضغط، أو حط رابط يوتيوب/إنستغرام بس.",
+          "of": [
+            {
+              "type": "object",
+              "name": "video",
+              "title": "فيديو",
+              "fields": [
+                {
+                  "name": "url",
+                  "title": "الرابط",
+                  "type": "string",
+                  "description": "https://www.instagram.com/reel/… أو https://youtu.be/…"
+                },
+                {
+                  "name": "file",
+                  "title": "ملف الفيديو (mp4) — يشتغل فوراً لما الزائر يضغط",
+                  "type": "file",
+                  "options": {
+                    "accept": "video/mp4"
+                  },
+                  "description": "اختياري. إذا رفعت الملف هون بيشتغل الفيديو مباشرة بالموقع، والرابط فوق بضل احتياط."
+                },
+                {
+                  "name": "title",
+                  "title": "العنوان",
+                  "type": "localeString"
+                },
+                {
+                  "name": "poster",
+                  "title": "صورة قبل التشغيل",
+                  "type": "image",
+                  "options": {
+                    "hotspot": true
+                  },
+                  "fields": [
+                    {
+                      "name": "alt",
+                      "title": "وصف الصورة (للمكفوفين ومحركات البحث)",
+                      "type": "localeString"
+                    }
+                  ],
+                  "group": "media"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "seo",
+          "title": "محركات البحث",
+          "type": "object",
+          "group": "seo",
+          "description": "فارغ = اسم العميل والمشكلة.",
+          "fields": [
+            {
+              "name": "title",
+              "title": "عنوان الصفحة في جوجل",
+              "type": "localeString"
+            },
+            {
+              "name": "description",
+              "title": "الوصف في جوجل",
+              "type": "localeText"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "name": "siteSettings",
+    "title": "إعدادات الموقع",
+    "type": "document",
+    "groups": [
+      {
+        "name": "brand",
+        "title": "الهوية والألوان",
+        "default": true
+      },
+      {
+        "name": "fonts",
+        "title": "الخطوط"
+      },
+      {
+        "name": "motion",
+        "title": "الحركة والأنيميشن"
+      },
+      {
+        "name": "contact",
+        "title": "التواصل"
+      },
+      {
+        "name": "chatbot",
+        "title": "الشات بوت"
+      },
+      {
+        "name": "header",
+        "title": "القائمة العلوية"
+      },
+      {
+        "name": "footer",
+        "title": "أسفل الصفحة"
+      },
+      {
+        "name": "pages",
+        "title": "الصفحات (SEO لكل صفحة)"
+      },
+      {
+        "name": "seo",
+        "title": "محركات البحث"
+      },
+      {
+        "name": "labels",
+        "title": "نصوص صغيرة"
+      }
+    ],
+    "fields": [
+      {
+        "name": "logo",
+        "title": "الشعار (اختياري)",
+        "description": "اتركه فارغاً لاستخدام شعار ClearUp المرسوم بالكود (أوضح وأخف). ارفع PNG/SVG بخلفية شفافة.",
+        "type": "image",
+        "options": {
+          "hotspot": true
+        },
+        "fields": [
+          {
+            "name": "alt",
+            "title": "وصف الصورة (للمكفوفين ومحركات البحث)",
+            "type": "localeString"
+          }
+        ],
+        "group": "brand"
+      },
+      {
+        "name": "brandName",
+        "title": "اسم العلامة بجانب الشعار",
+        "type": "string",
+        "group": "brand",
+        "initialValue": "CLEAR UP"
+      },
+      {
+        "name": "heroLogo",
+        "title": "شعار الواجهة المتحرك (Hero)",
+        "type": "object",
+        "group": "brand",
+        "description": "الشعار الكبير اللي بيتحرك مع الماوس. غيّر ألوان طبقاته، أو ارفع صورة شعار تحل محله (PNG شفاف).",
+        "fields": [
+          {
+            "name": "front",
+            "title": "لون الطبقة الأمامية",
+            "type": "color"
+          },
+          {
+            "name": "back",
+            "title": "لون الطبقة الخلفية",
+            "type": "color"
+          },
+          {
+            "name": "arrow",
+            "title": "لون السهم",
+            "type": "color"
+          },
+          {
+            "name": "image",
+            "title": "أو صورة بدل الشعار المرسوم",
+            "type": "image",
+            "fields": [
+              {
+                "name": "alt",
+                "title": "وصف الصورة (للمكفوفين ومحركات البحث)",
+                "type": "localeString"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "favicon",
+        "title": "أيقونة المتصفح (Favicon)",
+        "type": "image",
+        "group": "brand",
+        "description": "مربعة، PNG أو SVG، 512×512 أو أكبر. فارغة = شعار ClearUp."
+      },
+      {
+        "name": "colors",
+        "title": "ألوان الموقع",
+        "type": "object",
+        "group": "brand",
+        "description": "كل لون يتغيّر في كل الموقع فوراً بالمعاينة. «رجوع للألوان الأصلية» يرجّع ألوان ClearUp.",
+        "options": {
+          "columns": 2
+        },
+        "fields": [
+          {
+            "name": "purple",
+            "title": "الأساسي (Primary)",
+            "description": "الأزرار والروابط والكلمات المميّزة",
+            "type": "color"
+          },
+          {
+            "name": "second",
+            "title": "الثانوي (Secondary)",
+            "description": "لمسات ثانوية",
+            "type": "color"
+          },
+          {
+            "name": "lav",
+            "title": "المميّز (Accent)",
+            "type": "color",
+            "description": "لافندر: خلفيات خفيفة ولمسات"
+          },
+          {
+            "name": "paper",
+            "title": "الخلفية (Background)",
+            "type": "color"
+          },
+          {
+            "name": "surface",
+            "title": "البطاقات (Surface)",
+            "description": "خلفية البطاقات والصناديق",
+            "type": "color"
+          },
+          {
+            "name": "ink",
+            "title": "النص والأقسام الداكنة (Text)",
+            "type": "color"
+          },
+          {
+            "name": "muted",
+            "title": "النص الثانوي (Muted)",
+            "type": "color"
+          },
+          {
+            "name": "deep",
+            "title": "بنفسجي غامق",
+            "type": "color"
+          },
+          {
+            "name": "violet",
+            "title": "بنفسجي متوسط",
+            "type": "color"
+          },
+          {
+            "name": "lilac",
+            "title": "ليلكي فاتح",
+            "type": "color"
+          }
+        ]
+      },
+      {
+        "name": "showConcept",
+        "title": "إظهار وسم «Concept» في القائمة",
+        "type": "boolean",
+        "group": "brand",
+        "initialValue": true
+      },
+      {
+        "name": "showNumbers",
+        "title": "إظهار أرقام الأقسام (01، 02…)",
+        "type": "boolean",
+        "group": "brand",
+        "initialValue": false,
+        "description": "مطفأة: الأقسام بدون أرقام."
+      },
+      {
+        "name": "concept",
+        "title": "نص وسم Concept",
+        "type": "localeString",
+        "group": "brand"
+      },
+      {
+        "name": "whatsapp",
+        "title": "رقم واتساب (بالأرقام مع رمز الدولة)",
+        "description": "مثل 905824005288 — يُستخدم في كل أزرار واتساب",
+        "type": "string",
+        "group": "contact"
+      },
+      {
+        "name": "email",
+        "title": "الإيميل",
+        "type": "string",
+        "group": "contact"
+      },
+      {
+        "name": "contactTo",
+        "title": "إيميل استقبال الرسائل",
+        "type": "string",
+        "group": "contact",
+        "description": "رسائل نموذج «احجز مكالمة» توصل على هذا الإيميل مباشرة، وزر Reply بيرد على الزائر نفسه. لازم يكون نفس الإيميل اللي انفتح فيه حساب Resend (لحد ما يتوثق الدومين). فارغ = الإيميل المضبوط على السيرفر (CONTACT_TO)."
+      },
+      {
+        "name": "city",
+        "title": "المدينة",
+        "type": "localeString",
+        "group": "contact"
+      },
+      {
+        "name": "socials",
+        "title": "حسابات التواصل",
+        "type": "array",
+        "group": "contact",
+        "of": [
+          {
+            "type": "object",
+            "name": "social",
+            "fields": [
+              {
+                "name": "label",
+                "title": "الاسم (مثل Instagram)",
+                "type": "string"
+              },
+              {
+                "name": "url",
+                "title": "الرابط",
+                "type": "url"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "instagram",
+        "title": "رابط إنستغرام الرئيسي",
+        "type": "url",
+        "group": "contact",
+        "description": "يُستخدم في رسالة «ليس بعد» في نموذج الحجز"
+      },
+      {
+        "name": "navLinks",
+        "title": "روابط القائمة",
+        "type": "array",
+        "group": "header",
+        "description": "الرابط: صفحة (/services/ ، /work/ ، /about/ ، /contact/)، أو #اسم-القسم في الرئيسية، أو رابط كامل. تظهر أول 5 على الكمبيوتر، وكلها في قائمة الجوال وأسفل الصفحة.",
+        "of": [
+          {
+            "type": "object",
+            "name": "navLink",
+            "fields": [
+              {
+                "name": "label",
+                "title": "النص",
+                "type": "localeString"
+              },
+              {
+                "name": "href",
+                "title": "الرابط",
+                "type": "string"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "cta",
+        "title": "نص الزر الرئيسي (احجز…)",
+        "type": "localeString",
+        "group": "header"
+      },
+      {
+        "name": "ctaShort",
+        "title": "نص الزر على الجوال",
+        "type": "localeString",
+        "group": "header"
+      },
+      {
+        "name": "ctaHref",
+        "title": "رابط الزر الرئيسي",
+        "description": "عادةً /contact/ (صفحة التواصل).",
+        "type": "string",
+        "group": "header",
+        "initialValue": "#book"
+      },
+      {
+        "type": "string",
+        "group": "header",
+        "name": "bookingUrl",
+        "title": "رابط حجز «مكالمة وضوح» (Google Calendar)",
+        "description": "إذا تعبّى: كل أزرار «احجز مكالمة وضوح» بالموقع تفتح هذا الرابط. فاضي = الزر الرئيسي كالمعتاد."
+      },
+      {
+        "name": "langSwitch",
+        "title": "زر تبديل اللغة (أعلى الصفحة)",
+        "type": "localeString",
+        "group": "header",
+        "description": "بالعربي بيظهر النص الإنجليزي (EN) وبالإنجليزي النص العربي (عربي)."
+      },
+      {
+        "name": "homeLabel",
+        "title": "اسم «الرئيسية» بمسار الصفحة (فوق عناوين الصفحات)",
+        "type": "localeString",
+        "group": "header"
+      },
+      {
+        "name": "footerLine",
+        "title": "الجملة الكبيرة في الأسفل",
+        "type": "localeString",
+        "group": "footer"
+      },
+      {
+        "name": "tagline",
+        "title": "السطر التعريفي تحت الشعار (أسفل الموقع)",
+        "type": "localeString",
+        "group": "footer",
+        "description": "مثل: «كلير أب لريادة ونمو المؤسسات الصغيرة والمتوسطة»"
+      },
+      {
+        "name": "rights",
+        "title": "حقوق النشر",
+        "type": "localeString",
+        "group": "footer"
+      },
+      {
+        "name": "footerNote",
+        "title": "ملاحظة صغيرة",
+        "type": "localeString",
+        "group": "footer"
+      },
+      {
+        "name": "footerBook",
+        "title": "نص زر الحجز (أسفل الصفحة وشريط الجوال)",
+        "type": "localeString",
+        "group": "footer",
+        "description": "فارغ = «احجز مكالمة مجانية»."
+      },
+      {
+        "name": "footerWa",
+        "title": "نص زر واتساب (أسفل الصفحة)",
+        "type": "localeString",
+        "group": "footer",
+        "description": "فارغ = «تواصل على واتساب»."
+      },
+      {
+        "name": "footerWaShort",
+        "title": "نص رابط واتساب بقائمة التواصل (أسفل الصفحة)",
+        "type": "localeString",
+        "group": "footer",
+        "description": "فارغ = «واتساب»."
+      },
+      {
+        "name": "metaTitle",
+        "title": "عنوان الصفحة (Google)",
+        "type": "localeString",
+        "group": "seo"
+      },
+      {
+        "name": "metaDescription",
+        "title": "وصف الصفحة (Google)",
+        "type": "localeText",
+        "group": "seo"
+      },
+      {
+        "name": "ogImage",
+        "title": "صورة المشاركة (1200×630)",
+        "description": "تظهر عند مشاركة رابط الموقع (واتساب، لينكدإن، X). اتركها فارغة لاستخدام صورة ClearUp الجاهزة بالعربي والإنجليزي.",
+        "type": "image",
+        "options": {
+          "hotspot": true
+        },
+        "fields": [
+          {
+            "name": "alt",
+            "title": "وصف الصورة (للمكفوفين ومحركات البحث)",
+            "type": "localeString"
+          }
+        ],
+        "group": "seo"
+      },
+      {
+        "name": "srcSite",
+        "title": "شرح وسم «من موقعهم»",
+        "type": "localeString",
+        "group": "labels"
+      },
+      {
+        "name": "srcIg",
+        "title": "شرح وسم «IG»",
+        "type": "localeString",
+        "group": "labels"
+      },
+      {
+        "name": "ph",
+        "title": "شرح وسم «فارغ»",
+        "type": "localeString",
+        "group": "labels"
+      },
+      {
+        "name": "fontAr",
+        "title": "خط النصوص العربية",
+        "type": "font",
+        "group": "fonts",
+        "options": {
+          "script": "ar"
+        },
+        "description": "اختر خطاً جاهزاً، أو الصق رابط أي خط من Google Fonts، أو ارفع ملف خط (woff2)."
+      },
+      {
+        "name": "fontEn",
+        "title": "خط النصوص الإنجليزية (English)",
+        "type": "font",
+        "group": "fonts",
+        "options": {
+          "script": "en"
+        },
+        "description": "مثال: الصق https://fonts.google.com/specimen/Inter وبيتعرّف عليه فوراً."
+      },
+      {
+        "name": "motion",
+        "title": "الحركة",
+        "type": "object",
+        "group": "motion",
+        "fields": [
+          {
+            "name": "enabled",
+            "title": "تشغيل الحركة في الموقع",
+            "type": "boolean",
+            "initialValue": true,
+            "description": "إيقافها يوقف كل الأنيميشن (الزوار اللي مفعّلين «تقليل الحركة» بجهازهم ما بيشوفوها أصلاً)."
+          },
+          {
+            "name": "heroSpeed",
+            "title": "سرعة ظهور العنوان كلمة كلمة",
+            "type": "range",
+            "initialValue": 1,
+            "options": {
+              "min": 0.5,
+              "max": 2,
+              "step": 0.1,
+              "unit": "×",
+              "low": "أبطأ",
+              "high": "أسرع"
+            }
+          },
+          {
+            "name": "parallax",
+            "title": "قوة حركة الشعار مع الماوس",
+            "type": "range",
+            "initialValue": 100,
+            "options": {
+              "min": 0,
+              "max": 200,
+              "step": 10,
+              "unit": "%",
+              "low": "بدون",
+              "high": "أقوى"
+            }
+          },
+          {
+            "name": "reveal",
+            "title": "ظهور الأقسام مع التمرير (Scroll reveal)",
+            "type": "boolean",
+            "initialValue": true
+          }
+        ]
+      },
+      {
+        "name": "chatbot",
+        "type": "object",
+        "group": "chatbot",
+        "title": "الشات بوت",
+        "description": "زر محادثة عائم يجاوب الزوار من الأسئلة والأجوبة هنا (عربي بالعربي وإنجليزي بالإنجليزي). مجاني بالكامل.",
+        "fields": [
+          {
+            "name": "enabled",
+            "type": "boolean",
+            "title": "إظهار الشات بوت للزوار",
+            "initialValue": true
+          },
+          {
+            "name": "name",
+            "type": "localeString",
+            "title": "اسم البوت"
+          },
+          {
+            "name": "avatar",
+            "type": "image",
+            "title": "صورة البوت (اختياري)",
+            "description": "بدونها يظهر شعار ClearUp"
+          },
+          {
+            "name": "greeting",
+            "type": "localeText",
+            "title": "رسالة الترحيب"
+          },
+          {
+            "name": "position",
+            "type": "string",
+            "title": "مكان الزر",
+            "initialValue": "auto",
+            "options": {
+              "list": [
+                {
+                  "title": "تلقائي (يسار بالعربي، يمين بالإنجليزي)",
+                  "value": "auto"
+                },
+                {
+                  "title": "يمين",
+                  "value": "right"
+                },
+                {
+                  "title": "يسار",
+                  "value": "left"
+                }
+              ],
+              "layout": "radio"
+            }
+          },
+          {
+            "name": "chips",
+            "type": "array",
+            "title": "الأسئلة المقترحة (أزرار)",
+            "description": "تظهر تحت الترحيب، يفضل 6–8. اكتب السؤال بنفس صيغته في الأسئلة والأجوبة.",
+            "of": [
+              {
+                "type": "localeString",
+                "name": "chip",
+                "title": "سؤال مقترح"
+              }
+            ]
+          },
+          {
+            "name": "faq",
+            "type": "array",
+            "title": "الأسئلة والأجوبة",
+            "description": "اسحب لترتيبها. البوت يفهم السؤال حتى لو كُتب بصيغة أخرى أو بالعامية؛ أضف صيغاً وكلمات في «صيغ أخرى» لتحسين الفهم.",
+            "of": [
+              {
+                "type": "object",
+                "name": "qa",
+                "title": "سؤال وجواب",
+                "fields": [
+                  {
+                    "name": "q",
+                    "type": "localeString",
+                    "title": "السؤال"
+                  },
+                  {
+                    "name": "keys",
+                    "type": "localeText",
+                    "title": "صيغ أخرى وكلمات مفتاحية",
+                    "description": "كل سطر صيغة (مثل: قديش السعر، كم التكلفة، price)"
+                  },
+                  {
+                    "name": "a",
+                    "type": "localeText",
+                    "title": "الجواب"
+                  },
+                  {
+                    "name": "linkLabel",
+                    "type": "localeString",
+                    "title": "نص الزر تحت الجواب (اختياري)"
+                  },
+                  {
+                    "name": "link",
+                    "type": "string",
+                    "title": "رابط الزر",
+                    "description": "#book للحجز، #services وغيرها لأقسام الصفحة، #whatsapp لواتساب، أو رابط كامل https://"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "fallback",
+            "type": "localeText",
+            "title": "الرد عندما لا يجد جواباً",
+            "description": "يظهر تحته زر واتساب وزر الحجز تلقائياً"
+          },
+          {
+            "name": "ai",
+            "type": "boolean",
+            "title": "الذكاء الاصطناعي (مجاني) للأسئلة غير الموجودة",
+            "initialValue": true,
+            "description": "يعمل فقط بعد وضع مفتاح Gemini أو Groq المجاني على الخادم (راجع README). يجيب من محتوى الموقع فقط."
+          }
+        ]
+      },
+      {
+        "name": "pageMeta",
+        "title": "عنوان ووصف كل صفحة",
+        "type": "object",
+        "group": "pages",
+        "description": "فارغ = عنوان الموقع ووصفه من «محركات البحث». كل صفحة تقدر تعدلها كمان من «إعدادات هذه الصفحة» فوق قائمة أقسامها.",
+        "fields": [
+          {
+            "name": "home",
+            "title": "الرئيسية",
+            "type": "object",
+            "fields": [
+              {
+                "name": "title",
+                "title": "عنوان الصفحة في جوجل",
+                "type": "localeString"
+              },
+              {
+                "name": "description",
+                "title": "الوصف في جوجل",
+                "type": "localeText"
+              },
+              {
+                "name": "image",
+                "title": "صورة المشاركة (1200×630)",
+                "type": "image",
+                "options": {
+                  "hotspot": true
+                },
+                "fields": [
+                  {
+                    "name": "alt",
+                    "title": "وصف الصورة (للمكفوفين ومحركات البحث)",
+                    "type": "localeString"
+                  }
+                ],
+                "group": "pages"
+              }
+            ]
+          },
+          {
+            "name": "services",
+            "title": "الخدمات والنظام",
+            "type": "object",
+            "fields": [
+              {
+                "name": "title",
+                "title": "عنوان الصفحة في جوجل",
+                "type": "localeString"
+              },
+              {
+                "name": "description",
+                "title": "الوصف في جوجل",
+                "type": "localeText"
+              },
+              {
+                "name": "image",
+                "title": "صورة المشاركة (1200×630)",
+                "type": "image",
+                "options": {
+                  "hotspot": true
+                },
+                "fields": [
+                  {
+                    "name": "alt",
+                    "title": "وصف الصورة (للمكفوفين ومحركات البحث)",
+                    "type": "localeString"
+                  }
+                ],
+                "group": "pages"
+              }
+            ]
+          },
+          {
+            "name": "work",
+            "title": "أعمالنا",
+            "type": "object",
+            "fields": [
+              {
+                "name": "title",
+                "title": "عنوان الصفحة في جوجل",
+                "type": "localeString"
+              },
+              {
+                "name": "description",
+                "title": "الوصف في جوجل",
+                "type": "localeText"
+              },
+              {
+                "name": "image",
+                "title": "صورة المشاركة (1200×630)",
+                "type": "image",
+                "options": {
+                  "hotspot": true
+                },
+                "fields": [
+                  {
+                    "name": "alt",
+                    "title": "وصف الصورة (للمكفوفين ومحركات البحث)",
+                    "type": "localeString"
+                  }
+                ],
+                "group": "pages"
+              }
+            ]
+          },
+          {
+            "name": "about",
+            "title": "من نحن",
+            "type": "object",
+            "fields": [
+              {
+                "name": "title",
+                "title": "عنوان الصفحة في جوجل",
+                "type": "localeString"
+              },
+              {
+                "name": "description",
+                "title": "الوصف في جوجل",
+                "type": "localeText"
+              },
+              {
+                "name": "image",
+                "title": "صورة المشاركة (1200×630)",
+                "type": "image",
+                "options": {
+                  "hotspot": true
+                },
+                "fields": [
+                  {
+                    "name": "alt",
+                    "title": "وصف الصورة (للمكفوفين ومحركات البحث)",
+                    "type": "localeString"
+                  }
+                ],
+                "group": "pages"
+              }
+            ]
+          },
+          {
+            "name": "contact",
+            "title": "تواصل",
+            "type": "object",
+            "fields": [
+              {
+                "name": "title",
+                "title": "عنوان الصفحة في جوجل",
+                "type": "localeString"
+              },
+              {
+                "name": "description",
+                "title": "الوصف في جوجل",
+                "type": "localeText"
+              },
+              {
+                "name": "image",
+                "title": "صورة المشاركة (1200×630)",
+                "type": "image",
+                "options": {
+                  "hotspot": true
+                },
+                "fields": [
+                  {
+                    "name": "alt",
+                    "title": "وصف الصورة (للمكفوفين ومحركات البحث)",
+                    "type": "localeString"
+                  }
+                ],
+                "group": "pages"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "caseLabels",
+        "title": "عناوين صفحة قصة العميل",
+        "type": "object",
+        "group": "pages",
+        "fields": [
+          {
+            "name": "kicker",
+            "title": "السطر الصغير (قصة عميل)",
+            "type": "localeString"
+          },
+          {
+            "name": "problem",
+            "title": "التحدي",
+            "type": "localeString"
+          },
+          {
+            "name": "did",
+            "title": "الحل: ماذا فعلنا",
+            "type": "localeString"
+          },
+          {
+            "name": "result",
+            "title": "النتيجة",
+            "type": "localeString"
+          },
+          {
+            "name": "numbers",
+            "title": "النتائج (عنوان الأرقام)",
+            "type": "localeString"
+          },
+          {
+            "name": "watch",
+            "title": "شاهد الفيديو",
+            "type": "localeString"
+          },
+          {
+            "name": "videos",
+            "title": "فيديوهات أخرى",
+            "type": "localeString"
+          },
+          {
+            "name": "more",
+            "title": "قصص أخرى",
+            "type": "localeString"
+          },
+          {
+            "name": "read",
+            "title": "اقرأ القصة",
+            "type": "localeString"
+          },
+          {
+            "name": "all",
+            "title": "كل الأعمال",
+            "type": "localeString"
+          },
+          {
+            "name": "works",
+            "title": "الأعمال",
+            "type": "localeString"
+          },
+          {
+            "name": "testimonial",
+            "title": "رأي العميل",
+            "type": "localeString"
+          }
+        ]
+      }
+    ]
+  },
+  "fonts": [
+    {
+      "title": "ثمانية — Thmanyah Sans (الحالي)",
+      "value": "thmanyah"
+    },
+    {
+      "title": "IBM Plex Sans Arabic",
+      "value": "ibm-plex-sans-arabic"
+    },
+    {
+      "title": "Alexandria (خط موقعهم الحالي)",
+      "value": "alexandria"
+    },
+    {
+      "title": "Readex Pro",
+      "value": "readex-pro"
+    },
+    {
+      "title": "Tajawal",
+      "value": "tajawal"
+    },
+    {
+      "title": "Cairo",
+      "value": "cairo"
+    },
+    {
+      "title": "Rubik",
+      "value": "rubik"
+    }
+  ]
+}

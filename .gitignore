@@ -1,0 +1,10 @@
+node_modules
+.next
+out
+site
+*.tsbuildinfo
+.env*.local
+.env
+.tmp-dict-*
+/seed/media-cache/
+.vercel

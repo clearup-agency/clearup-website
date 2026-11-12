@@ -1,0 +1,2029 @@
+{
+  "format": "clearup-content",
+  "version": 1,
+  "source": "sanity:ydwdl7ec/production",
+  "exportedAt": "2026-11-01T06:52:39.413Z",
+  "settings": {
+    "brandName": "CLEAR UP",
+    "city": {
+      "_type": "localeString",
+      "ar": "غزة، فلسطين",
+      "en": "Gaza, Palestine"
+    },
+    "colors": {
+      "deep": {
+        "_type": "color",
+        "hex": "#4B1086"
+      },
+      "ink": {
+        "_type": "color",
+        "hex": "#0B0B0F"
+      },
+      "lav": {
+        "_type": "color",
+        "hex": "#C19DE6"
+      },
+      "lilac": {
+        "_type": "color",
+        "hex": "#D1ADF6"
+      },
+      "muted": {
+        "_type": "color",
+        "hex": "#5D5B66"
+      },
+      "paper": {
+        "_type": "color",
+        "hex": "#F5F7FA"
+      },
+      "purple": {
+        "_type": "color",
+        "hex": "#5B2096"
+      },
+      "second": {
+        "_type": "color",
+        "hex": "#8750A5"
+      },
+      "violet": {
+        "_type": "color",
+        "hex": "#6B2FA6"
+      }
+    },
+    "concept": {
+      "_type": "localeString",
+      "ar": "نموذج تصميم (Concept) — ليس الموقع النهائي",
+      "en": "Design concept — not the final site"
+    },
+    "cta": {
+      "_type": "localeString",
+      "ar": "احجز مكالمة وضوح",
+      "en": "Book a clarity call"
+    },
+    "ctaHref": "#book",
+    "ctaShort": {
+      "_type": "localeString",
+      "ar": "احجز مكالمة",
+      "en": "Book a call"
+    },
+    "email": "info@clearupagency.com",
+    "font": "thmanyah",
+    "footerLine": {
+      "_type": "localeString",
+      "ar": "لا نشغّل حملات فقط. نبني إيرادات يمكن توقّعها.",
+      "en": "We don’t just run campaigns. We engineer predictable revenue."
+    },
+    "footerNote": {
+      "_type": "localeString",
+      "ar": "نموذج تصميم أعدّه محمد لـ ClearUp",
+      "en": "Design concept prepared by Mohamed for ClearUp"
+    },
+    "instagram": "https://instagram.com/clearup.agency",
+    "metaDescription": {
+      "_type": "localeText",
+      "ar": "وكالة نمو وابتكار للشركات الصغيرة والمتوسطة. لا نبيع تصاميم، نبني أنظمة أرباح.",
+      "en": "Innovation & growth for SMEs. We don’t sell designs. We build profit systems."
+    },
+    "metaTitle": {
+      "_type": "localeString",
+      "ar": "ClearUp — للرؤساء التنفيذيين الشجعان فقط",
+      "en": "ClearUp — For Courageous CEOs Only"
+    },
+    "navLinks": [
+      {
+        "_key": "ke1a864f0b7",
+        "_type": "navLink",
+        "href": "#system",
+        "label": {
+          "_type": "localeString",
+          "ar": "النظام",
+          "en": "System"
+        }
+      },
+      {
+        "_key": "k56ad4d4dea",
+        "_type": "navLink",
+        "href": "#results",
+        "label": {
+          "_type": "localeString",
+          "ar": "النتائج",
+          "en": "Results"
+        }
+      },
+      {
+        "_key": "kfa755791d0",
+        "_type": "navLink",
+        "href": "#services",
+        "label": {
+          "_type": "localeString",
+          "ar": "الخدمات",
+          "en": "Services"
+        }
+      },
+      {
+        "_key": "kc28aca23f1",
+        "_type": "navLink",
+        "href": "#founder",
+        "label": {
+          "_type": "localeString",
+          "ar": "من نحن",
+          "en": "About"
+        }
+      },
+      {
+        "_key": "kc9ca442765",
+        "_type": "navLink",
+        "href": "#faq",
+        "label": {
+          "_type": "localeString",
+          "ar": "أسئلة",
+          "en": "FAQ"
+        }
+      }
+    ],
+    "ph": {
+      "_type": "localeString",
+      "ar": "مكان فارغ — رقم حقيقي من العميل",
+      "en": "Placeholder — real client number"
+    },
+    "rights": {
+      "_type": "localeString",
+      "ar": "© 2026 ClearUp",
+      "en": "© 2026 ClearUp"
+    },
+    "showConcept": true,
+    "socials": [
+      {
+        "_key": "k40f7c01f41",
+        "_type": "social",
+        "label": "Instagram",
+        "url": "https://instagram.com/clearup.agency"
+      },
+      {
+        "_key": "k9e071a3a59",
+        "_type": "social",
+        "label": "LinkedIn",
+        "url": "https://linkedin.com/company/clearupagenecy"
+      }
+    ],
+    "srcIg": {
+      "_type": "localeString",
+      "ar": "من منشور ClearUp على إنستغرام",
+      "en": "From a ClearUp Instagram post"
+    },
+    "srcSite": {
+      "_type": "localeString",
+      "ar": "رقم من موقع ClearUp الحالي — يحتاج تأكيداً",
+      "en": "From ClearUp’s current site — needs confirming"
+    },
+    "whatsapp": "972597101439"
+  },
+  "sections": [
+    {
+      "id": "kac3478d69a",
+      "type": "heroSection",
+      "hidden": false,
+      "data": {
+        "anchor": "top",
+        "clip": {
+          "name": {
+            "_type": "localeString",
+            "ar": "إسلام الجمالي",
+            "en": "Islam Al-Jamali"
+          },
+          "play": {
+            "_type": "localeString",
+            "ar": "شاهد رأيه",
+            "en": "Watch his take"
+          },
+          "poster": {
+            "_type": "image",
+            "url": "/media/story-masahat.webp",
+            "width": 432,
+            "height": 768
+          },
+          "role": {
+            "_type": "localeString",
+            "ar": "الرئيس التنفيذي · مساحات",
+            "en": "CEO · Masahat"
+          },
+          "video": {
+            "_type": "file",
+            "url": "/media/story-masahat.mp4"
+          },
+          "videoUrl": "https://www.instagram.com/reel/Del5aadglDH/"
+        },
+        "cta": {
+          "_type": "localeString",
+          "ar": "احجز مكالمة وضوح",
+          "en": "Book a clarity call"
+        },
+        "kicker": {
+          "_type": "localeString",
+          "ar": "للرؤساء التنفيذيين الشجعان فقط",
+          "en": "For Courageous CEOs Only"
+        },
+        "lead": {
+          "_type": "localeText",
+          "ar": "نحوّل ميزانية التسويق في الشركات الصغيرة والمتوسطة إلى نظام نمو واضح يمكن قياسه، من الاستراتيجية حتى لوحة الأرقام.",
+          "en": "We turn an SME’s marketing budget into one clear, measurable growth system — from strategy all the way to the numbers dashboard."
+        },
+        "note": {
+          "_type": "localeString",
+          "ar": "مكالمة 30 دقيقة · بدون التزام",
+          "en": "30-minute call · no commitment"
+        },
+        "stats": [
+          {
+            "_key": "kda4b9237ba",
+            "_type": "stat",
+            "l": {
+              "_type": "localeString",
+              "ar": "علامة تجارية",
+              "en": "brands"
+            },
+            "src": "site",
+            "v": {
+              "_type": "localeString",
+              "ar": "100+",
+              "en": "100+"
+            }
+          },
+          {
+            "_key": "k77de68daec",
+            "_type": "stat",
+            "l": {
+              "_type": "localeString",
+              "ar": "دولة",
+              "en": "countries"
+            },
+            "src": "site",
+            "v": {
+              "_type": "localeString",
+              "ar": "28",
+              "en": "28"
+            }
+          },
+          {
+            "_key": "k1b64538924",
+            "_type": "stat",
+            "l": {
+              "_type": "localeString",
+              "ar": "إيرادات للعملاء",
+              "en": "client revenue"
+            },
+            "src": "site",
+            "v": {
+              "_type": "localeString",
+              "ar": "$4.7M+",
+              "en": "$4.7M+"
+            }
+          }
+        ],
+        "strike": {
+          "_type": "localeString",
+          "ar": "تصاميم",
+          "en": "designs"
+        },
+        "system": {
+          "_type": "localeString",
+          "ar": "The Clear Up System™",
+          "en": "The Clear Up System™"
+        },
+        "title": [
+          {
+            "_key": "kb6589fc6ab",
+            "_type": "localeString",
+            "ar": "لا نبيع تصاميم.",
+            "en": "We don’t sell designs."
+          },
+          {
+            "_key": "k356a192b79",
+            "_type": "localeString",
+            "ar": "نبني أنظمة أرباح.",
+            "en": "We build profit systems."
+          }
+        ],
+        "whatsapp": {
+          "_type": "localeString",
+          "ar": "تحدث معنا على واتساب",
+          "en": "Chat on WhatsApp"
+        }
+      }
+    },
+    {
+      "id": "k7b52009b64",
+      "type": "clientsSection",
+      "hidden": false,
+      "data": {
+        "anchor": "clients",
+        "label": {
+          "_type": "localeString",
+          "ar": "شركات وثقت بنا",
+          "en": "Companies that trusted us"
+        },
+        "names": [
+          {
+            "_key": "kc1dfd96eea",
+            "_type": "localeString",
+            "ar": "مساحات",
+            "en": "Masahat"
+          },
+          {
+            "_key": "k902ba3cda1",
+            "_type": "localeString",
+            "ar": "ثوب وطرحة",
+            "en": "Tob & Tarha"
+          },
+          {
+            "_key": "kfe5dbbcea5",
+            "_type": "localeString",
+            "ar": "إعمار كلين",
+            "en": "Emmar Clean"
+          },
+          {
+            "_key": "k0ade7c2cf9",
+            "_type": "localeString",
+            "ar": "النون للحلول الرقمية",
+            "en": "Al Noon Digital"
+          },
+          {
+            "_key": "kb1d5781111",
+            "_type": "localeString",
+            "ar": "أفروديتا",
+            "en": "Afrodita"
+          },
+          {
+            "_key": "k17ba079149",
+            "_type": "localeString",
+            "ar": "Twety",
+            "en": "Twety"
+          }
+        ],
+        "note": {
+          "_type": "localeString",
+          "ar": "[الشعارات الأصلية بإذن العملاء]",
+          "en": "[Original logos, with client permission]"
+        }
+      }
+    },
+    {
+      "id": "k1574bddb75",
+      "type": "problemSection",
+      "hidden": false,
+      "data": {
+        "anchor": "pain",
+        "eyebrow": {
+          "_type": "localeString",
+          "ar": "المشكلة",
+          "en": "The problem"
+        },
+        "index": "01",
+        "items": [
+          {
+            "_key": "kbd307a3ec3",
+            "_type": "painItem",
+            "k": {
+              "_type": "localeString",
+              "ar": "نشاط بلا اتجاه",
+              "en": "Activity, no direction"
+            },
+            "t": {
+              "_type": "localeText",
+              "ar": "تنشر كل يوم، والرسائل تأتي وتختفي. لا أحد يعرف أي منشور جلب أي عميل.",
+              "en": "You post every day and messages come and go. Nobody knows which post brought which customer."
+            }
+          },
+          {
+            "_key": "kfa35e19212",
+            "_type": "painItem",
+            "k": {
+              "_type": "localeString",
+              "ar": "ميزانية بلا ذاكرة",
+              "en": "A budget with no memory"
+            },
+            "t": {
+              "_type": "localeText",
+              "ar": "كل حملة تبدأ من الصفر، وكل شهر تجربة جديدة. لا شيء يتراكم.",
+              "en": "Every campaign starts from zero, every month is a new experiment. Nothing compounds."
+            }
+          },
+          {
+            "_key": "kf1abd67035",
+            "_type": "painItem",
+            "k": {
+              "_type": "localeString",
+              "ar": "قرارات بلا أرقام",
+              "en": "Decisions, no numbers"
+            },
+            "t": {
+              "_type": "localeText",
+              "ar": "التقرير الشهري مليء بالمشاهدات والإعجابات، وخالٍ من الشيء الوحيد المهم: الربح.",
+              "en": "The monthly report is full of views and likes, and empty of the one thing that matters: profit."
+            }
+          }
+        ],
+        "title": {
+          "_type": "localeString",
+          "ar": "تصرف على الإعلانات، ولا ترى أرباحاً؟",
+          "en": "Spending on ads, not seeing profit?"
+        },
+        "turn": {
+          "_type": "localeString",
+          "ar": "المشكلة ليست في التصميم. المشكلة أنه لا يوجد نظام.",
+          "en": "The problem isn’t the design. The problem is there’s no system."
+        }
+      }
+    },
+    {
+      "id": "k761f22b2c1",
+      "type": "systemSection",
+      "hidden": false,
+      "data": {
+        "anchor": "system",
+        "deliverLabel": {
+          "_type": "localeString",
+          "ar": "ما تستلمه",
+          "en": "You get"
+        },
+        "eyebrow": {
+          "_type": "localeString",
+          "ar": "The Clear Up System™",
+          "en": "The Clear Up System™"
+        },
+        "hint": {
+          "_type": "localeString",
+          "ar": "مرّر للأسفل أو اضغط على أي مرحلة",
+          "en": "Scroll, or tap any stage"
+        },
+        "index": "02",
+        "lead": {
+          "_type": "localeText",
+          "ar": "لا نقدّم خدمات متفرقة. نركّب لشركتك ماكينة متكاملة تحوّل الزيارات إلى مشترين، ثم تحفظ كل رقم لتتحسن في الشهر التالي.",
+          "en": "We don’t sell disconnected services. We install one connected machine that turns traffic into buyers — and keeps every number so next month is better."
+        },
+        "resultLabel": {
+          "_type": "localeString",
+          "ar": "الدليل",
+          "en": "Proof"
+        },
+        "stages": [
+          {
+            "_key": "k0716d9708d",
+            "_type": "stage",
+            "en": {
+              "_type": "localeString",
+              "ar": "Clarity",
+              "en": "Clarity"
+            },
+            "n": "01",
+            "name": {
+              "_type": "localeString",
+              "ar": "الوضوح",
+              "en": "Clarity"
+            },
+            "out": [
+              {
+                "_key": "k9e6a55b6b4",
+                "_type": "localeString",
+                "ar": "تدقيق القمع",
+                "en": "Funnel audit"
+              },
+              {
+                "_key": "kb3f0c7f6bb",
+                "_type": "localeString",
+                "ar": "خط الأساس للأرقام",
+                "en": "Baseline numbers"
+              },
+              {
+                "_key": "k91032ad7bb",
+                "_type": "localeString",
+                "ar": "أكبر 3 تسريبات",
+                "en": "Top 3 leaks"
+              }
+            ],
+            "proof": {
+              "_type": "localeString",
+              "ar": "كل شراكة تبدأ بتدقيق الأرقام الأساسية",
+              "en": "Every partnership starts with a baseline audit"
+            },
+            "proofSrc": "site",
+            "what": {
+              "_type": "localeText",
+              "ar": "نجلس مع الرئيس التنفيذي، ونفحص الأرقام الحالية والقمع والعروض. نخرج بتشخيص واحد واضح: أين يتسرّب المال.",
+              "en": "We sit with the CEO and audit the current numbers, funnel and offers. One clear diagnosis comes out: where the money leaks."
+            }
+          },
+          {
+            "_key": "k472b07b9fc",
+            "_type": "stage",
+            "en": {
+              "_type": "localeString",
+              "ar": "Strategy",
+              "en": "Strategy"
+            },
+            "n": "02",
+            "name": {
+              "_type": "localeString",
+              "ar": "الاستراتيجية",
+              "en": "Strategy"
+            },
+            "out": [
+              {
+                "_key": "k12c6fc06c9",
+                "_type": "localeString",
+                "ar": "عرض قيمة فريد",
+                "en": "Unique value proposition"
+              },
+              {
+                "_key": "kd435a6cdd7",
+                "_type": "localeString",
+                "ar": "اختيار القنوات",
+                "en": "Channel selection"
+              },
+              {
+                "_key": "k4d134bc072",
+                "_type": "localeString",
+                "ar": "خطة 90 يوماً",
+                "en": "90-day plan"
+              }
+            ],
+            "proof": {
+              "_type": "localeString",
+              "ar": "[نتيجة حقيقية من عميل]",
+              "en": "[A real client result]"
+            },
+            "proofSrc": "ph",
+            "what": {
+              "_type": "localeText",
+              "ar": "نحدد السوق والعرض الفريد والقنوات التي تستحق الميزانية، ونكتب خطة 90 يوماً بأهداف رقمية.",
+              "en": "We define the market, the unique offer and the channels that deserve budget, and write a 90-day plan with numeric goals."
+            }
+          },
+          {
+            "_key": "kf6e1126ced",
+            "_type": "stage",
+            "en": {
+              "_type": "localeString",
+              "ar": "Content",
+              "en": "Content"
+            },
+            "n": "03",
+            "name": {
+              "_type": "localeString",
+              "ar": "المحتوى",
+              "en": "Content"
+            },
+            "out": [
+              {
+                "_key": "k887309d048",
+                "_type": "localeString",
+                "ar": "نظام محتوى شهري",
+                "en": "Monthly content system"
+              },
+              {
+                "_key": "kbc33ea4e26",
+                "_type": "localeString",
+                "ar": "ريلز",
+                "en": "Reels"
+              },
+              {
+                "_key": "k0a57cb53ba",
+                "_type": "localeString",
+                "ar": "هوية بصرية",
+                "en": "Visual identity"
+              }
+            ],
+            "proof": {
+              "_type": "localeString",
+              "ar": "[رقم حقيقي من العميل]",
+              "en": "[A real client number]"
+            },
+            "proofSrc": "ph",
+            "what": {
+              "_type": "localeText",
+              "ar": "محتوى وريلز بصوت علامتك، مصمَّم ليجيب عن أسئلة المشتري، لا ليجمع الإعجابات فقط.",
+              "en": "Content and reels in your brand’s voice, built to answer the buyer’s questions — not just to collect likes."
+            }
+          },
+          {
+            "_key": "k7719a1c782",
+            "_type": "stage",
+            "en": {
+              "_type": "localeString",
+              "ar": "Paid",
+              "en": "Paid"
+            },
+            "n": "04",
+            "name": {
+              "_type": "localeString",
+              "ar": "الإعلانات",
+              "en": "Paid"
+            },
+            "out": [
+              {
+                "_key": "k22d200f867",
+                "_type": "localeString",
+                "ar": "حملات ممولة",
+                "en": "Paid campaigns"
+              },
+              {
+                "_key": "k632667547e",
+                "_type": "localeString",
+                "ar": "صفحات هبوط",
+                "en": "Landing pages"
+              },
+              {
+                "_key": "kcb4e5208b4",
+                "_type": "localeString",
+                "ar": "اختبارات A/B",
+                "en": "A/B tests"
+              }
+            ],
+            "proof": {
+              "_type": "localeString",
+              "ar": "النون للحلول الرقمية: العائد على الاستثمار 8 أضعاف خلال 60 يوماً",
+              "en": "Al Noon Digital: 8× ROI in 60 days"
+            },
+            "proofSrc": "ig",
+            "what": {
+              "_type": "localeText",
+              "ar": "إعلانات ممولة على المنصات الكبرى، مربوطة بصفحات هبوط تحوّل، وتُحسَّن أسبوعياً على أساس تكلفة العميل.",
+              "en": "Paid ads on the major platforms, wired to landing pages that convert, optimised weekly on cost per customer."
+            }
+          },
+          {
+            "_key": "kb6692ea5df",
+            "_type": "stage",
+            "en": {
+              "_type": "localeString",
+              "ar": "Community",
+              "en": "Community"
+            },
+            "n": "05",
+            "name": {
+              "_type": "localeString",
+              "ar": "المجتمع",
+              "en": "Community"
+            },
+            "out": [
+              {
+                "_key": "kf1f836cb4e",
+                "_type": "localeString",
+                "ar": "مجتمع واتساب",
+                "en": "WhatsApp community"
+              },
+              {
+                "_key": "k972a67c481",
+                "_type": "localeString",
+                "ar": "رسائل متابعة آلية",
+                "en": "Automated follow-ups"
+              },
+              {
+                "_key": "kfc074d5013",
+                "_type": "localeString",
+                "ar": "برامج ولاء",
+                "en": "Loyalty programs"
+              }
+            ],
+            "proof": {
+              "_type": "localeString",
+              "ar": "[رقم حقيقي من العميل]",
+              "en": "[A real client number]"
+            },
+            "proofSrc": "ph",
+            "what": {
+              "_type": "localeText",
+              "ar": "واتساب وSMS وإيميل وأتمتة متابعة: العميل الذي سأل مرة لا يضيع، والعميل الذي اشترى يعود.",
+              "en": "WhatsApp, SMS, email and automated follow-up: whoever asked once isn’t lost, and whoever bought comes back."
+            }
+          },
+          {
+            "_key": "kcb7a1d775e",
+            "_type": "stage",
+            "en": {
+              "_type": "localeString",
+              "ar": "Data",
+              "en": "Data"
+            },
+            "n": "06",
+            "name": {
+              "_type": "localeString",
+              "ar": "البيانات",
+              "en": "Data"
+            },
+            "out": [
+              {
+                "_key": "k5b384ce32d",
+                "_type": "localeString",
+                "ar": "لوحة أرقام مخصصة",
+                "en": "Custom dashboard"
+              },
+              {
+                "_key": "kca3512f4df",
+                "_type": "localeString",
+                "ar": "تقرير أسبوعي",
+                "en": "Weekly report"
+              },
+              {
+                "_key": "kaf3e133428",
+                "_type": "localeString",
+                "ar": "مراجعة شهرية مع الإدارة",
+                "en": "Monthly review with leadership"
+              }
+            ],
+            "proof": {
+              "_type": "localeString",
+              "ar": "[لقطة لوحة حقيقية بإذن العميل]",
+              "en": "[A real dashboard, with permission]"
+            },
+            "proofSrc": "ph",
+            "what": {
+              "_type": "localeText",
+              "ar": "لوحة أرقام حيّة تربط التسويق بالمبيعات. كل دينار له مصدر، وكل قرار له رقم.",
+              "en": "A live dashboard that ties marketing to sales. Every dollar has a source, every decision has a number."
+            }
+          }
+        ],
+        "title": {
+          "_type": "localeString",
+          "ar": "نظام واحد، ست مراحل، اتجاه واحد: للأعلى.",
+          "en": "One system, six stages, one direction: up."
+        }
+      }
+    },
+    {
+      "id": "k6c1e671f9a",
+      "type": "resultsSection",
+      "hidden": false,
+      "data": {
+        "anchor": "results",
+        "cases": [
+          {
+            "_key": "k92cfceb39d",
+            "_type": "case",
+            "built": [
+              {
+                "_key": "k0286dd552c",
+                "_type": "localeString",
+                "ar": "طوّرنا الفريق التسويقي ووجّهناه",
+                "en": "Developed and mentored the marketing team"
+              },
+              {
+                "_key": "k98fbc42fae",
+                "_type": "localeString",
+                "ar": "بنينا نظام التسويق",
+                "en": "Built the marketing system"
+              },
+              {
+                "_key": "kfb64435156",
+                "_type": "localeString",
+                "ar": "حسّنّا الإعلانات عبر Sprints",
+                "en": "Optimised ads through sprints"
+              }
+            ],
+            "client": {
+              "_type": "localeString",
+              "ar": "النون للحلول الرقمية",
+              "en": "Al Noon Digital Solutions"
+            },
+            "metrics": [
+              {
+                "_key": "kfe2ef495a1",
+                "_type": "metric",
+                "l": {
+                  "_type": "localeString",
+                  "ar": "نمو العائد على الاستثمار",
+                  "en": "growth in ROI"
+                },
+                "src": "ig",
+                "v": {
+                  "_type": "localeString",
+                  "ar": "8×",
+                  "en": "8×"
+                }
+              },
+              {
+                "_key": "k827bfc4587",
+                "_type": "metric",
+                "l": {
+                  "_type": "localeString",
+                  "ar": "يوماً فقط",
+                  "en": "days"
+                },
+                "src": "ig",
+                "v": {
+                  "_type": "localeString",
+                  "ar": "60",
+                  "en": "60"
+                }
+              },
+              {
+                "_key": "k64e095fe76",
+                "_type": "metric",
+                "l": {
+                  "_type": "localeString",
+                  "ar": "تكلفة العميل قبل/بعد",
+                  "en": "Cost per customer before/after"
+                },
+                "src": "ph",
+                "v": {
+                  "_type": "localeString",
+                  "ar": "[؟]",
+                  "en": "[?]"
+                }
+              }
+            ],
+            "period": {
+              "_type": "localeString",
+              "ar": "60 يوماً",
+              "en": "60 days"
+            },
+            "problem": {
+              "_type": "localeText",
+              "ar": "فريق تسويق بلا نظام، وإعلانات ممولة لا تعود بما يكفي.",
+              "en": "A marketing team without a system, and paid ads not paying back."
+            },
+            "sector": {
+              "_type": "localeString",
+              "ar": "حلول رقمية متكاملة",
+              "en": "Integrated digital solutions"
+            },
+            "style": "dashboard"
+          },
+          {
+            "_key": "k2e01e17467",
+            "_type": "case",
+            "built": [
+              {
+                "_key": "ke1822db470",
+                "_type": "localeString",
+                "ar": "محتوى وريلز",
+                "en": "Content & reels"
+              },
+              {
+                "_key": "kb7eb6c689c",
+                "_type": "localeString",
+                "ar": "إعلانات ممولة",
+                "en": "Paid ads"
+              },
+              {
+                "_key": "ka9334987ec",
+                "_type": "localeString",
+                "ar": "نظام رسائل",
+                "en": "Messaging system"
+              }
+            ],
+            "client": {
+              "_type": "localeString",
+              "ar": "[اسم العميل]",
+              "en": "[Client name]"
+            },
+            "metrics": [
+              {
+                "_key": "kc5b76da3e6",
+                "_type": "metric",
+                "l": {
+                  "_type": "localeString",
+                  "ar": "إيرادات من إنستغرام",
+                  "en": "revenue from Instagram"
+                },
+                "src": "site",
+                "v": {
+                  "_type": "localeString",
+                  "ar": "$360K",
+                  "en": "$360K"
+                }
+              },
+              {
+                "_key": "k80e28a51cb",
+                "_type": "metric",
+                "l": {
+                  "_type": "localeString",
+                  "ar": "استفسار شهرياً",
+                  "en": "inquiries / month"
+                },
+                "src": "site",
+                "v": {
+                  "_type": "localeString",
+                  "ar": "2000+",
+                  "en": "2000+"
+                }
+              },
+              {
+                "_key": "k8effee409c",
+                "_type": "metric",
+                "l": {
+                  "_type": "localeString",
+                  "ar": "وصول شهري",
+                  "en": "monthly reach"
+                },
+                "src": "site",
+                "v": {
+                  "_type": "localeString",
+                  "ar": "2M+",
+                  "en": "2M+"
+                }
+              }
+            ],
+            "note": {
+              "_type": "localeText",
+              "ar": "* أرقام من موقعهم الحالي بدون اسم العميل، والموقع يذكر ⁦$360K⁩ في العنوان و⁦$380K⁩ تحته — يجب تأكيد الرقم واسم العميل.",
+              "en": "* Figures from their current site, with no client name; the site says $360K in the heading and $380K below it — confirm the number and the client."
+            },
+            "period": {
+              "_type": "localeString",
+              "ar": "6 أشهر",
+              "en": "6 months"
+            },
+            "problem": {
+              "_type": "localeText",
+              "ar": "من صفر مبيعات عبر إنستغرام إلى قناة بيع رئيسية.",
+              "en": "From zero Instagram sales to a main sales channel."
+            },
+            "sector": {
+              "_type": "localeString",
+              "ar": "متجر على إنستغرام",
+              "en": "Instagram store"
+            },
+            "style": "numbers"
+          },
+          {
+            "_key": "k54ceb91256",
+            "_type": "case",
+            "built": [
+              {
+                "_key": "k9109c85a45",
+                "_type": "localeString",
+                "ar": "[ما ركّبناه]",
+                "en": "[What we built]"
+              },
+              {
+                "_key": "k667be543b0",
+                "_type": "localeString",
+                "ar": "[ما ركّبناه]",
+                "en": "[What we built]"
+              }
+            ],
+            "client": {
+              "_type": "localeString",
+              "ar": "مساحات",
+              "en": "Masahat"
+            },
+            "image": {
+              "_type": "image",
+              "url": "/media/story-masahat.webp",
+              "width": 432,
+              "height": 768
+            },
+            "metrics": [
+              {
+                "_key": "k5a5b0f9b7d",
+                "_type": "metric",
+                "l": {
+                  "_type": "localeString",
+                  "ar": "قبل",
+                  "en": "Before"
+                },
+                "src": "ph",
+                "v": {
+                  "_type": "localeString",
+                  "ar": "[؟]",
+                  "en": "[?]"
+                }
+              },
+              {
+                "_key": "ke6c3dd6304",
+                "_type": "metric",
+                "l": {
+                  "_type": "localeString",
+                  "ar": "بعد",
+                  "en": "After"
+                },
+                "src": "ph",
+                "v": {
+                  "_type": "localeString",
+                  "ar": "[؟]",
+                  "en": "[?]"
+                }
+              }
+            ],
+            "period": {
+              "_type": "localeString",
+              "ar": "[الفترة]",
+              "en": "[Period]"
+            },
+            "problem": {
+              "_type": "localeText",
+              "ar": "[المشكلة بجملة واحدة من العميل]",
+              "en": "[The problem in one sentence, from the client]"
+            },
+            "sector": {
+              "_type": "localeString",
+              "ar": "تدريب وريادة أعمال",
+              "en": "Training & entrepreneurship"
+            },
+            "style": "video"
+          }
+        ],
+        "dash": {
+          "curve": {
+            "_type": "localeString",
+            "ar": "شكل توضيحي — ليس بيانات حقيقية",
+            "en": "Illustrative shape — not real data"
+          },
+          "from": {
+            "_type": "localeString",
+            "ar": "اليوم 0",
+            "en": "Day 0"
+          },
+          "title": {
+            "_type": "localeString",
+            "ar": "لوحة النتائج",
+            "en": "Results dashboard"
+          },
+          "to": {
+            "_type": "localeString",
+            "ar": "اليوم 60",
+            "en": "Day 60"
+          }
+        },
+        "eyebrow": {
+          "_type": "localeString",
+          "ar": "النتائج",
+          "en": "Results"
+        },
+        "index": "03",
+        "lead": {
+          "_type": "localeText",
+          "ar": "كل رقم هنا مربوط باسم عميل وفترة زمنية. ما لم يتوفر بعد، تركناه فارغاً بوضوح.",
+          "en": "Every number here is tied to a client name and a time period. Where we don’t have it yet, we left it visibly blank."
+        },
+        "more": {
+          "_type": "localeString",
+          "ar": "شاهد القصة كاملة",
+          "en": "See the full story"
+        },
+        "title": {
+          "_type": "localeString",
+          "ar": "الدليل قبل الادعاء.",
+          "en": "Proof before claims."
+        },
+        "want": {
+          "_type": "localeString",
+          "ar": "تريد نتيجة مثلها؟",
+          "en": "Want a result like this?"
+        }
+      }
+    },
+    {
+      "id": "k76546f9a64",
+      "type": "servicesSection",
+      "hidden": false,
+      "data": {
+        "anchor": "services",
+        "eyebrow": {
+          "_type": "localeString",
+          "ar": "الخدمات",
+          "en": "Services"
+        },
+        "groups": [
+          {
+            "_key": "k511a418e72",
+            "_type": "serviceGroup",
+            "en": {
+              "_type": "localeString",
+              "ar": "Strategy & Data",
+              "en": "Strategy & Data"
+            },
+            "items": [
+              {
+                "_key": "ka17554a0d2",
+                "_type": "localeString",
+                "ar": "استراتيجية تسويق كاملة",
+                "en": "Full marketing strategy"
+              },
+              {
+                "_key": "kc66c65175f",
+                "_type": "localeString",
+                "ar": "تحليل السوق والمنافسين",
+                "en": "Market & competitor analysis"
+              },
+              {
+                "_key": "k2a45938070",
+                "_type": "localeString",
+                "ar": "لوحات أرقام مخصصة",
+                "en": "Custom dashboards"
+              },
+              {
+                "_key": "k59129aacfb",
+                "_type": "localeString",
+                "ar": "تقارير أسبوعية",
+                "en": "Weekly reports"
+              }
+            ],
+            "k": {
+              "_type": "localeString",
+              "ar": "الاستراتيجية والبيانات",
+              "en": "Strategy & Data"
+            },
+            "proof": {
+              "_type": "localeString",
+              "ar": "دليل: النون، 8 أضعاف العائد",
+              "en": "Proof: Al Noon 8×"
+            }
+          },
+          {
+            "_key": "k4d89d294cd",
+            "_type": "serviceGroup",
+            "en": {
+              "_type": "localeString",
+              "ar": "Content & Brand",
+              "en": "Content & Brand"
+            },
+            "items": [
+              {
+                "_key": "kb4c96d8085",
+                "_type": "localeString",
+                "ar": "نظام محتوى شهري",
+                "en": "Monthly content system"
+              },
+              {
+                "_key": "ka72b20062e",
+                "_type": "localeString",
+                "ar": "ريلز وفيديو",
+                "en": "Reels & video"
+              },
+              {
+                "_key": "kb7103ca278",
+                "_type": "localeString",
+                "ar": "هوية بصرية وبراندنج",
+                "en": "Visual identity & branding"
+              },
+              {
+                "_key": "kd02560dd9d",
+                "_type": "localeString",
+                "ar": "إعلانات إبداعية",
+                "en": "Creative ads"
+              }
+            ],
+            "k": {
+              "_type": "localeString",
+              "ar": "المحتوى والهوية",
+              "en": "Content & Brand"
+            },
+            "proof": {
+              "_type": "localeString",
+              "ar": "دليل: إعلان إعمار كلين",
+              "en": "Proof: Emmar Clean ad"
+            }
+          },
+          {
+            "_key": "kc097638f92",
+            "_type": "serviceGroup",
+            "en": {
+              "_type": "localeString",
+              "ar": "Paid & Conversion",
+              "en": "Paid & Conversion"
+            },
+            "items": [
+              {
+                "_key": "k35e995c107",
+                "_type": "localeString",
+                "ar": "إعلانات ممولة",
+                "en": "Paid media"
+              },
+              {
+                "_key": "k1f1362ea41",
+                "_type": "localeString",
+                "ar": "صفحات هبوط",
+                "en": "Landing pages"
+              },
+              {
+                "_key": "k450ddec8dd",
+                "_type": "localeString",
+                "ar": "SEO",
+                "en": "SEO"
+              },
+              {
+                "_key": "kd54ad009d1",
+                "_type": "localeString",
+                "ar": "قمع مبيعات",
+                "en": "Sales funnel"
+              }
+            ],
+            "k": {
+              "_type": "localeString",
+              "ar": "الإعلانات والتحويل",
+              "en": "Paid & Conversion"
+            },
+            "proof": {
+              "_type": "localeString",
+              "ar": "دليل: [قصة نجاح]",
+              "en": "Proof: [case study]"
+            }
+          },
+          {
+            "_key": "kd321d6f7cc",
+            "_type": "serviceGroup",
+            "en": {
+              "_type": "localeString",
+              "ar": "Retention & Automation",
+              "en": "Retention & Automation"
+            },
+            "items": [
+              {
+                "_key": "keb4ac3033e",
+                "_type": "localeString",
+                "ar": "مجتمع واتساب",
+                "en": "WhatsApp community"
+              },
+              {
+                "_key": "kb74f5ee946",
+                "_type": "localeString",
+                "ar": "SMS وإيميل",
+                "en": "SMS & email"
+              },
+              {
+                "_key": "kb888b29826",
+                "_type": "localeString",
+                "ar": "أتمتة المتابعة",
+                "en": "Follow-up automation"
+              },
+              {
+                "_key": "k1d513c0bcb",
+                "_type": "localeString",
+                "ar": "رفع قيمة العميل",
+                "en": "Customer lifetime value"
+              }
+            ],
+            "k": {
+              "_type": "localeString",
+              "ar": "الاحتفاظ والأتمتة",
+              "en": "Retention & Automation"
+            },
+            "proof": {
+              "_type": "localeString",
+              "ar": "دليل: [قصة نجاح]",
+              "en": "Proof: [case study]"
+            }
+          }
+        ],
+        "index": "04",
+        "title": {
+          "_type": "localeString",
+          "ar": "أربع مجموعات. كل واحدة بجانبها دليلها.",
+          "en": "Four groups. Each one next to its proof."
+        }
+      }
+    },
+    {
+      "id": "k7224f997fc",
+      "type": "auditSection",
+      "hidden": false,
+      "data": {
+        "anchor": "audit",
+        "book": {
+          "_type": "localeString",
+          "ar": "احجز المكالمة مع إجاباتك",
+          "en": "Book the call with your answers"
+        },
+        "eyebrow": {
+          "_type": "localeString",
+          "ar": "تدقيق الوضوح · دقيقتان",
+          "en": "Clarity audit · 2 minutes"
+        },
+        "index": "05",
+        "lead": {
+          "_type": "localeText",
+          "ar": "خمسة أسئلة سريعة، وتحصل على أكبر نقطة ضعف عندك، وتصل إجاباتك معك إلى المكالمة.",
+          "en": "Five quick questions. You get your biggest weak spot, and your answers come with you to the call."
+        },
+        "leaks": {
+          "channel": {
+            "_type": "localeText",
+            "ar": "الاعتماد على قناة واحدة. نحتاج قناة ثانية مدروسة قبل أن يتوقف النمو.",
+            "en": "You rely on one channel. You need a second, deliberate one before growth stalls."
+          },
+          "data": {
+            "_type": "localeText",
+            "ar": "لا توجد أرقام تقود القرار. ابدأ بمرحلة الوضوح ولوحة البيانات قبل زيادة الميزانية.",
+            "en": "No numbers are driving decisions. Start with Clarity and a dashboard before raising the budget."
+          },
+          "follow": {
+            "_type": "localeText",
+            "ar": "العملاء المهتمون يضيعون بعد أول رسالة. نظام متابعة على واتساب سيعيد جزءاً كبيراً منهم.",
+            "en": "Interested buyers are lost after the first message. A WhatsApp follow-up system would bring many of them back."
+          }
+        },
+        "next": {
+          "_type": "localeString",
+          "ar": "التالي",
+          "en": "Next"
+        },
+        "qs": [
+          {
+            "_key": "k7d7116e23e",
+            "_type": "question",
+            "a": [
+              {
+                "_key": "kbe461a0cd1",
+                "_type": "localeString",
+                "ar": "متجر / تجارة",
+                "en": "Store / retail"
+              },
+              {
+                "_key": "k1352246e33",
+                "_type": "localeString",
+                "ar": "خدمات",
+                "en": "Services"
+              },
+              {
+                "_key": "k3c26dffc8a",
+                "_type": "localeString",
+                "ar": "تعليم وتدريب",
+                "en": "Education & training"
+              },
+              {
+                "_key": "ke62d7f1eb4",
+                "_type": "localeString",
+                "ar": "شيء آخر",
+                "en": "Something else"
+              }
+            ],
+            "q": {
+              "_type": "localeString",
+              "ar": "ما مجال شركتك؟",
+              "en": "What does your company do?"
+            }
+          },
+          {
+            "_key": "kb37f6ddcef",
+            "_type": "question",
+            "a": [
+              {
+                "_key": "k16b06bd9b7",
+                "_type": "localeString",
+                "ar": "أقل من ⁦$500⁩",
+                "en": "Under $500"
+              },
+              {
+                "_key": "k2d0c8af807",
+                "_type": "localeString",
+                "ar": "⁦$500–2,000⁩",
+                "en": "$500–2,000"
+              },
+              {
+                "_key": "k4cd66dfabb",
+                "_type": "localeString",
+                "ar": "⁦$2,000–10,000⁩",
+                "en": "$2,000–10,000"
+              },
+              {
+                "_key": "k8ee51caaa2",
+                "_type": "localeString",
+                "ar": "أكثر",
+                "en": "More"
+              }
+            ],
+            "q": {
+              "_type": "localeString",
+              "ar": "كم تصرف على التسويق شهرياً؟",
+              "en": "Monthly marketing spend?"
+            }
+          },
+          {
+            "_key": "k08a35293e0",
+            "_type": "question",
+            "a": [
+              {
+                "_key": "k215bb47da8",
+                "_type": "localeString",
+                "ar": "إنستغرام",
+                "en": "Instagram"
+              },
+              {
+                "_key": "k8e63fd3e77",
+                "_type": "localeString",
+                "ar": "إعلانات ممولة",
+                "en": "Paid ads"
+              },
+              {
+                "_key": "k6fb84aed32",
+                "_type": "localeString",
+                "ar": "التوصيات",
+                "en": "Referrals"
+              },
+              {
+                "_key": "k812ed4562d",
+                "_type": "localeString",
+                "ar": "لا أعرف بالضبط",
+                "en": "Not sure"
+              }
+            ],
+            "q": {
+              "_type": "localeString",
+              "ar": "من أين يأتي أغلب عملائك؟",
+              "en": "Where do most customers come from?"
+            }
+          },
+          {
+            "_key": "k31bd9b9f5f",
+            "_type": "question",
+            "a": [
+              {
+                "_key": "k9a79be611e",
+                "_type": "localeString",
+                "ar": "نعم، بدقة",
+                "en": "Yes, exactly"
+              },
+              {
+                "_key": "k310b86e0b6",
+                "_type": "localeString",
+                "ar": "تقريباً",
+                "en": "Roughly"
+              },
+              {
+                "_key": "kdbc0f00485",
+                "_type": "localeString",
+                "ar": "لا",
+                "en": "No"
+              }
+            ],
+            "q": {
+              "_type": "localeString",
+              "ar": "هل تعرف تكلفة العميل الواحد؟",
+              "en": "Do you know your cost per customer?"
+            }
+          },
+          {
+            "_key": "kc8306ae139",
+            "_type": "question",
+            "a": [
+              {
+                "_key": "k934385f53d",
+                "_type": "localeString",
+                "ar": "نتابعه بنظام",
+                "en": "We follow up systematically"
+              },
+              {
+                "_key": "k78a8efcbaa",
+                "_type": "localeString",
+                "ar": "أحياناً نتابعه",
+                "en": "Sometimes"
+              },
+              {
+                "_key": "ke114c448f4",
+                "_type": "localeString",
+                "ar": "يضيع",
+                "en": "They’re lost"
+              }
+            ],
+            "q": {
+              "_type": "localeString",
+              "ar": "ماذا يحدث لمن يسأل ولا يشتري؟",
+              "en": "What happens to people who ask but don’t buy?"
+            }
+          }
+        ],
+        "restart": {
+          "_type": "localeString",
+          "ar": "أعد التدقيق",
+          "en": "Restart audit"
+        },
+        "result": {
+          "_type": "localeString",
+          "ar": "أكبر تسريب عندك:",
+          "en": "Your biggest leak:"
+        },
+        "title": {
+          "_type": "localeString",
+          "ar": "أين يتسرّب المال من شركتك؟",
+          "en": "Where is your company leaking money?"
+        }
+      }
+    },
+    {
+      "id": "k6216f8a75f",
+      "type": "ninetySection",
+      "hidden": false,
+      "data": {
+        "anchor": "ninety",
+        "eyebrow": {
+          "_type": "localeString",
+          "ar": "أول 90 يوماً معنا",
+          "en": "Your first 90 days"
+        },
+        "index": "06",
+        "note": {
+          "_type": "localeString",
+          "ar": "[الجدول مقترح — يؤكده فريق ClearUp]",
+          "en": "[Proposed timeline — to be confirmed by ClearUp]"
+        },
+        "steps": [
+          {
+            "_key": "k524e05dc77",
+            "_type": "step",
+            "d": {
+              "_type": "localeText",
+              "ar": "مكالمة الوضوح، فحص القمع والحسابات، وتحديد خط الأساس.",
+              "en": "The clarity call, funnel and account audit, and the baseline."
+            },
+            "t": {
+              "_type": "localeString",
+              "ar": "تدقيق وتشخيص",
+              "en": "Audit & diagnosis"
+            },
+            "w": {
+              "_type": "localeString",
+              "ar": "الأسبوع ⁦1–2⁩",
+              "en": "Weeks 1–2"
+            }
+          },
+          {
+            "_key": "k17503a6b23",
+            "_type": "step",
+            "d": {
+              "_type": "localeText",
+              "ar": "عرض القيمة، القنوات، والأهداف الرقمية لكل شهر.",
+              "en": "Value proposition, channels, and numeric goals per month."
+            },
+            "t": {
+              "_type": "localeString",
+              "ar": "الخطة والعرض",
+              "en": "Plan & offer"
+            },
+            "w": {
+              "_type": "localeString",
+              "ar": "الأسبوع ⁦3–4⁩",
+              "en": "Weeks 3–4"
+            }
+          },
+          {
+            "_key": "ka1422e6a16",
+            "_type": "step",
+            "d": {
+              "_type": "localeText",
+              "ar": "المحتوى، الحملات، صفحات الهبوط، ونظام الواتساب.",
+              "en": "Content, campaigns, landing pages and the WhatsApp system."
+            },
+            "t": {
+              "_type": "localeString",
+              "ar": "البناء والإطلاق",
+              "en": "Build & launch"
+            },
+            "w": {
+              "_type": "localeString",
+              "ar": "الأسبوع ⁦5–8⁩",
+              "en": "Weeks 5–8"
+            }
+          },
+          {
+            "_key": "k5e796e4833",
+            "_type": "step",
+            "d": {
+              "_type": "localeText",
+              "ar": "نضاعف ما يعمل، نوقف ما لا يعمل، ولوحة أرقام أسبوعية.",
+              "en": "Double what works, cut what doesn’t, weekly dashboard."
+            },
+            "t": {
+              "_type": "localeString",
+              "ar": "التحسين والتوسيع",
+              "en": "Optimise & scale"
+            },
+            "w": {
+              "_type": "localeString",
+              "ar": "الأسبوع ⁦9–12⁩",
+              "en": "Weeks 9–12"
+            }
+          }
+        ],
+        "title": {
+          "_type": "localeString",
+          "ar": "لا غموض. هذا ما يحدث أسبوعاً بأسبوع.",
+          "en": "No mystery. Here’s what happens, week by week."
+        }
+      }
+    },
+    {
+      "id": "k775bc5c30e",
+      "type": "founderSection",
+      "hidden": false,
+      "data": {
+        "anchor": "founder",
+        "body": {
+          "_type": "localeText",
+          "ar": "مدرّب Growth Marketing، ويعمل مع رواد الأعمال والشركات الفلسطينية على بناء أنظمة نمو بدل الحملات المتفرقة. فريق ClearUp يعمل من غزة مع شركات داخل فلسطين وخارجها.",
+          "en": "A growth-marketing coach who works with Palestinian founders and companies to build growth systems instead of one-off campaigns. The ClearUp team works from Gaza with companies inside Palestine and beyond."
+        },
+        "eyebrow": {
+          "_type": "localeString",
+          "ar": "من نحن",
+          "en": "About"
+        },
+        "ig": {
+          "_type": "localeString",
+          "ar": "حسابه الموثّق على إنستغرام",
+          "en": "His verified Instagram"
+        },
+        "igHandle": "abd.ulmenem",
+        "index": "07",
+        "members": [
+          {
+            "_key": "k601ca99d55",
+            "_type": "localeString",
+            "ar": "يحيى أبو ندى · CTO",
+            "en": "Yahya Abunada · CTO"
+          },
+          {
+            "_key": "ke993215bfd",
+            "_type": "localeString",
+            "ar": "عهد عيد · CIO",
+            "en": "Ahed Eid · CIO"
+          },
+          {
+            "_key": "kecb7937db5",
+            "_type": "localeString",
+            "ar": "حازم هنداوي · التحليل والنمو الرقمي",
+            "en": "Hazem Hendawi · Analysis & digital growth"
+          },
+          {
+            "_key": "kefa6e44dfa",
+            "_type": "localeString",
+            "ar": "مجد أبو سكران · الإبداع",
+            "en": "Majd Abu Sakran · Creative"
+          },
+          {
+            "_key": "k683e725c03",
+            "_type": "localeString",
+            "ar": "لينا الشرفا · التسويق",
+            "en": "Lina Alshurafa · Marketing"
+          },
+          {
+            "_key": "kd0e2dbb0ba",
+            "_type": "localeString",
+            "ar": "رواء أبو العور · تصميم المنتج",
+            "en": "Rewaa Abo Alawar · Product design"
+          },
+          {
+            "_key": "k12f0de3dc7",
+            "_type": "localeString",
+            "ar": "دانا عيد · إدارة المجتمع",
+            "en": "Dana Eid · Community"
+          },
+          {
+            "_key": "ka2e33d344f",
+            "_type": "localeString",
+            "ar": "عبد الرحمن أبو وردة · مطوّر",
+            "en": "Abedalrahman Abuwarda · Developer"
+          }
+        ],
+        "name": {
+          "_type": "localeString",
+          "ar": "عبد المنعم",
+          "en": "Abd Al Menem"
+        },
+        "photo": {
+          "_type": "image",
+          "url": "/media/founder.webp",
+          "width": 640,
+          "height": 640
+        },
+        "photoCaption": {
+          "_type": "localeString",
+          "ar": "لقطة من فيديو على إنستغرام · [صورة احترافية مطلوبة]",
+          "en": "Frame from an Instagram video · [pro photo needed]"
+        },
+        "quote": {
+          "_type": "localeText",
+          "ar": "[جملة حقيقية من عبد المنعم عن فلسفة «للرؤساء التنفيذيين الشجعان فقط»]",
+          "en": "[A real line from Abd Al Menem on the “For Courageous CEOs Only” philosophy]"
+        },
+        "role": {
+          "_type": "localeString",
+          "ar": "المؤسس · Head of Growth",
+          "en": "Founder · Head of Growth"
+        },
+        "team": {
+          "_type": "localeString",
+          "ar": "الفريق",
+          "en": "Team"
+        },
+        "teamNote": {
+          "_type": "localeString",
+          "ar": "الأسماء من صفحة «من نحن» في موقعهم الحالي · [صور حقيقية للفريق]",
+          "en": "Names from the About page of their current site · [real team photos]"
+        }
+      }
+    },
+    {
+      "id": "k0ca9277f91",
+      "type": "testimonialsSection",
+      "hidden": false,
+      "data": {
+        "anchor": "stories",
+        "close": {
+          "_type": "localeString",
+          "ar": "إغلاق",
+          "en": "Close"
+        },
+        "eyebrow": {
+          "_type": "localeString",
+          "ar": "بكلماتهم",
+          "en": "In their words"
+        },
+        "featured": {
+          "_type": "localeString",
+          "ar": "قصة مميّزة",
+          "en": "Featured story"
+        },
+        "index": "08",
+        "items": [
+          {
+            "_key": "k8bd7954c40",
+            "_type": "story",
+            "name": {
+              "_type": "localeString",
+              "ar": "إسلام الجمالي",
+              "en": "Islam Al-Jamali"
+            },
+            "poster": {
+              "_type": "image",
+              "url": "/media/story-masahat.webp",
+              "width": 432,
+              "height": 768
+            },
+            "role": {
+              "_type": "localeString",
+              "ar": "الرئيس التنفيذي · مساحات",
+              "en": "CEO · Masahat"
+            },
+            "video": {
+              "_type": "file",
+              "url": "/media/story-masahat.mp4"
+            },
+            "videoUrl": "https://www.instagram.com/reel/Del5aadglDH/"
+          },
+          {
+            "_key": "k05a8ea5382",
+            "_type": "story",
+            "name": {
+              "_type": "localeString",
+              "ar": "نهى أبو",
+              "en": "Noha Abo"
+            },
+            "poster": {
+              "_type": "image",
+              "url": "/media/story-tobtarha.webp",
+              "width": 432,
+              "height": 768
+            },
+            "role": {
+              "_type": "localeString",
+              "ar": "المؤسسة · ثوب وطرحة",
+              "en": "Founder · Tob & Tarha"
+            },
+            "video": {
+              "_type": "file",
+              "url": "/media/story-tobtarha.mp4"
+            },
+            "videoUrl": "https://www.instagram.com/reel/DeblRPHNL4W/"
+          },
+          {
+            "_key": "k40bd001563",
+            "_type": "story",
+            "name": {
+              "_type": "localeString",
+              "ar": "النون للحلول الرقمية",
+              "en": "Al Noon Digital"
+            },
+            "poster": {
+              "_type": "image",
+              "url": "/media/story-alnoon.webp",
+              "width": 432,
+              "height": 768
+            },
+            "role": {
+              "_type": "localeString",
+              "ar": "قصة نجاح · العائد 8 أضعاف",
+              "en": "Success story · 8× ROI"
+            },
+            "video": {
+              "_type": "file",
+              "url": "/media/story-alnoon.mp4"
+            },
+            "videoUrl": "https://www.instagram.com/reel/DfCdu7QuFKf/"
+          },
+          {
+            "_key": "kf38cfe2e2f",
+            "_type": "story",
+            "name": {
+              "_type": "localeString",
+              "ar": "إعمار كلين",
+              "en": "Emmar Clean"
+            },
+            "poster": {
+              "_type": "image",
+              "url": "/media/story-emmar.webp",
+              "width": 432,
+              "height": 768
+            },
+            "role": {
+              "_type": "localeString",
+              "ar": "إعلان من إنتاجنا",
+              "en": "An ad we produced"
+            },
+            "video": {
+              "_type": "file",
+              "url": "/media/story-emmar.mp4"
+            },
+            "videoUrl": "https://www.instagram.com/reel/DapStldMDFF/"
+          }
+        ],
+        "onIg": {
+          "_type": "localeString",
+          "ar": "افتح على إنستغرام",
+          "en": "Open on Instagram"
+        },
+        "quote": {
+          "_type": "localeText",
+          "ar": "[اقتباس حقيقي من الفيديو]",
+          "en": "[A real quote from the video]"
+        },
+        "tap": {
+          "_type": "localeString",
+          "ar": "اضغط للتشغيل",
+          "en": "Tap to play"
+        },
+        "title": {
+          "_type": "localeString",
+          "ar": "العملاء يتكلمون، لا نحن.",
+          "en": "Clients talk. We don’t."
+        },
+        "watch": {
+          "_type": "localeString",
+          "ar": "شاهد الفيديو",
+          "en": "Watch the video"
+        }
+      }
+    },
+    {
+      "id": "ke794a80eb1",
+      "type": "faqSection",
+      "hidden": false,
+      "data": {
+        "anchor": "faq",
+        "eyebrow": {
+          "_type": "localeString",
+          "ar": "أسئلة",
+          "en": "FAQ"
+        },
+        "index": "09",
+        "items": [
+          {
+            "_key": "k114d4eefde",
+            "_type": "faqItem",
+            "a": {
+              "_type": "localeText",
+              "ar": "[نطاق أسعار تقريبي يحدده ClearUp]، والسعر النهائي بعد مكالمة الوضوح لأن كل نظام يُبنى حسب الشركة.",
+              "en": "[An approximate price range set by ClearUp]; the final price comes after the clarity call, because every system is built for the company."
+            },
+            "q": {
+              "_type": "localeString",
+              "ar": "كم تكلفة العمل معكم تقريباً؟",
+              "en": "Roughly what does it cost?"
+            }
+          },
+          {
+            "_key": "k008451a05e",
+            "_type": "faqItem",
+            "a": {
+              "_type": "localeText",
+              "ar": "[أقل مدة يحددها ClearUp]. نقترح 90 يوماً على الأقل لأن النظام يحتاج وقتاً ليتراكم.",
+              "en": "[Minimum set by ClearUp]. We suggest at least 90 days, because a system needs time to compound."
+            },
+            "q": {
+              "_type": "localeString",
+              "ar": "ما أقل مدة للتعاقد؟",
+              "en": "What’s the minimum engagement?"
+            }
+          },
+          {
+            "_key": "kb4182bff4b",
+            "_type": "faqItem",
+            "a": {
+              "_type": "localeText",
+              "ar": "نعم. [الدول/الأسواق التي يعملون فيها فعلاً].",
+              "en": "Yes. [The countries/markets they actually serve]."
+            },
+            "q": {
+              "_type": "localeString",
+              "ar": "هل تعملون مع شركات خارج فلسطين؟",
+              "en": "Do you work outside Palestine?"
+            }
+          },
+          {
+            "_key": "k8b7471f4ae",
+            "_type": "faqItem",
+            "a": {
+              "_type": "localeText",
+              "ar": "نتفق على أهداف رقمية في البداية. إذا لم نحققها في المدة المتفق عليها، نكمل العمل مجاناً أو نعيد الرسوم حسب الاتفاقية.",
+              "en": "We agree numeric targets up front. If we miss them in the agreed time, we keep working for free or refund fees per the agreement."
+            },
+            "q": {
+              "_type": "localeString",
+              "ar": "هل تضمنون النتائج؟",
+              "en": "Do you guarantee results?"
+            }
+          },
+          {
+            "_key": "k2a7541babb",
+            "_type": "faqItem",
+            "a": {
+              "_type": "localeText",
+              "ar": "ساعة أسبوعياً من الإدارة، والوصول إلى الحسابات والأرقام، وقرار سريع عندما نحتاجه.",
+              "en": "An hour a week from leadership, access to accounts and numbers, and quick decisions when we need them."
+            },
+            "q": {
+              "_type": "localeString",
+              "ar": "ماذا تحتاجون مني؟",
+              "en": "What do you need from me?"
+            }
+          }
+        ],
+        "title": {
+          "_type": "localeString",
+          "ar": "قبل أن تحجز",
+          "en": "Before you book"
+        }
+      }
+    },
+    {
+      "id": "k95e815d154",
+      "type": "finalCtaSection",
+      "hidden": false,
+      "data": {
+        "anchor": "book",
+        "fields": {
+          "company": {
+            "_type": "localeString",
+            "ar": "الشركة",
+            "en": "Company"
+          },
+          "name": {
+            "_type": "localeString",
+            "ar": "الاسم",
+            "en": "Name"
+          },
+          "phone": {
+            "_type": "localeString",
+            "ar": "رقم الواتساب",
+            "en": "WhatsApp number"
+          }
+        },
+        "notYet": {
+          "_type": "localeString",
+          "ar": "ليس بعد",
+          "en": "Not yet"
+        },
+        "notYetMsg": {
+          "_type": "localeText",
+          "ar": "لا مشكلة. تابع محتوانا على إنستغرام، ونحن هنا عندما تكون جاهزاً.",
+          "en": "No problem. Follow our content on Instagram — we’re here when you’re ready."
+        },
+        "promise": {
+          "_type": "localeString",
+          "ar": "نرد خلال 24 ساعة [وعد يؤكده ClearUp]",
+          "en": "We reply within 24 hours [promise to be confirmed by ClearUp]"
+        },
+        "submit": {
+          "_type": "localeString",
+          "ar": "احجز مكالمة وضوح",
+          "en": "Book a clarity call"
+        },
+        "title": [
+          {
+            "_key": "k91dfde1d6e",
+            "_type": "localeString",
+            "ar": "جاهز تغيّر",
+            "en": "Ready to change"
+          },
+          {
+            "_key": "kd30f79cf7f",
+            "_type": "localeString",
+            "ar": "طريقة شغلك؟",
+            "en": "how you work?"
+          }
+        ],
+        "whatsapp": {
+          "_type": "localeString",
+          "ar": "أو مباشرة على واتساب",
+          "en": "Or straight on WhatsApp"
+        },
+        "yes": {
+          "_type": "localeString",
+          "ar": "نعم، جاهز",
+          "en": "Yes, ready"
+        }
+      }
+    }
+  ]
+}
