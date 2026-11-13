@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import type { Dict } from '@/lib/dict';
 import SrcTag from './SrcTag';
 import VideoPlayer from './VideoPlayer';
@@ -26,8 +26,10 @@ type Head = { index?: string; eyebrow?: string; title?: string; lead?: string };
  *  one component, no copy). The section is pinned while you scroll through it; each step takes its share of the
  *  scroll, the active one shows in `body`, `viz` draws the other column, the bar under it is the steps' names
  *  (each a button). The six-stage system and «خدماتنا» (Offerings, scroll on) both render through it. */
-export function StageScroll({ id, head, names, body, viz, hint, className = '', titleId, ids }: {
+export function StageScroll({ id, head, names, body, viz, hint, className = '', titleId, ids, fit = false }: {
   id: string; head: Head; names: string[]; titleId: string; className?: string; hint?: string;
+  /** shrink the step's text (the --fit scale) until the whole step fits the pinned screen */
+  fit?: boolean;
   /** the steps' own anchors (#marketing…): a link to one scrolls to its step */
   ids?: (string | undefined)[];
   body: (active: number) => React.ReactNode;
@@ -54,6 +56,21 @@ export function StageScroll({ id, head, names, body, viz, hint, className = '', 
   }, []);
 
   const active = Math.min(n - 1, Math.floor(p * n * 0.999));
+  const pin = useRef<HTMLDivElement>(null);
+  // Nov 13, 2026 (Mohamed): on phones the pinned screen stays, the video stays, and the whole text must show —
+  // if a step is taller than the screen its text steps down (to 60% at most) until it fits
+  useLayoutEffect(() => {
+    const el = pin.current; if (!fit || !el) return;
+    const size = () => {
+      let f = 1;
+      el.style.setProperty('--fit', '1');
+      while (el.scrollHeight > el.clientHeight + 1 && f > 0.6) { f = Math.round((f - 0.04) * 100) / 100; el.style.setProperty('--fit', String(f)); }
+    };
+    size();
+    window.addEventListener('resize', size);
+    document.fonts?.ready.then(size).catch(() => {});
+    return () => window.removeEventListener('resize', size);
+  }, [fit, active]);
   const go = (k: number) => {
     const el = document.getElementById(id); if (!el) return;
     const total = el.offsetHeight - window.innerHeight;
@@ -80,7 +97,7 @@ export function StageScroll({ id, head, names, body, viz, hint, className = '', 
 
   return (
     <section ref={sec} className={'system ' + className} id={id} style={{ ['--steps' as any]: n }} aria-labelledby={titleId}>
-      <div className="system__pin">
+      <div className="system__pin" ref={pin}>
         <div className="wrap system__grid">
           <div className="system__copy">
             <p className="shead__meta">{head.index && <span className="shead__idx">{head.index}</span>}<bdi>{head.eyebrow}</bdi></p>
@@ -166,18 +183,6 @@ export default function System({ d }: { d: Dict }) {
   );
 }
 
-/** true on phone widths (the site's 760px breakpoint); false on the server and the first paint */
-function usePhone() {
-  const [m, setM] = useState(false);
-  useEffect(() => {
-    const q = window.matchMedia('(max-width: 760px)');
-    const on = () => setM(q.matches);
-    on(); q.addEventListener('change', on);
-    return () => q.removeEventListener('change', on);
-  }, []);
-  return m;
-}
-
 type SvcVid = { _key?: string; video?: string | null; link?: string | null; poster?: { src: string } | null; label?: string; name?: string };
 export type SvcItem = { _key?: string; id?: string; title?: string; en?: string; challenge?: string; desc?: string; how?: string; gets?: string; includes?: string[]; fits?: string; videos?: SvcVid[]; more?: string; moreHref?: string };
 
@@ -192,9 +197,10 @@ export function ServicesScroll({ head, items, lang, labels }: { head: Head; item
     return v ? <VideoPlayer key={(it._key ?? '') + cls} item={{ video: v.video ?? null, link: v.link ?? null, image: v.poster?.src ? v.poster : null }} name={v.name || it.title}
       lang={lang} label={v.label || it.title || ''} className={cls} fullscreen /> : null;
   };
-  const ids = items.map((it, i) => (it.id && /^[a-z0-9-]+$/.test(it.id) ? it.id : 'service-' + (i + 1)));
-  const phone = usePhone();
-  const body = (active: number) => {
+  return (
+    <StageScroll id="our-services" titleId="services-scroll-title" className="system--svc" fit head={head} names={items.map((it) => it.title || '')}
+      ids={items.map((it, i) => (it.id && /^[a-z0-9-]+$/.test(it.id) ? it.id : 'service-' + (i + 1)))}
+      body={(active) => {
         const it = items[active];
         const incl = (it.includes ?? []).filter(Boolean);
         return (
@@ -217,28 +223,7 @@ export function ServicesScroll({ head, items, lang, labels }: { head: Head; item
             {it.more && it.moreHref && it.moreHref !== '#system' && <a className="link stage__more" href={it.moreHref}>{it.more}</a>}
           </>
         );
-  };
-  useEffect(() => { // a link to one service (#marketing) still lands on it once the phone list is in
-    if (!phone) return;
-    const k = ids.indexOf(decodeURIComponent(location.hash.slice(1)));
-    if (k >= 0) document.getElementById(ids[k])?.scrollIntoView();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [phone]);
-  // Nov 13, 2026: on phones a service's full text is taller than the pinned screen and its end was cut off, so phones
-  // get every service one under the other (same texts, same videos); the pinned scroll stays on wider screens.
-  if (phone) return (
-    <section className="system system--svc system--list" id="our-services" aria-labelledby="services-scroll-title">
-      <div className="wrap">
-        <p className="shead__meta">{head.index && <span className="shead__idx">{head.index}</span>}<bdi>{head.eyebrow}</bdi></p>
-        <h2 className="h2 h2--sys" id="services-scroll-title">{head.title}</h2>
-        {head.lead && <p className="system__lead">{head.lead}</p>}
-        {items.map((it, k) => <div className="stage" id={ids[k]} key={it._key ?? k}>{body(k)}</div>)}
-      </div>
-    </section>
-  );
-  return (
-    <StageScroll id="our-services" titleId="services-scroll-title" className="system--svc" head={head} names={items.map((it) => it.title || '')}
-      ids={ids} body={body}
+      }}
       viz={(active) => {
         const it = items[active];
         const v = vidOf(it);
