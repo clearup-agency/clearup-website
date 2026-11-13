@@ -166,6 +166,18 @@ export default function System({ d }: { d: Dict }) {
   );
 }
 
+/** true on phone widths (the site's 760px breakpoint); false on the server and the first paint */
+function usePhone() {
+  const [m, setM] = useState(false);
+  useEffect(() => {
+    const q = window.matchMedia('(max-width: 760px)');
+    const on = () => setM(q.matches);
+    on(); q.addEventListener('change', on);
+    return () => q.removeEventListener('change', on);
+  }, []);
+  return m;
+}
+
 type SvcVid = { _key?: string; video?: string | null; link?: string | null; poster?: { src: string } | null; label?: string; name?: string };
 export type SvcItem = { _key?: string; id?: string; title?: string; en?: string; challenge?: string; desc?: string; how?: string; gets?: string; includes?: string[]; fits?: string; videos?: SvcVid[]; more?: string; moreHref?: string };
 
@@ -180,10 +192,9 @@ export function ServicesScroll({ head, items, lang, labels }: { head: Head; item
     return v ? <VideoPlayer key={(it._key ?? '') + cls} item={{ video: v.video ?? null, link: v.link ?? null, image: v.poster?.src ? v.poster : null }} name={v.name || it.title}
       lang={lang} label={v.label || it.title || ''} className={cls} fullscreen /> : null;
   };
-  return (
-    <StageScroll id="our-services" titleId="services-scroll-title" className="system--svc" head={head} names={items.map((it) => it.title || '')}
-      ids={items.map((it, i) => (it.id && /^[a-z0-9-]+$/.test(it.id) ? it.id : 'service-' + (i + 1)))}
-      body={(active) => {
+  const ids = items.map((it, i) => (it.id && /^[a-z0-9-]+$/.test(it.id) ? it.id : 'service-' + (i + 1)));
+  const phone = usePhone();
+  const body = (active: number) => {
         const it = items[active];
         const incl = (it.includes ?? []).filter(Boolean);
         return (
@@ -206,7 +217,28 @@ export function ServicesScroll({ head, items, lang, labels }: { head: Head; item
             {it.more && it.moreHref && it.moreHref !== '#system' && <a className="link stage__more" href={it.moreHref}>{it.more}</a>}
           </>
         );
-      }}
+  };
+  useEffect(() => { // a link to one service (#marketing) still lands on it once the phone list is in
+    if (!phone) return;
+    const k = ids.indexOf(decodeURIComponent(location.hash.slice(1)));
+    if (k >= 0) document.getElementById(ids[k])?.scrollIntoView();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [phone]);
+  // Nov 13, 2026: on phones a service's full text is taller than the pinned screen and its end was cut off, so phones
+  // get every service one under the other (same texts, same videos); the pinned scroll stays on wider screens.
+  if (phone) return (
+    <section className="system system--svc system--list" id="our-services" aria-labelledby="services-scroll-title">
+      <div className="wrap">
+        <p className="shead__meta">{head.index && <span className="shead__idx">{head.index}</span>}<bdi>{head.eyebrow}</bdi></p>
+        <h2 className="h2 h2--sys" id="services-scroll-title">{head.title}</h2>
+        {head.lead && <p className="system__lead">{head.lead}</p>}
+        {items.map((it, k) => <div className="stage" id={ids[k]} key={it._key ?? k}>{body(k)}</div>)}
+      </div>
+    </section>
+  );
+  return (
+    <StageScroll id="our-services" titleId="services-scroll-title" className="system--svc" head={head} names={items.map((it) => it.title || '')}
+      ids={ids} body={body}
       viz={(active) => {
         const it = items[active];
         const v = vidOf(it);
