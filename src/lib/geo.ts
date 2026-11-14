@@ -60,13 +60,26 @@ export function pageFaq(view: SiteView): QA[] {
     .filter((x) => x.q && x.a);
 }
 
-/** The service groups as the Services page shows them (name + what's in it). */
-export function serviceGroups(view: SiteView): { name: string; items: string[] }[] {
+/** The services as the site shows them: the five services («خدماتنا») with their one-line description; the older
+ *  four-group «الخدمات» section only when there are none. */
+export function serviceGroups(view: SiteView): { name: string; items: string[]; id?: string }[] {
+  const o = view.ctx.offerings;
+  const five = (Array.isArray(o?.items) ? o!.items : [])
+    .map((it: Raw, i: number) => ({
+      name: one(it?.title),
+      items: [one(it?.short) || one(it?.desc)].filter(Boolean),
+      id: typeof it?.id === 'string' && /^[a-z0-9-]+$/.test(it.id) ? it.id : 'service-' + (i + 1),
+    }))
+    .filter((g: { name: string }) => g.name);
+  if (five.length) return five;
   const s = sec(view, 'servicesSection') ?? view.ctx.services;
   return (Array.isArray(s?.groups) ? s!.groups : [])
     .map((g: Raw) => ({ name: one(g?.k), items: (Array.isArray(g?.items) ? g.items : []).map(one).filter(Boolean) }))
     .filter((g: { name: string }) => g.name);
 }
+
+/** The names people search the company by (Nov 14, 2026), besides «ClearUp» itself. */
+export const ALT_NAMES = ['Clear Up', 'Clear Up Agency', 'CLEAR UP', 'كلير أب', 'كلير اب', 'ClearUp Agency'];
 
 /** The founder, from the About page's founder section (only filled fields). */
 export function founderOf(view: SiteView): Raw | null {
@@ -87,6 +100,9 @@ export function structuredData(view: SiteView): Raw {
   const { lang, settings } = view;
   const base = jsonLd(lang, settings) as Raw;
   const graph: Raw[] = [...base['@graph']];
+  // the company: the names it is searched by, and what it does (its services) — on every page
+  const services = serviceGroups(view);
+  graph[0] = { ...graph[0], alternateName: ALT_NAMES, ...(services.length ? { knowsAbout: services.map((g) => g.name) } : {}) };
   const org = { '@id': SITE_URL + '/#organization' };
   const url = pageUrl(view);
   const summary = pageSummary(view);
@@ -113,12 +129,12 @@ export function structuredData(view: SiteView): Raw {
 
   // Services & System: one Service per group
   if (view.page === 'services' && !view.caseView) {
-    const groups = serviceGroups(view);
+    const groups = services;
     groups.forEach((g, i) => graph.push({
       '@type': 'Service', '@id': `${url}#service-${i + 1}`,
       name: g.name, serviceType: g.name,
       ...(g.items.length ? { description: g.items.join(lang === 'ar' ? '، ' : ', ') } : {}),
-      provider: org, url: url + '#services', inLanguage: lang,
+      provider: org, url: url + '#' + (g.id || 'services'), inLanguage: lang,
     }));
     if (groups.length) page.mainEntity = groups.map((_, i) => ({ '@id': `${url}#service-${i + 1}` }));
   }

@@ -47,6 +47,19 @@ const FALLBACK = {
   },
 };
 
+/* Search Console / Bing Webmaster ownership by meta tag (Nov 14, 2026) — the codes are public, set in netlify.toml:
+     GOOGLE_SITE_VERIFICATION  the content="…" of Google's <meta name="google-site-verification">
+     BING_SITE_VERIFICATION    the content="…" of Bing's <meta name="msvalidate.01"> */
+const CODE = /^[A-Za-z0-9_-]{8,100}$/;
+export function siteVerification(env: Record<string, string | undefined> = process.env): Pick<Metadata, 'verification'> {
+  const google = env.GOOGLE_SITE_VERIFICATION?.trim() ?? '';
+  const bing = env.BING_SITE_VERIFICATION?.trim() ?? '';
+  const v: NonNullable<Metadata['verification']> = {};
+  if (CODE.test(google)) v.google = google;
+  if (CODE.test(bing)) v.other = { 'msvalidate.01': bing };
+  return Object.keys(v).length ? { verification: v } : {};
+}
+
 /** Full metadata for one page in one language (title, description, canonical, hreflang, Open Graph, Twitter). */
 export function pageMetadata(lang: Lang, s: Raw, opts: { slug?: string; title?: string; description?: string } = {}): Metadata {
   const siteTitle: string = s.metaTitle || FALLBACK.title[lang];
@@ -58,6 +71,7 @@ export function pageMetadata(lang: Lang, s: Raw, opts: { slug?: string; title?: 
   return {
     title: { absolute: title },
     description,
+    ...siteVerification(),
     alternates: { canonical: path, languages: languageAlternates(opts.slug) },
     openGraph: {
       type: 'website',

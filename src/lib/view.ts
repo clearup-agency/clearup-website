@@ -24,6 +24,8 @@ export type Crumb = { label: string; href?: string; f?: string; rec?: string };
 export type PageCtx = {
   lang: Lang; page: PageId; cases: CaseView[]; links: Record<string, string>;
   services: Raw | null; system: Raw | null; preview: boolean;
+  /** the five services («خدماتنا», its full Services-page source), for the search engines' data on every page */
+  offerings?: Raw | null;
   /** the first «أعمال العملاء (ستوري)» section with its own clients (a «mirror» section shows these) */
   stories?: Raw | null;
   /** story client key → that client's page */
@@ -244,7 +246,9 @@ export function buildView(raw: { settings: Raw | null; page: Raw | null; source:
     return x ? clean(localize(x, lang)) : null;
   };
   const storiesSrc = all.find((y) => y._type === 'clientStoriesSection' && !y.hidden && !y.mirror) ?? all.find((y) => y._type === 'clientStoriesSection' && !y.mirror);
-  const ctx: PageCtx = { lang, page, cases, links, services: firstData('servicesSection'), system: firstData('systemSection'), preview: !!opts.preview, band: null, stories: storiesSrc ? clean(localize(storiesSrc, lang)) : null, clientHref };
+  const offerRaw = all.find((y) => y._type === 'offeringsSection' && !y.hidden && !y.compact) ?? all.find((y) => y._type === 'offeringsSection' && !y.hidden);
+  const offerings = offerRaw ? clean(localize(withoutHiddenItems(sharedSource(offerRaw, all)), lang)) : null;
+  const ctx: PageCtx = { lang, page, cases, links, offerings, services: firstData('servicesSection'), system: firstData('systemSection'), preview: !!opts.preview, band: null, stories: storiesSrc ? clean(localize(storiesSrc, lang)) : null, clientHref };
   // the stories section shows only once there are enough real clients with works (rules.ts); the admin's
   // preview always shows it, with a note while visitors don't see it yet
   const storyRule = storiesForVisitors(ctx.stories?.clients);
