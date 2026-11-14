@@ -195,7 +195,7 @@ export function ServicesScroll({ head, items, lang, labels }: { head: Head; item
   const player = (it: SvcItem, cls: string) => {
     const v = vidOf(it);
     return v ? <VideoPlayer key={(it._key ?? '') + cls} item={{ video: v.video ?? null, link: v.link ?? null, image: v.poster?.src ? v.poster : null }} name={v.name || it.title}
-      lang={lang} label={v.label || it.title || ''} className={cls} fullscreen /> : null;
+      lang={lang} label={v.label || it.title || ''} className={cls} modal /> : null;
   };
   return (
     <StageScroll id="our-services" titleId="services-scroll-title" className="system--svc" fit head={head} names={items.map((it) => it.title || '')}

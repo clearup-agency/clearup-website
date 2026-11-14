@@ -30,7 +30,7 @@ export default function TestimonialCardItem({ c, t, lang, fid }: { c: Testimonia
   return (
     // the admin's preview: a click on the card's name, person, line or video opens that client's record
     <li className="tvcard" data-reveal data-rec-story={c.storyKey || undefined} data-rec-case={c.caseKey || undefined}>
-      <VideoPlayer item={c.video as never} name={c.client} lang={lang} label={(lang === 'ar' ? 'شاهد: ' : 'Watch: ') + (c.person || c.client)} close={t.close} className="tvcard__vid" posterSize={[432, 540]} fullscreen />
+      <VideoPlayer item={c.video as never} name={c.client} lang={lang} label={(lang === 'ar' ? 'شاهد: ' : 'Watch: ') + (c.person || c.client)} close={t.close} className="tvcard__vid" posterSize={[432, 540]} modal />
       <div className="tvcard__body">
         <p className="tvcard__who"><b>{c.client}</b>{who && <span data-rf="testimonial.name">{who}</span>}</p>
         {c.short && <p className="tvcard__short">{c.short}</p>}

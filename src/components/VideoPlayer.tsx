@@ -33,25 +33,11 @@ type Props = {
   /** controlled open state (the hero clip closes on a tap outside it); uncontrolled when left out */
   open?: boolean;
   onOpenChange?: (on: boolean) => void;
-  /** Nov 11, 2026 (Mohamed: «عملاؤنا يحكون» — a click makes the video full screen and it plays at once, with sound):
-   *  the player goes true full screen inside the click (requestFullscreen; on an iPhone the <video>'s own
-   *  webkitEnterFullscreen); leaving full screen pauses it and puts the poster back. */
-  fullscreen?: boolean;
+  /** Nov 14, 2026 (Mohamed): the video opens in its own window, like a story — on a laptop a centred 9:16 player
+   *  (not full screen) with × at its top; on a phone it fills the screen, with × at the top. It plays at once, with
+   *  sound; ×, Esc or a tap outside it closes it. Used by the hero video, «عملاؤنا يحكون» and the services. */
+  modal?: boolean;
 };
-
-type FsVideo = HTMLVideoElement & { webkitEnterFullscreen?: () => void; webkitDisplayingFullscreen?: boolean };
-type FsEl = HTMLElement & { webkitRequestFullscreen?: () => Promise<void> | void };
-const fsElement = () => document.fullscreenElement ?? (document as Document & { webkitFullscreenElement?: Element | null }).webkitFullscreenElement ?? null;
-/** Full screen on the player, from inside the user's click; false when the browser offers none. */
-function goFullscreen(v: FsVideo): boolean {
-  const el = v as unknown as FsEl;
-  try {
-    if (el.requestFullscreen) { el.requestFullscreen({ navigationUI: 'hide' } as FullscreenOptions)?.catch?.(() => { v.webkitEnterFullscreen?.(); }); return true; }
-    if (el.webkitRequestFullscreen) { el.webkitRequestFullscreen(); return true; }
-    if (v.webkitEnterFullscreen) { v.webkitEnterFullscreen(); return true; }
-  } catch { /* plays in place */ }
-  return false;
-}
 
 const pauseOthers = (me?: HTMLVideoElement | null) =>
   document.querySelectorAll<HTMLVideoElement>('video[data-vplayer]').forEach((v) => { if (v !== me) v.pause(); });
@@ -65,7 +51,7 @@ const pauseOthers = (me?: HTMLVideoElement | null) =>
  *  - any other link: opens in a new tab.
  *  Nothing moves on or closes by itself: × (or Esc / a click outside for the centred player) closes it. Playing one
  *  video pauses any other. Nothing loads until the click. */
-export default function VideoPlayer({ item, name, label, labelField, close: closeLabel, lang, className = '', variant = 'card', posterFirst, posterAt, posterSize = [432, 768], priority, open, onOpenChange, fullscreen }: Props) {
+export default function VideoPlayer({ item, name, label, labelField, close: closeLabel, lang, className = '', variant = 'card', posterFirst, posterAt, posterSize = [432, 768], priority, open, onOpenChange, modal }: Props) {
   const close = closeLabel || (lang === 'en' ? 'Close' : 'إغلاق');
   const [own, setOwn] = useState(false);
   const on = open ?? own;
@@ -78,8 +64,9 @@ export default function VideoPlayer({ item, name, label, labelField, close: clos
   const ig = embed?.kind === 'instagram' ? embed : null;
   const href = !src && !embed && typeof item?.link === 'string' && /^https?:\/\//i.test(item.link.trim()) ? item.link.trim() : '';
   const base = variant === 'clip' ? 'clip__media' : 'tvid';
+  const win = !!ig || (!!modal && !!(src || yt)); // plays in its own window (portal), not in the card
   useEffect(() => {
-    if (!on || !ig) return;
+    if (!on || !win) return;
     const key = (e: KeyboardEvent) => { if (e.key === 'Escape') setOn(false); };
     const prev = document.documentElement.style.overflow;
     document.documentElement.style.overflow = 'hidden';
@@ -87,37 +74,14 @@ export default function VideoPlayer({ item, name, label, labelField, close: clos
     window.addEventListener('keydown', key);
     return () => { window.removeEventListener('keydown', key); document.documentElement.style.overflow = prev; requestAnimationFrame(() => el.current?.focus()); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [on, ig]);
+  }, [on, win]);
   useEffect(() => {
     if (ig) return;
-    el.current?.closest('.tvcard')?.classList.toggle('is-playing', on);
+    el.current?.closest('.tvcard')?.classList.toggle('is-playing', on && !win);
     const v = vid.current;
     if (!on || !v || !v.paused) return;
     v.play()?.catch(() => { v.muted = true; v.play()?.catch(() => { /* the controls are there */ }); });
-  }, [on, ig]);
-  // full-screen players: leaving full screen (Esc, the browser's own button, iPhone's «Done») pauses and closes
-  useEffect(() => {
-    if (!fullscreen || !on) return;
-    const v = vid.current as FsVideo | null;
-    if (!v) return;
-    let was = false;
-    const onFs = () => {
-      const now = fsElement() === v || !!v.webkitDisplayingFullscreen;
-      if (now) was = true;
-      else if (was) { v.pause(); setOn(false); }
-    };
-    document.addEventListener('fullscreenchange', onFs);
-    document.addEventListener('webkitfullscreenchange', onFs);
-    v.addEventListener('webkitbeginfullscreen', onFs);
-    v.addEventListener('webkitendfullscreen', onFs);
-    return () => {
-      document.removeEventListener('fullscreenchange', onFs);
-      document.removeEventListener('webkitfullscreenchange', onFs);
-      v.removeEventListener('webkitbeginfullscreen', onFs);
-      v.removeEventListener('webkitendfullscreen', onFs);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [fullscreen, on]);
+  }, [on, ig, win]);
   // the video goes in and starts inside the click itself (iPhones only allow sound from inside the tap)
   const start = () => {
     if (ig || !src) { setOn(true); return; }
@@ -126,7 +90,6 @@ export default function VideoPlayer({ item, name, label, labelField, close: clos
     if (!v) return;
     v.muted = false;
     pauseOthers(v);
-    if (fullscreen) goFullscreen(v as FsVideo);
     v.play()?.catch(() => { v.muted = true; v.play()?.catch(() => { /* the controls are there */ }); });
   };
   if (!item) return null;
@@ -152,19 +115,31 @@ export default function VideoPlayer({ item, name, label, labelField, close: clos
   // a still with nothing to play: just the picture
   if (!src && !yt && !ig && !href) return poster ? <span className={base + ' ' + className}><img src={poster} alt={item.image?.alt || ''} width={posterSize[0]} height={posterSize[1]} {...(priority ? imgHints : { loading: 'lazy' as const })} decoding="async" /></span> : null;
   if (href) return <a className={base + ' ' + className} href={href} target="_blank" rel="noopener" aria-label={aria}>{face}</a>;
-  if (!on || ig) {
+  const x = (
+    <button type="button" className="tvid__x tvmodal__x" onClick={() => setOn(false)} aria-label={close} title={close} autoFocus>
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+    </button>
+  );
+  if (!on || win) {
     return (
       <>
         <button type="button" ref={(n) => { el.current = n; }} className={base + ' ' + className} onClick={start} aria-label={aria}>{face}</button>
-        {on && ig && createPortal(
-          <div className="tvmodal" role="dialog" aria-modal="true" aria-label={aria} onClick={(e) => { if (e.target === e.currentTarget) setOn(false); }}>
+        {on && win && createPortal(
+          <div className={'tvmodal' + (ig ? '' : ' tvmodal--video')} role="dialog" aria-modal="true" aria-label={aria} onClick={(e) => { if (e.target === e.currentTarget) setOn(false); }}>
             <div className="tvmodal__box">
-              <iframe className="sview__embed sview__embed--instagram" src={ig.src} title={label} scrolling="no"
-                allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowFullScreen referrerPolicy="strict-origin-when-cross-origin" />
+              {ig ? (
+                <iframe className="sview__embed sview__embed--instagram" src={ig.src} title={label} scrolling="no"
+                  allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowFullScreen referrerPolicy="strict-origin-when-cross-origin" />
+              ) : src ? (
+                <video ref={vid} data-vplayer="" src={src} poster={poster || undefined} controls autoPlay playsInline preload="auto" aria-label={label}
+                  onPlay={(e) => pauseOthers(e.currentTarget)} />
+              ) : yt ? (
+                <iframe src={`https://www.youtube-nocookie.com/embed/${yt.id}?autoplay=1&playsinline=1&rel=0&modestbranding=1`} title={label}
+                  allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowFullScreen referrerPolicy="strict-origin-when-cross-origin" />
+              ) : null}
+              {!ig && x}
             </div>
-            <button type="button" className="tvid__x tvmodal__x" onClick={() => setOn(false)} aria-label={close} title={close} autoFocus>
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
-            </button>
+            {ig && x}
           </div>,
           document.body,
         )}

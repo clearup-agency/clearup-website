@@ -120,14 +120,11 @@ test('logos row CSS: the track moves exactly one group, each group carries its o
   assert.match(css, /prefers-reduced-motion: reduce\)[^}]*\{[\s\S]*?\.marquee__track \{ animation: none; \}/);
 });
 
-test('intro clip: a tap outside (not a scroll) or Esc shrinks it back, stops it and resets it', () => {
-  const c = read('src/components/ClipCard.tsx');
-  assert.match(c, /document\.addEventListener\('pointerdown', down, true\)/);
-  assert.match(c, /document\.addEventListener\('pointerup', up, true\)/);
-  assert.match(c, /e\.key === 'Escape'/);
-  assert.match(c, /el\.pause\(\); el\.currentTime = 0;/);
-  assert.match(c, /Math\.hypot\(e\.clientX - s\.x, e\.clientY - s\.y\) > 12/, 'a scroll is not a tap');
-  assert.match(c, /setOn\(false\)/);
+test('intro clip: opens in the story-like window; Esc, × or a tap outside it closes it (Nov 14)', () => {
+  assert.match(read('src/components/ClipCard.tsx'), /<VideoPlayer variant="clip"[\s\S]*\bmodal\b/);
+  const vp = read('src/components/VideoPlayer.tsx');
+  assert.match(vp, /e\.key === 'Escape'\) setOn\(false\)/);
+  assert.match(vp, /if \(e\.target === e\.currentTarget\) setOn\(false\)/);
 });
 
 test('testimonials: one short line on the card, the whole story in «القصة كاملة»; no viewer arrows for a single video', async () => {

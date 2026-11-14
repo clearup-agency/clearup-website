@@ -27,14 +27,14 @@ test('arrows on a laptop (RTL-aware), hidden on touch; they only show when the r
   assert.match(css, /@media \(hover: none\) \{ \.tvrail__btn \{ display: none; \} \}/);
 });
 
-test('a click plays the video in the card with controls; no story viewer for a video or YouTube link', () => {
+test('a click plays the video with controls (Nov 14: in its own story-like window); no story viewer for a video or YouTube link', () => {
   assert.match(card, /<VideoPlayer /);
   assert.doesNotMatch(card, /<StoryVideo /);
   assert.match(player, /<video [^>]*controls autoPlay playsInline/);
   assert.doesNotMatch(player, /onEnded/);
   assert.match(css, /\.tvcard\.is-playing \.tvcard__body \{ display: none; \}/);
   // an Instagram reel (the live testimonials are reels): its own player in a plain modal, no 15 s story clock
-  assert.match(player, /on && ig && createPortal/);
+  assert.match(player, /on && win && createPortal/);
   assert.doesNotMatch(player, /setTimeout|EMBED_MS/);
 });
 

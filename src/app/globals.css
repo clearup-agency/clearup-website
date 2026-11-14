@@ -1217,6 +1217,18 @@ html[dir="rtl"] .ocard__go .arrow { transform: scaleX(-1); }
 .tvmodal__box { position: relative; height: min(86vh, 780px); max-width: calc(100vw - 32px); aspect-ratio: 9 / 16; overflow: hidden; border-radius: 18px; background: #000; container-type: inline-size; box-shadow: 0 30px 80px -30px rgba(92, 32, 150, .7); }
 .tvmodal__x { position: fixed; top: 16px; inset-inline-end: 16px; width: 44px; height: 44px; background: rgba(255, 255, 255, .14); }
 @media (max-width: 760px) { .tvmodal__box { height: auto; width: min(100%, calc((100vh - 120px) * 9 / 16)); } }
+/* Nov 14, 2026 (Mohamed): the hero video, «عملاؤنا يحكون» and the services' videos open like a story — laptop: a
+   centred 9:16 player (not full screen) with × at its top; phone: the whole screen, black, with × at the top */
+.tvmodal--video .tvmodal__box { height: min(88vh, 820px); height: min(88dvh, 820px); width: auto; max-width: calc(100vw - 32px); }
+.tvmodal--video video, .tvmodal--video iframe { display: block; width: 100%; height: 100%; object-fit: contain; background: #000; border: 0; }
+.tvmodal--video .tvmodal__x { position: absolute; top: 12px; inset-inline-end: 12px; z-index: 3; width: 42px; height: 42px; background: rgba(11, 11, 15, .55); }
+@media (max-width: 760px) {
+  .tvmodal--video { padding: 0; background: #000; backdrop-filter: none; }
+  .tvmodal--video .tvmodal__box { width: 100vw; height: 100vh; height: 100dvh; max-width: none; aspect-ratio: auto; border-radius: 0; box-shadow: none; }
+  .tvmodal--video .tvmodal__x { top: calc(12px + env(safe-area-inset-top)); inset-inline-end: calc(12px + env(safe-area-inset-right)); width: 44px; height: 44px; }
+}
+@media (prefers-reduced-motion: no-preference) { .tvmodal--video .tvmodal__box { animation: vmodalIn .22s var(--ease); } }
+@keyframes vmodalIn { from { opacity: 0; transform: scale(.96); } }
 @media (max-width: 1100px) { .tvcards.tvrail__track { grid-auto-columns: calc((100% - 2 * var(--gap-card)) / 3); } }
 @media (max-width: 760px) {
   .tvcards.tvrail__track { grid-auto-columns: min(70%, 280px); gap: 12px; }

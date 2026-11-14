@@ -5,11 +5,11 @@ import { readFileSync } from 'node:fs';
 // Nov 11, 2026 — Mohamed's batch (voice note 2:46 PM)
 const read = (p) => readFileSync(new URL('../' + p, import.meta.url), 'utf8');
 
-test('testimonial videos open true full screen inside the click (iPhone: webkitEnterFullscreen), one VideoPlayer', () => {
+test('testimonial videos open in the story-like window (Nov 14: not full screen on a laptop), one VideoPlayer', () => {
   const vp = read('src/components/VideoPlayer.tsx');
-  assert.match(vp, /requestFullscreen/);
-  assert.match(vp, /webkitEnterFullscreen/);
-  assert.match(read('src/components/pages/TestimonialCard.tsx'), /<VideoPlayer[^>]*\bfullscreen\b/);
+  assert.match(vp, /tvmodal--video/);
+  assert.doesNotMatch(vp, /requestFullscreen/);
+  assert.match(read('src/components/pages/TestimonialCard.tsx'), /<VideoPlayer[^>]*\bmodal\b/);
 });
 
 test('the five services reuse the ONE sticky scroll (StageScroll) — no copy of the six-stage component', () => {
