@@ -44,3 +44,15 @@ test('a headline the admin rewrote afterwards is kept', () => {
 test('Netlify runs it before the build and it never fails the build', () => {
   assert.match(readFileSync(new URL('../netlify.toml', import.meta.url), 'utf8'), /command = "node scripts\/content-nov14\.mjs --apply --soft && npm run build"/);
 });
+
+test('the old service name left in other texts (chatbot, Services intro) follows the rename, once', () => {
+  const c = { settings: { chatbot: { faq: [{ a: T('… التحول بالذكاء الاصطناعي والأتمتة، التدريب', '… AI transformation & automation, training') }] } },
+    sections: [{ id: 'p', page: 'services', type: 'pageHeadSection', data: { summary: T('التحول بالذكاء الاصطناعي والأتمتة', 'AI Transformation & Automation') } },
+      { id: 'g', page: 'services', type: 'servicesSection', data: { groups: [{ k: L('الاحتفاظ والأتمتة', 'Retention & Automation') }] } }] };
+  const { content } = patch(c);
+  assert.match(content.settings.chatbot.faq[0].a.ar, /والحوكمة/);
+  assert.match(content.settings.chatbot.faq[0].a.en, /AI transformation & governance/);
+  assert.equal(content.sections[0].data.summary.en, 'AI Transformation & Governance');
+  assert.equal(content.sections[1].data.groups[0].k.ar, 'الاحتفاظ والأتمتة', 'another «أتمتة» is not touched');
+  assert.equal(patch(content).changes.length, 0);
+});

@@ -314,7 +314,7 @@ export function buildView(raw: { settings: Raw | null; page: Raw | null; source:
   const pm = (s.pageMeta ?? {})[page] ?? {};
   const cs = caseView?.data?.seo ?? {};
   const seo = caseView
-    ? { title: filled(cs.title) ? cs.title : pageTitle, description: filled(cs.description) ? cs.description : (filled(caseView.data.problem) ? caseView.data.problem : undefined), image: caseView.data.cover ?? null }
+    ? { title: filled(cs.title) ? cs.title : pageTitle, description: filled(cs.description) ? cs.description : undefined, image: caseView.data.cover ?? null } // no own description → pageSummary (client, summary, problem, result)
     : { title: filled(pm.title) ? pm.title : (page === 'home' ? undefined : pageTitle), description: filled(pm.description) ? pm.description : undefined, image: pm.image ?? null };
   return {
     page, crumbs, pageTitle, seo, ctx, caseView,

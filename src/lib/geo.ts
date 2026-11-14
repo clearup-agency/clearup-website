@@ -39,13 +39,25 @@ export function pageSummary(view: SiteView): string {
   const { lang, settings } = view;
   if (view.caseView) {
     const c = view.caseView.data;
-    const own = one(c.summary);
-    if (own) return own;
     const client = one(c.client);
     const ind = one(c.industry);
-    return lang === 'ar'
-      ? `${client}${ind ? ` (${ind})` : ''}: قصة عميل من أعمال ${ENTITY}.`
-      : `${client}${ind ? ` (${ind})` : ''}: a ${ENTITY} client story.`;
+    const head = `${client}${ind ? ` (${ind})` : ''}`;
+    const tail = lang === 'ar' ? `قصة عميل من أعمال ${ENTITY}.` : `A ${ENTITY} client story.`;
+    // Nov 14, 2026: a search result reads better than «إعلان من إنتاجنا» — the story's own sentences (summary, the
+    // problem, the result; placeholders and repeats left out), with the client in front, up to ~160 characters
+    const end = (t: string) => (/[.!؟?。]$/.test(t) ? t : t + '.');
+    const bare = (t: string) => t.replace(/[.!؟?。]+$/, '');
+    const raw: string[] = [];
+    for (const t0 of [one(c.summary), one(c.problem), one(c.result)]) {
+      const t = bare(t0); if (!t) continue;
+      const i = raw.findIndex((x) => t.includes(x) || x.includes(t)); // a repeat: keep the fuller sentence, in its place
+      if (i < 0) raw.push(t); else if (t.length > raw[i].length) raw[i] = t;
+    }
+    const parts = raw.map(end);
+    let text = parts.length ? `${head}: ${parts.join(' ')}` : `${head}: ${tail}`;
+    if (parts.length && text.length < 110) text += ' ' + tail;
+    if (text.length > 160) { const cut = text.slice(0, 157); text = cut.slice(0, Math.max(cut.lastIndexOf(' '), 120)).replace(/[،,:;\s]+$/, '') + '…'; }
+    return text;
   }
   if (view.page === 'home') return one(view.seo.description) || entityLine(lang, settings);
   const head = sec(view, 'pageHeadSection');

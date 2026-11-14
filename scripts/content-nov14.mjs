@@ -51,10 +51,33 @@ const canon = (v) => (Array.isArray(v) ? v.map(canon) : v && typeof v === 'objec
 const same = (a, b) => JSON.stringify(canon(a)) === JSON.stringify(canon(b));
 const arOf = (v) => (v && typeof v === 'object' ? String(v.ar ?? '') : typeof v === 'string' ? v : '');
 
+/* Nov 14, 2026 (later, the full site check): the service's old name left in other texts (the Services page intro,
+   the chatbot's answers) follows the rename; only these exact phrases change, wherever they are. */
+export const RENAMES = [
+  ['التحول بالذكاء الاصطناعي والأتمتة', 'التحول بالذكاء الاصطناعي والحوكمة'],
+  ['AI Transformation & Automation', 'AI Transformation & Governance'],
+  ['AI transformation & automation', 'AI transformation & governance'],
+  ['AI transformation and automation', 'AI transformation and governance'],
+];
+function renameAll(node, where, changes) {
+  if (Array.isArray(node)) { node.forEach((v, i) => renameAll(v, where, changes)); return; }
+  if (!node || typeof node !== 'object') return;
+  for (const k of Object.keys(node)) {
+    const v = node[k];
+    if (typeof v === 'string') {
+      let t = v;
+      for (const [a, b] of RENAMES) t = t.split(a).join(b);
+      if (t !== v) { changes.push({ where, field: k, from: v, to: t }); node[k] = t; }
+    } else renameAll(v, where, changes);
+  }
+}
+
 /** The pure change: { content, changes } — idempotent (a second run reports no changes). */
 export function patch(content) {
   const c = clone(content ?? {});
   const changes = [];
+  renameAll(c.settings, 'settings', changes);
+  for (const s of c.sections ?? []) renameAll(s?.data, `${s?.page || 'home'}/${s?.type} ${s?.id}`, changes);
   const set = (obj, key, val, where) => {
     if (same(obj[key], val)) return;
     changes.push({ where, field: key, from: obj[key], to: val });

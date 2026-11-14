@@ -1690,3 +1690,10 @@ html[dir="rtl"] .xstat__n { text-align: right; }
   .system--svc .stage__lbl { margin-top: 10px; margin-bottom: 4px; }
   .system--svc .stage__fits, .system--svc .stage__what { font-size: .86rem; line-height: 1.6; }
 }
+/* Nov 14, 2026: a member's photo or long name never widens its column (on phones it pushed the page — and the
+   menu button — past the screen) */
+.team2__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.team2__m { min-width: 0; }
+.team2__m b, .team2__m span { overflow-wrap: anywhere; }
+.team2__m img { max-width: 100%; height: auto; }
+@media (max-width: 1080px) { .team2__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

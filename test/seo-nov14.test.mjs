@@ -52,3 +52,13 @@ test('Search Console / Bing verification codes go in a meta tag only when set an
   assert.deepEqual(siteVerification({ BING_SITE_VERIFICATION: '0123456789ABCDEF' }), { verification: { other: { 'msvalidate.01': '0123456789ABCDEF' } } });
   assert.deepEqual(siteVerification({ GOOGLE_SITE_VERIFICATION: '"><script>' }), {});
 });
+
+test('a client story search description: client, summary, problem, result — no placeholder, no repeat', () => {
+  const s2 = structuredClone(site);
+  const cs = s2.sections.find((s) => s.type === P.CASE_TYPE);
+  cs.data = { ...cs.data, client: L('النون', 'Al-Noon'), industry: L('شركة للحلول الرقمية', 'Digital solutions'), summary: T('نمو الإيرادات 164%', 'Revenue +164%'), problem: T('طلب عشوائي وموسمي.', 'Random demand.'), result: T('نمو الإيرادات 164% خلال 3 أشهر.', 'Revenue +164% in 3 months.'), seo: {} };
+  const v = buildView(snapshotToRaw(s2), 'ar', 'work', { caseSlug: cs.data.slug });
+  const d = G.pageSummary(v);
+  assert.equal(d, 'النون (شركة للحلول الرقمية): نمو الإيرادات 164% خلال 3 أشهر. طلب عشوائي وموسمي. قصة عميل من أعمال ClearUp.');
+  assert.ok(d.length <= 160);
+});
