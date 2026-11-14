@@ -5,3 +5,16 @@
 
 [build.environment]
   NODE_VERSION = "22"
+
+# The official domain (Nov 14, 2026): canonical URLs, sitemap, Open Graph and llms.txt point at it, and Google may
+# index the site. Production only — deploy previews stay «noindex» (src/lib/seo.ts).
+[context.production.environment]
+  NEXT_PUBLIC_SITE_URL = "https://clearupagency.com"
+  SEO_INDEXABLE = "true"
+
+# The Netlify address sends visitors (and search engines) to the official domain
+[[redirects]]
+  from = "https://wepclearup.netlify.app/*"
+  to = "https://clearupagency.com/:splat"
+  status = 301
+  force = true
