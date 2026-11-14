@@ -65,7 +65,7 @@ function Title({ lines, strike }: { lines: string[]; strike?: string }) {
   };
   const w2 = (l2 || '').split(' ');
   return (
-    <h1 id="hero-title" className="hl__title">
+    <h1 id="hero-title" className={'hl__title' + (((l1 || '') + (l2 || '')).length > 34 ? ' hl__title--long' : '')}>
       {l1 && <span className="hl__l1">{struck(l1)}</span>}
       {l2 && <span className="hl__l2">{w2[0]}{w2.length > 1 && <> <b>{w2.slice(1).join(' ')}</b></>}</span>}
     </h1>

@@ -1417,6 +1417,8 @@ html[dir="ltr"] .hl__lines { -webkit-mask-image: radial-gradient(ellipse 36% 46%
 .hl__title { font-weight: 800; font-size: clamp(2.6rem, 5.3vw, 4.75rem); line-height: 1.16; letter-spacing: -.005em; margin-top: 28px; color: #fff; }
 html[lang="en"] .hl__title { line-height: 1.08; letter-spacing: -.02em; }
 .hl__title > span { display: block; }
+/* Nov 14, 2026: a longer headline («نبني للمؤسسات أنظمة ابتكار وذكاء اصطناعي…») sets a step smaller */
+.hl__title--long { font-size: clamp(2.2rem, 3.9vw, 3.6rem); line-height: 1.22; }
 .hl__l2 b { color: var(--lav); font-weight: inherit; }
 .hl__s { position: relative; text-decoration: none; color: inherit; opacity: .45; }
 .hl__s::after { content: ''; position: absolute; inset-inline: -3px; top: 55%; height: 3px; background: currentColor; transform: rotate(-2deg); }
@@ -1458,6 +1460,7 @@ html[lang="en"] .hl__title { line-height: 1.08; letter-spacing: -.02em; }
   .hl__glow { inset-inline-end: auto; inset-inline-start: 50%; top: auto; bottom: -60px; transform: translateX(-50%); width: 520px; height: 520px; }
   .hl__kick { font-size: .85rem; }
   .hl__title { font-size: clamp(2.3rem, 10.8vw, 2.65rem); margin-top: 20px; }
+  .hl__title--long { font-size: clamp(1.75rem, 8vw, 2.1rem); }
   .hl__lead { font-size: 1.03rem; margin-top: 18px; }
   .hl__cta { flex-direction: column; align-items: stretch; gap: 6px; margin-top: 30px; }
   .hl__cta .btn { justify-content: space-between; }

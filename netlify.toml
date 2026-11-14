@@ -1,5 +1,6 @@
 [build]
-  command = "npm run build"
+  # content-nov14: a one-time, idempotent content update (ClearUp's Nov 14 content file); never fails the build
+  command = "node scripts/content-nov14.mjs --apply --soft && npm run build"
   publish = ".next"
 
 [build.environment]
