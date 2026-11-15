@@ -1701,3 +1701,14 @@ html[dir="rtl"] .xstat__n { text-align: right; }
    script (/.netlify/scripts/hud) adds to every page — stays hidden on the site, whichever Netlify team hosts it.
    Only the frame is hidden; Netlify's script is not touched. If Netlify renames the frame, update this selector. */
 #nl-badge-frame, iframe[id^="nl-badge"] { display: none !important; }
+/* Nov 15, 2026 — «كيف نعمل» in order on a laptop: the section holds still while the visitor scrolls through it
+   (.proc--pin, set by Process.tsx only when it fits the screen); a step shows only once the line reaches it */
+.proc--pin { height: calc(100vh + var(--steps-h, 120vh)); padding-block: 0; overflow: visible; }
+.proc--pin .proc__pin { position: sticky; top: 0; height: 100vh; height: 100svh; display: flex; flex-direction: column; justify-content: center; padding-top: 70px; overflow: hidden; }
+.proc--pin .proc__pin > .wrap { width: 100%; }
+@media (min-width: 901px) {
+  .gp.is-drawn .gp__item:not(.is-lit) .gp__card,
+  :is(.tone--dark, .tone--purple) > .proc .gp.is-drawn .gp__item:not(.is-lit) .gp__card { opacity: 0; transform: translateY(14px); }
+  .gp.is-drawn .gp__item:not(.is-lit) .gp__stage { opacity: .4; }
+  .gp__stage { transition: color .4s, background .4s, border-color .4s, opacity .4s; }
+}

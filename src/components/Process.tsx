@@ -30,6 +30,28 @@ export default function Process({ s }: { s: Data }) {
   const line = useRef<SVGPathElement>(null);
   const [geo, setGeo] = useState<{ w: number; h: number; d: string; at: number[] } | null>(null);
   const [lit, setLit] = useState(-1);
+  // Nov 15, 2026 (Ghadir: «أول خطوة بتشوفها عين المشاهد هي 5»): on a laptop the path climbs, so step 5 sat highest
+  // and entered the screen first. Now the section holds still (sticky) while the visitor scrolls through it: the
+  // line draws from 1 to 5 and each step appears only when the line reaches it. Only when the whole section fits
+  // the screen; otherwise it scrolls normally and the steps still appear in order. Phones: the timeline already
+  // runs top to bottom, 1 → 5.
+  const sec = useRef<HTMLElement>(null);
+  const inner = useRef<HTMLDivElement>(null);
+  const [pin, setPin] = useState(false);
+
+  useEffect(() => {
+    const fit = () => {
+      const el = inner.current;
+      if (!el) return;
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const wide = window.matchMedia('(min-width: 901px)').matches;
+      setPin(!reduce && wide && n >= 2 && el.scrollHeight <= window.innerHeight - 96);
+    };
+    fit();
+    window.addEventListener('resize', fit);
+    document.fonts?.ready.then(fit).catch(() => {});
+    return () => window.removeEventListener('resize', fit);
+  }, [n]);
 
   // measure the nodes → the line through them (again on resize / font load)
   useEffect(() => {
@@ -70,14 +92,24 @@ export default function Process({ s }: { s: Data }) {
     let raf = 0;
     const paint = () => {
       raf = 0;
-      const r = el.getBoundingClientRect();
       const vh = window.innerHeight;
-      // starts drawing when the path's top passes 80 % of the screen. Done: on a phone (a tall timeline) when its
-      // bottom reaches 55 %; on a laptop (the path is one short row) when its bottom reaches 92 %, i.e. as soon
-      // as the whole path is on screen — before, the last step lit only once the title had scrolled under the
-      // menu (Mohamed's laptop notes, Nov 9, 2026)
-      const end = r.height < vh * 0.6 ? vh * 0.92 : vh * 0.55;
-      const p = Math.min(1, Math.max(0, (vh * 0.8 - r.top) / Math.max(1, r.height + vh * 0.8 - end)));
+      let p: number;
+      const st = sec.current;
+      if (pin && st) {
+        // held on screen: the scroll through the section is the progress (step 1 is on from the start)
+        const r = st.getBoundingClientRect();
+        p = Math.min(1, Math.max(0, -r.top / Math.max(1, r.height - vh)));
+      } else {
+        const r = el.getBoundingClientRect();
+        if (r.height < vh * 0.6) {
+          // laptop, not held (a short screen): starts once step 1 (the lowest) is on screen, done when the path's
+          // top reaches 15 % of the screen
+          p = Math.min(1, Math.max(0, (vh * 0.95 - r.bottom) / Math.max(1, vh * 0.8 - r.height)));
+        } else {
+          // phone timeline (1 at the top): starts when its top passes 80 % of the screen, done at 55 %
+          p = Math.min(1, Math.max(0, (vh * 0.8 - r.top) / Math.max(1, r.height + vh * 0.25)));
+        }
+      }
       ln.style.strokeDashoffset = `${len * (1 - p)}`;
       let k = -1;
       geo.at.forEach((a, i) => { if (p >= a - 0.001) k = i; });
@@ -89,15 +121,15 @@ export default function Process({ s }: { s: Data }) {
       if (en.isIntersecting && !listening) { listening = true; window.addEventListener('scroll', on, { passive: true }); on(); }
       else if (!en.isIntersecting && listening) { listening = false; window.removeEventListener('scroll', on); on(); }
     }, { rootMargin: '20% 0px 20% 0px' });
-    io.observe(el);
+    io.observe(sec.current ?? el);
     paint();
     return () => { io.disconnect(); window.removeEventListener('scroll', on); if (raf) cancelAnimationFrame(raf); };
-  }, [geo, n]);
+  }, [geo, n, pin]);
 
   if (!n) return null;
   return (
-    <section className="proc section" id="how">
-      <div className="wrap">
+    <section ref={sec} className={'proc section' + (pin ? ' proc--pin' : '')} id="how">
+      <div className="proc__pin"><div className="wrap" ref={inner}>
         <SectionHead index={s.index} eyebrow={s.eyebrow} title={s.title} lead={s.lead} />
         <div ref={box} className={'gp' + (geo ? ' is-drawn' : '')} style={{ ['--n' as string]: n }}>
           {geo && (
@@ -124,7 +156,7 @@ export default function Process({ s }: { s: Data }) {
             })}
           </ol>
         </div>
-      </div>
+      </div></div>
     </section>
   );
 }
