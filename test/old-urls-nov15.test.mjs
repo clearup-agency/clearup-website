@@ -20,3 +20,9 @@ test('Netlify applies the same old-URL redirects itself (netlify.toml)', async (
     assert.match(toml, new RegExp(`from = "${from}"\\s+to = "${to}"\\s+status = 301\\s+force = true`), from);
   }
 });
+
+test('the home address redirects to /ar/ on Netlify before any page is shown (no flash of public/index.html)', async () => {
+  const { readFileSync } = await import('node:fs');
+  const toml = readFileSync(new URL('../netlify.toml', import.meta.url), 'utf8');
+  assert.match(toml, /from = "\/"\s+to = "\/ar\/"\s+status = 302\s+force = true/);
+});

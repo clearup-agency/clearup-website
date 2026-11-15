@@ -24,6 +24,15 @@
   status = 301
   force = true
 
+# Nov 15, 2026: the home address goes straight to the Arabic site from the server. Without it Netlify served
+# public/index.html first (the static build's plain «English · العربية» page, kept for that build) and the
+# visitor saw it flash, unstyled, before its refresh moved on to /ar/.
+[[redirects]]
+  from = "/"
+  to = "/ar/"
+  status = 302
+  force = true
+
 # Nov 15, 2026: the old ClearUp site's pages (Google still lists them) → the new Arabic pages, applied by Netlify itself
 # before the request reaches the site (the same list is in next.config.mjs for other hosts). Netlify matches the path
 # with or without a trailing slash.
