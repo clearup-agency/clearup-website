@@ -1697,3 +1697,7 @@ html[dir="rtl"] .xstat__n { text-align: right; }
 .team2__m b, .team2__m span { overflow-wrap: anywhere; }
 .team2__m img { max-width: 100%; height: auto; }
 @media (max-width: 1080px) { .team2__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+/* Nov 15, 2026 (Mohamed): the free-plan «Powered by Netlify» badge — an iframe (#nl-badge-frame) that Netlify's own
+   script (/.netlify/scripts/hud) adds to every page — stays hidden on the site, whichever Netlify team hosts it.
+   Only the frame is hidden; Netlify's script is not touched. If Netlify renames the frame, update this selector. */
+#nl-badge-frame, iframe[id^="nl-badge"] { display: none !important; }
