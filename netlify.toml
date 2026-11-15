@@ -10,9 +10,10 @@
 # index the site. Production only — deploy previews stay «noindex» (src/lib/seo.ts).
 [context.production.environment]
   NEXT_PUBLIC_SITE_URL = "https://clearupagency.com"
-  SEO_INDEXABLE = "true"
+  # NEXT_PUBLIC_: baked into the build — Netlify gives netlify.toml values to the build only, not to the server later
+  NEXT_PUBLIC_SEO_INDEXABLE = "true"
   # Google Search Console ownership (URL-prefix property https://clearupagency.com/, HTML tag) — a public code, not a secret
-  GOOGLE_SITE_VERIFICATION = "X_iY82nerUtIm-kGb8eQjXVr7GtSqG4pShzBoxVfZe0"
+  NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION = "X_iY82nerUtIm-kGb8eQjXVr7GtSqG4pShzBoxVfZe0"
 
 # The Netlify address sends visitors (and search engines) to the official domain
 [[redirects]]

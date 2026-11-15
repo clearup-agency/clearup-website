@@ -15,7 +15,7 @@ const PREVIEW_HOST = /(\.vercel\.app|\.netlify\.app|\.pages\.dev)$/i;
 
 /** true only when SEO_INDEXABLE=true AND the site URL is not a preview host (and not a Vercel preview build). */
 export function isIndexable(): boolean {
-  if (process.env.SEO_INDEXABLE !== 'true') return false;
+  if ((process.env.NEXT_PUBLIC_SEO_INDEXABLE || process.env.SEO_INDEXABLE) !== 'true') return false;
   if (process.env.VERCEL_ENV && process.env.VERCEL_ENV !== 'production') return false;
   try {
     return !PREVIEW_HOST.test(new URL(SITE_URL).hostname);
@@ -51,7 +51,14 @@ const FALLBACK = {
      GOOGLE_SITE_VERIFICATION  the content="…" of Google's <meta name="google-site-verification">
      BING_SITE_VERIFICATION    the content="…" of Bing's <meta name="msvalidate.01"> */
 const CODE = /^[A-Za-z0-9_-]{8,100}$/;
-export function siteVerification(env: Record<string, string | undefined> = process.env): Pick<Metadata, 'verification'> {
+// Nov 15, 2026: the NEXT_PUBLIC_ names are baked into the build. On Netlify the values in netlify.toml exist only
+// while the site is built, not when a page is (re)generated on the server later; NEXT_PUBLIC_ values are written
+// into the code at build time, so they are there either way. (Without it the live pages said «noindex».)
+const VERIFY_ENV = () => ({
+  GOOGLE_SITE_VERIFICATION: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || process.env.GOOGLE_SITE_VERIFICATION,
+  BING_SITE_VERIFICATION: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION || process.env.BING_SITE_VERIFICATION,
+});
+export function siteVerification(env: Record<string, string | undefined> = VERIFY_ENV()): Pick<Metadata, 'verification'> {
   const google = env.GOOGLE_SITE_VERIFICATION?.trim() ?? '';
   const bing = env.BING_SITE_VERIFICATION?.trim() ?? '';
   const v: NonNullable<Metadata['verification']> = {};
