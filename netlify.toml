@@ -11,6 +11,8 @@
 [context.production.environment]
   NEXT_PUBLIC_SITE_URL = "https://clearupagency.com"
   SEO_INDEXABLE = "true"
+  # Google Search Console ownership (URL-prefix property https://clearupagency.com/, HTML tag) — a public code, not a secret
+  GOOGLE_SITE_VERIFICATION = "X_iY82nerUtIm-kGb8eQjXVr7GtSqG4pShzBoxVfZe0"
 
 # The Netlify address sends visitors (and search engines) to the official domain
 [[redirects]]

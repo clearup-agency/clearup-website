@@ -15,3 +15,8 @@ test('production uses the official domain and is indexable; previews are not', (
 test('the Netlify address redirects to the official domain', () => {
   assert.match(toml, /from = "https:\/\/wepclearup\.netlify\.app\/\*"\s+to = "https:\/\/clearupagency\.com\/:splat"\s+status = 301/);
 });
+
+test('Google Search Console verification code is set for production', () => {
+  const prod = toml.split('[context.production.environment]')[1] ?? '';
+  assert.match(prod, /GOOGLE_SITE_VERIFICATION = "X_iY82nerUtIm-kGb8eQjXVr7GtSqG4pShzBoxVfZe0"/);
+});
