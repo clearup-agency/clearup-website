@@ -12,3 +12,11 @@ test('old site URLs redirect permanently to the new Arabic pages', async () => {
   }
   assert.equal(to('/')?.destination, '/ar/');
 });
+
+test('Netlify applies the same old-URL redirects itself (netlify.toml)', async () => {
+  const { readFileSync } = await import('node:fs');
+  const toml = readFileSync(new URL('../netlify.toml', import.meta.url), 'utf8');
+  for (const [from, to] of [['/about', '/ar/about/'], ['/contact', '/ar/contact/'], ['/services', '/ar/services/'], ['/portfolio', '/ar/work/'], ['/home', '/ar/']]) {
+    assert.match(toml, new RegExp(`from = "${from}"\\s+to = "${to}"\\s+status = 301\\s+force = true`), from);
+  }
+});

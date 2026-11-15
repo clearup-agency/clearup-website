@@ -23,3 +23,87 @@
   to = "https://clearupagency.com/:splat"
   status = 301
   force = true
+
+# Nov 15, 2026: the old ClearUp site's pages (Google still lists them) → the new Arabic pages, applied by Netlify itself
+# before the request reaches the site (the same list is in next.config.mjs for other hosts). Netlify matches the path
+# with or without a trailing slash.
+[[redirects]]
+  from = "/about"
+  to = "/ar/about/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/about-us"
+  to = "/ar/about/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/team"
+  to = "/ar/about/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/contact"
+  to = "/ar/contact/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/contact-us"
+  to = "/ar/contact/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/services"
+  to = "/ar/services/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/service"
+  to = "/ar/services/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/work"
+  to = "/ar/work/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/portfolio"
+  to = "/ar/work/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/projects"
+  to = "/ar/work/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/our-work"
+  to = "/ar/work/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/case-studies"
+  to = "/ar/work/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/clients"
+  to = "/ar/work/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/home"
+  to = "/ar/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/index"
+  to = "/ar/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/index.html"
+  to = "/ar/"
+  status = 301
+  force = true
