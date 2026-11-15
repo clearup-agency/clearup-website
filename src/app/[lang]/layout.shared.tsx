@@ -8,6 +8,7 @@ import { googleFontHref, pageFont, themeCss } from '@/lib/theme';
 import { fetchGoogleCss, latinFiles } from '@/lib/fonts-server';
 import { isIndexable, SITE_URL } from '@/lib/seo';
 import ThmanyahHead from '@/components/ThmanyahHead';
+import Analytics from '@/components/Analytics';
 
 // The [lang] root layout — one implementation shared by both layout files (like work/[slug]):
 //   layout.dyn.tsx     server build: no dynamicParams here, so a client page added in the admin after the build
@@ -85,6 +86,7 @@ export default async function RootLayout({ children, params }: { children: React
       </head>
       <body>
         {children}
+        <Analytics />
       </body>
     </html>
   );

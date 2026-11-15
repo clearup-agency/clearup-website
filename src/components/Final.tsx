@@ -4,6 +4,7 @@ import type { Dict } from '@/lib/dict';
 import { FORM_DEFAULTS, FORM_TEXT, validateContact, type ContactInput, type FieldError } from '@/lib/contact';
 import { Arrow } from './Mark';
 import { waWithText } from '@/lib/rules';
+import { track } from './Analytics';
 
 type Mode = 'ask' | 'yes' | 'no' | 'sending' | 'sent' | 'error';
 type Errors = Partial<Record<keyof ContactInput, FieldError>>;
@@ -67,7 +68,7 @@ export default function Final({ d, focus, startOpen }: { d: Dict; focus?: string
         body: JSON.stringify({ ...c.value, website: data.website ?? '', lang, page: location.pathname, t: Date.now() - (opened.current || Date.now()) }),
       });
       const j = await r.json().catch(() => null);
-      if (r.ok && j?.ok) { setSent(c.value); setMode('sent'); return; }
+      if (r.ok && j?.ok) { setSent(c.value); setMode('sent'); track('generate_lead', { method: 'contact_form' }); return; }
       if (j?.reason === 'invalid' && j.errors) { setErrors(j.errors); setMode('yes'); return; }
       setSent(c.value);
       setMode('error');

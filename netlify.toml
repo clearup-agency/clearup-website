@@ -14,6 +14,8 @@
   NEXT_PUBLIC_SEO_INDEXABLE = "true"
   # Google Search Console ownership (URL-prefix property https://clearupagency.com/, HTML tag) — a public code, not a secret
   NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION = "X_iY82nerUtIm-kGb8eQjXVr7GtSqG4pShzBoxVfZe0"
+  # Google Analytics 4 (Clear Up Website stream) — a public ID, not a secret
+  NEXT_PUBLIC_GA_ID = "G-HWVCJ0TNE8"
 
 # The Netlify address sends visitors (and search engines) to the official domain
 [[redirects]]
