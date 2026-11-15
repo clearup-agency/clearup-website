@@ -30,7 +30,19 @@ const nextConfig = {
   // files named *.static.tsx are their static-export-only counterparts
   pageExtensions: STATIC ? ['tsx', 'ts', 'static.tsx'] : ['tsx', 'ts', 'dyn.tsx', 'dyn.ts'],
   ...(STATIC ? {} : {
-    redirects: async () => [{ source: '/', destination: '/ar/', permanent: false }],
+    redirects: async () => [
+      { source: '/', destination: '/ar/', permanent: false },
+      // Nov 15, 2026: the old ClearUp site (on Hostinger until the domain moved here) had its pages at /about,
+      // /contact… and Google still lists them; a permanent redirect sends visitors (and the pages' ranking) to the
+      // new Arabic pages instead of «page not found»
+      ...Object.entries({
+        about: 'about', 'about-us': 'about', team: 'about',
+        contact: 'contact', 'contact-us': 'contact',
+        services: 'services', service: 'services',
+        work: 'work', portfolio: 'work', projects: 'work', 'our-work': 'work', 'case-studies': 'work', clients: 'work',
+        home: '', index: '', 'index.html': '',
+      }).flatMap(([from, to]) => [`/${from}`, `/${from}/`].map((source) => ({ source, destination: `/ar/${to ? to + '/' : ''}`, permanent: true }))),
+    ],
     // the admin: never framed (clickjacking), never cached, never indexed
     headers: async () => [...['/admin/:path*', '/api/admin/:path*'].map((source) => ({
       source,
