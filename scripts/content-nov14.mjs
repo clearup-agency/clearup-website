@@ -72,11 +72,55 @@ function renameAll(node, where, changes) {
   }
 }
 
+/* Nov 15, 2026 (Mohamed: «خلينا على التوجه الجديد»): the About page, the site's Google title and description, and
+   the About page's Google description follow the new direction. Each text changes only while it still holds the
+   exact old wording, so an admin edit is never overwritten. [where, field path, old {ar,en}, new {ar,en}] */
+const OLD_ABOUT_SUMMARY = { ar: 'كلير أب شركة تطوير أعمال وتسويق ابتكاري من غزة، لريادة ونمو المؤسسات الصغيرة والمتوسطة. عملاؤنا: الشركات الناشئة والصغيرة والمتوسطة، المؤسسات غير الربحية والتنموية وبرامجها الممولة، ومسرّعات الأعمال وشركات الحلول الرقمية.', en: 'Clear Up is a business development and innovative marketing company from Gaza, for the growth of SMEs and organizations. Our clients: startups and SMEs, NGOs and development organizations and their funded programmes, accelerators and digital solutions companies.' };
+const NEW_ABOUT_SUMMARY = { ar: 'كلير أب شركة ابتكار وتحول بالذكاء الاصطناعي من غزة، تبني للمؤسسات أنظمة تصنع نمواً مستداماً. عملاؤنا: الشركات الناشئة والصغيرة والمتوسطة، المؤسسات غير الربحية والتنموية وبرامجها الممولة، ومسرّعات الأعمال وشركات الحلول الرقمية.', en: 'Clear Up is an innovation and AI transformation company from Gaza that builds systems for sustainable growth. Our clients: startups and SMEs, NGOs and development organizations and their funded programmes, accelerators and digital solutions companies.' };
+export const DIRECTION = [
+  ['about', 'pageHeadSection', ['title'], { ar: 'للرؤساء التنفيذيين الشجعان فقط', en: 'For Courageous CEOs Only' }, { ar: 'شريك المؤسسات في الابتكار والتحول بالذكاء الاصطناعي', en: 'Your partner in innovation and AI transformation' }],
+  ['about', 'pageHeadSection', ['lead'],
+    { ar: 'نساعد قادة الشركات الصغيرة والمتوسطة ومدراء المؤسسات التنموية على تحويل الأفكار والتمويل إلى نمو حقيقي قابل للقياس، ونبني داخل فرقهم القدرة على الابتكار حتى يستمر النمو بعد انتهاء عملنا.', en: 'We help SMEs and development organizations turn ideas and funding into real, measurable growth, and build innovation capability inside their teams so growth continues after we leave.' },
+    { ar: 'نساعد قادة المؤسسات على تحويل الأفكار والتمويل إلى نمو حقيقي قابل للقياس بالابتكار والذكاء الاصطناعي، ونبني داخل فرقهم القدرة على الابتكار حتى يستمر النمو بعد انتهاء عملنا.', en: 'We help organization leaders turn ideas and funding into real, measurable growth through innovation and AI, and build innovation capability inside their teams so growth continues after we leave.' }],
+  ['about', 'pageHeadSection', ['summary'], OLD_ABOUT_SUMMARY, NEW_ABOUT_SUMMARY],
+  ['about', 'manifestoSection', ['kicker'], { ar: 'للرؤساء التنفيذيين الشجعان فقط', en: 'For Courageous CEOs Only' }, { ar: 'قناعاتنا', en: 'What we believe' }],
+  ['about', 'manifestoSection', ['lines', 0], { ar: 'لا نبيع تصاميم.', en: 'We don’t sell designs.' }, { ar: 'لا نبيع حلولاً جاهزة.', en: 'We don’t sell off-the-shelf solutions.' }],
+  ['about', 'manifestoSection', ['lines', 1], { ar: 'نبني أنظمة أرباح.', en: 'We build profit systems.' }, { ar: 'نبني أنظمة تصنع نمواً مستداماً.', en: 'We build systems that create sustainable growth.' }],
+  ['about', 'manifestoSection', ['lines', 2], { ar: 'لا نشغّل حملات فقط. نبني إيرادات يمكن توقّعها.', en: 'We don’t just run campaigns. We engineer predictable revenue.' }, { ar: 'نختبر صغيراً قبل أن نراهن كبيراً، ونقيس كل خطوة بالأرقام.', en: 'We test small before we bet big, and measure every step in numbers.' }],
+  ['settings', null, ['metaTitle'], { ar: 'كلير أب — شركة تطوير أعمال وتسويق ابتكاري', en: 'Clear Up — Business development & innovative marketing' }, { ar: 'كلير أب — الابتكار والتحول بالذكاء الاصطناعي للمؤسسات', en: 'Clear Up — Innovation & AI Transformation for Organizations' }],
+  ['settings', null, ['metaDescription'],
+    { ar: 'كلير أب شركة تطوير أعمال وتسويق ابتكاري. نساعد قادة الشركات الصغيرة والمتوسطة ومدراء المؤسسات التنموية على تحويل الأفكار والتمويل إلى نمو حقيقي قابل للقياس.', en: 'Clear Up is an innovative marketing and business development company. We help SMEs and development organizations turn ideas and funding into real, measurable growth.' },
+    { ar: 'نبني للمؤسسات أنظمة ابتكار وذكاء اصطناعي تصنع نمواً مستداماً: تطوير المنتجات والخدمات، التسويق الابتكاري، التحول بالذكاء الاصطناعي، التدريب وبناء القدرات، والتحليل الاستراتيجي.', en: 'We build innovation and AI systems that create sustainable growth for organizations: product and service development, innovative marketing, AI transformation, training and capacity building, and strategic analysis.' }],
+  ['settings', null, ['pageMeta', 'about', 'description'],
+    { ar: 'كلير أب شركة تطوير أعمال وتسويق ابتكاري، لريادة ونمو المؤسسات الصغيرة والمتوسطة. عملاؤنا: الشركات الناشئة والصغيرة والمتوسطة، المؤسسات غير الربحية والتنموية وبرامجها الممولة، ومسرّعات الأعمال وشركات الحلول الرقمية.', en: 'Clear Up is a business development and innovative marketing company, for the growth of SMEs and organizations. Our clients: startups and SMEs, NGOs and development organizations and their funded programmes, accelerators and digital solutions companies.' },
+    NEW_ABOUT_SUMMARY],
+  ['home', 'heroSection', ['kicker'], { ar: 'شركة تطوير أعمال وتسويق ابتكاري', en: 'Business development & innovative marketing' }, { ar: 'شركة ابتكار وتحول بالذكاء الاصطناعي', en: 'Innovation & AI transformation company' }],
+  ['settings', null, ['chatbot', 'faq', 0, 'a'],
+    { ar: 'كلير أب شركة تطوير أعمال وتسويق ابتكاري من غزة. نساعد قادة الشركات الصغيرة والمتوسطة ومدراء المؤسسات التنموية على تحويل الأفكار والتمويل إلى نمو حقيقي قابل للقياس: نختبر الطلب في السوق قبل البناء، نطلق المنتجات والخدمات ونطوّرها، ونبني داخل فرقهم القدرة على الابتكار حتى يستمر النمو بعد انتهاء عملنا.', en: 'Clear Up is an innovative marketing and business development company from Gaza. We help SMEs and development organizations turn ideas and funding into real, measurable growth: we test market demand before building, launch and improve products and services, and build innovation capability inside your team so growth continues after we leave.' },
+    { ar: 'كلير أب شركة ابتكار وتحول بالذكاء الاصطناعي من غزة. نبني للمؤسسات أنظمة ابتكار وذكاء اصطناعي تصنع نمواً مستداماً، ونساعد قادتها على تحويل الأفكار والتمويل إلى نمو حقيقي قابل للقياس: نختبر الطلب في السوق قبل البناء، نطلق المنتجات والخدمات ونطوّرها، ونبني داخل فرقهم القدرة على الابتكار حتى يستمر النمو بعد انتهاء عملنا.', en: 'Clear Up is an innovation and AI transformation company from Gaza. We build innovation and AI systems that create sustainable growth for organizations, and help their leaders turn ideas and funding into real, measurable growth: we test market demand before building, launch and improve products and services, and build innovation capability inside your team so growth continues after we leave.' }],
+];
+function direction(c, changes) {
+  for (const [page, type, path, from, to] of DIRECTION) {
+    const roots = page === 'settings' ? [[c.settings, 'settings']] : (c.sections ?? []).filter((s) => (s?.page || 'home') === page && s?.type === type).map((s) => [s.data, `${page}/${type} ${s.id}`]);
+    for (const [root, where] of roots) {
+      let parent = root;
+      for (const k of path.slice(0, -1)) parent = parent?.[k];
+      const key = path[path.length - 1];
+      const cur = parent?.[key];
+      if (!cur || typeof cur !== 'object') continue;
+      for (const lang of ['ar', 'en']) {
+        if (cur[lang] === from[lang]) { changes.push({ where, field: path.join('.') + '.' + lang, from: cur[lang], to: to[lang] }); cur[lang] = to[lang]; }
+      }
+    }
+  }
+}
+
 /** The pure change: { content, changes } — idempotent (a second run reports no changes). */
 export function patch(content) {
   const c = clone(content ?? {});
   const changes = [];
   renameAll(c.settings, 'settings', changes);
+  direction(c, changes);
   for (const s of c.sections ?? []) renameAll(s?.data, `${s?.page || 'home'}/${s?.type} ${s?.id}`, changes);
   const set = (obj, key, val, where) => {
     if (same(obj[key], val)) return;
@@ -148,6 +192,8 @@ async function main() {
     if (changes.length) {
       await client.query('INSERT INTO site_v2_versions (user_email, action, detail, snapshot) VALUES ($1, $2, $3, $4)',
         ['content-script', 'content', `محتوى الموقع (14 نوفمبر): ${changes.length} تعديل`, JSON.stringify(before)]);
+      // the site settings too (Google title/description, the chatbot's answers live there)
+      if (!same(before.settings, content.settings)) await client.query('UPDATE site_v2_settings SET data = $1, updated_at = now() WHERE id = 1', [JSON.stringify(content.settings)]);
       const old = new Map(before.sections.map((x) => [x.id, x]));
       for (const x of content.sections) {
         if (!same(old.get(x.id)?.data, x.data)) await client.query('UPDATE site_v2_sections SET data = $2, updated_at = now() WHERE id = $1', [x.id, JSON.stringify(x.data)]);

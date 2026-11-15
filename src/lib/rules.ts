@@ -121,8 +121,9 @@ export function sameMedia(cover: Raw | null | undefined, video: Raw | null | und
 
 /* ——— WhatsApp ——— */
 export const WA_TEXT = {
-  ar: 'مرحباً ClearUp، أريد حجز مكالمة مجانية لمعرفة كيف أحسّن تسويقي.',
-  en: 'Hi ClearUp, I’d like to book a free call about my marketing.',
+  // Nov 15, 2026 (Mohamed): the new direction — the organization's growth, not «تسويقي»
+  ar: 'مرحباً ClearUp، أريد حجز مكالمة مجانية لمعرفة كيف تساعدون مؤسستي على النمو.',
+  en: 'Hi ClearUp, I’d like to book a free call to learn how you can help my organization grow.',
 };
 /** A wa.me link that opens WhatsApp with a ready message (in the page's language). */
 export function waWithText(link: string | null | undefined, lang: 'ar' | 'en' | string): string {

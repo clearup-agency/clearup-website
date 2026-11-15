@@ -56,3 +56,28 @@ test('the old service name left in other texts (chatbot, Services intro) follows
   assert.equal(content.sections[1].data.groups[0].k.ar, 'الاحتفاظ والأتمتة', 'another «أتمتة» is not touched');
   assert.equal(patch(content).changes.length, 0);
 });
+
+test('Nov 15: the About page, Google title/description, hero line and chatbot intro follow the new direction — only old wording changes', async () => {
+  const { DIRECTION } = await import('../scripts/content-nov14.mjs');
+  const pick = (page, type, path) => DIRECTION.find((d) => d[0] === page && d[1] === type && d[2].join('.') === path);
+  const t = pick('about', 'pageHeadSection', 'title');
+  const k = pick('about', 'manifestoSection', 'kicker');
+  const l0 = pick('about', 'manifestoSection', 'lines.0');
+  const mt = pick('settings', null, 'metaTitle');
+  const c = {
+    settings: { metaTitle: { _type: 'localeString', ...mt[3] }, chatbot: { faq: [] } },
+    sections: [
+      { id: 'a', page: 'about', type: 'pageHeadSection', data: { title: { _type: 'localeString', ...t[3] } } },
+      { id: 'm', page: 'about', type: 'manifestoSection', data: { kicker: { ...k[3] }, lines: [{ _key: 'x', ...l0[3] }] } },
+      { id: 'h', page: 'home', type: 'heroSection', data: { title: [L('عنوان كتبه الأدمن')], kicker: L('سطر كتبه الأدمن', 'Admin line') } },
+    ],
+  };
+  const { content } = patch(c);
+  assert.equal(content.sections[0].data.title.ar, 'شريك المؤسسات في الابتكار والتحول بالذكاء الاصطناعي');
+  assert.equal(content.sections[1].data.kicker.ar, 'قناعاتنا');
+  assert.equal(content.sections[1].data.lines[0].ar, 'لا نبيع حلولاً جاهزة.');
+  assert.equal(content.sections[1].data.lines[0]._key, 'x');
+  assert.match(content.settings.metaTitle.ar, /الذكاء الاصطناعي/);
+  assert.equal(content.sections[2].data.kicker.ar, 'سطر كتبه الأدمن', 'an admin edit stays');
+  assert.equal(patch(content).changes.length, 0);
+});
