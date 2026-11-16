@@ -41,8 +41,10 @@ test('a headline the admin rewrote afterwards is kept', () => {
   assert.equal(patch(b).content.sections[0].data.title[0].ar, 'عنوان كتبه الأدمن');
 });
 
-test('Netlify runs it before the build and it never fails the build', () => {
-  assert.match(readFileSync(new URL('../netlify.toml', import.meta.url), 'utf8'), /command = "node scripts\/content-nov14\.mjs --apply --soft && npm run build"/);
+test('retired: Netlify no longer runs it (Nov 16), and a later hero paragraph is never overwritten', () => {
+  assert.match(readFileSync(new URL('../netlify.toml', import.meta.url), 'utf8'), /command = "npm run build"/);
+  const c = before(); c.sections[0].data.lead = T('نعمل مع المؤسسات التنموية والإنسانية…');
+  assert.equal(patch(c).content.sections[0].data.lead.ar, 'نعمل مع المؤسسات التنموية والإنسانية…');
 });
 
 test('the old service name left in other texts (chatbot, Services intro) follows the rename, once', () => {

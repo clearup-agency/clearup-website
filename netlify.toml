@@ -1,6 +1,6 @@
 [build]
-  # content-nov14: a one-time, idempotent content update (ClearUp's Nov 14 content file); never fails the build
-  command = "node scripts/content-nov14.mjs --apply --soft && npm run build"
+  # (scripts/content-nov14.mjs ran here once, Nov 14–15, and is done: content is edited in the admin since)
+  command = "npm run build"
   publish = ".next"
 
 [build.environment]

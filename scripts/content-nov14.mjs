@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-/* Nov 14, 2026 — ClearUp's content file «محتوى الموقع» (Google Doc), as Mohamed confirmed it:
+/* RETIRED from the build (Nov 16, 2026): it ran on the live database on Nov 14–15; kept for the record and the tests.
+   Nov 14, 2026 — ClearUp's content file «محتوى الموقع» (Google Doc), as Mohamed confirmed it:
    1. Home hero: the big headline becomes «نبني للمؤسسات أنظمة ابتكار وذكاء اصطناعي متقدمة تصنع نمواً مستداماً.»
       (no struck-through word any more), and the paragraph under it is the new one.
    2. Service 03 «التحول بالذكاء الاصطناعي والحوكمة» (was «…والأتمتة»): its three parts (إعادة تصميم العمل، نموذج التشغيل،
@@ -139,7 +140,8 @@ export function patch(content) {
         set(d, 'title', HERO_TITLE.map((x, i) => ({ _key: keys[i] || `knov14t${i}`, ...x })), where);
         set(d, 'strike', ls('', ''), where);
       }
-      if (!/التحول بالذكاء الاصطناعي الذي يختاره القادة/.test(arOf(d.lead))) set(d, 'lead', HERO_LEAD, where);
+      // only the pre-Nov-14 paragraph is replaced (Nov 16: the admin writes its own since; never overwrite it)
+      if (/^نحوّل ميزانية تسويقك|^نحوّل ميزانية التسويق/.test(arOf(d.lead))) set(d, 'lead', HERO_LEAD, where);
     }
     if (s.type === 'offeringsSection' && Array.isArray(d.items)) {
       d.items.forEach((it, i) => {
