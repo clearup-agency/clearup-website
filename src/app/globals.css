@@ -1511,7 +1511,7 @@ html[dir="rtl"] .xstat__n { text-align: right; }
 /* Home «خدماتنا»: the five services read as one system that climbs (the six stages merged in) */
 .offer--steps .ocard__top { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; margin-bottom: 6px; }
 .offer--steps .ocard__i { font-size: 1.6rem; font-weight: 700; line-height: 1; color: var(--purple); letter-spacing: 0; font-variant-numeric: tabular-nums; }
-.ocard__steps { display: flex; align-items: flex-end; gap: 3px; height: 26px; direction: ltr; }
+.ocard__steps { display: flex; align-items: flex-end; gap: 3px; height: 26px; } /* rises in the reading direction */
 .ocard__steps i { display: block; width: 6px; height: calc(var(--h) * 100%); border-radius: 2px; background: var(--line); transition: background .3s; }
 .ocard__steps i.is-on { background: var(--purple); }
 .offer--steps .ocard:hover .ocard__steps i.is-on { background: var(--second, var(--purple)); }
@@ -1521,18 +1521,15 @@ html[dir="rtl"] .xstat__n { text-align: right; }
 .offer--steps .offer__grid li:nth-child(4) .ocard { border-top: 3px solid color-mix(in srgb, var(--purple) 80%, transparent); }
 .offer--steps .offer__grid li:nth-child(5) .ocard { border-top: 3px solid var(--purple); }
 @media (min-width: 1100px) {
-  .offer--steps .offer__grid { grid-template-columns: repeat(5, 1fr); align-items: end; }
+  .offer--steps .offer__grid { grid-template-columns: repeat(5, 1fr); align-items: stretch; } /* Nov 17: equal rows, so the padding below makes the tops climb 01 → 05 whatever the text length */
   .offer--steps .offer__grid li:nth-child(1) { padding-top: 64px; }
   .offer--steps .offer__grid li:nth-child(2) { padding-top: 48px; }
   .offer--steps .offer__grid li:nth-child(3) { padding-top: 32px; }
   .offer--steps .offer__grid li:nth-child(4) { padding-top: 16px; }
   .offer--steps .offer__grid li { display: flex; }
   .offer--steps .offer__grid li .ocard { width: 100%; }
-  /* Arabic climbs left → right like the stairs (Mohamed, Nov 8): 01 bottom-left … 05 top-right */
-  html[dir="rtl"] .offer--steps .offer__grid { direction: ltr; }
-  html[dir="rtl"] .offer--steps .offer__grid .ocard { direction: rtl; }
-  html[dir="ltr"] .offer--steps .offer__grid { direction: rtl; }
-  html[dir="ltr"] .offer--steps .offer__grid .ocard { direction: ltr; }
+  /* Nov 17, 2026 (Mohamed): the cards follow the reading direction — Arabic 01 on the right … 05 on the left,
+     English 01 on the left … 05 on the right (they no longer run left → right in Arabic) */
 }
 
 /* Services «خدماتنا» in the sticky scroll (StageScroll, the six stages' scroll) */
