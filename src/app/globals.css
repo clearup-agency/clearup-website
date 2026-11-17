@@ -1308,38 +1308,6 @@ html[dir="rtl"] .ocard__go .arrow { transform: scaleX(-1); }
 
 /* «كيف نعمل» — the growth path (Nov 8, 2026, second round): steps on a rising line that draws itself on scroll */
 .proc { background: var(--paper-2); overflow: hidden; }
-.gp { position: relative; --rise: clamp(26px, 3.4vw, 54px); }
-.gp__svg { position: absolute; inset: 0; pointer-events: none; overflow: visible; }
-.gp__rail { fill: none; stroke: rgba(91, 32, 150, .22); stroke-width: 2; stroke-dasharray: 3 9; stroke-linecap: round; }
-.gp__line { fill: none; stroke: var(--purple); stroke-width: 3.5; stroke-linecap: round; transition: stroke-dashoffset .12s linear; }
-.gp__list { position: relative; display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: clamp(12px, 1.6vw, 22px); align-items: start; }
-html[dir="rtl"] .gp__list { direction: ltr; }   /* climbs left → right in Arabic, like the six stages (Mohamed) */
-html[dir="ltr"] .gp__list { direction: rtl; }
-html[dir="rtl"] .gp__item { direction: rtl; }
-html[dir="ltr"] .gp__item { direction: ltr; }
-.gp__item { display: flex; flex-direction: column; align-items: center; gap: 12px; padding-top: calc((var(--n) - 1 - var(--k)) * var(--rise)); }
-.gp__stage { font-size: .82rem; font-weight: 700; color: var(--second); background: #fff; border: 1px solid rgba(91, 32, 150, .16); border-radius: 999px; padding: 4px 12px; white-space: nowrap; transition: color .4s, background .4s, border-color .4s; }
-.gp__item--top .gp__stage::after { content: ' ↗'; }
-.gp__node { position: relative; z-index: 1; display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; background: #fff; border: 2px solid var(--lav); color: var(--lav); font-weight: 800; font-size: 1.05rem; transition: background .45s var(--ease), color .45s, border-color .45s, box-shadow .45s, transform .45s var(--ease); }
-.gp__card { width: 100%; background: #fff; border: var(--card-border); border-radius: var(--r-card); padding: clamp(16px, 1.8vw, 22px); transition: opacity .5s var(--ease), transform .5s var(--ease), border-color .5s; }
-.gp__card h3 { font-size: 1.1rem; line-height: 1.35; margin-bottom: 6px; }
-.gp__card p { color: var(--muted); line-height: 1.65; font-size: .95rem; }
-.gp.is-drawn .gp__item:not(.is-lit) .gp__card { opacity: .45; transform: translateY(10px); }
-.gp__item.is-lit .gp__node { background: var(--purple); border-color: var(--purple); color: #fff; box-shadow: 0 0 0 7px rgba(91, 32, 150, .13); transform: scale(1.06); }
-.gp__item.is-lit .gp__stage { background: var(--purple); border-color: var(--purple); color: #fff; }
-.gp__item.is-lit .gp__card { border-color: rgba(91, 32, 150, .35); }
-.gp__item--top.is-lit .gp__node { background: var(--ink); border-color: var(--ink); }
-@media (max-width: 900px) {
-  .gp__list, html[dir] .gp__list { direction: inherit; grid-template-columns: 1fr; gap: 18px; }
-  html[dir="rtl"] .gp__list { direction: rtl; }
-  html[dir="ltr"] .gp__list { direction: ltr; }
-  .gp__item { display: grid; grid-template-columns: 46px minmax(0, 1fr); grid-template-areas: 'node stage' 'node card'; align-items: start; justify-items: start; column-gap: 16px; row-gap: 8px; padding-top: 0; }
-  .gp__node { grid-area: node; align-self: center; }
-  .gp__stage { grid-area: stage; }
-  .gp__card { grid-area: card; }
-  .gp.is-drawn .gp__item:not(.is-lit) .gp__card { transform: translateX(0) translateY(8px); }
-}
-@media (prefers-reduced-motion: reduce) { .gp__line { transition: none; } }
 
 /* ---------- «لون القسم»: dark / purple bands (Nov 8, 2026, second round — Mohamed: the site was all white but one
    section). Set per section in the admin (تصميم القسم → لون القسم). The band's own text turns light; the cards inside
@@ -1368,8 +1336,6 @@ html[dir="ltr"] .gp__item { direction: ltr; }
 /* products on purple: white cards, the «قريباً» badge stays readable */
 .tone--purple > .prods .prod { border-color: transparent; }
 /* growth path on a band */
-:is(.tone--dark, .tone--purple) > .proc .gp__rail { stroke: rgba(255, 255, 255, .3); }
-:is(.tone--dark, .tone--purple) > .proc .gp__line { stroke: var(--yellow); }
 :is(.tone--dark, .tone--purple) > .proc .gp__item.is-lit .gp__node { background: var(--yellow); border-color: var(--yellow); color: var(--ink); box-shadow: 0 0 0 7px rgba(255, 200, 61, .18); }
 :is(.tone--dark, .tone--purple) > .proc .gp__item.is-lit .gp__stage { background: #fff; border-color: #fff; color: var(--purple); }
 /* the problem's before/after on a band */
@@ -1645,12 +1611,10 @@ html[dir="rtl"] .xstat__n { text-align: right; }
 .tone--light > :is(.xsec--dark, .xsec--purple) { --muted: #5D5B66; --line: rgba(11, 11, 15, .12); }
 .tone--light > .xsec--purple .btn--light { background: var(--purple); color: #fff; }
 .tone--light > :is(.xsec--dark, .xsec--purple) :is(.shead__meta, .xsec__body a) { color: var(--purple); }
-:is(.tone--dark, .tone--purple) > .proc .gp.is-drawn .gp__item:not(.is-lit) .gp__card { opacity: 1; background: rgba(255, 255, 255, .06); border-color: rgba(255, 255, 255, .16); color: #F5F7FA; --muted: rgba(245, 247, 250, .74); }
 :is(.tone--dark, .tone--purple) > .pain .pain__x { color: var(--lilac); }
 :is(.tone--dark, .tone--purple) > .pain .pain__list { border-top-color: rgba(245, 247, 250, .4); }
 
 /* Services «من الفرصة إلى النمو» (Mohamed, Nov 11): the whole path line reads purple, not only its drawn part */
-.pg--services .proc:not(:is(.tone--dark, .tone--purple) > .proc) .gp__rail { stroke: color-mix(in srgb, var(--purple) 70%, transparent); stroke-width: 2.5; stroke-dasharray: none; }
 
 /* Nov 12, 2026: service parts keep the line breaks they were written with */
 .stage__pl, .oserv__pl { white-space: pre-line; }
@@ -1701,14 +1665,41 @@ html[dir="rtl"] .xstat__n { text-align: right; }
    script (/.netlify/scripts/hud) adds to every page — stays hidden on the site, whichever Netlify team hosts it.
    Only the frame is hidden; Netlify's script is not touched. If Netlify renames the frame, update this selector. */
 #nl-badge-frame, iframe[id^="nl-badge"] { display: none !important; }
-/* Nov 15, 2026 — «كيف نعمل» in order on a laptop: the section holds still while the visitor scrolls through it
-   (.proc--pin, set by Process.tsx only when it fits the screen); a step shows only once the line reaches it */
-.proc--pin { height: calc(100vh + var(--steps-h, 120vh)); padding-block: 0; overflow: visible; }
-.proc--pin .proc__pin { position: sticky; top: 0; height: 100vh; height: 100svh; display: flex; flex-direction: column; justify-content: center; padding-top: 70px; overflow: hidden; }
-.proc--pin .proc__pin > .wrap { width: 100%; }
-@media (min-width: 901px) {
-  .gp.is-drawn .gp__item:not(.is-lit) .gp__card,
-  :is(.tone--dark, .tone--purple) > .proc .gp.is-drawn .gp__item:not(.is-lit) .gp__card { opacity: 0; transform: translateY(14px); }
-  .gp.is-drawn .gp__item:not(.is-lit) .gp__stage { opacity: .4; }
-  .gp__stage { transition: color .4s, background .4s, border-color .4s, opacity .4s; }
+/* Nov 17, 2026 — «كيف نعمل» as a level timeline (Mohamed chose proposal 2): one straight line through every step, a
+   growth bar above each that rises from the first step to the last, the steps lighting up in order (Process.tsx) */
+.gp { position: relative; --bar: clamp(46px, 5vw, 76px); --node: 46px; }
+.gp__list { position: relative; display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: clamp(12px, 1.6vw, 22px); align-items: start; }
+.gp__item { display: flex; flex-direction: column; align-items: center; gap: 12px; min-width: 0; }
+.gp__bar { height: var(--bar); width: 100%; display: flex; align-items: flex-end; justify-content: center; }
+.gp__bar b { display: block; width: clamp(30px, 3vw, 44px); height: calc((var(--k) + 1) / var(--n) * 100%); border-radius: 12px 0 12px 0; background: linear-gradient(to top, var(--purple), var(--lav)); transform-origin: bottom; transition: transform .7s var(--ease), opacity .5s; }
+.gp__rail { position: absolute; z-index: 0; top: calc(var(--bar) + 12px + var(--node) / 2 - 1.5px); inset-inline: calc(100% / var(--n) / 2); height: 3px; border-radius: 3px; background: rgba(91, 32, 150, .15); }
+.gp__rail i { position: absolute; inset-block: 0; inset-inline-start: 0; width: calc(var(--fill, 1) * 100%); border-radius: inherit; background: var(--purple); transition: width var(--dur, .38s) linear; }
+.gp__node { position: relative; z-index: 1; display: grid; place-items: center; width: var(--node); height: var(--node); border-radius: 50%; background: #fff; border: 2px solid var(--lav); color: var(--lav); font-weight: 800; font-size: 1.05rem; transition: background .45s var(--ease), color .45s, border-color .45s, box-shadow .45s, transform .45s var(--ease); }
+.gp__stage { font-size: .82rem; font-weight: 700; color: var(--second); background: #fff; border: 1px solid rgba(91, 32, 150, .16); border-radius: 999px; padding: 4px 12px; white-space: nowrap; transition: color .4s, background .4s, border-color .4s; }
+.gp__item--top .gp__stage::after { content: ' ↗'; }
+.gp__card { width: 100%; background: #fff; border: var(--card-border); border-radius: var(--r-card); padding: clamp(16px, 1.8vw, 22px); transition: opacity .55s var(--ease), transform .55s var(--ease), border-color .5s; }
+.gp__card h3 { font-size: 1.1rem; line-height: 1.35; margin-bottom: 6px; }
+.gp__card p { color: var(--muted); line-height: 1.65; font-size: .95rem; }
+.gp__item.is-lit .gp__node { background: var(--purple); border-color: var(--purple); color: #fff; box-shadow: 0 0 0 7px rgba(91, 32, 150, .13); }
+.gp__item--top.is-lit .gp__node { background: var(--ink); border-color: var(--ink); }
+.gp__item.is-lit .gp__stage { background: var(--purple); border-color: var(--purple); color: #fff; }
+.gp__item.is-lit .gp__card { border-color: rgba(91, 32, 150, .35); }
+/* waiting for their turn (only once JS is on: without it everything shows) */
+.gp.is-armed .gp__item:not(.is-lit) .gp__card { opacity: 0; transform: translateY(14px); }
+.gp.is-armed .gp__item:not(.is-lit) .gp__bar b { transform: scaleY(0); opacity: 0; }
+.gp.is-armed .gp__item:not(.is-lit) .gp__stage { opacity: .45; }
+:is(.tone--dark, .tone--purple) > .proc .gp__rail { background: rgba(255, 255, 255, .2); }
+:is(.tone--dark, .tone--purple) > .proc .gp__rail i { background: var(--yellow); }
+:is(.tone--dark, .tone--purple) > .proc .gp__bar b { background: linear-gradient(to top, var(--yellow), rgba(255, 255, 255, .85)); }
+@media (max-width: 900px) {
+  .gp { --bar: 0px; }
+  .gp__list { grid-template-columns: 1fr; gap: 18px; }
+  .gp__rail { top: 0; bottom: 0; height: auto; width: 3px; inset-inline: auto; inset-inline-start: calc(var(--node) / 2 - 1.5px); }
+  .gp__rail i { width: 100%; height: calc(var(--fill, 1) * 100%); }
+  .gp__item { display: grid; grid-template-columns: var(--node) minmax(0, 1fr); grid-template-areas: 'node stage' 'node card'; align-items: start; justify-items: start; column-gap: 16px; row-gap: 8px; }
+  .gp__bar { display: none; }
+  .gp__node { grid-area: node; align-self: center; }
+  .gp__stage { grid-area: stage; }
+  .gp__card { grid-area: card; }
 }
+@media (prefers-reduced-motion: reduce) { .gp__rail i, .gp__card, .gp__bar b, .gp__node { transition: none; } }

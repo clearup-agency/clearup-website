@@ -19,6 +19,6 @@ test('publish script sets the colours Mohamed listed, idempotently', () => {
   assert.match(s, /every\(\(\[k, v\]\) => d\[k\] === v\)\) continue;/);
 });
 
-test('Services growth path: the whole line is purple', () => {
-  assert.match(read('../src/app/globals.css'), /\.pg--services \.proc[^{]*\.gp__rail \{ stroke: color-mix\(in srgb, var\(--purple\)/);
+test('growth path (Nov 17, level timeline): the line fills in purple as the steps light up', () => {
+  assert.match(read('../src/app/globals.css'), /\.gp__rail i \{[^}]*background: var\(--purple\)/);
 });

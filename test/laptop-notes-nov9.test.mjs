@@ -15,14 +15,15 @@ test('«احجز مكالمة وضوح» lands on the booking form (#book) when 
   assert.match(src('src/components/pages/CtaBand.tsx'), /d\.links\?\.book/);
 });
 
-test('growth path (Nov 15): on a laptop the steps appear in order, 1 → 5, while the section is held on screen', () => {
+test('growth path (Nov 17, proposal 2): a level line with growth bars; the steps light up in order, 1 → n', () => {
   const p = src('src/components/Process.tsx');
-  assert.match(p, /proc--pin/);
-  assert.match(p, /-r\.top \/ Math\.max\(1, r\.height - vh\)/);
-  assert.match(p, /el\.scrollHeight <= window\.innerHeight - 96/, 'held only when the whole section fits the screen');
+  assert.doesNotMatch(p, /proc--pin|padding-top: calc\(/, 'no pinned section, no staircase');
+  assert.match(p, /className="gp__bar"/);
+  assert.match(p, /if \(shown >= seen\.current\) return;\s*shown \+= 1;/, 'one step at a time, never past the furthest seen');
   const css = src('src/app/globals.css');
-  assert.match(css, /\.proc--pin \.proc__pin \{ position: sticky; top: 0;/);
-  assert.match(css, /\.gp\.is-drawn \.gp__item:not\(\.is-lit\) \.gp__card,[\s\S]*?\{ opacity: 0;/, 'a step not reached yet does not show');
+  assert.match(css, /\.gp__bar b \{[^}]*height: calc\(\(var\(--k\) \+ 1\) \/ var\(--n\) \* 100%\)/, 'bars rise from the first step to the last');
+  assert.match(css, /\.gp\.is-armed \.gp__item:not\(\.is-lit\) \.gp__card \{ opacity: 0;/, 'a step not reached yet does not show (only with JS on)');
+  assert.doesNotMatch(css, /\.proc--pin/);
 });
 
 // the hero clip's centred laptop player was replaced on Nov 11, 2026 by the big 9:16 intro card (hero-landing-nov11.test.mjs)
