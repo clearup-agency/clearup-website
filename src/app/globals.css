@@ -1116,7 +1116,6 @@ html[lang="en"] .foot__tag { direction: ltr; }
 .ocard:hover { border-color: var(--purple); transform: translateY(-3px); }
 .ocard__i { font-size: .8rem; font-weight: 700; color: var(--second); letter-spacing: .08em; }
 .ocard__t { font-size: var(--t-h3); line-height: 1.35; }
-.ocard__en { font-size: .78rem; color: var(--muted); letter-spacing: .02em; }
 .ocard__d { color: var(--muted); font-size: .95rem; line-height: 1.7; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 .ocard__go { margin-top: auto; padding-top: 6px; color: var(--purple); }
 html[dir="rtl"] .ocard__go .arrow { transform: scaleX(-1); }
@@ -1293,10 +1292,14 @@ html[dir="rtl"] .ocard__go .arrow { transform: scaleX(-1); }
 .shead__meta::after { content: ''; display: inline-block; width: 42px; height: 14px; margin-inline-start: 10px; vertical-align: middle; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 40'%3E%3Cpath d='M2 36 L34 26 L54 30 L84 14 L118 4' fill='none' stroke='%235B2096' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M106 4 H118 V16' fill='none' stroke='%235B2096' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; opacity: .55; }
 [dir='rtl'] .shead__meta::after { transform: scaleX(-1); }
 .prods__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: var(--gap-card); }
-.prod { border: var(--card-border); border-radius: var(--r-card); padding: var(--pad-card); background: var(--paper); display: flex; flex-direction: column; gap: 12px; }
-.prod__top { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 0; }
-.prod__name { font-size: var(--t-h3); color: var(--ink); }
-.prod__badge { font-size: var(--t-small); font-weight: 700; color: var(--purple); background: var(--paper-2); border-radius: 999px; padding: 3px 10px; }
+/* Nov 22, 2026 (Mohamed): the name on one line, the badge under it, then the description — and each of these on the
+   same line in every card (subgrid rows shared across the row of cards) */
+.prod { border: var(--card-border); border-radius: var(--r-card); padding: var(--pad-card); background: var(--paper); display: grid; grid-row: span 4; grid-template-rows: subgrid; row-gap: 12px; align-content: start; }
+.prod__top { display: contents; }
+.prod__name { font-size: clamp(1.1rem, 1.35vw, 1.5rem); line-height: 1.35; color: var(--ink); align-self: end; }
+.prod__badge { justify-self: start; align-self: start; font-size: var(--t-small); font-weight: 700; color: var(--purple); background: var(--paper-2); border-radius: 999px; padding: 3px 10px; }
+.prod__top:not(:has(.prod__badge))::after { content: ''; }
+@media (min-width: 1100px) { .prod__name { white-space: nowrap; } }
 .prod__desc { margin: 0; color: var(--muted); line-height: 1.7; }
 .prod__cta { margin-top: auto; }
 [dir='ltr'] .proc__path li + li::before { content: '→'; }
@@ -1521,13 +1524,14 @@ html[dir="rtl"] .xstat__n { text-align: right; }
 .offer--steps .offer__grid li:nth-child(4) .ocard { border-top: 3px solid color-mix(in srgb, var(--purple) 80%, transparent); }
 .offer--steps .offer__grid li:nth-child(5) .ocard { border-top: 3px solid var(--purple); }
 @media (min-width: 1100px) {
-  .offer--steps .offer__grid { grid-template-columns: repeat(5, 1fr); align-items: stretch; } /* Nov 17: equal rows, so the padding below makes the tops climb 01 → 05 whatever the text length */
-  .offer--steps .offer__grid li:nth-child(1) { padding-top: 64px; }
-  .offer--steps .offer__grid li:nth-child(2) { padding-top: 48px; }
-  .offer--steps .offer__grid li:nth-child(3) { padding-top: 32px; }
-  .offer--steps .offer__grid li:nth-child(4) { padding-top: 16px; }
-  .offer--steps .offer__grid li { display: flex; }
-  .offer--steps .offer__grid li .ocard { width: 100%; }
+  /* Nov 22, 2026 (Mohamed): every card the same height, whatever its text — no stair */
+  .offer--steps .offer__grid { grid-template-columns: repeat(5, 1fr); align-items: stretch; }
+  /* number / title / description / arrow sit on the same rows in all five cards (shared subgrid rows) */
+  .offer--steps .offer__grid { row-gap: 8px; }
+  .offer--steps .offer__grid li { display: grid; grid-row: span 4; grid-template-rows: subgrid; }
+  .offer--steps .offer__grid li .ocard { width: 100%; grid-row: span 4; display: grid; grid-template-rows: subgrid; row-gap: 8px; }
+  .offer--steps .offer__grid .ocard__t { align-self: start; }
+  .offer--steps .offer__grid .ocard__go { align-self: end; }
   /* Nov 17, 2026 (Mohamed): the cards follow the reading direction — Arabic 01 on the right … 05 on the left,
      English 01 on the left … 05 on the right (they no longer run left → right in Arabic) */
 }
@@ -1665,7 +1669,7 @@ html[dir="rtl"] .xstat__n { text-align: right; }
 /* Nov 17, 2026 — «كيف نعمل» as a level timeline (Mohamed chose proposal 2): one straight line through every step, a
    growth bar above each that rises from the first step to the last, the steps lighting up in order (Process.tsx) */
 .gp { position: relative; --bar: clamp(46px, 5vw, 76px); --node: 46px; }
-.gp__list { position: relative; display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: clamp(12px, 1.6vw, 22px); align-items: start; }
+.gp__list { position: relative; display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: clamp(12px, 1.6vw, 22px); align-items: stretch; }
 .gp__item { display: flex; flex-direction: column; align-items: center; gap: 12px; min-width: 0; }
 .gp__bar { height: var(--bar); width: 100%; display: flex; align-items: flex-end; justify-content: center; }
 .gp__bar b { display: block; width: clamp(30px, 3vw, 44px); height: calc((var(--k) + 1) / var(--n) * 100%); border-radius: 12px 0 12px 0; background: linear-gradient(to top, var(--purple), var(--lav)); transform-origin: bottom; transition: transform .7s var(--ease), opacity .5s; }
@@ -1674,7 +1678,7 @@ html[dir="rtl"] .xstat__n { text-align: right; }
 .gp__node { position: relative; z-index: 1; display: grid; place-items: center; width: var(--node); height: var(--node); border-radius: 50%; background: #fff; border: 2px solid var(--lav); color: var(--lav); font-weight: 800; font-size: 1.05rem; transition: background .45s var(--ease), color .45s, border-color .45s, box-shadow .45s, transform .45s var(--ease); }
 .gp__stage { font-size: .82rem; font-weight: 700; color: var(--second); background: #fff; border: 1px solid rgba(91, 32, 150, .16); border-radius: 999px; padding: 4px 12px; white-space: nowrap; transition: color .4s, background .4s, border-color .4s; }
 .gp__item--top .gp__stage::after { content: ' ↗'; }
-.gp__card { width: 100%; background: #fff; border: var(--card-border); border-radius: var(--r-card); padding: clamp(16px, 1.8vw, 22px); transition: opacity .55s var(--ease), transform .55s var(--ease), border-color .5s; }
+.gp__card { flex: 1 0 auto; width: 100%; background: #fff; border: var(--card-border); border-radius: var(--r-card); padding: clamp(16px, 1.8vw, 22px); transition: opacity .55s var(--ease), transform .55s var(--ease), border-color .5s; }
 .gp__card h3 { font-size: 1.1rem; line-height: 1.35; margin-bottom: 6px; }
 .gp__card p { color: var(--muted); line-height: 1.65; font-size: .95rem; }
 .gp__item.is-lit .gp__node { background: var(--purple); border-color: var(--purple); color: #fff; box-shadow: 0 0 0 7px rgba(91, 32, 150, .13); }

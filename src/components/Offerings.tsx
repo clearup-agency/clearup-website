@@ -34,7 +34,7 @@ export default function Offerings({ s, lang, servicesHref }: { s: Data; lang: 'a
                     <span className="ocard__steps">{items.map((_, k) => <i key={k} className={k <= i ? 'is-on' : ''} style={{ ['--h' as any]: (k + 1) / items.length }} />)}</span>
                   </span>
                   <h3 className="ocard__t">{it.title}</h3>
-                  {it.en && <bdi className="ocard__en" dir="ltr" data-f={`items.${(s.items ?? []).indexOf(it)}.en`}>{it.en}</bdi>}
+                  {/* Nov 22, 2026 (Mohamed): Home's cards show the Arabic only — no English name line */}
                   {(it.short || it.desc) && <p className="ocard__d">{it.short || it.desc}</p>}
                   <span className="ocard__go" aria-hidden="true"><Arrow /></span>
                 </a>
