@@ -1527,8 +1527,12 @@ html[dir="rtl"] .xstat__n { text-align: right; }
 @media (min-width: 1100px) {
   /* Nov 22, 2026 (Mohamed): every card the same height, whatever its text — no stair */
   .offer--steps .offer__grid { grid-template-columns: repeat(5, 1fr); align-items: stretch; }
-  .offer--steps .offer__grid li { display: flex; }
-  .offer--steps .offer__grid li .ocard { width: 100%; }
+  /* number / title / English name / description / arrow sit on the same rows in all five cards (shared subgrid rows) */
+  .offer--steps .offer__grid { row-gap: 8px; }
+  .offer--steps .offer__grid li { display: grid; grid-row: span 5; grid-template-rows: subgrid; }
+  .offer--steps .offer__grid li .ocard { width: 100%; grid-row: span 5; display: grid; grid-template-rows: subgrid; row-gap: 8px; }
+  .offer--steps .offer__grid .ocard__t { align-self: start; }
+  .offer--steps .offer__grid .ocard__go { align-self: end; }
   /* Arabic climbs left → right like the stairs (Mohamed, Nov 8): 01 bottom-left … 05 top-right */
   html[dir="rtl"] .offer--steps .offer__grid { direction: ltr; }
   html[dir="rtl"] .offer--steps .offer__grid .ocard { direction: rtl; }
