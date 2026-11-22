@@ -1116,7 +1116,6 @@ html[lang="en"] .foot__tag { direction: ltr; }
 .ocard:hover { border-color: var(--purple); transform: translateY(-3px); }
 .ocard__i { font-size: .8rem; font-weight: 700; color: var(--second); letter-spacing: .08em; }
 .ocard__t { font-size: var(--t-h3); line-height: 1.35; }
-.ocard__en { font-size: .78rem; color: var(--muted); letter-spacing: .02em; }
 .ocard__d { color: var(--muted); font-size: .95rem; line-height: 1.7; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 .ocard__go { margin-top: auto; padding-top: 6px; color: var(--purple); }
 html[dir="rtl"] .ocard__go .arrow { transform: scaleX(-1); }
@@ -1527,10 +1526,10 @@ html[dir="rtl"] .xstat__n { text-align: right; }
 @media (min-width: 1100px) {
   /* Nov 22, 2026 (Mohamed): every card the same height, whatever its text — no stair */
   .offer--steps .offer__grid { grid-template-columns: repeat(5, 1fr); align-items: stretch; }
-  /* number / title / English name / description / arrow sit on the same rows in all five cards (shared subgrid rows) */
+  /* number / title / description / arrow sit on the same rows in all five cards (shared subgrid rows) */
   .offer--steps .offer__grid { row-gap: 8px; }
-  .offer--steps .offer__grid li { display: grid; grid-row: span 5; grid-template-rows: subgrid; }
-  .offer--steps .offer__grid li .ocard { width: 100%; grid-row: span 5; display: grid; grid-template-rows: subgrid; row-gap: 8px; }
+  .offer--steps .offer__grid li { display: grid; grid-row: span 4; grid-template-rows: subgrid; }
+  .offer--steps .offer__grid li .ocard { width: 100%; grid-row: span 4; display: grid; grid-template-rows: subgrid; row-gap: 8px; }
   .offer--steps .offer__grid .ocard__t { align-self: start; }
   .offer--steps .offer__grid .ocard__go { align-self: end; }
   /* Arabic climbs left → right like the stairs (Mohamed, Nov 8): 01 bottom-left … 05 top-right */
