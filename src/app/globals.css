@@ -1848,7 +1848,7 @@ html[dir="rtl"] .xstat__n { text-align: right; }
 @media (max-width: 600px) { .asx__axes li { grid-template-columns: 1fr auto; } .asx__axes i { grid-column: 1 / -1; grid-row: 2; } }
 
 /* cards: extra parts */
-.vcard__big { font-size: 2.6rem; font-weight: 800; line-height: 1; color: var(--lilac); }
+.vcard__big { font-size: 2.6rem; font-weight: 800; line-height: 1; color: var(--yellow); }
 .vcard__chips { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: auto; padding-top: 12px; border-top: 1px solid var(--line); }
 .vcard__chips em { font-style: normal; font-size: .76rem; font-weight: 700; color: var(--muted); margin-inline-end: 4px; width: 100%; }
 .vcard__chips span { font-size: .82rem; font-weight: 600; color: var(--purple); background: var(--paper-2); border-radius: 8px 0 8px 0; padding: .3em .7em; }
@@ -1866,6 +1866,13 @@ html[dir="ltr"] .vcard__cycle li + li::before { content: '→'; }
 .vcards--outcome .vcard__t { font-size: clamp(1.35rem, 2vw, 1.8rem); font-weight: 800; }
 .vcards--outcome .vcard__chips span { background: rgba(255,255,255,.1); color: var(--lilac); }
 /* departments (home): compact cards, the growth partner across the row */
+.vcards--dept .vcards__grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+@media (max-width: 1100px) { .vcards--dept .vcards__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 760px) { .vcards--dept .vcards__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .vcards--dept .vcards__grid { grid-template-columns: 1fr; } }
+.vcards--dept .vcard--feature { flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 28px; }
+.vcards--dept .vcard--feature .vcard__cycle { flex: 1 1 auto; justify-content: center; margin: 0; }
+.vcards--dept .vcard--feature .vcard__cta { margin: 0; align-self: center; }
 .vcards--dept .vcard { gap: 8px; transition: border-color .2s, transform .25s var(--ease); }
 .vcards--dept .vcard:hover { border-color: var(--purple); transform: translateY(-3px); }
 .vcards--dept .vcard__t { font-size: 1.3rem; }
@@ -1971,3 +1978,22 @@ html[dir="rtl"] .vfs__f input[dir="ltr"] { text-align: right; }
 .vfs__tick { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: #fff; color: var(--purple); font-weight: 800; font-size: 1.3rem; }
 .vfs .ph-inline { background: rgba(255,255,255,.1); }
 @media (max-width: 900px) { .vfs__grid { grid-template-columns: 1fr; } .vfs__card { position: static; } }
+
+/* the programmes in the sticky scroll (StageScroll, like the old Services page) */
+.prog__tag { font-style: normal; margin-inline-start: 12px; font-size: .78rem; font-weight: 700; color: var(--ink); background: var(--yellow); border-radius: 6px 0 6px 0; padding: .2em .6em; }
+.system--prog .stage__name { color: #fff; }
+.prog__promise { font-size: clamp(1.05rem, 1.4vw, 1.3rem); font-weight: 600; color: var(--lav); margin-top: 8px; max-width: 34em; }
+.prog__cycle { margin-top: 12px; font-weight: 700; color: var(--yellow); }
+.prog__impact li { border-color: color-mix(in srgb, var(--yellow) 45%, transparent); }
+.prog__proof { margin-top: 14px; font-size: .88rem; color: rgba(245,247,250,.9); border-inline-start: 3px solid var(--yellow); padding-inline-start: 10px; }
+.prog__cta { margin-top: 16px; }
+.prog__vizp { max-width: 18em; text-align: center; font-size: 1.05rem; font-weight: 600; color: rgba(245,247,250,.85); line-height: 1.6; }
+.system--prog .stage__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 24px; }
+@media (max-width: 760px) { .system--prog .stage__grid { grid-template-columns: 1fr; } }
+/* departments: previous / next inside the panel */
+.vdept__step { display: flex; gap: 8px; }
+.vdept__step button { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px 0 12px 0; border: 1.5px solid var(--line); font-weight: 800; font-size: 1.1rem; color: var(--purple); transition: border-color .2s, background .2s; }
+.vdept__step button:hover:not(:disabled) { border-color: var(--purple); background: var(--paper-2); }
+.vdept__step button:disabled { opacity: .35; cursor: default; }
+.vdept__end { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.vcards--dept .vcard--feature .vcard__tag { flex-basis: 100%; margin-bottom: -6px; }

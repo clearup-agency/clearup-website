@@ -37,6 +37,7 @@ import { CardsSection, CaseSpotlight, LandingHead, OfferSection, ProgramsSection
 import Assessment from './v3/Assessment';
 import FormSteps from './v3/FormSteps';
 import Departments from './v3/Departments';
+import ProgramsScroll from './v3/ProgramsScroll';
 
 // the id each built-in section already carries; a different anchor set in the CMS gets its own marker
 const DEFAULT_ID: Record<string, string> = {
@@ -107,7 +108,7 @@ export default function Sections({ sections, mark, focus, ctx }: { sections: Sec
           case 'departmentsSection': el = <Departments s={data} lang={lng(d)} />; break;
           case 'cardsSection': el = <CardsSection s={data} lang={lng(d)} page={ctx?.page ?? 'home'} />; break;
           case 'offerSection': el = <OfferSection s={data} lang={lng(d)} page={ctx?.page ?? 'home'} />; break;
-          case 'programsSection': el = <ProgramsSection s={data} lang={lng(d)} page={ctx?.page ?? 'home'} />; break;
+          case 'programsSection': el = data.scroll ? <ProgramsScroll s={data} lang={lng(d)} /> : <ProgramsSection s={data} lang={lng(d)} page={ctx?.page ?? 'home'} />; break;
           case 'caseSpotlightSection': el = <CaseSpotlight s={data} />; break;
           case 'assessmentSection': el = <Assessment s={data} hrefs={{ book: ctx?.links.book ?? '#book', accelerator: ctx?.links.accelerator ?? '/', assessment: ctx?.links.assessment ?? '/' }} />; break;
           case 'formSection': el = <FormSteps s={data} lang={lng(d)} />; break;

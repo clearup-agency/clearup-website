@@ -1589,6 +1589,949 @@
    }
   },
   {
+   "id": "kworkhome",
+   "page": "home",
+   "type": "workStoriesSection",
+   "hidden": false,
+   "data": {
+    "lead": {
+     "ar": "اضغط على أي دائرة وتفرّج: محاضراتنا، وقاعات التدريب، وإعلانات من إنتاجنا.",
+     "en": "Tap any circle: our lectures, our training rooms, and ads we produced.",
+     "_type": "localeText"
+    },
+    "title": {
+     "ar": "شغلنا من جوّا.",
+     "en": "Our work, from the inside.",
+     "_type": "localeString"
+    },
+    "groups": [
+     {
+      "_key": "k32041addf0",
+      "name": {
+       "ar": "من محاضراتنا",
+       "en": "From our lectures",
+       "_type": "localeString"
+      },
+      "_type": "workGroup",
+      "cover": {
+       "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794475101/clearup/site/lecture_poster.jpg",
+       "_type": "image",
+       "width": 720,
+       "height": 1280
+      },
+      "items": [
+       {
+        "_key": "k83400e99c4",
+        "_type": "storyItem",
+        "video": {
+         "url": "https://res.cloudinary.com/uyzluzlo/video/upload/v1794475119/clearup/site/lecture44k.mp4",
+         "_type": "file"
+        },
+        "caption": {
+         "ar": "نشرح لطلابنا حملاتنا الحقيقية",
+         "en": "We walk our students through real campaigns",
+         "_type": "localeString"
+        }
+       }
+      ]
+     },
+     {
+      "_key": "ktraingrp1",
+      "name": {
+       "ar": "من التدريب",
+       "en": "From our training",
+       "_type": "localeString"
+      },
+      "_type": "workGroup",
+      "cover": {
+       "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794475103/clearup/site/training_coach.jpg",
+       "_type": "image",
+       "width": 720,
+       "height": 1280
+      },
+      "items": [
+       {
+        "_key": "ktrimg1",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "متدربون في قاعة التدريب",
+          "en": "Trainees in the training room",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794475102/clearup/site/training_class.jpg",
+         "_type": "image",
+         "width": 720,
+         "height": 1280
+        },
+        "caption": {
+         "ar": "من قاعة التدريب",
+         "en": "In the training room",
+         "_type": "localeString"
+        }
+       },
+       {
+        "_key": "ktrimg2",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "عبد المنعم يدرّب المشاركين",
+          "en": "Abd Al Menem coaching participants",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794475103/clearup/site/training_coach.jpg",
+         "_type": "image",
+         "width": 720,
+         "height": 1280
+        },
+        "caption": {
+         "ar": "عبد المنعم مع المتدربين",
+         "en": "Abd Al Menem with the trainees",
+         "_type": "localeString"
+        }
+       },
+       {
+        "_key": "ktrimg3",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "متدربة تعرض مشروعها",
+          "en": "A trainee presenting her project",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794475103/clearup/site/training_present.jpg",
+         "_type": "image",
+         "width": 720,
+         "height": 1280
+        },
+        "caption": {
+         "ar": "المتدربون يعرضون مشاريعهم",
+         "en": "Trainees present their projects",
+         "_type": "localeString"
+        }
+       },
+       {
+        "_key": "ktrdrv1785",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "من التدريب والمحاضرات",
+          "en": "From our trainings and lectures",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794475104/clearup/site/training_img_1785.jpg",
+         "_type": "image",
+         "width": 900,
+         "height": 1200
+        }
+       },
+       {
+        "_key": "ktrdrv1790",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "من التدريب والمحاضرات",
+          "en": "From our trainings and lectures",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794475105/clearup/site/training_img_1790.jpg",
+         "_type": "image",
+         "width": 900,
+         "height": 1200
+        }
+       },
+       {
+        "_key": "ktrdrv1793",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "من التدريب والمحاضرات",
+          "en": "From our trainings and lectures",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794475106/clearup/site/training_img_1793.jpg",
+         "_type": "image",
+         "width": 1200,
+         "height": 900
+        }
+       },
+       {
+        "_key": "ktrdrv1799",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "من التدريب والمحاضرات",
+          "en": "From our trainings and lectures",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794475106/clearup/site/training_img_1799.jpg",
+         "_type": "image",
+         "width": 900,
+         "height": 1200
+        }
+       },
+       {
+        "_key": "ktrdrv1800",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "من التدريب والمحاضرات",
+          "en": "From our trainings and lectures",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794475107/clearup/site/training_img_1800.jpg",
+         "_type": "image",
+         "width": 900,
+         "height": 1200
+        }
+       },
+       {
+        "_key": "ktrdrv1801",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "من التدريب والمحاضرات",
+          "en": "From our trainings and lectures",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794475108/clearup/site/training_img_1801.jpg",
+         "_type": "image",
+         "width": 900,
+         "height": 1200
+        }
+       },
+       {
+        "_key": "ktrdrv1802",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "من التدريب والمحاضرات",
+          "en": "From our trainings and lectures",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794475109/clearup/site/training_img_1802.jpg",
+         "_type": "image",
+         "width": 900,
+         "height": 1200
+        }
+       },
+       {
+        "_key": "ktrdrv1803",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "من التدريب والمحاضرات",
+          "en": "From our trainings and lectures",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794475110/clearup/site/training_img_1803.jpg",
+         "_type": "image",
+         "width": 900,
+         "height": 1200
+        }
+       },
+       {
+        "_key": "ktrdrv1932",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "من التدريب والمحاضرات",
+          "en": "From our trainings and lectures",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794475111/clearup/site/training_img_1932.jpg",
+         "_type": "image",
+         "width": 900,
+         "height": 1200
+        }
+       },
+       {
+        "_key": "ktrdrv3186",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "من التدريب والمحاضرات",
+          "en": "From our trainings and lectures",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794475112/clearup/site/training_img_3186.jpg",
+         "_type": "image",
+         "width": 661,
+         "height": 1200
+        }
+       },
+       {
+        "_key": "ktrdrv3187",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "من التدريب والمحاضرات",
+          "en": "From our trainings and lectures",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794475112/clearup/site/training_img_3187.jpg",
+         "_type": "image",
+         "width": 666,
+         "height": 1200
+        }
+       },
+       {
+        "_key": "ktrdrv5220",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "من التدريب والمحاضرات",
+          "en": "From our trainings and lectures",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794475113/clearup/site/training_img_5220.jpg",
+         "_type": "image",
+         "width": 675,
+         "height": 1200
+        }
+       },
+       {
+        "_key": "ktrdrv5221",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "من التدريب والمحاضرات",
+          "en": "From our trainings and lectures",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794475114/clearup/site/training_img_5221.jpg",
+         "_type": "image",
+         "width": 675,
+         "height": 1200
+        }
+       },
+       {
+        "_key": "ktrdrv5222",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "من التدريب والمحاضرات",
+          "en": "From our trainings and lectures",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794475115/clearup/site/training_img_5222.jpg",
+         "_type": "image",
+         "width": 675,
+         "height": 1200
+        }
+       },
+       {
+        "_key": "ktrdrv5223",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "من التدريب والمحاضرات",
+          "en": "From our trainings and lectures",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794475116/clearup/site/training_img_5223.jpg",
+         "_type": "image",
+         "width": 675,
+         "height": 1200
+        }
+       },
+       {
+        "_key": "ktrnew0",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "من تدريبات كلير أب",
+          "en": "From ClearUp's training",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794487657/clearup/site/train_IMG_1804.jpg",
+         "_type": "image",
+         "width": 1012,
+         "height": 1350
+        },
+        "caption": {
+         "ar": "من تدريباتنا",
+         "en": "From our training",
+         "_type": "localeString"
+        }
+       },
+       {
+        "_key": "ktrnew1",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "من تدريبات كلير أب",
+          "en": "From ClearUp's training",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794487657/clearup/site/train_IMG_1803.jpg",
+         "_type": "image",
+         "width": 1012,
+         "height": 1350
+        },
+        "caption": {
+         "ar": "من تدريباتنا",
+         "en": "From our training",
+         "_type": "localeString"
+        }
+       },
+       {
+        "_key": "ktrnew2",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "من تدريبات كلير أب",
+          "en": "From ClearUp's training",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794487657/clearup/site/train_IMG_1801.jpg",
+         "_type": "image",
+         "width": 1012,
+         "height": 1350
+        },
+        "caption": {
+         "ar": "من تدريباتنا",
+         "en": "From our training",
+         "_type": "localeString"
+        }
+       },
+       {
+        "_key": "ktrnew3",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "من تدريبات كلير أب",
+          "en": "From ClearUp's training",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794487657/clearup/site/train_IMG_1799.jpg",
+         "_type": "image",
+         "width": 1012,
+         "height": 1350
+        },
+        "caption": {
+         "ar": "من تدريباتنا",
+         "en": "From our training",
+         "_type": "localeString"
+        }
+       },
+       {
+        "_key": "ktrnew4",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "من تدريبات كلير أب",
+          "en": "From ClearUp's training",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794487658/clearup/site/train_IMG_1793.jpg",
+         "_type": "image",
+         "width": 1080,
+         "height": 810
+        },
+        "caption": {
+         "ar": "من تدريباتنا",
+         "en": "From our training",
+         "_type": "localeString"
+        }
+       },
+       {
+        "_key": "ktrnew5",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "من تدريبات كلير أب",
+          "en": "From ClearUp's training",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794487658/clearup/site/train_IMG_1802.jpg",
+         "_type": "image",
+         "width": 1012,
+         "height": 1350
+        },
+        "caption": {
+         "ar": "من تدريباتنا",
+         "en": "From our training",
+         "_type": "localeString"
+        }
+       },
+       {
+        "_key": "ktrnew6",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "من تدريبات كلير أب",
+          "en": "From ClearUp's training",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794487658/clearup/site/train_IMG_1800.jpg",
+         "_type": "image",
+         "width": 1012,
+         "height": 1350
+        },
+        "caption": {
+         "ar": "من تدريباتنا",
+         "en": "From our training",
+         "_type": "localeString"
+        }
+       },
+       {
+        "_key": "ktrnew7",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "من تدريبات كلير أب",
+          "en": "From ClearUp's training",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794487658/clearup/site/train_IMG_1790.jpg",
+         "_type": "image",
+         "width": 1012,
+         "height": 1350
+        },
+        "caption": {
+         "ar": "من تدريباتنا",
+         "en": "From our training",
+         "_type": "localeString"
+        }
+       },
+       {
+        "_key": "ktrnew8",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "من تدريبات كلير أب",
+          "en": "From ClearUp's training",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794487658/clearup/site/train_IMG_1788.jpg",
+         "_type": "image",
+         "width": 1080,
+         "height": 810
+        },
+        "caption": {
+         "ar": "من تدريباتنا",
+         "en": "From our training",
+         "_type": "localeString"
+        }
+       },
+       {
+        "_key": "ktrnew9",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "من تدريبات كلير أب",
+          "en": "From ClearUp's training",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794487658/clearup/site/train_IMG_5223.jpg",
+         "_type": "image",
+         "width": 759,
+         "height": 1350
+        },
+        "caption": {
+         "ar": "من تدريباتنا",
+         "en": "From our training",
+         "_type": "localeString"
+        }
+       },
+       {
+        "_key": "ktrnew10",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "من تدريبات كلير أب",
+          "en": "From ClearUp's training",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794487658/clearup/site/train_IMG_1789.jpg",
+         "_type": "image",
+         "width": 1012,
+         "height": 1350
+        },
+        "caption": {
+         "ar": "من تدريباتنا",
+         "en": "From our training",
+         "_type": "localeString"
+        }
+       },
+       {
+        "_key": "ktrnew11",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "من تدريبات كلير أب",
+          "en": "From ClearUp's training",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794487658/clearup/site/train_IMG_5224.jpg",
+         "_type": "image",
+         "width": 1080,
+         "height": 608
+        },
+        "caption": {
+         "ar": "من تدريباتنا",
+         "en": "From our training",
+         "_type": "localeString"
+        }
+       },
+       {
+        "_key": "ktrnew12",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "من تدريبات كلير أب",
+          "en": "From ClearUp's training",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794487658/clearup/site/train_IMG_5222.jpg",
+         "_type": "image",
+         "width": 759,
+         "height": 1350
+        },
+        "caption": {
+         "ar": "من تدريباتنا",
+         "en": "From our training",
+         "_type": "localeString"
+        }
+       },
+       {
+        "_key": "ktrnew13",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "من تدريبات كلير أب",
+          "en": "From ClearUp's training",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794487658/clearup/site/train_IMG_1784.jpg",
+         "_type": "image",
+         "width": 1012,
+         "height": 1350
+        },
+        "caption": {
+         "ar": "من تدريباتنا",
+         "en": "From our training",
+         "_type": "localeString"
+        }
+       },
+       {
+        "_key": "ktrnew14",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "من تدريبات كلير أب",
+          "en": "From ClearUp's training",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794487659/clearup/site/train_IMG_1785.jpg",
+         "_type": "image",
+         "width": 1012,
+         "height": 1350
+        },
+        "caption": {
+         "ar": "من تدريباتنا",
+         "en": "From our training",
+         "_type": "localeString"
+        }
+       },
+       {
+        "_key": "ktrnew15",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "من تدريبات كلير أب",
+          "en": "From ClearUp's training",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794487659/clearup/site/train_IMG_5220.jpg",
+         "_type": "image",
+         "width": 759,
+         "height": 1350
+        },
+        "caption": {
+         "ar": "من تدريباتنا",
+         "en": "From our training",
+         "_type": "localeString"
+        }
+       },
+       {
+        "_key": "ktrnew16",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "من تدريبات كلير أب",
+          "en": "From ClearUp's training",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794487659/clearup/site/train_IMG_5221.jpg",
+         "_type": "image",
+         "width": 759,
+         "height": 1350
+        },
+        "caption": {
+         "ar": "من تدريباتنا",
+         "en": "From our training",
+         "_type": "localeString"
+        }
+       },
+       {
+        "_key": "ktrnew17",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "من تدريبات كلير أب",
+          "en": "From ClearUp's training",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794487659/clearup/site/train_IMG_5219.jpg",
+         "_type": "image",
+         "width": 759,
+         "height": 1350
+        },
+        "caption": {
+         "ar": "من تدريباتنا",
+         "en": "From our training",
+         "_type": "localeString"
+        }
+       },
+       {
+        "_key": "ktrnew18",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "من تدريبات كلير أب",
+          "en": "From ClearUp's training",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794487659/clearup/site/train_IMG_1962.jpg",
+         "_type": "image",
+         "width": 1012,
+         "height": 1350
+        },
+        "caption": {
+         "ar": "من تدريباتنا",
+         "en": "From our training",
+         "_type": "localeString"
+        }
+       },
+       {
+        "_key": "ktrnew19",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "من تدريبات كلير أب",
+          "en": "From ClearUp's training",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794487659/clearup/site/train_IMG_1972.jpg",
+         "_type": "image",
+         "width": 1012,
+         "height": 1350
+        },
+        "caption": {
+         "ar": "من تدريباتنا",
+         "en": "From our training",
+         "_type": "localeString"
+        }
+       },
+       {
+        "_key": "ktrnew20",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "من تدريبات كلير أب",
+          "en": "From ClearUp's training",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794487659/clearup/site/train_IMG_1956.jpg",
+         "_type": "image",
+         "width": 759,
+         "height": 1350
+        },
+        "caption": {
+         "ar": "من تدريباتنا",
+         "en": "From our training",
+         "_type": "localeString"
+        }
+       },
+       {
+        "_key": "ktrnew21",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "من تدريبات كلير أب",
+          "en": "From ClearUp's training",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794487659/clearup/site/train_IMG_1932.jpg",
+         "_type": "image",
+         "width": 1012,
+         "height": 1350
+        },
+        "caption": {
+         "ar": "من تدريباتنا",
+         "en": "From our training",
+         "_type": "localeString"
+        }
+       }
+      ]
+     },
+     {
+      "_key": "kc393d51704",
+      "name": {
+       "ar": "إعلان من إنتاجنا",
+       "en": "An ad we produced",
+       "_type": "localeString"
+      },
+      "_type": "workGroup",
+      "cover": {
+       "url": "/media/story-emmar.webp",
+       "_type": "image",
+       "width": 432,
+       "height": 768
+      },
+      "items": [
+       {
+        "_key": "k001472b7ff",
+        "_type": "storyItem",
+        "image": {
+         "url": "/media/story-emmar.webp",
+         "_type": "image",
+         "width": 432,
+         "height": 768
+        },
+        "video": {
+         "url": "/media/story-emmar.mp4",
+         "_type": "file"
+        },
+        "caption": {
+         "ar": "إعلان من إنتاجنا لإعمار كلين",
+         "en": "An ad we produced for Emmar Clean",
+         "_type": "localeString"
+        }
+       }
+      ]
+     },
+     {
+      "_key": "kgmishwar",
+      "name": {
+       "ar": "مشوار",
+       "en": "Mishwar",
+       "_type": "localeString"
+      },
+      "_type": "workGroup",
+      "cover": {
+       "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794487663/clearup/site/mishwar_reel1_poster.jpg",
+       "_type": "image",
+       "width": 720,
+       "height": 1280
+      },
+      "items": [
+       {
+        "_key": "kmw1",
+        "_type": "storyItem",
+        "video": {
+         "url": "https://res.cloudinary.com/uyzluzlo/video/upload/v1794487661/clearup/site/mishwar_reel1.mp4",
+         "_type": "file"
+        },
+        "caption": {
+         "ar": "من شغلنا مع مشوار",
+         "en": "Our work with Mishwar",
+         "_type": "localeString"
+        }
+       },
+       {
+        "_key": "kmw2",
+        "_type": "storyItem",
+        "video": {
+         "url": "https://res.cloudinary.com/uyzluzlo/video/upload/v1794487662/clearup/site/mishwar_reel2.mp4",
+         "_type": "file"
+        },
+        "caption": {
+         "ar": "من شغلنا مع مشوار",
+         "en": "Our work with Mishwar",
+         "_type": "localeString"
+        }
+       }
+      ]
+     },
+     {
+      "_key": "kgresults",
+      "name": {
+       "ar": "نتائج",
+       "en": "Results",
+       "_type": "localeString"
+      },
+      "_type": "workGroup",
+      "cover": {
+       "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794487659/clearup/site/results.jpg",
+       "_type": "image",
+       "width": 1600,
+       "height": 900
+      },
+      "items": [
+       {
+        "_key": "kres1",
+        "_type": "storyItem",
+        "image": {
+         "alt": {
+          "ar": "نتائج عملائنا",
+          "en": "Our clients' results",
+          "_type": "localeString"
+         },
+         "url": "https://res.cloudinary.com/uyzluzlo/image/upload/v1794487659/clearup/site/results.jpg",
+         "_type": "image",
+         "width": 1600,
+         "height": 900
+        },
+        "caption": {
+         "ar": "نتائج حقيقية",
+         "en": "Real results",
+         "_type": "localeString"
+        }
+       }
+      ]
+     }
+    ],
+    "eyebrow": {
+     "ar": "من شغلنا · ورا الكواليس",
+     "en": "Our work · behind the scenes",
+     "_type": "localeString"
+    }
+   }
+  },
+  {
+   "id": "kstorieshome",
+   "page": "home",
+   "type": "clientStoriesSection",
+   "hidden": false,
+   "data": {
+    "hint": {
+     "ar": "أمثلة مؤقتة — تُستبدل بأعمال العملاء الحقيقية.",
+     "en": "Temporary samples — to be replaced with real client work.",
+     "_type": "localeString"
+    },
+    "lead": {
+     "ar": "اضغط على شعار أي عميل وتصفّح ما صنعناه معه، تماماً كالستوري.",
+     "en": "Tap a client’s logo and flip through what we made together, just like stories.",
+     "_type": "localeText"
+    },
+    "index": "",
+    "title": {
+     "ar": "شغلنا كما يراه جمهورهم.",
+     "en": "Our work, the way their audience sees it.",
+     "_type": "localeString"
+    },
+    "clients": [],
+    "eyebrow": {
+     "ar": "أعمال عملائنا",
+     "en": "Client work",
+     "_type": "localeString"
+    }
+   }
+  },
+  {
    "id": "kp0005",
    "page": "home",
    "type": "proofSection",
@@ -1878,7 +2821,9 @@
      "before": "قبل",
      "after": "بعد (مخرج متوقع)",
      "programs": "البرامج",
-     "cta": "حوّل هذا القسم"
+     "cta": "حوّل هذا القسم",
+     "prev": "القسم السابق",
+     "next": "القسم التالي"
     },
     "items": [
      {
@@ -1936,6 +2881,7 @@
    "hidden": false,
    "data": {
     "anchor": "programs",
+    "scroll": true,
     "eyebrow": "البرامج بالتفصيل",
     "title": "نقطة بداية، وتسعة برامج، وباقة شاملة.",
     "lead": "كل برنامج يُعرض بالقالب نفسه: سطر الوعد، ما يشمله، دور الذكاء الاصطناعي، والأثر المتوقع.",
