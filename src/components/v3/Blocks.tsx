@@ -52,41 +52,39 @@ export function LandingHead({ s, lang, page }: { s: Raw; lang: L; page: string }
   );
 }
 
-/** A table that becomes one card per row on a phone (each cell keeps its column name). */
-export function TableSection({ s, lang, page }: { s: Raw; lang: L; page: string }) {
-  const cols = list<string>(s.columns);
-  const rows = list(s.rows);
-  if (!rows.length) return null;
-  const hasCta = rows.some((r) => str(r.cta));
+/** «كيف نختار» — the selection criteria as weight bars out of 100 (each bar's length is its weight), the total
+ *  beside them, and the bonus points and the diversity rule as two short notes. */
+export function WeightsSection({ s }: { s: Raw }) {
+  const items = list(s.items);
+  if (!items.length) return null;
+  const total = items.reduce((n, it) => n + (Number(it.w) || 0), 0);
+  const max = Math.max(...items.map((it) => Number(it.w) || 0), 1);
+  const notes = list(s.notes);
   return (
-    <section className={'vtab section' + (s.compact ? ' section--tight' : '')} id={str(s.anchor) || undefined}>
+    <section className="vw section" id={str(s.anchor) || undefined}>
       <div className="wrap">
         <SectionHead eyebrow={str(s.eyebrow)} title={str(s.title)} lead={str(s.lead)} />
-        <div className="vt" data-reveal style={{ ['--cols' as string]: cols.length + (hasCta ? 1 : 0) }}>
-          <div className="vt__row vt__row--head" role="row">
-            {cols.map((c, i) => <span key={i} role="columnheader">{c}</span>)}
-            {hasCta && <span aria-hidden="true" />}
-          </div>
-          {rows.map((r, i) => (
-            <div key={i} className={'vt__row' + (r.feature ? ' vt__row--feature' : '')} role="row">
-              {list<string>(r.cells).map((c, j) => (
-                <div key={j} className={'vt__c' + (j === 0 ? ' vt__c--k' : '')} role="cell">
-                  {j > 0 && cols[j] && <em className="vt__lbl">{cols[j]}</em>}
-                  <span><Ph t={c} /></span>
-                </div>
-              ))}
-              {hasCta && (
-                <div className="vt__c vt__c--cta" role="cell">
-                  {str(r.cta) && <a className="link" href={vhref(r.href, lang, page)}>{r.cta}<Arrow /></a>}
-                </div>
-              )}
-            </div>
-          ))}
+        <div className="vw__grid">
+          <ol className="vw__list" data-reveal>
+            {items.map((it, i) => (
+              <li key={i} className="vw__item">
+                <span className="vw__name"><Ph t={it.t} /></span>
+                <span className="vw__bar" aria-hidden="true"><b style={{ width: `${((Number(it.w) || 0) / max) * 100}%` }} /></span>
+                <span className="vw__w num">{it.w}</span>
+              </li>
+            ))}
+          </ol>
+          <aside className="vw__side">
+            <div className="vw__total" data-reveal><span className="num">{total}</span><em>{s.totalLabel}</em></div>
+            {notes.map((n, i) => (
+              <div key={i} className="vw__note" data-reveal>
+                <h3>{n.t}</h3>
+                {str(n.d) && <p><Ph t={n.d} /></p>}
+                {list<string>(n.bullets).length > 0 && <ul>{list<string>(n.bullets).map((x, j) => <li key={j}><Ph t={x} /></li>)}</ul>}
+              </div>
+            ))}
+          </aside>
         </div>
-        {str(s.note) && <p className="vtab__note"><Ph t={s.note} /></p>}
-        {s.foot && str(s.foot.label) && (
-          <p className="vtab__foot"><a className="link" href={vhref(s.foot.href, lang, page)}>{s.foot.label}<Arrow /></a></p>
-        )}
       </div>
     </section>
   );
@@ -107,6 +105,8 @@ export function CardsSection({ s, lang, page }: { s: Raw; lang: L; page: string 
             <li key={i} className={'vcard' + (it.feature ? ' vcard--feature' : '')} id={str(it.id) || undefined} data-reveal style={{ ['--i' as string]: i }}>
               {v === 'numbered' && <span className="vcard__n">{i + 1}</span>}
               {v === 'check' && <span className="vcard__ic" aria-hidden="true">✓</span>}
+              {v === 'track' && <span className="vcard__lvl" aria-hidden="true">{items.map((_, j) => <i key={j} className={j <= i ? 'is-on' : ''} />)}</span>}
+              {v === 'outcome' && <span className="vcard__big num">{String(i + 1).padStart(2, '0')}</span>}
               {str(it.tag) && <p className="vcard__tag"><Ph t={it.tag} /></p>}
               {str(it.t) && <h3 className="vcard__t"><Ph t={it.t} /></h3>}
               {str(it.quote) && <p className="vcard__quote"><Ph t={it.quote} /></p>}
@@ -115,6 +115,12 @@ export function CardsSection({ s, lang, page }: { s: Raw; lang: L; page: string 
                 <dl className="vcard__rows">
                   {list(it.rows).map((r, j) => <div key={j}><dt>{r.k}</dt><dd><Ph t={r.v} /></dd></div>)}
                 </dl>
+              )}
+              {list<string>(it.cycle).length > 0 && (
+                <ol className="vcard__cycle">{list<string>(it.cycle).map((c, j) => <li key={j}>{c}</li>)}</ol>
+              )}
+              {list<string>(it.chips).length > 0 && (
+                <p className="vcard__chips">{str(it.chipsLabel) && <em>{it.chipsLabel}</em>}{list<string>(it.chips).map((c, j) => <span key={j}>{c}</span>)}</p>
               )}
               {list<string>(it.bullets).length > 0 && <ul className="vcard__ul">{list<string>(it.bullets).map((b, j) => <li key={j}><Ph t={b} /></li>)}</ul>}
               {str(it.cta) && <a className="link vcard__cta" href={vhref(it.href, lang, page)}>{it.cta}<Arrow /></a>}

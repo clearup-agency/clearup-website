@@ -128,7 +128,7 @@ const SHARED = new Set(['faqSection', 'systemSection', 'offeringsSection', 'tool
 const OWN: Record<string, string[]> = { proofSection: ['limit', 'all', 'allTestimonials'] };
 const PLACEMENT = ['_key', '_type', '_page', 'anchor', 'hidden', 'design', 'compact', 'more'];
 export const SHARED_TYPES = SHARED;
-const V3_TYPES = new Set(['landingHeadSection', 'tableSection', 'cardsSection', 'offerSection', 'programsSection', 'caseSpotlightSection', 'assessmentSection', 'formSection']);
+const V3_TYPES = new Set(['landingHeadSection', 'weightsSection', 'departmentsSection', 'cardsSection', 'offerSection', 'programsSection', 'caseSpotlightSection', 'assessmentSection', 'formSection']);
 /** The keys a reader of a shared section keeps for itself (where it sits, how it looks, its own switches). */
 export const ownKeys = (type: string) => [...PLACEMENT, ...(OWN[type] ?? [])];
 type Kind = { type: string; page: string; hidden: boolean; compact: boolean };
