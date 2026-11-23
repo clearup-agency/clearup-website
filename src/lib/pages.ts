@@ -9,7 +9,7 @@ import { polishContent } from './polish';
    Case studies («أعمالنا»): one row each on the pseudo-page "cases", type caseStudy; each is a page at
    /<lang>/work/<slug>/ and a card on the Work page (and on Home when «مميّزة»). */
 
-export const PAGE_IDS = ['home', 'services', 'work', 'about', 'contact'] as const;
+export const PAGE_IDS = ['home', 'services', 'work', 'about', 'contact', 'sectors', 'accelerator', 'assessment'] as const;
 export type PageId = (typeof PAGE_IDS)[number];
 export const CASES = 'cases';
 export const CASE_TYPE = 'caseStudy';
@@ -21,6 +21,9 @@ export const PAGE_INFO: Record<PageId | 'cases', { title: string; slug: string }
   work: { title: 'أعمالنا', slug: 'work' },
   about: { title: 'من نحن', slug: 'about' },
   contact: { title: 'تواصل', slug: 'contact' },
+  sectors: { title: 'القطاعات', slug: 'sectors' },
+  accelerator: { title: 'المسرّعة الذكية', slug: 'accelerator' },
+  assessment: { title: 'المشخّص الذكي', slug: 'assessment' },
   cases: { title: 'قصص العملاء', slug: 'work' },
 };
 export const isPageId = (p: unknown): p is PageId => typeof p === 'string' && (PAGE_IDS as readonly string[]).includes(p);
@@ -104,7 +107,8 @@ const row = (page: string, type: string, data: Record<string, unknown>, id?: str
 
 /** New wording this module writes (navigation, page headings, microcopy) — listed in the report as [CONFIRM]. */
 export const NEW_COPY = {
-  nav: { home: ls('الرئيسية', 'Home'), services: ls('الخدمات والنظام', 'Services & System'), work: ls('أعمالنا', 'Our work'), about: ls('من نحن', 'About'), contact: ls('تواصل', 'Contact') },
+  nav: { home: ls('الرئيسية', 'Home'), services: ls('الخدمات والنظام', 'Services & System'), work: ls('أعمالنا', 'Our work'), about: ls('من نحن', 'About'), contact: ls('جلسة تشخيص مجانية', 'Free diagnosis session'),
+    sectors: ls('القطاعات', 'Sectors'), accelerator: ls('المسرّعة الذكية', 'AI Accelerator'), assessment: ls('المشخّص الذكي', 'Readiness assessment') },
   crumbsHome: ls('الرئيسية', 'Home'),
   /** each inner page's opening summary (pageHeadSection.summary): one or two plain sentences that name ClearUp,
    *  built from wording already on the site, for readers, Google and AI answers. Editable per page. */

@@ -16,7 +16,7 @@ export default function Pain({ d }: { d: Dict }) {
   return (
     <section className="pain section" id="pain">
       <div className="wrap">
-        <SectionHead index={p.index} eyebrow={p.eyebrow} title={p.title} />
+        <SectionHead index={p.index} eyebrow={p.eyebrow} title={p.title} lead={(p as { lead?: string }).lead} />
         <ol className="pain__list">
           {p.items.map((it, i) => (
             <li key={i} className="pain__item" data-reveal style={{ ['--i' as any]: i }}>

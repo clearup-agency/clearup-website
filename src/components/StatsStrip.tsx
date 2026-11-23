@@ -32,7 +32,7 @@ export default function StatsStrip({ s, d }: { s: Data; d: Dict }) {
     <section className="xstats section">
       <div className="wrap">
         <h2 className="sr-only">{title}</h2>
-        <dl className={'xstats__grid xstats__grid--' + Math.min(all.length, 4)}>
+        <dl className={'xstats__grid xstats__grid--' + Math.min(all.length, 5)}>
           {all.map((it, i) => (
             <div key={i} className="xstat">
               <Caption text={it.l} />

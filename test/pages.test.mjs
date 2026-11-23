@@ -42,7 +42,8 @@ test('the one-page content splits into five pages and four case studies; nothing
   assert.ok(on('services').includes('servicesSection') && on('services').includes('faqSection') && on('services').includes('ninetySection') && on('services').includes('auditSection'));
   assert.ok(on('about').includes('founderSection') && on('about').includes('manifestoSection'));
   assert.ok(on('contact').includes('finalCtaSection'));
-  for (const p of P.PAGE_IDS) assert.ok(on(p).length > 0, p);
+  // the five pages of the one-page site (the value-proposition pages — sectors, accelerator, assessment — start empty)
+  for (const p of ['home', 'services', 'work', 'about', 'contact']) assert.ok(on(p).length > 0, p);
   const cs = cases(site);
   assert.equal(cs.length, 4);
   assert.deepEqual(cs.map((s) => s.data.slug), ['masahat', 'tob-tarha', 'al-noon-digital', 'emmar-clean']);

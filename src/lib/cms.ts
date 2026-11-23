@@ -80,7 +80,19 @@ function dbScope(): string {
 // waiting up to an hour for the shared cache entry of the previous deploy to expire)
 const cachedContent = unstable_cache(loadContentFromDb, ['clearup-content-v2-pages', dbScope(), process.env.VERCEL_DEPLOYMENT_ID || ''], { tags: [CONTENT_TAG], revalidate: 3600 });
 
+/* Preview builds only: CONTENT_SNAPSHOT=path/to/snapshot.json ({settings, sections}, the multi-page shape) builds
+   the site from that file instead of the database — to see a proposed content change without touching the
+   live database. Unset everywhere else. */
+async function snapshotContent(): Promise<Loaded | null> {
+  const file = process.env.CONTENT_SNAPSHOT;
+  if (!file) return null;
+  const { readFile } = await import('node:fs/promises');
+  return JSON.parse(await readFile(file, 'utf8')) as Loaded;
+}
+
 export async function fetchContent(fresh = false): Promise<Loaded & { source: 'db' | 'fallback' }> {
+  const snap = await snapshotContent();
+  if (snap) return { ...snap, source: 'db' };
   if (isDbConfigured()) {
     try {
       const c = process.env.STATIC_EXPORT === '1' || fresh ? await loadContentFromDb() : await cachedContent();

@@ -128,6 +128,7 @@ const SHARED = new Set(['faqSection', 'systemSection', 'offeringsSection', 'tool
 const OWN: Record<string, string[]> = { proofSection: ['limit', 'all', 'allTestimonials'] };
 const PLACEMENT = ['_key', '_type', '_page', 'anchor', 'hidden', 'design', 'compact', 'more'];
 export const SHARED_TYPES = SHARED;
+const V3_TYPES = new Set(['landingHeadSection', 'tableSection', 'cardsSection', 'offerSection', 'programsSection', 'caseSpotlightSection', 'assessmentSection', 'formSection']);
 /** The keys a reader of a shared section keeps for itself (where it sits, how it looks, its own switches). */
 export const ownKeys = (type: string) => [...PLACEMENT, ...(OWN[type] ?? [])];
 type Kind = { type: string; page: string; hidden: boolean; compact: boolean };
@@ -232,6 +233,7 @@ export function buildView(raw: { settings: Raw | null; page: Raw | null; source:
   const links: Record<string, string> = {
     home: pagePath(lang, 'home'), services: pagePath(lang, 'services'), work: pagePath(lang, 'work'),
     about: pagePath(lang, 'about'), contact: pagePath(lang, 'contact'), book: (base as any).nav.ctaHref,
+    sectors: pagePath(lang, 'sectors'), accelerator: pagePath(lang, 'accelerator'), assessment: pagePath(lang, 'assessment'),
   };
   // «احجز مكالمة وضوح» opens the booking form (Mohamed, Nov 9, 2026): a booking link that points at the Contact
   // page lands on its form (#book), wherever the button is — header, hero, bands, footer, phone bar, chat
@@ -264,7 +266,9 @@ export function buildView(raw: { settings: Raw | null; page: Raw | null; source:
     if (caseView || pageOfRaw(sec) !== page || sec._type === CASE_TYPE) continue;
     if (sec.hidden && sec._key !== opts.showHidden) continue;
     const src = withoutHiddenItems(sharedSource(sec, all));
-    let data = sec._type === 'faqSection' ? clean(faqLocalized(localize(src, lang), pub)) : clean(localize(src, lang));
+    // the value-proposition blocks keep their [to confirm] parts: they are shown striped, not dropped
+    const keepPh = V3_TYPES.has(sec._type);
+    let data = sec._type === 'faqSection' ? clean(faqLocalized(localize(src, lang), pub)) : keepPh ? localize(src, lang) : clean(localize(src, lang));
     if (sec._type === 'clientStoriesSection') {
       const own = data.mirror ? ctx.stories?.clients ?? [] : data.clients ?? [];
       const rule = storiesForVisitors(own);

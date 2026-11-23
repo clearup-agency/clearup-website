@@ -5,6 +5,7 @@ import { Arrow } from './Mark';
 import ClipCard from './ClipCard';
 import SrcTag from './SrcTag';
 import { waWithText, numDir } from '@/lib/rules';
+import { vhref } from './v3/Blocks';
 
 /* Hero v5 — «dark & calm» (Nov 11, 2026; Mohamed picked option A of three): a landing hero — the text on one side,
    Abdalmenem's intro video as a tall 9:16 card on the other (it took the animated logo's place). Behind both, the 9
@@ -87,8 +88,10 @@ export default function Hero({ d }: { d: Dict }) {
           {h.lead && <p className="hl__lead">{h.lead}</p>}
           <div className="hl__cta">
             <a className="btn btn--lg" href={d.links?.book ?? '#book'}>{h.cta}<span className="btn__ic"><Arrow /></span></a>
+            {(h as any).secondary?.label && <a className="btn btn--lg hl__second" href={vhref((h as any).secondary.href, d.lang)}>{(h as any).secondary.label}</a>}
             {d.site.whatsapp && h.whatsapp && <a className="hl__wa" href={waWithText(d.site.whatsapp, d.lang)} target="_blank" rel="noopener">{WA}{h.whatsapp}</a>}
           </div>
+          {(h as any).grant?.label && <a className="hl__grant" href={vhref((h as any).grant.href, d.lang)}>{(h as any).grant.label} ←</a>}
           {h.note && <p className="hl__note">{h.note}</p>}
           {/* hero figures (admin: «الأرقام أسفل الواجهة»; empty on the site today — the numbers strip follows the hero) */}
           {stats.length > 0 && (

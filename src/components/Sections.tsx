@@ -33,6 +33,9 @@ import Fit from './Fit';
 import Offerings from './Offerings';
 import Products from './Products';
 import Process from './Process';
+import { CardsSection, CaseSpotlight, LandingHead, OfferSection, ProgramsSection, TableSection } from './v3/Blocks';
+import Assessment from './v3/Assessment';
+import PreviewForm from './v3/PreviewForm';
 
 // the id each built-in section already carries; a different anchor set in the CMS gets its own marker
 const DEFAULT_ID: Record<string, string> = {
@@ -97,6 +100,15 @@ export default function Sections({ sections, mark, focus, ctx }: { sections: Sec
           case 'fitSection': el = <Fit s={data} />; break;
           case 'productsSection': el = <Products s={data} />; break;
           case 'processSection': el = <Process s={data} />; break;
+          // Nov 22, 2026 content document (the value proposition): generic blocks
+          case 'landingHeadSection': el = <LandingHead s={data} lang={lng(d)} page={ctx?.page ?? 'home'} />; break;
+          case 'tableSection': el = <TableSection s={data} lang={lng(d)} page={ctx?.page ?? 'home'} />; break;
+          case 'cardsSection': el = <CardsSection s={data} lang={lng(d)} page={ctx?.page ?? 'home'} />; break;
+          case 'offerSection': el = <OfferSection s={data} lang={lng(d)} page={ctx?.page ?? 'home'} />; break;
+          case 'programsSection': el = <ProgramsSection s={data} lang={lng(d)} page={ctx?.page ?? 'home'} />; break;
+          case 'caseSpotlightSection': el = <CaseSpotlight s={data} />; break;
+          case 'assessmentSection': el = <Assessment s={data} hrefs={{ book: ctx?.links.book ?? '#book', accelerator: ctx?.links.accelerator ?? '/', assessment: ctx?.links.assessment ?? '/' }} />; break;
+          case 'formSection': el = <PreviewForm s={data} />; break;
           default: return null; // unknown block type: skip quietly
         }
         if (!el) return null;
