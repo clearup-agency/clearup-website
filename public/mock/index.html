@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>نماذج قسم البرامج</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+@font-face{font-family:'Thmanyah Sans';font-weight:400;src:url('/fonts/thmanyah/thmanyahsans-Regular.woff2') format('woff2')}
+@font-face{font-family:'Thmanyah Sans';font-weight:500;src:url('/fonts/thmanyah/thmanyahsans-Medium.woff2') format('woff2')}
+@font-face{font-family:'Thmanyah Sans';font-weight:600 700;src:url('/fonts/thmanyah/thmanyahsans-Bold.woff2') format('woff2')}
+@font-face{font-family:'Thmanyah Sans';font-weight:800 900;src:url('/fonts/thmanyah/thmanyahsans-Black.woff2') format('woff2')}
+body{background:#fff;padding-bottom:96px}
+.mk-label{position:fixed;left:0;right:0;bottom:0;z-index:70;box-shadow:0 -6px 24px rgba(0,0,0,.15);background:var(--yellow,#FFC83D);color:#0B0B0F;font-weight:800;text-align:center;padding:10px 16px;font-size:.95rem}
+.mk-switch{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.mk-switch a{background:rgba(255,255,255,.6);border-radius:10px 0 10px 0;padding:.35em .9em;font-weight:800}
+.mk-switch a.is-on{background:#0B0B0F;color:#fff}
+#lbl{font-weight:600;font-size:.88rem}
+/* ——— shared ——— */
+.mk-sec{padding-block:clamp(64px,8vw,120px)}
+.mk-steps{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+.mk-step{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--muted)}
+.mk-step b{display:grid;place-items:center;width:30px;height:30px;border-radius:9px 0 9px 0;background:var(--paper-2);color:var(--purple);font-size:.9rem}
+.mk-step.is-on b{background:var(--purple);color:#fff}.mk-step.is-on{color:var(--ink)}
+.mk-step+.mk-step::before{content:'←';color:var(--lav);font-weight:800;margin-inline-end:10px}
+.mk-stage{margin-top:clamp(36px,5vw,64px)}
+.mk-stage__h{display:flex;align-items:baseline;gap:14px;margin-bottom:18px}
+.mk-stage__h span{font-weight:800;color:var(--purple);font-size:.9rem;border:1.5px solid currentColor;border-radius:8px 0 8px 0;padding:.15em .55em}
+.mk-stage__h h3{font-size:clamp(1.4rem,2.2vw,2rem);font-weight:800}
+.mk-start{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center;background:var(--ink);color:#fff;border-radius:32px 0 32px 0;padding:clamp(24px,4vw,48px)}
+.mk-start .tag{display:inline-block;background:var(--yellow);color:var(--ink);font-weight:800;font-size:.8rem;border-radius:6px 0 6px 0;padding:.25em .6em}
+.mk-start h4{font-size:clamp(1.5rem,2.6vw,2.4rem);font-weight:800;margin:12px 0 8px}
+.mk-start p{color:rgba(255,255,255,.8)}
+.mk-start ul{display:grid;gap:10px}
+.mk-start li{background:rgba(255,255,255,.08);border-radius:12px 0 12px 0;padding:10px 14px;font-weight:600}
+.mk-start li::before{content:'✓ ';color:var(--yellow)}
+.mk-filter{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.mk-filter button{border:1.5px solid var(--line);border-radius:12px 0 12px 0;padding:.55em 1em;font-weight:700;font-size:.92rem}
+.mk-filter button.is-on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.mk-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.mk-card{position:relative;text-align:start;background:#fff;border:var(--card-border);border-radius:24px 0 24px 0;padding:24px;display:flex;flex-direction:column;gap:10px;transition:border-color .2s,transform .25s var(--ease),opacity .25s;min-height:190px}
+.mk-card:hover{border-color:var(--purple);transform:translateY(-3px)}
+.mk-card .n{font-size:2rem;font-weight:800;color:var(--yellow);line-height:1;-webkit-text-stroke:1px #d9a21a}
+.mk-card h5{font-size:1.2rem;font-weight:800;line-height:1.4}
+.mk-card p{color:var(--muted)}
+.mk-card .more{margin-top:auto;font-weight:700;color:var(--purple);font-size:.92rem}
+.mk-card .dept{position:absolute;top:22px;inset-inline-end:22px;font-size:.72rem;font-weight:700;color:var(--purple);background:var(--paper-2);border-radius:6px 0 6px 0;padding:.2em .55em}
+.mk-card.is-dim{opacity:.25}
+.mk-partner{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 28px;background:var(--purple);color:#fff;border-radius:32px 0 32px 0;padding:clamp(24px,3.4vw,40px)}
+.mk-partner h4{font-size:clamp(1.4rem,2.4vw,2.2rem);font-weight:800}
+.mk-partner p{color:rgba(255,255,255,.85);max-width:34em}
+.mk-cycle{display:flex;flex-wrap:wrap;gap:8px}
+.mk-cycle li{background:rgba(255,255,255,.12);border-radius:10px 0 10px 0;padding:.45em .9em;font-weight:700}
+.mk-cycle li+li::before{content:'← ';color:var(--yellow)}
+/* drawer */
+.mk-scrim{position:fixed;inset:0;background:rgba(11,11,15,.45);opacity:0;pointer-events:none;transition:opacity .3s;z-index:80}
+.mk-drawer{position:fixed;top:0;bottom:0;inset-inline-end:0;width:min(520px,100%);background:#fff;z-index:90;transform:translateX(-100%);transition:transform .4s var(--ease);overflow:auto;padding:28px 30px 40px;box-shadow:0 0 60px rgba(0,0,0,.2)}
+.is-open .mk-scrim{opacity:1;pointer-events:auto}.is-open .mk-drawer{transform:none}
+.mk-drawer .x{position:absolute;top:18px;inset-inline-end:18px;width:40px;height:40px;border-radius:50%;background:var(--paper-2);font-size:1.2rem}
+.mk-drawer .n{font-size:3rem;font-weight:800;color:var(--yellow);-webkit-text-stroke:1px #d9a21a;line-height:1}
+.mk-drawer h4{font-size:1.8rem;font-weight:800;margin:8px 0 6px}
+.mk-drawer .promise{font-size:1.15rem;font-weight:600;color:var(--purple);margin-bottom:18px}
+.mk-blk{border-top:1px solid var(--line);padding-block:14px}
+.mk-blk h6{font-size:.8rem;font-weight:700;color:var(--muted);margin-bottom:8px}
+.mk-blk ul{display:grid;gap:6px}
+.mk-blk li{position:relative;padding-inline-start:18px}
+.mk-blk li::before{content:'';position:absolute;inset-inline-start:0;top:.7em;width:7px;height:7px;background:var(--purple);border-radius:2px 0 2px 0}
+.mk-blk--ai{background:var(--paper-2);border-radius:14px 0 14px 0;padding:14px 16px;border:0;margin-block:8px}
+.mk-blk--impact li::before{content:'↗';background:none;width:auto;height:auto;top:0;color:var(--purple);font-weight:800}
+/* option B */
+.mk-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.mk-tabs button{border:1.5px solid var(--line);border-radius:14px 0 14px 0;padding:.75em 1.1em;font-weight:700}
+.mk-tabs button.is-on{background:var(--purple);color:#fff;border-color:var(--purple)}
+.mk-panel{border:var(--card-border);border-radius:24px 0 24px 0;padding:clamp(20px,3vw,34px)}
+.mk-ba{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:stretch}
+.mk-ba > div{border-radius:18px 0 18px 0;padding:22px}
+.mk-ba .b{background:var(--paper-2);color:var(--muted)}.mk-ba .a{background:var(--purple);color:#fff}
+.mk-ba em{display:block;font-style:normal;font-size:.82rem;font-weight:700;opacity:.8;margin-bottom:8px}
+.mk-ba p{font-size:1.2rem;font-weight:600;line-height:1.6}
+.mk-ba i{align-self:center;font-style:normal;font-weight:800;font-size:1.3rem;color:var(--purple)}
+.mk-progs{margin-top:22px;border-top:1px solid var(--line);padding-top:20px}
+.mk-progs h6{font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:12px}
+.mk-progs .row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.mk-prog{border:var(--card-border);border-radius:18px 0 18px 0;padding:18px 20px;display:grid;gap:8px}
+.mk-prog h5{font-weight:800;font-size:1.15rem}
+.mk-prog p{color:var(--muted)}
+.mk-prog .chips{display:flex;flex-wrap:wrap;gap:6px}
+.mk-prog .chips span{font-size:.8rem;font-weight:600;color:var(--purple);background:var(--paper-2);border-radius:7px 0 7px 0;padding:.25em .6em}
+/* option C */
+.mk-crumbs{font-size:.85rem;color:var(--muted);margin-bottom:18px}
+.mk-phead{background:var(--paper-2);padding-block:48px 56px}
+.mk-phead .n{font-size:4rem;font-weight:800;color:var(--yellow);-webkit-text-stroke:1px #d9a21a;line-height:1}
+.mk-phead h1{font-size:clamp(2.2rem,4.4vw,4rem);font-weight:800;margin:8px 0}
+.mk-phead p{font-size:1.3rem;color:var(--purple);font-weight:600}
+.mk-pgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.mk-pgrid > div{border:var(--card-border);border-radius:24px 0 24px 0;padding:24px}
+.mk-pgrid h6{font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:10px}
+.mk-pgrid .ai{background:var(--ink);color:#fff;border-color:transparent}.mk-pgrid .ai h6{color:var(--lav)}
+.mk-cta{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:24px;background:var(--purple);color:#fff;border-radius:24px 0 24px 0;padding:24px 28px;font-weight:700;font-size:1.15rem}
+@media (max-width:900px){.mk-grid,.mk-pgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.mk-start{grid-template-columns:1fr}}
+@media (max-width:600px){.mk-grid,.mk-pgrid,.mk-progs .row{grid-template-columns:1fr}.mk-ba{grid-template-columns:1fr}.mk-ba i{transform:rotate(-90deg);justify-self:center}.mk-card{min-height:0}.mk-drawer{top:auto;height:86vh;width:100%;transform:translateY(100%);border-radius:24px 24px 0 0}}
+</style>
+</head>
+<body>
+<div class="mk-label"><div class="mk-switch"><a href="?v=a" data-v="a">النموذج أ (المقترح)</a><a href="?v=b" data-v="b">النموذج ب</a><a href="?v=c" data-v="c">النموذج ج</a></div><p id="lbl"></p></div>
+<div id="navslot"></div>
+<main id="app"></main>
+<div class="mk-scrim" onclick="closeD()"></div>
+<aside class="mk-drawer" id="drawer" aria-modal="true"></aside>
+<script>
+(async()=>{try{const h=await (await fetch('/ar/services/')).text();const d=new DOMParser().parseFromString(h,'text/html');
+d.querySelectorAll('link[rel=stylesheet]').forEach(l=>{const n=document.createElement('link');n.rel='stylesheet';n.href=l.getAttribute('href');document.head.prepend(n)});
+d.querySelectorAll('style').forEach(s=>{if(/font-face/.test(s.textContent)){const n=document.createElement('style');n.textContent=s.textContent;document.head.prepend(n)}});
+const nav=d.querySelector('header.nav');if(nav)document.getElementById('navslot').replaceWith(nav);}catch(e){}})();
+</script>
+<script>
+const P=[
+ {t:'إدارة التقارير الذكية',d:'المالية',promise:'تقارير دقيقة في موعدها، تبني ثقة الممول.',inc:['تقارير مالية وبرامجية آلية','قوالب جاهزة للممولين الرئيسيين','لوحة مؤشرات لحظية'],ai:'يجمع البيانات من مصادرها، ويصيغ المسودة الأولى بصيغة كل ممول، وينبّه إلى التناقض بين الأرقام قبل الإرسال.',imp:['توفير حتى 75% من وقت إعداد التقارير','أرقام موحّدة بلا تناقضات','فرص أكبر لتجديد المنح']},
+ {t:'جاهزية التمويل وكتابة المقترحات',d:'كفاءة التمويل',promise:'من رصد الفرصة حتى توقيع المنحة.',inc:['رصد دعوات التمويل المناسبة','كتابة المقترحات والإطار المنطقي والموازنة','مراجعة المقترح قبل التسليم'],ai:'يفرز دعوات التمويل حسب ملاءمتها، ويسرّع كتابة المسودات، ويراجع المقترح مقابل شروط الممول.',imp:['مقترحات أكثر بالفريق نفسه','نسبة قبول أعلى','لا فرصة مناسبة تفوت']},
+ {t:'المتابعة والتقييم وقياس الأثر',d:'المراقبة والتقييم',promise:'لا تكتفِ بعدّ الأنشطة، بل أثبت التغيير.',inc:['بناء مؤشرات الأداء','أدوات جمع بيانات ميدانية رقمية','تقارير أثر دورية'],ai:'يحلل بيانات الميدان والاستبيانات بسرعة، ويستخرج الأنماط والقصص التي تثبت التغيير.',imp:['إثبات النتائج بالأرقام','معرفة البرامج الناجحة','مقترحات مبنية على أدلة']},
+ {t:'الحوكمة ودعم مجلس الإدارة',d:'المراقبة والتقييم',promise:'مجلس يقود بالبيانات، لا بالتخمين.',inc:['لوحة قيادة للمجلس','السياسات المؤسسية','تدريب الأعضاء'],ai:'يلخّص أداء المؤسسة للمجلس في صفحة واحدة قبل كل اجتماع، ويتابع تنفيذ القرارات.',imp:['جاهزية كاملة للتدقيق','قرارات أسرع وأدق','شفافية ومساءلة أعلى']},
+ {t:'الحوكمة المالية الذكية',d:'المالية',promise:'كل دولار موثّق، قبل أن يسأل الممول.',inc:['مراجعة الفواتير والمشتريات قبل الاعتماد','توثيق كل قرار مالي','تنبيهات بتجاوز الموازنة'],ai:'يراجع كل فاتورة مقابل الموازنة والسياسات، ويكشف التكرار والأخطاء، ويترك القرار للمسؤول.',imp:['هدر وأخطاء أقل','جاهزية للتدقيق في أي وقت','ثقة أعلى من الممولين']},
+ {t:'إدارة علاقات الممولين والمتبرعين',d:'جذب التبرعات',promise:'علاقة مستمرة، لا تواصل موسمي.',inc:['نظام لإدارة بيانات الممولين','تحديثات دورية مخصّصة','تنبيهات بمواعيد التجديد'],ai:'يصيغ تحديثاً مخصصاً لكل ممول من آخر إنجازات مشروعه، ويذكّر الفريق قبل كل موعد.',imp:['احتفاظ أعلى بالممولين','علاقة حيّة بين المنح','تنويع مصادر التمويل']},
+ {t:'أتمتة العمليات والتحول الرقمي',d:'العمليات',promise:'وقت فريقك للرسالة، لا للورق.',inc:['أتمتة المهام المتكررة','أرشفة رقمية','متابعة حالات المستفيدين'],ai:'ينجز المراسلات والمحاضر وإدخال البيانات، ويوجّه كل طلب لصاحبه.',imp:['تكاليف تشغيل أقل','أخطاء أقل','إنتاجية أعلى']},
+ {t:'التنبؤ بالأزمات والاستجابة الذكية',d:'العمليات',promise:'استعدّ قبل الأزمة، واستجب أسرع حين تقع.',inc:['لوحة إنذار مبكر','تقدير الاحتياج حسب المنطقة','خطط استجابة جاهزة'],ai:'يرصد المؤشرات التي تسبق الأزمة، ويقترح أين تُوجّه الموارد أولاً.',imp:['استجابة أسرع في الساعات الأولى','موارد تصل لمن يحتاجها أكثر','مقترحات طوارئ جاهزة']},
+ {t:'قصص الأثر وحماية السمعة',d:'جذب التبرعات',promise:'حوّل إنجازاتك إلى قصص تُقنع، واحمِ اسم مؤسستك.',inc:['قصص نجاح وتقارير سنوية بصرية','دليل نشر أخلاقي','خطة للأزمات الإعلامية'],ai:'يحوّل بيانات التقارير الميدانية إلى قصص ومحتوى بسرعة، ويرصد ما يُقال عن المؤسسة.',imp:['صورة مؤسسية احترافية','حضور أقوى أمام الممولين','سمعة محمية قبل الأزمة']},
+];
+const DEPTS=[
+ ['العمليات','مراسلات ومحاضر وإدخال بيانات يدوي، وطلبات تضيع بين الموظفين','مهام متكررة مؤتمتة، كل طلب يصل لصاحبه، وتوفير حتى 75% من الوقت'],
+ ['المالية','فواتير تُراجع يدوياً، وأرقام لا تتطابق مع التقرير البرامجي','كل فاتورة مراجَعة قبل الاعتماد، هدر أقل، وجاهزية للتدقيق'],
+ ['المراقبة والتقييم','عدّ أنشطة، وتقارير أثر متأخرة أو غائبة','أثر مقاس قبل وبعد، ولوحة مؤشرات لحظية'],
+ ['جذب التبرعات','تواصل موسمي مع المانحين، وقصص قليلة','تحديثات مخصصة لكل مانح، وقصص أثر منتظمة'],
+ ['كفاءة التمويل','فرص تمويل فائتة، ومقترحات قليلة تستهلك الفريق','مقترحات أكثر بالفريق نفسه، ونسبة قبول أعلى'],
+];
+const two=k=>String(k).padStart(2,'0');
+const head=(e,t,l)=>`<header class="shead"><p class="shead__meta"><bdi>${e}</bdi></p><h2 class="h2">${t}</h2>${l?`<p class="shead__lead">${l}</p>`:''}</header>`;
+const v=new URLSearchParams(location.search).get('v')||'a';
+document.querySelectorAll('.mk-switch a').forEach(a=>a.classList.toggle('is-on',a.dataset.v===v));
+const app=document.getElementById('app');
+function openD(i){const p=P[i];document.getElementById('drawer').innerHTML=`<button class="x" onclick="closeD()">×</button><p class="n">${two(i+1)}</p><h4>${p.t}</h4><p class="promise">${p.promise}</p><div class="mk-blk"><h6>يشمل</h6><ul>${p.inc.map(x=>`<li>${x}</li>`).join('')}</ul></div><div class="mk-blk mk-blk--ai"><h6>دور الذكاء الاصطناعي</h6><p>${p.ai}</p></div><div class="mk-blk mk-blk--impact"><h6>الأثر المتوقع</h6><ul>${p.imp.map(x=>`<li>${x}</li>`).join('')}</ul></div><a class="btn btn--lg" href="#" style="margin-top:12px">احجز جلسة تشخيص لهذا البرنامج</a>`;document.body.classList.add('is-open')}
+function closeD(){document.body.classList.remove('is-open')}
+function filt(d,btn){document.querySelectorAll('.mk-filter button').forEach(b=>b.classList.toggle('is-on',b===btn));document.querySelectorAll('.mk-card').forEach(c=>c.classList.toggle('is-dim',d!=='الكل'&&c.dataset.d!==d))}
+if(v==='a'){
+ document.getElementById('lbl').textContent='النموذج أ (المقترح): رحلة من ثلاث مراحل + بطاقات مختصرة تفتح لوحة جانبية';
+ app.innerHTML=`<section class="mk-sec"><div class="wrap">${head('البرامج','تبدأ صغيراً، وتكبر بقرارك.','ثلاث مراحل واضحة: خطوة أولى ممولة، ثم البرنامج الذي يحتاجه قسمك، ثم شراكة نمو كاملة.')}
+ <div class="mk-steps"><span class="mk-step is-on"><b>1</b>ابدأ</span><span class="mk-step is-on"><b>2</b>اختر برنامجك</span><span class="mk-step is-on"><b>3</b>انمُ معنا</span></div>
+ <div class="mk-stage"><div class="mk-stage__h"><span>1</span><h3>ابدأ: المسرّعة الذكية للمؤسسات</h3></div>
+ <div class="mk-start"><div><span class="tag">منحة · 5 مقاعد فقط</span><h4>فريق يعمل بالذكاء الاصطناعي بنظام واحد وآمن.</h4><p>الخطوة الأولى قبل أي برنامج، ممولة بالكامل للمؤسسات المؤهلة.</p><p style="margin-top:18px"><a class="btn btn--light btn--lg" href="#">تحقّق من أهلية مؤسستك</a></p></div><ul><li>جلستا تشخيص مجانيتان</li><li>خارطة طريق مكتوبة للتحول</li><li>12 ساعة تدريب لـ 20 موظفاً</li><li>التهيئة والدعم</li></ul></div></div>
+ <div class="mk-stage"><div class="mk-stage__h"><span>2</span><h3>اختر برنامجك: تسعة برامج</h3></div>
+ <div class="mk-filter">${['الكل',...DEPTS.map(d=>d[0])].map((d,i)=>`<button class="${i?'':'is-on'}" onclick="filt('${d}',this)">${d}</button>`).join('')}</div>
+ <div class="mk-grid">${P.map((p,i)=>`<button class="mk-card" data-d="${p.d}" onclick="openD(${i})"><span class="dept">${p.d}</span><span class="n">${two(i+1)}</span><h5>${p.t}</h5><p>${p.promise}</p><span class="more">التفاصيل والأثر المتوقع ←</span></button>`).join('')}</div></div>
+ <div class="mk-stage"><div class="mk-stage__h"><span>3</span><h3>انمُ معنا: الباقة الشاملة</h3></div>
+ <div class="mk-partner"><div><h4>«شريك النمو»</h4><p>نبني معك الدورة كاملة، فيصبح التجديد والتوسّع الخطوة الطبيعية التالية.</p></div><ol class="mk-cycle"><li>فرصة</li><li>منحة</li><li>تنفيذ موثّق</li><li>ثقة</li><li>تجديد وتوسّع</li></ol><a class="btn btn--light btn--lg" href="#">احجز استشارة مجانية</a></div></div>
+ </div></section>`;
+}
+if(v==='b'){
+ document.getElementById('lbl').textContent='النموذج ب: البرامج داخل تبويبات الأقسام (القسمان يصبحان قسماً واحداً)';
+ const draw=k=>{const d=DEPTS[k];const ps=P.map((p,i)=>({...p,i})).filter(p=>p.d===d[0]);
+  document.getElementById('pb').innerHTML=`<div class="mk-ba"><div class="b"><em>× قبل</em><p>${d[1]}</p></div><i>←</i><div class="a"><em>✓ بعد (مخرج متوقع)</em><p>${d[2]}</p></div></div>
+  <div class="mk-progs"><h6>البرامج التي توصلك إلى ذلك</h6><div class="row">${ps.map(p=>`<div class="mk-prog"><h5>${two(p.i+1)} · ${p.t}</h5><p>${p.promise}</p><div class="chips">${p.imp.map(x=>`<span>↗ ${x}</span>`).join('')}</div><a class="link" href="#">التفاصيل ←</a></div>`).join('')}</div></div>
+  <p style="margin-top:20px"><a class="btn btn--lg" href="#">حوّل هذا القسم</a></p>`;
+  document.querySelectorAll('.mk-tabs button').forEach((b,i)=>b.classList.toggle('is-on',i===k));};
+ window.tab=draw;
+ app.innerHTML=`<section class="mk-sec"><div class="wrap">${head('الأقسام والبرامج','اختر القسم، وشاهد ما يتغيّر والبرامج التي تغيّره.','')}
+ <div class="mk-tabs">${DEPTS.map((d,i)=>`<button onclick="tab(${i})">${d[0]}</button>`).join('')}</div><div class="mk-panel" id="pb"></div>
+ <div class="mk-stage"><div class="mk-partner"><div><h4>«شريك النمو»</h4><p>كل الأقسام في دورة واحدة متكاملة.</p></div><ol class="mk-cycle"><li>فرصة</li><li>منحة</li><li>تنفيذ موثّق</li><li>ثقة</li><li>تجديد وتوسّع</li></ol></div></div></div></section>`;
+ draw(1);
+}
+if(v==='c'){
+ document.getElementById('lbl').textContent='النموذج ج: كل بطاقة تفتح صفحة مستقلة للبرنامج (هذه صفحة برنامج واحد)';
+ const p=P[0];
+ app.innerHTML=`<section class="mk-phead"><div class="wrap"><p class="mk-crumbs">الرئيسية › الحلول › ${p.t}</p><p class="n">01</p><h1>${p.t}</h1><p>${p.promise}</p></div></section>
+ <section class="mk-sec" style="padding-top:48px"><div class="wrap"><div class="mk-pgrid"><div><h6>يشمل</h6><div class="mk-blk" style="border:0;padding:0"><ul>${p.inc.map(x=>`<li>${x}</li>`).join('')}</ul></div></div><div class="ai"><h6>دور الذكاء الاصطناعي</h6><p>${p.ai}</p></div><div><h6>الأثر المتوقع</h6><div class="mk-blk mk-blk--impact" style="border:0;padding:0"><ul>${p.imp.map(x=>`<li>${x}</li>`).join('')}</ul></div></div></div>
+ <div class="mk-cta"><span>جاهز تبدأ بهذا البرنامج؟ ابدأ بجلسة تشخيص مجانية.</span><a class="btn btn--light btn--lg" href="#">احجز جلسة التشخيص</a></div>
+ <div class="mk-stage">${head('برامج أخرى','قد يهمك أيضاً','')}<div class="mk-grid">${P.slice(1,4).map((q,i)=>`<a class="mk-card" href="#"><span class="n">${two(i+2)}</span><h5>${q.t}</h5><p>${q.promise}</p><span class="more">افتح صفحة البرنامج ←</span></a>`).join('')}</div></div></div></section>`;
+}
+</script>
+</body></html>
