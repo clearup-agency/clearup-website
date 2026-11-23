@@ -159,50 +159,6 @@ export function OfferSection({ s, lang, page }: { s: Raw; lang: L; page: string 
   );
 }
 
-/** The programmes, each in the same template: the promise, what it includes, the role of AI and the expected impact. */
-export function ProgramsSection({ s, lang, page }: { s: Raw; lang: L; page: string }) {
-  const items = list(s.items);
-  const lb = (s.labels ?? {}) as Raw;
-  return (
-    <section className="vprog section" id={str(s.anchor) || 'programs'}>
-      <div className="wrap">
-        <SectionHead eyebrow={str(s.eyebrow)} title={str(s.title)} lead={str(s.lead)} />
-        <ol className="vprog__list">
-          {items.map((it, i) => (
-            <li key={i} className={'vprog__item' + (it.feature ? ' vprog__item--feature' : '')} id={str(it.id) || undefined} data-reveal>
-              <header className="vprog__head">
-                {str(it.n) && <span className="vprog__n">{it.n}</span>}
-                <div>
-                  {str(it.tag) && <p className="vprog__tag">{it.tag}</p>}
-                  <h3 className="vprog__t">{it.t}</h3>
-                  {str(it.promise) && <p className="vprog__promise"><Ph t={it.promise} /></p>}
-                </div>
-              </header>
-              <div className="vprog__body">
-                {str(it.cycle) && <p className="vprog__cycle">{it.cycle}</p>}
-                {str(it.text) && <p className="vprog__text"><Ph t={it.text} /></p>}
-                {list<string>(it.includes).length > 0 && (
-                  <div className="vprog__blk"><h4>{lb.includes}</h4><ul>{list<string>(it.includes).map((x, j) => <li key={j}><Ph t={x} /></li>)}</ul></div>
-                )}
-                {str(it.choices) && <div className="vprog__blk"><h4>{lb.choices}</h4><p><Ph t={it.choices} /></p></div>}
-                {str(it.ai) && <div className="vprog__blk vprog__blk--ai"><h4>{lb.ai}</h4><p><Ph t={it.ai} /></p></div>}
-                {list<string>(it.impact).length > 0 && (
-                  <div className="vprog__blk vprog__blk--impact"><h4>{lb.impact}</h4><ul>{list<string>(it.impact).map((x, j) => <li key={j}><Ph t={x} /></li>)}</ul></div>
-                )}
-                {list(it.rows).length > 0 && (
-                  <dl className="vprog__rows">{list(it.rows).map((r, j) => <div key={j}><dt>{r.k}</dt><dd><Ph t={r.v} /></dd></div>)}</dl>
-                )}
-                {str(it.proof) && <p className="vprog__proof"><Ph t={it.proof} /></p>}
-                {it.cta && str(it.cta.label) && <div className="cta-row"><Btn b={it.cta} lang={lang} page={page} /></div>}
-              </div>
-            </li>
-          ))}
-        </ol>
-      </div>
-    </section>
-  );
-}
-
 /** One client story told by its value (Mashwar): the big number first, then the challenge, what we did, the result. */
 export function CaseSpotlight({ s }: { s: Raw }) {
   const lb = (s.labels ?? {}) as Raw;
