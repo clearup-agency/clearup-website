@@ -15,7 +15,7 @@ type Field = { name: string; label: string; type?: 'text' | 'email' | 'tel' | 's
 type Step = { t: string; fields: Field[] };
 type Data = {
   anchor?: string; kicker?: string; title?: string; lead?: string; heading?: 'h1' | 'h2';
-  aside?: { t?: string; items?: string[]; fit?: string };
+  aside?: { t?: string; items?: string[]; fit?: string; fitTitle?: string };
   steps?: Step[]; labels?: { next?: string; back?: string; step?: string; of?: string; required?: string };
   submit?: string; success?: string; successLink?: { label?: string; href?: string }; previewNote?: string;
 };
@@ -29,7 +29,19 @@ export default function FormSteps({ s, lang }: { s: Data; lang: 'ar' | 'en' }) {
   const lb = s.labels ?? {};
   const H = s.heading === 'h1' ? 'h1' : 'h2';
 
-  // pre-select from the address (?focus=…), and jump to the step that holds it only when nothing else is asked first
+  // pre-select from the address (?focus=…: «حوّل هذا القسم», a sector page). A value that is not one of the field's
+  // choices (a department, a sector) is added to them as an extra, already chosen, choice
+  const [extra, setExtra] = useState<Record<string, string>>({});
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search);
+    const add: Record<string, string> = {};
+    for (const st of steps) for (const f of st.fields) {
+      const v = f.prefill ? q.get(f.prefill) : null;
+      if (v && !(f.options ?? []).includes(v)) add[f.name] = v;
+    }
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- reads the address once, after hydration
+    if (Object.keys(add).length) setExtra(add);
+  }, [steps]);
   useEffect(() => {
     const q = new URLSearchParams(window.location.search);
     for (const st of steps) for (const f of st.fields) {
@@ -38,7 +50,7 @@ export default function FormSteps({ s, lang }: { s: Data; lang: 'ar' | 'en' }) {
       const el = form.current.querySelector<HTMLInputElement>(`[name="${f.name}"][value="${CSS.escape(v)}"]`);
       if (el) el.checked = true;
     }
-  }, [steps]);
+  }, [steps, extra]);
 
   const stepOk = () => {
     const root = form.current?.querySelector<HTMLElement>(`[data-step="${at}"]`);
@@ -69,7 +81,7 @@ export default function FormSteps({ s, lang }: { s: Data; lang: 'ar' | 'en' }) {
             <div className="vfs__aside">
               {s.aside.t && <h3>{s.aside.t}</h3>}
               <ul>{s.aside.items.map((x, i) => <li key={i}><span aria-hidden="true">✓</span><p><Ph t={x} /></p></li>)}</ul>
-              {s.aside.fit && <p className="vfs__fit">{s.aside.fit}</p>}
+              {s.aside.fit && <div className="vfs__fit">{s.aside.fitTitle && <h4>{s.aside.fitTitle}</h4>}<p>{s.aside.fit}</p></div>}
             </div>
           ) : null}
         </div>
@@ -96,7 +108,7 @@ export default function FormSteps({ s, lang }: { s: Data; lang: 'ar' | 'en' }) {
                         <fieldset key={f.name} className="vfs__f">
                           <legend>{f.label}{req}</legend>
                           <div className="vfs__opts">
-                            {(f.options ?? []).map((o) => (
+                            {[...(f.options ?? []), ...(extra[f.name] ? [extra[f.name]] : [])].map((o) => (
                               <label key={o} className="vfs__chip"><input type={t === 'radio' ? 'radio' : 'checkbox'} name={f.name} value={o} /><span>{o}</span></label>
                             ))}
                           </div>

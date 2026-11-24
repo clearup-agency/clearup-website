@@ -9,7 +9,7 @@ import { polishContent } from './polish';
    Case studies («أعمالنا»): one row each on the pseudo-page "cases", type caseStudy; each is a page at
    /<lang>/work/<slug>/ and a card on the Work page (and on Home when «مميّزة»). */
 
-export const PAGE_IDS = ['home', 'services', 'work', 'about', 'contact', 'sectors', 'accelerator', 'assessment'] as const;
+export const PAGE_IDS = ['home', 'services', 'work', 'about', 'contact', 'sectors', 'accelerator', 'assessment', 'sector-development', 'sector-education', 'sector-relief', 'sector-health'] as const;
 export type PageId = (typeof PAGE_IDS)[number];
 export const CASES = 'cases';
 export const CASE_TYPE = 'caseStudy';
@@ -17,11 +17,15 @@ export const CASE_TYPE = 'caseStudy';
 /** Arabic names in the admin's page switcher, and each page's URL segment. */
 export const PAGE_INFO: Record<PageId | 'cases', { title: string; slug: string }> = {
   home: { title: 'الرئيسية', slug: '' },
-  services: { title: 'الخدمات والنظام', slug: 'services' },
+  services: { title: 'البرامج', slug: 'programs' }, // Nov 24, 2026: /programs/ (the old /services/ redirects)
   work: { title: 'أعمالنا', slug: 'work' },
   about: { title: 'من نحن', slug: 'about' },
   contact: { title: 'تواصل', slug: 'contact' },
   sectors: { title: 'القطاعات', slug: 'sectors' },
+  'sector-development': { title: 'المؤسسات التنموية', slug: 'sectors/development' },
+  'sector-education': { title: 'المؤسسات التعليمية والمدارس', slug: 'sectors/education' },
+  'sector-relief': { title: 'المؤسسات الإغاثية', slug: 'sectors/relief' },
+  'sector-health': { title: 'المؤسسات الصحية', slug: 'sectors/health' },
   accelerator: { title: 'المسرّعة الذكية', slug: 'accelerator' },
   assessment: { title: 'المشخّص الذكي', slug: 'assessment' },
   cases: { title: 'قصص العملاء', slug: 'work' },
@@ -59,6 +63,8 @@ export function hrefPage(href: unknown): string | null {
   if (!h.startsWith('/')) return null;
   const seg = h.split('/').filter(Boolean)[0] ?? '';
   if (!seg) return 'home';
+  // the old /services/ address is the Programs page (Nov 24, 2026)
+  if (seg === 'services') return 'services';
   const hit = (Object.entries(PAGE_INFO) as [string, { slug: string }][]).find(([k, v]) => k !== CASES && v.slug === seg);
   return hit ? hit[0] : null;
 }
@@ -108,7 +114,9 @@ const row = (page: string, type: string, data: Record<string, unknown>, id?: str
 /** New wording this module writes (navigation, page headings, microcopy) — listed in the report as [CONFIRM]. */
 export const NEW_COPY = {
   nav: { home: ls('الرئيسية', 'Home'), services: ls('الخدمات والنظام', 'Services & System'), work: ls('أعمالنا', 'Our work'), about: ls('من نحن', 'About'), contact: ls('جلسة تشخيص مجانية', 'Free diagnosis session'),
-    sectors: ls('القطاعات', 'Sectors'), accelerator: ls('المسرّعة الذكية', 'AI Accelerator'), assessment: ls('المشخّص الذكي', 'Readiness assessment') },
+    sectors: ls('القطاعات', 'Sectors'), accelerator: ls('المسرّعة الذكية', 'AI Accelerator'), assessment: ls('المشخّص الذكي', 'Readiness assessment'),
+    'sector-development': ls('المؤسسات التنموية', 'Development organizations'), 'sector-education': ls('المؤسسات التعليمية والمدارس', 'Schools & education'),
+    'sector-relief': ls('المؤسسات الإغاثية', 'Relief organizations'), 'sector-health': ls('المؤسسات الصحية', 'Health organizations') },
   crumbsHome: ls('الرئيسية', 'Home'),
   /** each inner page's opening summary (pageHeadSection.summary): one or two plain sentences that name ClearUp,
    *  built from wording already on the site, for readers, Google and AI answers. Editable per page. */

@@ -24,7 +24,7 @@ const cases = (c) => c.sections.filter((s) => s.type === P.CASE_TYPE);
 
 test('routing: every page has one address per language, links resolve from any page', () => {
   assert.equal(P.pagePath('ar', 'home'), '/ar/');
-  assert.equal(P.pagePath('en', 'services'), '/en/services/');
+  assert.equal(P.pagePath('en', 'services'), '/en/programs/');
   assert.equal(P.pagePath('ar', 'work', 'masahat'), '/ar/work/masahat/');
   assert.equal(P.resolveHref('/work/', 'en'), '/en/work/');
   assert.equal(P.resolveHref('#book', 'ar', 'services', []), '/ar/#book');   // a home anchor, from another page

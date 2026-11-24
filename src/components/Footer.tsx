@@ -37,6 +37,7 @@ export default function Footer({ d }: { d: Dict }) {
           {pages.length > 0 && (
             <ul className="foot__links foot__pages" aria-label="pages">
               {pages.map((l, i) => (<li key={i} data-f={`navLinks.${d.nav.links.indexOf(l)}.label`}><a href={l.href}>{l.label}</a></li>))}
+              {(f as { diag?: string }).diag && <li data-f="footerDiag"><a href={d.links?.contact ?? d.nav.ctaHref}>{(f as { diag?: string }).diag}</a></li>}
             </ul>
           )}
           <ul className="foot__links">

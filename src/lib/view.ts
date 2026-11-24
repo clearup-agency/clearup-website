@@ -207,7 +207,9 @@ export function buildView(raw: { settings: Raw | null; page: Raw | null; source:
     lang, dir: lang === 'ar' ? 'rtl' : 'ltr',
     meta: { title: s.metaTitle, description: s.metaDescription },
     nav: {
-      links: (s.navLinks ?? []).map((l: Raw) => ({ href: href(l.href), label: l.label, page: hrefPage(l.href) })),
+      links: (s.navLinks ?? []).map((l: Raw) => ({ href: href(l.href), label: l.label, page: hrefPage(l.href),
+        // a menu item's own sub-links (the dropdown under «القطاعات», Nov 24, 2026)
+        ...(Array.isArray(l.children) && l.children.length ? { children: l.children.map((c: Raw) => ({ href: href(c.href), label: c.label })) } : {}) })),
       cta: s.cta, ctaShort: s.ctaShort, ctaHref: s.ctaHref ? href(s.ctaHref) : '#book',
       switchLabel: s.langSwitch || static_.nav.switchLabel, switchHref: `/${other}/${path}`,
       home: pagePath(lang, 'home'), current: page,
@@ -216,7 +218,7 @@ export function buildView(raw: { settings: Raw | null; page: Raw | null; source:
     // the «Concept» chip and the footer's «design concept» line: admin preview only, never on the public site
     showConcept: !pub && s.showConcept !== false,
     preview: !pub,
-    footer: { line: s.footerLine, tagline: s.tagline, city: s.city, email: s.email, rights: s.rights, concept: pub || s.showConcept === false ? '' : s.footerNote, book: s.footerBook, wa: s.footerWa, waShort: s.footerWaShort },
+    footer: { line: s.footerLine, tagline: s.tagline, city: s.city, email: s.email, rights: s.rights, concept: pub || s.showConcept === false ? '' : s.footerNote, book: s.footerBook, wa: s.footerWa, waShort: s.footerWaShort, diag: s.footerDiag },
     results: { srcSite: s.srcSite, srcIg: s.srcIg, ph: s.ph },
     stats: [],
     site: {

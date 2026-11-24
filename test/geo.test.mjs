@@ -118,7 +118,7 @@ test('llms.txt and llms-full.txt: both languages, every page and case, no placeh
   for (const s of [t, f]) {
     noPlaceholder(s);
     assert.ok(s.includes('## العربية') && s.includes('## English'));
-    for (const p of ['/ar/services/', '/en/about/', '/ar/contact/']) assert.ok(s.includes(p), p);
+    for (const p of ['/ar/programs/', '/en/about/', '/ar/contact/']) assert.ok(s.includes(p), p);
     for (const slug of slugs) assert.ok(s.includes(`/en/work/${slug}/`), slug);
   }
   assert.ok(t.includes('https://wa.me/'));

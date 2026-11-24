@@ -1,6 +1,7 @@
 'use client';
 import { useMemo, useState } from 'react';
 import SectionHead from '../SectionHead';
+import { Arrow } from '../Mark';
 import { Ph } from './Blocks';
 
 /* «المشخّص الذكي» — the free readiness assessment for organizations (content document, Nov 22, 2026): 12 short
@@ -15,7 +16,7 @@ type Axis = { t: string; qs: Q[]; step?: string };
 type Level = { min: number; max: number; name: string; msg: string };
 type Btn = { label?: string; href?: string };
 type Data = {
-  anchor?: string; kicker?: string; title?: string; lead?: string; teaser?: boolean; pageHref?: string;
+  anchor?: string; kicker?: string; title?: string; lead?: string; teaser?: boolean; teaserCta?: string; pageHref?: string;
   voice?: { t?: string; d?: string; cta?: string; soon?: string }; text?: { t?: string; d?: string; cta?: string };
   privacy?: string; axes?: Axis[]; levels?: Level[];
   labels?: { question?: string; of?: string; next?: string; back?: string; result?: string; steps?: string; restart?: string; axes?: string };
@@ -73,7 +74,10 @@ export default function Assessment({ s, hrefs }: { s: Data; hrefs: { book: strin
       <div className="wrap">
         {s.kicker && <p className="asx__k"><Ph t={s.kicker} /></p>}
         <SectionHead title={s.title} lead={s.lead} />
-        {(s.teaser || stage === 'pick') && cards}
+        {/* Home's short version as the content file writes it (Nov 24, 2026): the text and one button */}
+        {s.teaser && s.teaserCta
+          ? <p className="asx__go"><a className="btn btn--lg" href={hrefs.assessment + '#assess'}>{s.teaserCta}<span className="btn__ic"><Arrow /></span></a></p>
+          : (s.teaser || stage === 'pick') && cards}
         {stage === 'quiz' && !s.teaser && flat[at] && (
           <div className="asx__quiz" aria-live="polite">
             <div className="asx__bar"><i style={{ width: `${(at / flat.length) * 100}%` }} /></div>
@@ -110,7 +114,7 @@ export default function Assessment({ s, hrefs }: { s: Data; hrefs: { book: strin
             <button type="button" className="asx__back" onClick={() => { setStage('pick'); setAns([]); setAt(0); }}>{lb.restart}</button>
           </div>
         )}
-        {s.privacy && <p className="asx__priv">{s.privacy}</p>}
+        {s.privacy && !(s.teaser && s.teaserCta) && <p className="asx__priv">{s.privacy}</p>}
       </div>
     </section>
   );

@@ -12,7 +12,18 @@ export default function Nav({ d }: { d: Dict }) {
         </a>
         {d.showConcept !== false && <span className="concept-chip" title={d.concept} data-f="showConcept">Concept</span>}
         <nav className="nav__links" aria-label={d.lang === 'ar' ? 'القائمة الرئيسية' : 'Primary'}>
-          {links.map((l, i) => (<a key={i} href={l.href} aria-current={l.page && l.page === cur ? 'page' : undefined}>{l.label}</a>))}
+          {links.map((l, i) => {
+            const kids = (l as { children?: { href: string; label: string }[] }).children ?? [];
+            const a = <a href={l.href} aria-current={l.page && l.page === cur ? 'page' : undefined}>{l.label}{kids.length > 0 && <span className="nav__caret" aria-hidden="true">▾</span>}</a>;
+            if (!kids.length) return <span key={i} className="nav__item">{a}</span>;
+            // a dropdown that opens on hover and on keyboard focus (no JavaScript)
+            return (
+              <span key={i} className="nav__item nav__item--dd">
+                {a}
+                <span className="nav__dd">{kids.map((k) => <a key={k.href} href={k.href}>{k.label}</a>)}</span>
+              </span>
+            );
+          })}
         </nav>
         <a className="nav__lang" data-f="langSwitch" href={d.nav.switchHref} hrefLang={d.lang === 'ar' ? 'en' : 'ar'}>{d.nav.switchLabel}</a>
         <a className="btn btn--sm" href={d.nav.ctaHref || '#book'}><span className="nav__cta-l">{d.nav.cta}</span><span className="nav__cta-s">{d.nav.ctaShort}</span><span className="btn__ic"><Arrow /></span></a>
@@ -23,7 +34,12 @@ export default function Nav({ d }: { d: Dict }) {
             <div className="nav__sheet">
               <nav aria-label={d.lang === 'ar' ? 'قائمة الجوال' : 'Mobile menu'}>
                 {d.nav.home && <a href={d.nav.home} aria-current={cur === 'home' ? 'page' : undefined}>{d.lang === 'ar' ? 'الرئيسية' : 'Home'}</a>}
-                {links.map((l, i) => (<a key={i} href={l.href} aria-current={l.page && l.page === cur ? 'page' : undefined}>{l.label}<Arrow /></a>))}
+                {links.map((l, i) => (
+                  <span key={i} className="nav__sheet-item">
+                    <a href={l.href} aria-current={l.page && l.page === cur ? 'page' : undefined}>{l.label}<Arrow /></a>
+                    {((l as { children?: { href: string; label: string }[] }).children ?? []).map((k) => <a key={k.href} className="nav__sheet-sub" href={k.href}>{k.label}</a>)}
+                  </span>
+                ))}
               </nav>
               <a className="btn btn--lg nav__sheet-cta" href={d.nav.ctaHref || '#book'}>{d.nav.cta}<span className="btn__ic"><Arrow /></span></a>
             </div>

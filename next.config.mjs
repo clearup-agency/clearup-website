@@ -38,10 +38,12 @@ const nextConfig = {
       ...Object.entries({
         about: 'about', 'about-us': 'about', team: 'about',
         contact: 'contact', 'contact-us': 'contact',
-        services: 'services', service: 'services',
+        services: 'programs', service: 'programs',
         work: 'work', portfolio: 'work', projects: 'work', 'our-work': 'work', 'case-studies': 'work', clients: 'work',
         home: '', index: '', 'index.html': '',
       }).flatMap(([from, to]) => [`/${from}`, `/${from}/`].map((source) => ({ source, destination: `/ar/${to ? to + '/' : ''}`, permanent: true }))),
+      // Nov 24, 2026: «الخدمات والنظام» became «البرامج» at /programs/ — the old address keeps working
+      ...['ar', 'en'].flatMap((l) => [`/${l}/services`, `/${l}/services/`].map((source) => ({ source, destination: `/${l}/programs/`, permanent: true }))),
     ],
     // the admin: never framed (clickjacking), never cached, never indexed
     headers: async () => [...['/admin/:path*', '/api/admin/:path*'].map((source) => ({

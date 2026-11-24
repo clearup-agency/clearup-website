@@ -63,12 +63,12 @@
   force = true
 [[redirects]]
   from = "/services"
-  to = "/ar/services/"
+  to = "/ar/programs/"
   status = 301
   force = true
 [[redirects]]
   from = "/service"
-  to = "/ar/services/"
+  to = "/ar/programs/"
   status = 301
   force = true
 [[redirects]]
@@ -114,5 +114,17 @@
 [[redirects]]
   from = "/index.html"
   to = "/ar/"
+  status = 301
+  force = true
+
+# Nov 24, 2026: «الخدمات والنظام» became «البرامج» at /programs/ — the old address keeps working
+[[redirects]]
+  from = "/ar/services/*"
+  to = "/ar/programs/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/en/services/*"
+  to = "/en/programs/"
   status = 301
   force = true

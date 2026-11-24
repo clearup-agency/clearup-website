@@ -61,7 +61,7 @@ export default async function SitePage({ lang, page, caseSlug }: { lang: Lang; p
       <Reveal />
       {/* phones: book / WhatsApp always one tap away (not on Contact, where the form is the page) */}
       {page !== 'contact' && (
-        <MobileBar lang={lang} book={view.base.nav.ctaHref || view.ctx.links.contact} whatsapp={view.base.site.whatsapp} words={view.base.footer as { book?: string; wa?: string }} chatSide={view.chatbot.enabled ? view.chatbot.side : null} />
+        <MobileBar lang={lang} book={view.base.nav.ctaHref || view.ctx.links.contact} whatsapp={view.base.site.whatsapp} words={{ ...(view.base.footer as { book?: string; wa?: string }), book: view.base.nav.ctaShort || (view.base.footer as { book?: string }).book }} chatSide={view.chatbot.enabled ? view.chatbot.side : null} />
       )}
       <ChatLauncher bot={{ ...view.chatbot, ai: view.chatbot.ai && aiReady() }} />
     </>

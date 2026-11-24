@@ -57,7 +57,7 @@ function Canvas({ blocks }: { blocks: Block[] }) {
 }
 
 // the headline: «تصاميم» struck through on line 1; line 2's first word plain, the rest in the accent
-function Title({ lines, strike }: { lines: string[]; strike?: string }) {
+function Title({ lines, strike, sub }: { lines: string[]; strike?: string; sub?: boolean }) {
   const [l1, l2] = lines;
   const struck = (t: string) => {
     if (!strike) return t;
@@ -66,9 +66,10 @@ function Title({ lines, strike }: { lines: string[]; strike?: string }) {
   };
   const w2 = (l2 || '').split(' ');
   return (
-    <h1 id="hero-title" className={'hl__title' + (((l1 || '') + (l2 || '')).length > 34 ? ' hl__title--long' : '')}>
+    <h1 id="hero-title" className={'hl__title' + (((l1 || '') + (sub ? '' : l2 || '')).length > 34 ? ' hl__title--long' : '')}>
       {l1 && <span className="hl__l1">{struck(l1)}</span>}
-      {l2 && <span className="hl__l2">{w2[0]}{w2.length > 1 && <> <b>{w2.slice(1).join(' ')}</b></>}</span>}
+      {/* Nov 24, 2026 (Mohamed): the second line as a sub-line, smaller and in the accent colour */}
+      {l2 && (sub ? <span className="hl__sub">{l2}</span> : <span className="hl__l2">{w2[0]}{w2.length > 1 && <> <b>{w2.slice(1).join(' ')}</b></>}</span>)}
     </h1>
   );
 }
@@ -84,8 +85,15 @@ export default function Hero({ d }: { d: Dict }) {
       <div className="wrap hl__in">
         <div className="hl__txt">
           {h.kicker && <p className="hl__kick">{h.kicker}</p>}
-          <Title lines={h.title} strike={h.strike} />
+          <Title lines={h.title} strike={h.strike} sub={(h as any).subline === true} />
           {h.lead && <p className="hl__lead">{h.lead}</p>}
+          {/* the five departments («اكتشفها»), each a link to its before / after, then «النتيجة التي نعمل لها» (Nov 24, 2026) */}
+          {Array.isArray((h as any).depts) && (h as any).depts.length > 0 && (
+            <ul className="hl__depts">
+              {((h as any).depts as string[]).filter(Boolean).map((x) => <li key={x}><a href={vhref((h as any).deptsHref || '/programs/#dept', d.lang)}>{x}</a></li>)}
+            </ul>
+          )}
+          {(h as any).result && <p className="hl__result">{(h as any).result}</p>}
           <div className="hl__cta">
             <a className="btn btn--lg" href={d.links?.book ?? '#book'}>{h.cta}<span className="btn__ic"><Arrow /></span></a>
             {(h as any).secondary?.label && <a className="btn btn--lg hl__second" href={vhref((h as any).secondary.href, d.lang)}>{(h as any).secondary.label}</a>}
