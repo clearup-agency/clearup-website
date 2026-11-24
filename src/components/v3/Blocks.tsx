@@ -1,5 +1,5 @@
 import type { Raw } from '@/lib/view';
-import { Arrow } from '../Mark';
+import { Arrow, MarkMono } from '../Mark';
 import SectionHead from '../SectionHead';
 
 /* The value-proposition content (Nov 22, 2026 content document «محتوى موقع Clear Up المطوّر: عرض القيمة»): the
@@ -146,6 +146,8 @@ export function OfferSection({ s, lang, page }: { s: Raw; lang: L; page: string 
     <section className="voffer section section--tight" id={str(s.anchor) || undefined}>
       <div className="wrap">
         <div className="voffer__card" data-reveal>
+          {/* Nov 24, 2026 (Mohamed chose option A): the logo mark, faded, behind the text on the empty side */}
+          <MarkMono size={340} className="voffer__wm" id="voffer-mark-cut" />
           {str(s.kicker) && <p className="voffer__k"><Ph t={s.kicker} /></p>}
           <h2 className="voffer__t"><Ph t={s.title} /></h2>
           {str(s.lead) && <p className="voffer__lead"><Ph t={s.lead} /></p>}

@@ -1756,7 +1756,8 @@ html[dir="rtl"] .xstat__n { text-align: right; }
 
 /* limited offer strip */
 .voffer__card { background: var(--ink); color: #fff; border-radius: 32px 0 32px 0; padding: clamp(28px, 5vw, 64px); position: relative; overflow: hidden; }
-.voffer__card::after { content: ''; position: absolute; inset-inline-end: -60px; top: -60px; width: 220px; height: 220px; background: var(--purple); border-radius: 60px 0 60px 0; opacity: .55; }
+.voffer__wm { position: absolute; inset-inline-end: 6%; top: 50%; transform: translateY(-50%); width: clamp(220px, 24vw, 340px); height: auto; color: #8750A5; opacity: .22; z-index: 0; pointer-events: none; }
+@media (max-width: 760px) { .voffer__wm { inset-inline-end: -50px; top: auto; bottom: -60px; transform: none; width: 240px; opacity: .14; } }
 .voffer__k { display: inline-block; background: var(--yellow); color: var(--ink); font-weight: 700; font-size: .85rem; padding: .35em .8em; border-radius: 8px 0 8px 0; margin-bottom: 18px; position: relative; z-index: 1; }
 .voffer__t { font-size: clamp(1.7rem, 3.2vw, 3rem); font-weight: 800; line-height: 1.3; max-width: 20em; position: relative; z-index: 1; }
 .voffer__lead { color: rgba(255,255,255,.8); font-size: var(--t-lead); margin-top: 16px; max-width: 42em; position: relative; z-index: 1; }
