@@ -1382,7 +1382,8 @@ html[dir="ltr"] .hl__lines { -webkit-mask-image: radial-gradient(ellipse 36% 46%
 .hl__glow { position: absolute; width: 620px; height: 620px; inset-inline-end: 4%; top: 50%; transform: translateY(-50%); background: radial-gradient(closest-side, rgba(91, 32, 150, .26), rgba(91, 32, 150, 0)); }
 .hl__in { position: relative; width: 100%; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: clamp(48px, 8vw, 120px); padding-block: clamp(64px, 10vh, 96px) clamp(72px, 11vh, 104px); }
 .hl__kick { display: flex; align-items: center; gap: 12px; font-size: .95rem; font-weight: 600; letter-spacing: .01em; color: var(--lav); margin: 0; }
-.hl__kick::before { content: ''; width: 28px; height: 2px; background: currentColor; }
+.hl__kick::before { content: none; }
+.hl__kick-mark { flex: none; color: #8750A5; }
 .hl__title { font-weight: 800; font-size: clamp(2.6rem, 5.3vw, 4.75rem); line-height: 1.16; letter-spacing: -.005em; margin-top: 28px; color: #fff; }
 html[lang="en"] .hl__title { line-height: 1.08; letter-spacing: -.02em; }
 .hl__title > span { display: block; }
@@ -1989,7 +1990,6 @@ html[dir="ltr"] .pj__steps li + li::before { content: '→'; }
 .pj__grid > li { display: flex; }
 .pj__card { position: relative; width: 100%; text-align: start; background: #fff; border: var(--card-border); border-radius: 24px 0 24px 0; padding: 24px; display: flex; flex-direction: column; gap: 10px; min-height: 200px; transition: border-color .2s, transform .25s var(--ease), opacity .25s; }
 .pj__card:hover { border-color: var(--purple); transform: translateY(-3px); }
-.pj__card.is-dim { opacity: .22; pointer-events: none; }
 .pj__n { align-self: flex-start; font-size: 2rem; font-weight: 800; color: var(--yellow); line-height: 1; -webkit-text-stroke: 1px #D9A21A; }
 .pj__t { font-size: 1.2rem; font-weight: 800; line-height: 1.4; }
 .pj__p { color: var(--muted); }
@@ -2053,3 +2053,26 @@ html[dir="ltr"] .pj__drawer { transform: translateX(100%); }
 .hl__depts a:hover { background: rgba(255,255,255,.1); border-color: var(--lav); }
 @media (max-width: 760px) { .hl__sub { font-size: .6em; } .hl__result { font-size: .95rem; text-align: center; } .hl__depts { justify-content: center; } }
 .vfs__fit h4 { font-size: .9rem; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+
+/* hero: a light entrance (Nov 24, 2026, Mohamed) — each line rises in after the one before; none with reduced motion */
+@keyframes hlIn { from { opacity: 0; transform: translateY(18px); filter: blur(4px); } to { opacity: 1; transform: none; filter: none; } }
+@media (prefers-reduced-motion: no-preference) {
+  .hl__txt > *, .hl__title > span { animation: hlIn .8s var(--ease) both; }
+  .hl__txt > .hl__kick { animation-delay: .05s; }
+  .hl__title > .hl__l1 { animation-delay: .15s; }
+  .hl__title > .hl__l2, .hl__title > .hl__sub { animation-delay: .32s; }
+  .hl__txt > .hl__title { animation: none; }
+  .hl__txt > .hl__lead { animation-delay: .48s; }
+  .hl__txt > .hl__depts { animation-delay: .58s; }
+  .hl__txt > .hl__result { animation-delay: .66s; }
+  .hl__txt > .hl__cta { animation-delay: .76s; }
+  .hl__txt > .hl__grant, .hl__txt > .hl__note { animation-delay: .86s; }
+  .hl__vid { animation: hlIn 1s var(--ease) .4s both; }
+}
+
+/* the programmes filter: the others leave, then the chosen ones come in one after another */
+@keyframes pjOut { to { opacity: 0; transform: scale(.92) translateY(10px); } }
+@keyframes pjIn { from { opacity: 0; transform: translateY(18px) scale(.97); } to { opacity: 1; transform: none; } }
+.pj__cell.is-out { animation: pjOut .28s var(--ease) forwards; pointer-events: none; }
+.pj__cell.is-in { animation: pjIn .5s var(--ease) both; animation-delay: calc(var(--k, 0) * 70ms); }
+@media (prefers-reduced-motion: reduce) { .pj__cell.is-out, .pj__cell.is-in { animation: none; } }

@@ -21,6 +21,7 @@ type Data = {
 };
 
 const two = (k: number) => String(k).padStart(2, '0');
+const LEAVE = 280; // ms the leaving cards take
 
 export default function ProgramsJourney({ s, lang }: { s: Data; lang: 'ar' | 'en' }) {
   const all = (s.items ?? []).filter((x) => x && x.t);
@@ -30,7 +31,23 @@ export default function ProgramsJourney({ s, lang }: { s: Data; lang: 'ar' | 'en
   const depts = Array.from(new Set(progs.map((p) => p.d).filter(Boolean))) as string[];
   const lb = s.labels ?? {};
   const st = s.stages ?? [];
+  // the filter (Nov 24, 2026, Mohamed: the other programmes leave, then the chosen ones come in — not dimmed):
+  // `dept` is the pressed button, `shown` the filter the grid is laid out with; for LEAVE ms in between the cards
+  // that do not belong play their way out, then the grid re-lays and the cards play in (staggered)
   const [dept, setDept] = useState<string | null>(null);
+  const [shown, setShown] = useState<string | null>(null);
+  const [leaving, setLeaving] = useState(false);
+  const [round, setRound] = useState(0);
+  const timer = useRef(0);
+  const choose = (d: string | null) => {
+    if (d === dept) return;
+    setDept(d);
+    setLeaving(true);
+    window.clearTimeout(timer.current);
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    timer.current = window.setTimeout(() => { setShown(d); setLeaving(false); setRound((r) => r + 1); }, reduce ? 0 : LEAVE);
+  };
+  useEffect(() => () => window.clearTimeout(timer.current), []);
   const [open, setOpen] = useState<number | null>(null);
   const closeBtn = useRef<HTMLButtonElement>(null);
   const lastCard = useRef<HTMLElement | null>(null);
@@ -84,16 +101,18 @@ export default function ProgramsJourney({ s, lang }: { s: Data; lang: 'ar' | 'en
           {stage(1)}
           {depts.length > 1 && (
             <div className="pj__filter" role="group" aria-label={st[1]?.t}>
-              <button type="button" aria-pressed={dept === null} className={dept === null ? 'is-on' : ''} onClick={() => setDept(null)}>{lb.all}</button>
-              {depts.map((d) => <button key={d} type="button" aria-pressed={dept === d} className={dept === d ? 'is-on' : ''} onClick={() => setDept(dept === d ? null : d)}>{d}</button>)}
+              <button type="button" aria-pressed={dept === null} className={dept === null ? 'is-on' : ''} onClick={() => choose(null)}>{lb.all}</button>
+              {depts.map((d) => <button key={d} type="button" aria-pressed={dept === d} className={dept === d ? 'is-on' : ''} onClick={() => choose(dept === d ? null : d)}>{d}</button>)}
             </div>
           )}
-          <ol className="pj__grid">
+          <ol className="pj__grid" aria-live="polite">
             {progs.map((x, i) => {
-              const dim = dept !== null && x.d !== dept;
+              if (shown !== null && x.d !== shown) return null;
+              const out = leaving && dept !== null && x.d !== dept;
+              const k = progs.slice(0, i).filter((y) => shown === null || y.d === shown).length; // its place, for the stagger
               return (
-                <li key={x.t} id={x.id}>
-                  <button type="button" className={'pj__card' + (dim ? ' is-dim' : '')} aria-haspopup="dialog" tabIndex={dim ? -1 : 0}
+                <li key={x.t + '-' + round} id={x.id} className={'pj__cell' + (out ? ' is-out' : round > 0 ? ' is-in' : '')} style={{ ['--k' as string]: k }}>
+                  <button type="button" className="pj__card" aria-haspopup="dialog" tabIndex={out ? -1 : 0}
                     onClick={(e) => { lastCard.current = e.currentTarget; setOpen(i); }}>
                     {x.d && <span className="pj__dept">{x.d}</span>}
                     <span className="pj__n num">{two(i + 1)}</span>

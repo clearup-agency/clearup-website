@@ -19,3 +19,22 @@ export function Arrow({ className = '' }: { className?: string }) {
     </svg>
   );
 }
+
+/** The mark in one colour (Nov 24, 2026: the hero's eyebrow sign, «كلها باللون الموف»): both shapes in the
+ *  current colour, the arrow cut out so the background shows through it. */
+export function MarkMono({ size = 18, className = '' }: { size?: number; className?: string }) {
+  return (
+    <svg className={'logo-mark logo-mark--mono ' + className} width={size} height={size} viewBox="0 0 131 131" aria-hidden="true">
+      <defs>
+        <mask id="mark-mono-cut">
+          <rect width="131" height="131" fill="#fff" />
+          <path d={LOGO_ARROW} fill="#000" />
+        </mask>
+      </defs>
+      <g mask="url(#mark-mono-cut)" fill="currentColor">
+        <path d={LOGO_BACK} opacity=".72" />
+        <path d={LOGO_FRONT} />
+      </g>
+    </svg>
+  );
+}

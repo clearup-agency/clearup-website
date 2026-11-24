@@ -1,7 +1,7 @@
 import type { Dict } from '@/lib/dict';
 import type { Img } from '@/lib/view';
 import { cdnImage } from '@/lib/cdn';
-import { Arrow } from './Mark';
+import { Arrow, MarkMono } from './Mark';
 import ClipCard from './ClipCard';
 import SrcTag from './SrcTag';
 import { waWithText, numDir } from '@/lib/rules';
@@ -84,7 +84,7 @@ export default function Hero({ d }: { d: Dict }) {
       <Canvas blocks={(h.canvas ?? []) as Block[]} />
       <div className="wrap hl__in">
         <div className="hl__txt">
-          {h.kicker && <p className="hl__kick">{h.kicker}</p>}
+          {h.kicker && <p className="hl__kick"><MarkMono size={20} className="hl__kick-mark" />{h.kicker}</p>}
           <Title lines={h.title} strike={h.strike} sub={(h as any).subline === true} />
           {h.lead && <p className="hl__lead">{h.lead}</p>}
           {/* the five departments («اكتشفها»), each a link to its before / after, then «النتيجة التي نعمل لها» (Nov 24, 2026) */}
