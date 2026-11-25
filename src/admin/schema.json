@@ -225,6 +225,75 @@
               ]
             }
           ]
+        },
+        {
+          "name": "subline",
+          "title": "السطر الثاني من العنوان أصغر وبلون مختلف",
+          "type": "boolean",
+          "initialValue": false,
+          "group": "content"
+        },
+        {
+          "name": "depts",
+          "title": "الأقسام تحت النص (روابط)",
+          "type": "array",
+          "of": [
+            {
+              "type": "localeString"
+            }
+          ],
+          "group": "content"
+        },
+        {
+          "name": "deptsHref",
+          "title": "رابط الأقسام",
+          "type": "string",
+          "group": "content",
+          "description": "صفحة مثل /programs/ أو /contact/#book ، أو #اسم-القسم، أو رابط كامل"
+        },
+        {
+          "name": "result",
+          "title": "سطر «النتيجة التي نعمل لها»",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "secondary",
+          "title": "الزر الثاني",
+          "type": "object",
+          "fields": [
+            {
+              "name": "label",
+              "title": "نص الزر",
+              "type": "localeString"
+            },
+            {
+              "name": "href",
+              "title": "الرابط",
+              "type": "string",
+              "description": "صفحة مثل /programs/ أو /contact/#book ، أو #اسم-القسم، أو رابط كامل"
+            }
+          ],
+          "group": "content"
+        },
+        {
+          "name": "grant",
+          "title": "رابط المنحة تحت الأزرار",
+          "type": "object",
+          "fields": [
+            {
+              "name": "label",
+              "title": "نص الزر",
+              "type": "localeString"
+            },
+            {
+              "name": "href",
+              "title": "الرابط",
+              "type": "string",
+              "description": "صفحة مثل /programs/ أو /contact/#book ، أو #اسم-القسم، أو رابط كامل"
+            }
+          ],
+          "group": "content"
         }
       ]
     },
@@ -365,6 +434,12 @@
           "name": "title",
           "title": "العنوان",
           "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "lead",
+          "title": "النص تحت العنوان",
+          "type": "localeText",
           "group": "content"
         },
         {
@@ -4092,6 +4167,1547 @@
           ]
         }
       ]
+    },
+    {
+      "name": "landingHeadSection",
+      "title": "رأس الصفحة مع أزرار",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "initialValue": false,
+          "group": "settings",
+          "description": "يخفي القسم من الموقع بدون حذفه."
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل programs. روابط القائمة تستخدمه: #programs"
+        },
+        {
+          "name": "kicker",
+          "title": "السطر الصغير فوق العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "title",
+          "title": "عنوان الصفحة",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "lead",
+          "title": "النص تحت العنوان",
+          "type": "localeText",
+          "group": "content"
+        },
+        {
+          "name": "chips",
+          "title": "وسوم صغيرة تحت النص",
+          "type": "array",
+          "of": [
+            {
+              "type": "localeString"
+            }
+          ],
+          "group": "content"
+        },
+        {
+          "name": "buttons",
+          "title": "الأزرار (الأول أساسي، والباقي بإطار)",
+          "type": "array",
+          "of": [
+            {
+              "type": "object",
+              "name": "button",
+              "title": "زر",
+              "fields": [
+                {
+                  "name": "label",
+                  "title": "نص الزر",
+                  "type": "localeString"
+                },
+                {
+                  "name": "href",
+                  "title": "الرابط",
+                  "type": "string",
+                  "description": "صفحة مثل /programs/ أو /contact/#book ، أو #اسم-القسم، أو رابط كامل"
+                }
+              ]
+            }
+          ],
+          "group": "content"
+        },
+        {
+          "name": "note",
+          "title": "سطر صغير تحت الأزرار",
+          "type": "localeString",
+          "group": "content"
+        }
+      ]
+    },
+    {
+      "name": "cardsSection",
+      "title": "بطاقات",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "initialValue": false,
+          "group": "settings",
+          "description": "يخفي القسم من الموقع بدون حذفه."
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل programs. روابط القائمة تستخدمه: #programs"
+        },
+        {
+          "name": "eyebrow",
+          "title": "العنوان الصغير فوق العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "title",
+          "title": "العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "lead",
+          "title": "سطر تعريفي",
+          "type": "localeText",
+          "group": "content"
+        },
+        {
+          "name": "variant",
+          "title": "شكل البطاقات",
+          "type": "string",
+          "group": "content",
+          "options": {
+            "layout": "radio",
+            "direction": "horizontal",
+            "list": [
+              {
+                "title": "عادية",
+                "value": "grid"
+              },
+              {
+                "title": "مرقّمة",
+                "value": "numbered"
+              },
+              {
+                "title": "قائمة صح",
+                "value": "check"
+              },
+              {
+                "title": "قطاعات",
+                "value": "sector"
+              },
+              {
+                "title": "نتائج داكنة",
+                "value": "outcome"
+              },
+              {
+                "title": "أقسام",
+                "value": "dept"
+              },
+              {
+                "title": "مسارات متدرجة",
+                "value": "track"
+              }
+            ]
+          }
+        },
+        {
+          "name": "min",
+          "title": "أقل عرض للبطاقة (بكسل)",
+          "type": "number",
+          "group": "settings",
+          "description": "يحدد كم بطاقة في السطر. فارغ = 240"
+        },
+        {
+          "name": "compact",
+          "title": "مسافات أقل فوق وتحت القسم",
+          "type": "boolean",
+          "initialValue": false,
+          "group": "settings"
+        },
+        {
+          "name": "items",
+          "title": "البطاقات",
+          "type": "array",
+          "of": [
+            {
+              "type": "object",
+              "name": "card",
+              "title": "بطاقة",
+              "fields": [
+                {
+                  "name": "tag",
+                  "title": "الوسم الصغير",
+                  "type": "localeString"
+                },
+                {
+                  "name": "t",
+                  "title": "العنوان",
+                  "type": "localeString"
+                },
+                {
+                  "name": "quote",
+                  "title": "جملة بارزة",
+                  "type": "localeString"
+                },
+                {
+                  "name": "d",
+                  "title": "النص",
+                  "type": "localeText"
+                },
+                {
+                  "name": "rows",
+                  "title": "سطور (عنوان صغير + نص)",
+                  "type": "array",
+                  "of": [
+                    {
+                      "type": "object",
+                      "name": "row",
+                      "title": "سطر",
+                      "fields": [
+                        {
+                          "name": "k",
+                          "title": "العنوان الصغير",
+                          "type": "localeString"
+                        },
+                        {
+                          "name": "v",
+                          "title": "النص",
+                          "type": "localeText"
+                        }
+                      ]
+                    }
+                  ],
+                  "group": "content"
+                },
+                {
+                  "name": "chipsLabel",
+                  "title": "عنوان الوسوم",
+                  "type": "localeString"
+                },
+                {
+                  "name": "chips",
+                  "title": "وسوم",
+                  "type": "array",
+                  "of": [
+                    {
+                      "type": "localeString"
+                    }
+                  ]
+                },
+                {
+                  "name": "cycle",
+                  "title": "مسار (خطوة لكل عنصر)",
+                  "type": "array",
+                  "of": [
+                    {
+                      "type": "localeString"
+                    }
+                  ]
+                },
+                {
+                  "name": "bullets",
+                  "title": "نقاط",
+                  "type": "array",
+                  "of": [
+                    {
+                      "type": "localeString"
+                    }
+                  ]
+                },
+                {
+                  "name": "cta",
+                  "title": "نص الرابط",
+                  "type": "localeString"
+                },
+                {
+                  "name": "href",
+                  "title": "الرابط",
+                  "type": "string",
+                  "description": "صفحة مثل /programs/ أو /contact/#book ، أو #اسم-القسم، أو رابط كامل"
+                },
+                {
+                  "name": "feature",
+                  "title": "بطاقة بارزة (بنفسجية)",
+                  "type": "boolean",
+                  "initialValue": false
+                },
+                {
+                  "name": "id",
+                  "title": "معرّف البطاقة (رابط #)",
+                  "type": "string",
+                  "description": "اسم إنجليزي بدون مسافات"
+                }
+              ]
+            }
+          ],
+          "group": "content"
+        },
+        {
+          "name": "footTitle",
+          "title": "عنوان الصندوق تحت البطاقات",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "extra",
+          "title": "نقاط الصندوق تحت البطاقات",
+          "type": "array",
+          "of": [
+            {
+              "type": "localeString"
+            }
+          ],
+          "group": "content"
+        },
+        {
+          "name": "foot",
+          "title": "سطر صغير تحت البطاقات",
+          "type": "localeText",
+          "group": "content"
+        },
+        {
+          "name": "cta",
+          "title": "زر تحت البطاقات",
+          "type": "object",
+          "fields": [
+            {
+              "name": "label",
+              "title": "نص الزر",
+              "type": "localeString"
+            },
+            {
+              "name": "href",
+              "title": "الرابط",
+              "type": "string",
+              "description": "صفحة مثل /programs/ أو /contact/#book ، أو #اسم-القسم، أو رابط كامل"
+            }
+          ],
+          "group": "content"
+        }
+      ]
+    },
+    {
+      "name": "offerSection",
+      "title": "شريط العرض المحدود (المسرّعة)",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "initialValue": false,
+          "group": "settings",
+          "description": "يخفي القسم من الموقع بدون حذفه."
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل programs. روابط القائمة تستخدمه: #programs"
+        },
+        {
+          "name": "kicker",
+          "title": "الوسم الأصفر",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "title",
+          "title": "العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "lead",
+          "title": "النص",
+          "type": "localeText",
+          "group": "content"
+        },
+        {
+          "name": "cta",
+          "title": "الزر",
+          "type": "object",
+          "fields": [
+            {
+              "name": "label",
+              "title": "نص الزر",
+              "type": "localeString"
+            },
+            {
+              "name": "href",
+              "title": "الرابط",
+              "type": "string",
+              "description": "صفحة مثل /programs/ أو /contact/#book ، أو #اسم-القسم، أو رابط كامل"
+            }
+          ],
+          "group": "content"
+        },
+        {
+          "name": "note",
+          "title": "السطر الصغير بجانب الزر",
+          "type": "localeString",
+          "group": "content"
+        }
+      ]
+    },
+    {
+      "name": "departmentsSection",
+      "title": "الأقسام الخمسة (قبل وبعد)",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "initialValue": false,
+          "group": "settings",
+          "description": "يخفي القسم من الموقع بدون حذفه."
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل programs. روابط القائمة تستخدمه: #programs"
+        },
+        {
+          "name": "eyebrow",
+          "title": "العنوان الصغير فوق العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "title",
+          "title": "العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "lead",
+          "title": "سطر تعريفي",
+          "type": "localeText",
+          "group": "content"
+        },
+        {
+          "name": "items",
+          "title": "الأقسام",
+          "type": "array",
+          "of": [
+            {
+              "type": "object",
+              "name": "dept",
+              "title": "قسم",
+              "fields": [
+                {
+                  "name": "name",
+                  "title": "اسم القسم",
+                  "type": "localeString"
+                },
+                {
+                  "name": "before",
+                  "title": "قبل",
+                  "type": "localeText"
+                },
+                {
+                  "name": "after",
+                  "title": "بعد (مخرج متوقع)",
+                  "type": "localeText"
+                },
+                {
+                  "name": "programs",
+                  "title": "البرامج",
+                  "type": "array",
+                  "of": [
+                    {
+                      "type": "localeString"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "group": "content"
+        },
+        {
+          "name": "labels",
+          "title": "كلمات القسم",
+          "type": "object",
+          "fields": [
+            {
+              "name": "before",
+              "title": "قبل",
+              "type": "localeString"
+            },
+            {
+              "name": "after",
+              "title": "بعد",
+              "type": "localeString"
+            },
+            {
+              "name": "programs",
+              "title": "البرامج",
+              "type": "localeString"
+            },
+            {
+              "name": "cta",
+              "title": "زر التحويل",
+              "type": "localeString"
+            },
+            {
+              "name": "prev",
+              "title": "القسم السابق",
+              "type": "localeString"
+            },
+            {
+              "name": "next",
+              "title": "القسم التالي",
+              "type": "localeString"
+            }
+          ],
+          "group": "content"
+        },
+        {
+          "name": "href",
+          "title": "صفحة الحجز التي يفتحها الزر",
+          "type": "string",
+          "group": "settings",
+          "description": "فارغ = /contact/"
+        }
+      ]
+    },
+    {
+      "name": "programsSection",
+      "title": "البرامج (رحلة من ثلاث مراحل)",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "initialValue": false,
+          "group": "settings",
+          "description": "يخفي القسم من الموقع بدون حذفه."
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل programs. روابط القائمة تستخدمه: #programs"
+        },
+        {
+          "name": "eyebrow",
+          "title": "العنوان الصغير فوق العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "title",
+          "title": "العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "lead",
+          "title": "سطر تعريفي",
+          "type": "localeText",
+          "group": "content"
+        },
+        {
+          "name": "stages",
+          "title": "المراحل الثلاث",
+          "type": "array",
+          "of": [
+            {
+              "type": "object",
+              "name": "stage",
+              "title": "مرحلة",
+              "fields": [
+                {
+                  "name": "n",
+                  "title": "الرقم",
+                  "type": "string"
+                },
+                {
+                  "name": "t",
+                  "title": "العنوان",
+                  "type": "localeString"
+                }
+              ]
+            }
+          ],
+          "group": "content"
+        },
+        {
+          "name": "items",
+          "title": "البرامج",
+          "type": "array",
+          "of": [
+            {
+              "type": "object",
+              "name": "program",
+              "title": "برنامج",
+              "fields": [
+                {
+                  "name": "id",
+                  "title": "المعرّف",
+                  "type": "string",
+                  "group": "settings",
+                  "description": "start = نقطة البداية (المرحلة 1)، partner = الباقة الشاملة (المرحلة 3)، والباقي البرامج التسعة"
+                },
+                {
+                  "name": "d",
+                  "title": "القسم (للتصفية)",
+                  "type": "localeString"
+                },
+                {
+                  "name": "tag",
+                  "title": "الوسم",
+                  "type": "localeString"
+                },
+                {
+                  "name": "t",
+                  "title": "الاسم",
+                  "type": "localeString"
+                },
+                {
+                  "name": "promise",
+                  "title": "الوعد",
+                  "type": "localeText"
+                },
+                {
+                  "name": "includes",
+                  "title": "يشمل",
+                  "type": "array",
+                  "of": [
+                    {
+                      "type": "localeString"
+                    }
+                  ]
+                },
+                {
+                  "name": "ai",
+                  "title": "دور الذكاء الاصطناعي",
+                  "type": "localeText"
+                },
+                {
+                  "name": "impact",
+                  "title": "الأثر المتوقع",
+                  "type": "array",
+                  "of": [
+                    {
+                      "type": "localeString"
+                    }
+                  ]
+                },
+                {
+                  "name": "choices",
+                  "title": "خياران",
+                  "type": "localeText"
+                },
+                {
+                  "name": "rows",
+                  "title": "سطور (عنوان صغير + نص)",
+                  "type": "array",
+                  "of": [
+                    {
+                      "type": "object",
+                      "name": "row",
+                      "title": "سطر",
+                      "fields": [
+                        {
+                          "name": "k",
+                          "title": "العنوان الصغير",
+                          "type": "localeString"
+                        },
+                        {
+                          "name": "v",
+                          "title": "النص",
+                          "type": "localeText"
+                        }
+                      ]
+                    }
+                  ],
+                  "group": "content"
+                },
+                {
+                  "name": "cycle",
+                  "title": "الدورة (خطوة لكل عنصر)",
+                  "type": "array",
+                  "of": [
+                    {
+                      "type": "localeString"
+                    }
+                  ]
+                },
+                {
+                  "name": "text",
+                  "title": "النص",
+                  "type": "localeText"
+                },
+                {
+                  "name": "proof",
+                  "title": "الدليل",
+                  "type": "localeText"
+                },
+                {
+                  "name": "cta",
+                  "title": "الزر",
+                  "type": "object",
+                  "fields": [
+                    {
+                      "name": "label",
+                      "title": "نص الزر",
+                      "type": "localeString"
+                    },
+                    {
+                      "name": "href",
+                      "title": "الرابط",
+                      "type": "string",
+                      "description": "صفحة مثل /programs/ أو /contact/#book ، أو #اسم-القسم، أو رابط كامل"
+                    }
+                  ],
+                  "group": "content"
+                }
+              ]
+            }
+          ],
+          "group": "content"
+        },
+        {
+          "name": "labels",
+          "title": "كلمات القسم",
+          "type": "object",
+          "fields": [
+            {
+              "name": "includes",
+              "title": "يشمل",
+              "type": "localeString"
+            },
+            {
+              "name": "ai",
+              "title": "دور الذكاء الاصطناعي",
+              "type": "localeString"
+            },
+            {
+              "name": "impact",
+              "title": "الأثر المتوقع",
+              "type": "localeString"
+            },
+            {
+              "name": "choices",
+              "title": "خياران",
+              "type": "localeString"
+            },
+            {
+              "name": "all",
+              "title": "الكل",
+              "type": "localeString"
+            },
+            {
+              "name": "more",
+              "title": "التفاصيل",
+              "type": "localeString"
+            },
+            {
+              "name": "book",
+              "title": "زر الحجز في اللوحة الجانبية",
+              "type": "localeString"
+            },
+            {
+              "name": "close",
+              "title": "إغلاق",
+              "type": "localeString"
+            }
+          ],
+          "group": "content"
+        }
+      ]
+    },
+    {
+      "name": "weightsSection",
+      "title": "معايير التقييم (أشرطة أوزان)",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "initialValue": false,
+          "group": "settings",
+          "description": "يخفي القسم من الموقع بدون حذفه."
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل programs. روابط القائمة تستخدمه: #programs"
+        },
+        {
+          "name": "eyebrow",
+          "title": "العنوان الصغير فوق العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "title",
+          "title": "العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "lead",
+          "title": "سطر تعريفي",
+          "type": "localeText",
+          "group": "content"
+        },
+        {
+          "name": "items",
+          "title": "المعايير",
+          "type": "array",
+          "of": [
+            {
+              "type": "object",
+              "name": "criterion",
+              "title": "معيار",
+              "fields": [
+                {
+                  "name": "t",
+                  "title": "المعيار",
+                  "type": "localeString"
+                },
+                {
+                  "name": "w",
+                  "title": "الوزن",
+                  "type": "number"
+                }
+              ]
+            }
+          ],
+          "group": "content"
+        },
+        {
+          "name": "totalLabel",
+          "title": "النص بجانب المجموع",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "notes",
+          "title": "الصناديق الجانبية",
+          "type": "array",
+          "of": [
+            {
+              "type": "object",
+              "name": "note",
+              "title": "صندوق",
+              "fields": [
+                {
+                  "name": "t",
+                  "title": "العنوان",
+                  "type": "localeString"
+                },
+                {
+                  "name": "d",
+                  "title": "النص",
+                  "type": "localeText"
+                },
+                {
+                  "name": "bullets",
+                  "title": "نقاط",
+                  "type": "array",
+                  "of": [
+                    {
+                      "type": "localeString"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "group": "content"
+        }
+      ]
+    },
+    {
+      "name": "assessmentSection",
+      "title": "المشخّص الذكي",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "initialValue": false,
+          "group": "settings",
+          "description": "يخفي القسم من الموقع بدون حذفه."
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل programs. روابط القائمة تستخدمه: #programs"
+        },
+        {
+          "name": "kicker",
+          "title": "السطر الصغير فوق العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "title",
+          "title": "العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "lead",
+          "title": "النص",
+          "type": "localeText",
+          "group": "content"
+        },
+        {
+          "name": "teaser",
+          "title": "نسخة مختصرة (زر يفتح صفحة المشخّص)",
+          "type": "boolean",
+          "initialValue": false
+        },
+        {
+          "name": "teaserCta",
+          "title": "زر النسخة المختصرة",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "voice",
+          "title": "بطاقة الصوت",
+          "type": "object",
+          "fields": [
+            {
+              "name": "t",
+              "title": "العنوان",
+              "type": "localeString"
+            },
+            {
+              "name": "d",
+              "title": "النص",
+              "type": "localeText"
+            },
+            {
+              "name": "cta",
+              "title": "الزر",
+              "type": "localeString"
+            },
+            {
+              "name": "soon",
+              "title": "وسم «قريباً»",
+              "type": "localeString"
+            }
+          ],
+          "group": "content"
+        },
+        {
+          "name": "text",
+          "title": "بطاقة الأسئلة",
+          "type": "object",
+          "fields": [
+            {
+              "name": "t",
+              "title": "العنوان",
+              "type": "localeString"
+            },
+            {
+              "name": "d",
+              "title": "النص",
+              "type": "localeText"
+            },
+            {
+              "name": "cta",
+              "title": "الزر",
+              "type": "localeString"
+            }
+          ],
+          "group": "content"
+        },
+        {
+          "name": "privacy",
+          "title": "سطر الخصوصية",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "axes",
+          "title": "المحاور والأسئلة",
+          "type": "array",
+          "of": [
+            {
+              "type": "object",
+              "name": "axis",
+              "title": "محور",
+              "fields": [
+                {
+                  "name": "t",
+                  "title": "اسم المحور",
+                  "type": "localeString"
+                },
+                {
+                  "name": "step",
+                  "title": "الخطوة المقترحة إذا كان أضعف محور",
+                  "type": "localeText"
+                },
+                {
+                  "name": "qs",
+                  "title": "الأسئلة",
+                  "type": "array",
+                  "of": [
+                    {
+                      "type": "object",
+                      "name": "q",
+                      "title": "سؤال",
+                      "fields": [
+                        {
+                          "name": "q",
+                          "title": "السؤال",
+                          "type": "localeString"
+                        },
+                        {
+                          "name": "opts",
+                          "title": "الاختيارات (من الأضعف للأقوى)",
+                          "type": "array",
+                          "of": [
+                            {
+                              "type": "localeString"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "group": "content"
+        },
+        {
+          "name": "levels",
+          "title": "مستويات النتيجة",
+          "type": "array",
+          "of": [
+            {
+              "type": "object",
+              "name": "level",
+              "title": "مستوى",
+              "fields": [
+                {
+                  "name": "min",
+                  "title": "من",
+                  "type": "number"
+                },
+                {
+                  "name": "max",
+                  "title": "إلى",
+                  "type": "number"
+                },
+                {
+                  "name": "name",
+                  "title": "الاسم",
+                  "type": "localeString"
+                },
+                {
+                  "name": "msg",
+                  "title": "الرسالة",
+                  "type": "localeText"
+                }
+              ]
+            }
+          ],
+          "group": "content"
+        },
+        {
+          "name": "labels",
+          "title": "كلمات الأداة",
+          "type": "object",
+          "fields": [
+            {
+              "name": "question",
+              "title": "سؤال",
+              "type": "localeString"
+            },
+            {
+              "name": "of",
+              "title": "من",
+              "type": "localeString"
+            },
+            {
+              "name": "back",
+              "title": "السابق",
+              "type": "localeString"
+            },
+            {
+              "name": "result",
+              "title": "عنوان النتيجة",
+              "type": "localeString"
+            },
+            {
+              "name": "axes",
+              "title": "عنوان المحاور",
+              "type": "localeString"
+            },
+            {
+              "name": "steps",
+              "title": "عنوان الخطوات",
+              "type": "localeString"
+            },
+            {
+              "name": "restart",
+              "title": "أعد التقييم",
+              "type": "localeString"
+            }
+          ],
+          "group": "content"
+        },
+        {
+          "name": "primary",
+          "title": "الزر الأساسي في النتيجة",
+          "type": "object",
+          "fields": [
+            {
+              "name": "label",
+              "title": "النص",
+              "type": "localeString"
+            }
+          ],
+          "group": "content"
+        },
+        {
+          "name": "secondary",
+          "title": "الزر الثانوي في النتيجة",
+          "type": "object",
+          "fields": [
+            {
+              "name": "label",
+              "title": "النص",
+              "type": "localeString"
+            }
+          ],
+          "group": "content"
+        },
+        {
+          "name": "eligible",
+          "title": "سطر المؤهلين للمسرّعة",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "eligibleCta",
+          "title": "زر المؤهلين",
+          "type": "object",
+          "fields": [
+            {
+              "name": "label",
+              "title": "النص",
+              "type": "localeString"
+            }
+          ],
+          "group": "content"
+        },
+        {
+          "name": "eligibleAxis",
+          "title": "محور سؤال الأهلية (يبدأ من 0)",
+          "type": "number",
+          "group": "settings"
+        },
+        {
+          "name": "eligibleQ",
+          "title": "رقم سؤال الأهلية في المحور (يبدأ من 0)",
+          "type": "number",
+          "group": "settings"
+        }
+      ]
+    },
+    {
+      "name": "formSection",
+      "title": "نموذج بخطوات (الحجز / التقديم)",
+      "type": "object",
+      "groups": [
+        {
+          "name": "content",
+          "title": "المحتوى",
+          "default": true
+        },
+        {
+          "name": "settings",
+          "title": "إعدادات القسم"
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "title": "إخفاء هذا القسم",
+          "type": "boolean",
+          "initialValue": false,
+          "group": "settings",
+          "description": "يخفي القسم من الموقع بدون حذفه."
+        },
+        {
+          "name": "anchor",
+          "title": "رابط القسم (anchor)",
+          "type": "string",
+          "group": "settings",
+          "description": "اسم إنجليزي بدون مسافات، مثل programs. روابط القائمة تستخدمه: #programs"
+        },
+        {
+          "name": "heading",
+          "title": "مستوى العنوان",
+          "type": "string",
+          "group": "settings",
+          "options": {
+            "layout": "radio",
+            "direction": "horizontal",
+            "list": [
+              {
+                "title": "عنوان الصفحة (h1)",
+                "value": "h1"
+              },
+              {
+                "title": "عنوان قسم (h2)",
+                "value": "h2"
+              }
+            ]
+          }
+        },
+        {
+          "name": "kicker",
+          "title": "السطر الصغير فوق العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "title",
+          "title": "العنوان",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "lead",
+          "title": "النص",
+          "type": "localeText",
+          "group": "content"
+        },
+        {
+          "name": "aside",
+          "title": "العمود الجانبي",
+          "type": "object",
+          "fields": [
+            {
+              "name": "t",
+              "title": "العنوان",
+              "type": "localeString"
+            },
+            {
+              "name": "items",
+              "title": "النقاط",
+              "type": "array",
+              "of": [
+                {
+                  "type": "localeString"
+                }
+              ]
+            },
+            {
+              "name": "fitTitle",
+              "title": "عنوان «مناسبة لك إذا»",
+              "type": "localeString"
+            },
+            {
+              "name": "fit",
+              "title": "نص «مناسبة لك إذا»",
+              "type": "localeText"
+            }
+          ],
+          "group": "content"
+        },
+        {
+          "name": "steps",
+          "title": "الخطوات",
+          "type": "array",
+          "of": [
+            {
+              "type": "object",
+              "name": "step",
+              "title": "خطوة",
+              "fields": [
+                {
+                  "name": "t",
+                  "title": "اسم الخطوة",
+                  "type": "localeString"
+                },
+                {
+                  "name": "fields",
+                  "title": "الحقول",
+                  "type": "array",
+                  "of": [
+                    {
+                      "type": "object",
+                      "name": "field",
+                      "title": "حقل",
+                      "fields": [
+                        {
+                          "name": "name",
+                          "title": "اسم الحقل (إنجليزي)",
+                          "type": "string"
+                        },
+                        {
+                          "name": "label",
+                          "title": "السؤال",
+                          "type": "localeString"
+                        },
+                        {
+                          "name": "type",
+                          "title": "النوع",
+                          "type": "string",
+                          "options": {
+                            "layout": "radio",
+                            "direction": "horizontal",
+                            "list": [
+                              {
+                                "title": "نص",
+                                "value": "text"
+                              },
+                              {
+                                "title": "إيميل",
+                                "value": "email"
+                              },
+                              {
+                                "title": "هاتف",
+                                "value": "tel"
+                              },
+                              {
+                                "title": "قائمة",
+                                "value": "select"
+                              },
+                              {
+                                "title": "اختيار واحد",
+                                "value": "radio"
+                              },
+                              {
+                                "title": "عدة اختيارات",
+                                "value": "checks"
+                              },
+                              {
+                                "title": "نص طويل",
+                                "value": "textarea"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "name": "options",
+                          "title": "الاختيارات",
+                          "type": "array",
+                          "of": [
+                            {
+                              "type": "localeString"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "required",
+                          "title": "إجباري",
+                          "type": "boolean",
+                          "initialValue": false
+                        },
+                        {
+                          "name": "half",
+                          "title": "نصف عرض",
+                          "type": "boolean",
+                          "initialValue": false
+                        },
+                        {
+                          "name": "prefill",
+                          "title": "يُعبّأ من الرابط (?focus=)",
+                          "type": "string"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "group": "content"
+        },
+        {
+          "name": "labels",
+          "title": "كلمات النموذج",
+          "type": "object",
+          "fields": [
+            {
+              "name": "next",
+              "title": "التالي",
+              "type": "localeString"
+            },
+            {
+              "name": "back",
+              "title": "رجوع",
+              "type": "localeString"
+            },
+            {
+              "name": "step",
+              "title": "الخطوة",
+              "type": "localeString"
+            },
+            {
+              "name": "of",
+              "title": "من",
+              "type": "localeString"
+            },
+            {
+              "name": "required",
+              "title": "رسالة الحقول الإجبارية",
+              "type": "localeString"
+            }
+          ],
+          "group": "content"
+        },
+        {
+          "name": "submit",
+          "title": "زر الإرسال",
+          "type": "localeString",
+          "group": "content"
+        },
+        {
+          "name": "success",
+          "title": "رسالة بعد الإرسال",
+          "type": "localeText",
+          "group": "content"
+        },
+        {
+          "name": "successLink",
+          "title": "رابط بعد الإرسال",
+          "type": "object",
+          "fields": [
+            {
+              "name": "label",
+              "title": "نص الزر",
+              "type": "localeString"
+            },
+            {
+              "name": "href",
+              "title": "الرابط",
+              "type": "string",
+              "description": "صفحة مثل /programs/ أو /contact/#book ، أو #اسم-القسم، أو رابط كامل"
+            }
+          ],
+          "group": "content"
+        },
+        {
+          "name": "previewNote",
+          "title": "ملاحظة صغيرة تحت النموذج",
+          "type": "localeString",
+          "group": "content"
+        }
+      ]
     }
   ],
   "settings": {
@@ -4358,7 +5974,7 @@
         "title": "روابط القائمة",
         "type": "array",
         "group": "header",
-        "description": "الرابط: صفحة (/services/ ، /work/ ، /about/ ، /contact/)، أو #اسم-القسم في الرئيسية، أو رابط كامل. تظهر أول 5 على الكمبيوتر، وكلها في قائمة الجوال وأسفل الصفحة.",
+        "description": "الرابط: صفحة (/programs/ ، /sectors/ ، /accelerator/ ، /work/ ، /about/)، أو #اسم-القسم في الرئيسية، أو رابط كامل. «روابط فرعية» = قائمة منسدلة تحت الرابط.",
         "of": [
           {
             "type": "object",
@@ -4373,6 +5989,31 @@
                 "name": "href",
                 "title": "الرابط",
                 "type": "string"
+              },
+              {
+                "name": "children",
+                "title": "روابط فرعية (قائمة منسدلة)",
+                "type": "array",
+                "of": [
+                  {
+                    "type": "object",
+                    "name": "navChild",
+                    "title": "رابط فرعي",
+                    "fields": [
+                      {
+                        "name": "label",
+                        "title": "النص",
+                        "type": "localeString"
+                      },
+                      {
+                        "name": "href",
+                        "title": "الرابط",
+                        "type": "string",
+                        "description": "صفحة مثل /programs/ أو /contact/#book ، أو #اسم-القسم، أو رابط كامل"
+                      }
+                    ]
+                  }
+                ]
               }
             ]
           }
@@ -4463,6 +6104,12 @@
         "type": "localeString",
         "group": "footer",
         "description": "فارغ = «واتساب»."
+      },
+      {
+        "name": "footerDiag",
+        "title": "رابط جلسة التشخيص في روابط أسفل الصفحة",
+        "type": "localeString",
+        "group": "footer"
       },
       {
         "name": "metaTitle",
@@ -4744,7 +6391,7 @@
           },
           {
             "name": "services",
-            "title": "الخدمات والنظام",
+            "title": "البرامج",
             "type": "object",
             "fields": [
               {
@@ -4843,7 +6490,238 @@
           },
           {
             "name": "contact",
-            "title": "تواصل",
+            "title": "جلسة التشخيص",
+            "type": "object",
+            "fields": [
+              {
+                "name": "title",
+                "title": "عنوان الصفحة في جوجل",
+                "type": "localeString"
+              },
+              {
+                "name": "description",
+                "title": "الوصف في جوجل",
+                "type": "localeText"
+              },
+              {
+                "name": "image",
+                "title": "صورة المشاركة (1200×630)",
+                "type": "image",
+                "options": {
+                  "hotspot": true
+                },
+                "fields": [
+                  {
+                    "name": "alt",
+                    "title": "وصف الصورة (للمكفوفين ومحركات البحث)",
+                    "type": "localeString"
+                  }
+                ],
+                "group": "pages"
+              }
+            ]
+          },
+          {
+            "name": "sectors",
+            "title": "القطاعات",
+            "type": "object",
+            "fields": [
+              {
+                "name": "title",
+                "title": "عنوان الصفحة في جوجل",
+                "type": "localeString"
+              },
+              {
+                "name": "description",
+                "title": "الوصف في جوجل",
+                "type": "localeText"
+              },
+              {
+                "name": "image",
+                "title": "صورة المشاركة (1200×630)",
+                "type": "image",
+                "options": {
+                  "hotspot": true
+                },
+                "fields": [
+                  {
+                    "name": "alt",
+                    "title": "وصف الصورة (للمكفوفين ومحركات البحث)",
+                    "type": "localeString"
+                  }
+                ],
+                "group": "pages"
+              }
+            ]
+          },
+          {
+            "name": "accelerator",
+            "title": "المسرّعة الذكية",
+            "type": "object",
+            "fields": [
+              {
+                "name": "title",
+                "title": "عنوان الصفحة في جوجل",
+                "type": "localeString"
+              },
+              {
+                "name": "description",
+                "title": "الوصف في جوجل",
+                "type": "localeText"
+              },
+              {
+                "name": "image",
+                "title": "صورة المشاركة (1200×630)",
+                "type": "image",
+                "options": {
+                  "hotspot": true
+                },
+                "fields": [
+                  {
+                    "name": "alt",
+                    "title": "وصف الصورة (للمكفوفين ومحركات البحث)",
+                    "type": "localeString"
+                  }
+                ],
+                "group": "pages"
+              }
+            ]
+          },
+          {
+            "name": "assessment",
+            "title": "المشخّص الذكي",
+            "type": "object",
+            "fields": [
+              {
+                "name": "title",
+                "title": "عنوان الصفحة في جوجل",
+                "type": "localeString"
+              },
+              {
+                "name": "description",
+                "title": "الوصف في جوجل",
+                "type": "localeText"
+              },
+              {
+                "name": "image",
+                "title": "صورة المشاركة (1200×630)",
+                "type": "image",
+                "options": {
+                  "hotspot": true
+                },
+                "fields": [
+                  {
+                    "name": "alt",
+                    "title": "وصف الصورة (للمكفوفين ومحركات البحث)",
+                    "type": "localeString"
+                  }
+                ],
+                "group": "pages"
+              }
+            ]
+          },
+          {
+            "name": "sector-development",
+            "title": "المؤسسات التنموية",
+            "type": "object",
+            "fields": [
+              {
+                "name": "title",
+                "title": "عنوان الصفحة في جوجل",
+                "type": "localeString"
+              },
+              {
+                "name": "description",
+                "title": "الوصف في جوجل",
+                "type": "localeText"
+              },
+              {
+                "name": "image",
+                "title": "صورة المشاركة (1200×630)",
+                "type": "image",
+                "options": {
+                  "hotspot": true
+                },
+                "fields": [
+                  {
+                    "name": "alt",
+                    "title": "وصف الصورة (للمكفوفين ومحركات البحث)",
+                    "type": "localeString"
+                  }
+                ],
+                "group": "pages"
+              }
+            ]
+          },
+          {
+            "name": "sector-education",
+            "title": "المؤسسات التعليمية والمدارس",
+            "type": "object",
+            "fields": [
+              {
+                "name": "title",
+                "title": "عنوان الصفحة في جوجل",
+                "type": "localeString"
+              },
+              {
+                "name": "description",
+                "title": "الوصف في جوجل",
+                "type": "localeText"
+              },
+              {
+                "name": "image",
+                "title": "صورة المشاركة (1200×630)",
+                "type": "image",
+                "options": {
+                  "hotspot": true
+                },
+                "fields": [
+                  {
+                    "name": "alt",
+                    "title": "وصف الصورة (للمكفوفين ومحركات البحث)",
+                    "type": "localeString"
+                  }
+                ],
+                "group": "pages"
+              }
+            ]
+          },
+          {
+            "name": "sector-relief",
+            "title": "المؤسسات الإغاثية",
+            "type": "object",
+            "fields": [
+              {
+                "name": "title",
+                "title": "عنوان الصفحة في جوجل",
+                "type": "localeString"
+              },
+              {
+                "name": "description",
+                "title": "الوصف في جوجل",
+                "type": "localeText"
+              },
+              {
+                "name": "image",
+                "title": "صورة المشاركة (1200×630)",
+                "type": "image",
+                "options": {
+                  "hotspot": true
+                },
+                "fields": [
+                  {
+                    "name": "alt",
+                    "title": "وصف الصورة (للمكفوفين ومحركات البحث)",
+                    "type": "localeString"
+                  }
+                ],
+                "group": "pages"
+              }
+            ]
+          },
+          {
+            "name": "sector-health",
+            "title": "المؤسسات الصحية",
             "type": "object",
             "fields": [
               {
