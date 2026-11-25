@@ -27,7 +27,9 @@ type Device = 'desktop' | 'mobile';
 type Version = { id: number; at: string; action: string; detail: string | null };
 const FREE = ['clientStoriesSection', 'textImageSection', 'gallerySection', 'statsSection'];
 type EditPage = (typeof PAGE_IDS)[number] | typeof CASES;
-const PAGE_ORDER: EditPage[] = ['home', 'services', 'work', CASES, 'about', 'contact'];
+// every page of the site (Nov 25, 2026: the new pages — sectors, the accelerator, the assessment — were missing here,
+// so their sections couldn't be found in the admin)
+const PAGE_ORDER: EditPage[] = ['home', 'services', 'work', CASES, 'about', 'contact', 'sectors', 'sector-development', 'sector-education', 'sector-relief', 'sector-health', 'accelerator', 'assessment'];
 const DESKTOP_W = 1280;
 const ACTION: Record<string, string> = {
   publish: 'نشر من المحرر', edit: 'تعديل قسم', settings: 'تعديل الإعدادات', hide: 'إخفاء قسم', show: 'إظهار قسم', reorder: 'تغيير الترتيب',
@@ -668,7 +670,7 @@ function sharedNote(src: SectionRow): string {
   const where = PAGE_NAMES[src.page || 'home'] ?? '';
   return `نفس المحتوى بكل الموقع: هذا القسم بيعرض نص «${typeTitle(src.type)}»${where ? ' من ' + where : ''}. أي تعديل هون بيتعدل هناك كمان. التصميم ومكان القسم خاصّين فيه.`;
 }
-const PAGE_NAMES: Record<string, string> = { home: 'الرئيسية', services: 'صفحة الخدمات', work: 'صفحة أعمالنا', about: 'صفحة من نحن', contact: 'صفحة التواصل' };
+const PAGE_NAMES: Record<string, string> = Object.fromEntries(PAGE_IDS.map((p) => [p, 'صفحة ' + PAGE_INFO[p].title]));
 
 function SectionEditor({ s, lang, shared, testimonials, focus, onBack, onChange, onToggle, onDuplicate, onDelete }: {
   s: SectionRow; lang: Lang; shared?: string; focus?: string | null; testimonials?: React.ReactNode; onBack: () => void; onChange: (data: Record<string, unknown>, key: string) => void;

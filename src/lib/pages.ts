@@ -61,11 +61,15 @@ export function resolveHref(href: unknown, lang: string, onPage: string = 'home'
 export function hrefPage(href: unknown): string | null {
   const h = typeof href === 'string' ? href.trim().replace(/^\/(ar|en)(?=\/|$)/, '') : '';
   if (!h.startsWith('/')) return null;
-  const seg = h.split('/').filter(Boolean)[0] ?? '';
-  if (!seg) return 'home';
+  const seg = h.split('/').filter(Boolean);
+  if (!seg.length) return 'home';
   // the old /services/ address is the Programs page (Nov 24, 2026)
-  if (seg === 'services') return 'services';
-  const hit = (Object.entries(PAGE_INFO) as [string, { slug: string }][]).find(([k, v]) => k !== CASES && v.slug === seg);
+  if (seg[0] === 'services') return 'services';
+  // the longest page address the link starts with ("/sectors/health/" → the health sector page, not «القطاعات»)
+  const path = seg.join('/');
+  const hit = (Object.entries(PAGE_INFO) as [string, { slug: string }][])
+    .filter(([k, v]) => k !== CASES && v.slug && (path === v.slug || path.startsWith(v.slug + '/')))
+    .sort((a, b) => b[1].slug.length - a[1].slug.length)[0];
   return hit ? hit[0] : null;
 }
 
