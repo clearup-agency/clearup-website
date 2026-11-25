@@ -78,7 +78,9 @@ function dbScope(): string {
 // Nov 9, 2026: the key also carries the deployment, so a new deploy always opens on the database as it is now
 // (a fix written straight to the database, e.g. a text correction, is live with the next deploy instead of
 // waiting up to an hour for the shared cache entry of the previous deploy to expire)
-const cachedContent = unstable_cache(loadContentFromDb, ['clearup-content-v2-pages', dbScope(), process.env.VERCEL_DEPLOYMENT_ID || ''], { tags: [CONTENT_TAG], revalidate: 3600 });
+// Nov 25, 2026: Netlify's deploy id too (the site moved to Netlify on Nov 14), and a new key name for the value-proposition
+// release, so its first pages are built from the database as it is — never from the old site's cached copy
+const cachedContent = unstable_cache(loadContentFromDb, ['clearup-content-v3', dbScope(), process.env.DEPLOY_ID || process.env.VERCEL_DEPLOYMENT_ID || ''], { tags: [CONTENT_TAG], revalidate: 3600 });
 
 /* Preview builds only: CONTENT_SNAPSHOT=path/to/snapshot.json ({settings, sections}, the multi-page shape) builds
    the site from that file instead of the database — to see a proposed content change without touching the
