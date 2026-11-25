@@ -24,6 +24,9 @@ const sec = (page, type, data, id = key()) => ({ id, page, type, hidden: false, 
 const BOOK = '/contact/#book';
 const DIAG = 'احجز جلسة التشخيص المجانية';
 const ELIG = 'تحقّق من أهلية مؤسستك';
+const DEADLINE = '21/1/2027'; // the accelerator's last day to apply (Mohamed, Nov 25, 2026)
+// Al-Noon's logo (Nov 25, 2026: sent by Mohamed, background removed) joins «مؤسسات وجهات عملنا معها»
+const withNoon = (logos) => [...(logos ?? []).filter((x) => x._key !== 'klgalnoon'), { _key: 'klgalnoon', _type: 'image', url: '/media/logo_alnoon.png', width: 611, height: 238, alt: L('النون') }];
 const finalBand = (page) => sec(page, 'ctaBandSection', {
   title: [L('ابدأ بسؤال واحد:'), L('أين تضيع فرص تمويل مؤسستك؟')],
   lead: T('جلسة تشخيص مجانية، تخرج منها بملاحظة مكتوبة وخطوة أولى واضحة، سواء عملت معنا بعدها أم لا.'),
@@ -123,7 +126,7 @@ sections.push(keep('k1574bddb75', {
 }));
 sections.push(sec('home', 'cardsSection', {
   variant: 'outcome', min: 280,
-  title: 'ثلاث نتائج نعمل عليها، لا ثلاث خدمات',
+  title: 'ثلاث نتائج نعمل عليها',
   items: [
     { t: 'وقت أقل في العمليات', d: 'تقارير ومراجعات تنجز في ساعات بدل أيام، وفريق يتفرغ للميدان.', chipsLabel: 'كيف نصل لها', chips: ['أتمتة العمليات', 'التقارير الذكية', 'التنبؤ بالأزمات'] },
     { t: 'ثقة أعلى عند المانح', d: 'تقارير دقيقة في موعدها، وأثر موثّق بالأرقام والقصص، وحوكمة واضحة لاستخدام الذكاء الاصطناعي.', chipsLabel: 'كيف نصل لها', chips: ['الحوكمة المالية والمجلس', 'قياس الأثر', 'جاهزية التمويل'] },
@@ -167,7 +170,7 @@ sections.push(sec('home', 'offerSection', {
   title: 'أطلقنا المسرّعة الذكية للمؤسسات. 5 مقاعد مموّلة فقط في هذه الدورة.',
   lead: 'برنامج 12 ساعة لـ 20 موظفاً من مؤسستك، يبدأ بجلستي تشخيص وينتهي بخارطة طريق مكتوبة للتحول بالذكاء الاصطناعي. المقاعد للمؤسسات التي تنطبق عليها شروط الأهلية.',
   cta: { label: ELIG, href: '/accelerator/#eligibility' },
-  note: 'آخر موعد للتقديم [التاريخ]',
+  note: `آخر موعد للتقديم: ${DEADLINE}`,
 }, 'kv3offer'));
 sections.push(sec('home', 'assessmentSection', {
   ...ASSESS, kicker: '', teaser: true, anchor: 'assess',
@@ -188,7 +191,7 @@ sections.push(keep('kprochome', {
 const stats = keep('kstatshome');
 stats.data = { ...stats.data, eyebrow: L('بالأرقام'), title: L('نتائج مبنية على أرقام، لا وعود') };
 sections.push(stats);
-sections.push(keep('k7b52009b64', { label: L('مؤسسات وجهات عملنا معها'), note: L('بعض المشاريع نُفّذت ضمن برامج بدعم من شركاء دوليين.') }));
+sections.push(keep('k7b52009b64', { logos: withNoon(live.sections.find((x) => x.id === 'k7b52009b64').data.logos), label: L('مؤسسات وجهات عملنا معها'), note: L('بعض المشاريع نُفّذت ضمن برامج بدعم من شركاء دوليين.') }));
 const STORIES = { eyebrow: L('من شغلنا، ورا الكواليس'), title: L('شغلنا من جوّا.'), lead: T('اضغط على أي دائرة وشاهد كيف نعمل مع الفرق، من قاعة التدريب إلى القصة التي تصل المانح.') };
 sections.push(keep('kworkhome', STORIES));
 sections.push(keep('kstorieshome'));
@@ -334,7 +337,7 @@ sections.push(sec('accelerator', 'landingHeadSection', {
   title: 'المسرّعة الذكية: 12 ساعة تنقل مؤسستك من تجارب فردية مع الذكاء الاصطناعي إلى نظام يوفّر الوقت ويبني ثقة الممول',
   lead: 'نختار 5 مؤسسات أهلية وإغاثية وتنموية، ونعمل مع فريق كل منها على مشكلة حقيقية واحدة، تنتهي بخارطة طريق مكتوبة ونتيجة مقاسة قبل البرنامج وبعده. بلا رسوم، وبلا التزام بالشراء بعده.',
   buttons: [{ label: 'قدّم طلب مؤسستك', href: '/accelerator/#apply' }],
-  note: 'آخر موعد للتقديم [التاريخ]',
+  note: `آخر موعد للتقديم: ${DEADLINE}`,
 }));
 sections.push(sec('accelerator', 'cardsSection', {
   variant: 'track', min: 260,
@@ -398,7 +401,7 @@ sections.push(sec('accelerator', 'formSection', {
   anchor: 'apply',
   kicker: 'نموذج التقديم',
   title: 'قدّم طلب مؤسستك',
-  lead: 'أربع خطوات قصيرة، أسئلتها مرتبطة بمعايير التقييم المنشورة. آخر موعد للتقديم [التاريخ].',
+  lead: `أربع خطوات قصيرة، أسئلتها مرتبطة بمعايير التقييم المنشورة. آخر موعد للتقديم: ${DEADLINE}`,
   aside: {
     t: 'قبل أن تبدأ، جهّز',
     items: ['رقم تسجيل المؤسسة وسنة التأسيس.', 'المنح التي حصلتم عليها خلال آخر سنتين.', 'المشكلة الواحدة التي تريدون حلّها، وكم تكلّفكم اليوم.', 'أسماء الشخصين أو الثلاثة الذين سيشاركون.'],
@@ -520,7 +523,7 @@ sections.push(keep('kp000b', {
 }));
 sections.push(keep('kworkwork'));
 sections.push(keep('kproofwork', { eyebrow: PROOF.eyebrow, title: PROOF.title, lead: PROOF.lead }));
-sections.push(keep('kp000d', { label: L('مؤسسات وجهات عملنا معها'), note: L('بعض المشاريع نُفّذت ضمن برامج بدعم من شركاء دوليين.') }));
+sections.push(keep('kp000d', { logos: withNoon(live.sections.find((x) => x.id === 'kp000d').data.logos), label: L('مؤسسات وجهات عملنا معها'), note: L('بعض المشاريع نُفّذت ضمن برامج بدعم من شركاء دوليين.') }));
 sections.push(finalBand('work'));
 for (const s of live.sections) if (s.page === 'cases') sections.push(s);
 // مشوار as a client record: its card leads «النتائج», its page tells the whole story (the content file's Mashwar card)
@@ -576,5 +579,17 @@ settings.pageMeta = {
   about: meta('من نحن', 'كلير أب شركة فلسطينية من غزة تساعد المؤسسات الأهلية والإغاثية والتنموية والتعليمية والصحية على توفير الوقت وإثبات الأثر وبناء ثقة المانحين بالذكاء الاصطناعي.'),
 };
 
-writeFileSync(outFile, JSON.stringify({ settings, sections }, null, 1));
+// Nov 25, 2026 (Mohamed): no full stop at the end of a sentence — every text loses its final «.» (and the one at the
+// end of each paragraph); a «.» between two sentences in the same paragraph stays, so they don't run together.
+// Addresses, keys and numbers are left alone.
+const SKIP = new Set(['url', 'href', 'slug', '_key', '_type', 'id', 'anchor', 'videoUrl', 'link']);
+const noStop = (t) => t.replace(/(?<!\.)\.(\s*)(?=\n|$)/g, '$1').replace(/(?<!\.)\.(\s*)(["»”]?)$/, '$2');
+const strip = (v, k) => {
+  if (typeof v === 'string') return SKIP.has(k) || /^(https?:|\/)/.test(v) ? v : noStop(v);
+  if (Array.isArray(v)) return v.map((x) => strip(x, k));
+  if (v && typeof v === 'object') return Object.fromEntries(Object.entries(v).map(([kk, x]) => [kk, strip(x, kk)]));
+  return v;
+};
+const out = { settings: strip(settings), sections: sections.map((x) => ({ ...x, data: strip(x.data) })) };
+writeFileSync(outFile, JSON.stringify(out, null, 1));
 console.log(`wrote ${sections.length} sections → ${outFile}`);
