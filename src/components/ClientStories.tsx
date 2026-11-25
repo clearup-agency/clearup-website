@@ -401,36 +401,82 @@ function Viewer({ clients, start, lang, onClose, onSeen, originOf }: VProps) {
   // away and closes.
   const g = useRef<{ x: number; y: number; t: number; hold: number; held: boolean; axis: '' | 'x' | 'y' | 'up'; lx: number; ly: number; lt: number; vx: number; vy: number } | null>(null);
 
-  /* Zoom (Mohamed, Nov 25, 2026): on a phone two fingers zoom the story in, like Instagram — the story waits while
-     it is zoomed and springs back when the fingers lift; on a laptop a click in the middle of the story zooms it in
-     (the mouse moves around the zoomed picture) and a second click zooms back out. The sides still go back / on. */
+  /* Zoom, like Instagram (Mohamed, Nov 25, 2026: «بدي اكون قادر اتحكم في الستوري واعمل زوم ان وين ما بدي»).
+     Phone: two fingers zoom in around the point between them and the picture follows the fingers as they move
+     (zoom + move in one gesture); lifting the fingers springs it back and the story carries on.
+     Laptop: the wheel or a trackpad pinch zooms in/out at the mouse; a click in the middle of the story zooms in
+     there; while zoomed, dragging moves the picture around, a click (without dragging) or Esc zooms back out.
+     The story waits while it is zoomed. The sides still go back / on. */
   const media = useRef<HTMLDivElement>(null);
   const pts = useRef(new Map<number, { x: number; y: number }>());
-  const pinch = useRef<{ d0: number; ox: number; oy: number } | null>(null);
+  const zs = useRef({ s: 1, tx: 0, ty: 0 }); // the picture's scale and offset (px, from its top-left corner)
+  const pinch = useRef<{ d0: number; mx: number; my: number; s0: number; tx0: number; ty0: number } | null>(null);
+  const pan = useRef<{ x: number; y: number; tx0: number; ty0: number; moved: boolean } | null>(null);
   const zoomed = useRef(false);
-  const ZOOM = 2.2;
+  const ZOOM = 2.5, MAXZ = 5;
   const zoomable = kind === 'video' || kind === 'image';
-  const setZoom = (scale: number, x: number, y: number, smooth: boolean) => {
+  const box = () => (media.current?.parentElement ?? media.current)!.getBoundingClientRect();
+  const paintZoom = (smooth: boolean) => {
     const el = media.current; if (!el) return;
-    const r = el.getBoundingClientRect();
-    el.style.transition = smooth ? 'transform .28s cubic-bezier(.2,.7,.1,1)' : 'none';
-    el.style.transformOrigin = `${x - r.left}px ${y - r.top}px`;
-    el.style.transform = scale > 1 ? `scale(${scale})` : '';
+    const { s, tx, ty } = zs.current;
+    el.style.transition = smooth ? 'transform .3s cubic-bezier(.2,.7,.1,1)' : 'none';
+    el.style.transformOrigin = '0 0';
+    el.style.transform = s > 1.001 || s < 0.999 ? `translate3d(${tx}px, ${ty}px, 0) scale(${s})` : '';
+  };
+  // keeps the zoomed picture covering the story (no empty edge), like a photo viewer
+  const bound = (s: number, tx: number, ty: number) => {
+    const r = box();
+    if (s <= 1) return { s, tx: (r.width * (1 - s)) / 2, ty: (r.height * (1 - s)) / 2 };
+    return { s, tx: clamp(tx, r.width * (1 - s), 0), ty: clamp(ty, r.height * (1 - s), 0) };
+  };
+  /** Zooms to scale `s` keeping the point (x, y) of the screen under the same spot of the picture. */
+  const zoomAt = (s: number, x: number, y: number, smooth: boolean) => {
+    const r = box(), z = zs.current;
+    const lx = (x - r.left - z.tx) / z.s, ly = (y - r.top - z.ty) / z.s;
+    zs.current = bound(s, x - r.left - s * lx, y - r.top - s * ly);
+    paintZoom(smooth);
+    if (s > 1.01 && !zoomed.current) { zoomed.current = true; setHeld(true); }
   };
   const unzoom = () => {
-    const el = media.current;
-    if (el) { el.style.transition = 'transform .28s cubic-bezier(.2,.7,.1,1)'; el.style.transform = ''; }
-    pinch.current = null; zoomed.current = false; setHeld(false);
+    zs.current = { s: 1, tx: 0, ty: 0 };
+    paintZoom(true);
+    pinch.current = null; pan.current = null; zoomed.current = false; setHeld(false);
+    if (stage.current) stage.current.style.cursor = '';
   };
   // a new story (or another client) always opens at its normal size
   useEffect(() => {
-    const el = media.current;
-    if (el) { el.style.transition = 'none'; el.style.transform = ''; }
-    pinch.current = null; zoomed.current = false;
+    zs.current = { s: 1, tx: 0, ty: 0 };
+    paintZoom(false);
+    pinch.current = null; pan.current = null; zoomed.current = false;
   }, [pos.c, pos.i]);
   const dist = (a: { x: number; y: number }, b: { x: number; y: number }) => Math.hypot(a.x - b.x, a.y - b.y);
+  // the wheel / a trackpad pinch (the browser sends it as a wheel with Ctrl) zooms at the mouse — a native listener,
+  // so the page itself never zooms or scrolls; Esc while zoomed zooms back out (instead of closing)
+  useEffect(() => {
+    const el = root.current; if (!el || !zoomable) return;
+    const onWheel = (e: WheelEvent) => {
+      if (turn.current.busy || turn.current.closing) return;
+      const r = box();
+      if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) return;
+      e.preventDefault();
+      const dy = e.deltaMode === 1 ? e.deltaY * 16 : e.deltaY;
+      const k = Math.exp(-clamp(dy, -60, 60) * (e.ctrlKey ? 0.012 : 0.004));
+      const sc = clamp(zs.current.s * k, 1, MAXZ);
+      if (sc <= 1.01) { if (zoomed.current) unzoom(); return; }
+      zoomAt(sc, e.clientX, e.clientY, false);
+      if (stage.current) stage.current.style.cursor = 'grab';
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && zoomed.current) { e.preventDefault(); e.stopPropagation(); unzoom(); }
+    };
+    el.addEventListener('wheel', onWheel, { passive: false });
+    window.addEventListener('keydown', onKey, true);
+    return () => { el.removeEventListener('wheel', onWheel); window.removeEventListener('keydown', onKey, true); };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [zoomable]);
 
   const onDown = (e: React.PointerEvent) => {
+    if (e.isPrimary) pts.current.clear(); // a first finger: forget any finger whose lift was lost
     pts.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
     // a second finger: a pinch, not a tap or a swipe
     if (zoomable && e.pointerType !== 'mouse' && pts.current.size === 2 && !turn.current.busy && !turn.current.closing) {
@@ -439,11 +485,20 @@ function Viewer({ clients, start, lang, onClose, onSeen, originOf }: VProps) {
       if (turn.current.p || turn.current.dy) { paint(0, 0); setSliding(false); }
       try { (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId); } catch { /* not supported */ }
       const [a, b] = [...pts.current.values()];
-      pinch.current = { d0: Math.max(1, dist(a, b)), ox: (a.x + b.x) / 2, oy: (a.y + b.y) / 2 };
-      setHeld(true);
+      const z = zs.current;
+      pinch.current = { d0: Math.max(1, dist(a, b)), mx: (a.x + b.x) / 2, my: (a.y + b.y) / 2, s0: z.s, tx0: z.tx, ty0: z.ty };
+      if (!zoomed.current) { zoomed.current = true; setHeld(true); }
       return;
     }
     if (pinch.current) return;
+    // zoomed with the mouse: a press starts moving the picture (a click without moving zooms back out)
+    if (zoomed.current && e.pointerType === 'mouse') {
+      if (e.button !== 0) return;
+      try { (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId); } catch { /* not supported */ }
+      pan.current = { x: e.clientX, y: e.clientY, tx0: zs.current.tx, ty0: zs.current.ty, moved: false };
+      if (stage.current) stage.current.style.cursor = 'grabbing';
+      return;
+    }
     if (e.button !== 0 || turn.current.busy || turn.current.closing) return;
     try { (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId); } catch { /* not supported */ }
     const hold = window.setTimeout(() => { if (g.current && !g.current.axis) { g.current.held = true; setHeld(true); } }, 200);
@@ -453,18 +508,34 @@ function Viewer({ clients, start, lang, onClose, onSeen, originOf }: VProps) {
   const onMove = (e: React.PointerEvent) => {
     if (pts.current.has(e.pointerId)) pts.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
     const pz = pinch.current;
-    if (pz && pts.current.size >= 2) {
+    if (pz) {
+      if (pts.current.size < 2) return;
+      // the scale follows the fingers' spread, and the spot first under them stays under them as they move
       const [a, b] = [...pts.current.values()];
-      setZoom(clamp(dist(a, b) / pz.d0, 1, 4), pz.ox, pz.oy, false);
+      const r = box();
+      let sc = pz.s0 * (dist(a, b) / pz.d0);
+      sc = sc < 1 ? 1 - (1 - sc) * 0.35 : sc > MAXZ ? MAXZ + (sc - MAXZ) * 0.2 : sc; // a soft stop at both ends
+      const mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
+      const lx = (pz.mx - r.left - pz.tx0) / pz.s0, ly = (pz.my - r.top - pz.ty0) / pz.s0;
+      zs.current = { s: sc, tx: mx - r.left - sc * lx, ty: my - r.top - sc * ly };
+      paintZoom(false);
+      return;
+    }
+    const pn = pan.current;
+    if (pn) {
+      const dx = e.clientX - pn.x, dy = e.clientY - pn.y;
+      if (Math.abs(dx) + Math.abs(dy) > 4) pn.moved = true;
+      zs.current = bound(zs.current.s, pn.tx0 + dx, pn.ty0 + dy);
+      paintZoom(false);
       return;
     }
     if (e.pointerType === 'mouse') {
-      // zoomed: the picture follows the mouse; not zoomed: the middle of the story shows the zoom cursor
-      if (zoomed.current) { setZoom(ZOOM, e.clientX, e.clientY, false); return; }
-      if (!g.current && zoomable) {
-        const r = (stage.current ?? (e.currentTarget as HTMLElement)).getBoundingClientRect();
+      // zoomed: a hand to move the picture; not zoomed: the middle of the story shows the zoom cursor
+      if (zoomed.current) { if (stage.current) stage.current.style.cursor = 'grab'; return; }
+      if (!g.current && zoomable && stage.current) {
+        const r = stage.current.getBoundingClientRect();
         const f = rtl ? (r.right - e.clientX) / r.width : (e.clientX - r.left) / r.width;
-        (e.currentTarget as HTMLElement).style.cursor = f > 0.33 && f < 0.67 ? 'zoom-in' : '';
+        stage.current.style.cursor = f > 0.33 && f < 0.67 ? 'zoom-in' : '';
       }
     }
     const s0 = g.current;
@@ -496,7 +567,12 @@ function Viewer({ clients, start, lang, onClose, onSeen, originOf }: VProps) {
       if (pts.current.size < 2) { g.current = null; unzoom(); }
       return;
     }
-    if (zoomed.current && e.pointerType === 'mouse') { g.current = null; unzoom(); (e.currentTarget as HTMLElement).style.cursor = 'zoom-in'; return; }
+    if (pan.current) {
+      const moved = pan.current.moved; pan.current = null; g.current = null;
+      if (!moved) unzoom(); else if (stage.current) stage.current.style.cursor = 'grab';
+      return;
+    }
+    if (zoomed.current && e.pointerType === 'mouse') { g.current = null; unzoom(); return; }
     const s0 = g.current; g.current = null;
     if (!s0) return;
     clearTimeout(s0.hold);
@@ -522,8 +598,8 @@ function Viewer({ clients, start, lang, onClose, onSeen, originOf }: VProps) {
     const fromStart = rtl ? (r.right - e.clientX) / r.width : (e.clientX - r.left) / r.width;
     // a mouse click in the middle third zooms the story in (it waits while zoomed); the sides go back / on
     if (e.pointerType === 'mouse' && zoomable && fromStart > 0.33 && fromStart < 0.67) {
-      zoomed.current = true; setHeld(true); setZoom(ZOOM, e.clientX, e.clientY, true);
-      (e.currentTarget as HTMLElement).style.cursor = 'zoom-out';
+      zoomAt(ZOOM, e.clientX, e.clientY, true);
+      if (stage.current) stage.current.style.cursor = 'grab';
       return;
     }
     // a finger: the start third goes back (as before); a mouse click: the start half goes back, the end half forward
@@ -532,6 +608,7 @@ function Viewer({ clients, start, lang, onClose, onSeen, originOf }: VProps) {
   const onCancel = (e: React.PointerEvent) => {
     pts.current.delete(e.pointerId);
     if (pinch.current) { if (pts.current.size < 2) unzoom(); return; }
+    if (pan.current) { pan.current = null; return; }
     const s0 = g.current;
     if (s0) { clearTimeout(s0.hold); g.current = null; }
     setHeld(false);

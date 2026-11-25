@@ -358,7 +358,7 @@ fieldset.obj > legend { font-weight: 700; padding: 0 6px; font-size: 15.5px; }
 .arr { grid-template-columns: minmax(0, 1fr); }
 
 /* multi-page: the page switcher above the tabs, a page's own settings */
-.le-pages { display: flex; gap: 6px; overflow-x: auto; padding: 10px 14px 8px; border-bottom: 1px solid var(--line); scrollbar-width: thin; }
+.le-pages { display: flex; flex-wrap: wrap; gap: 6px; padding: 10px 14px 8px; border-bottom: 1px solid var(--line); max-height: 30vh; overflow-y: auto; }
 .le-pages button { flex: none; display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 10px 0 10px 0; border: 1px solid var(--line); background: #fff; font-weight: 600; font-size: .86rem; white-space: nowrap; cursor: pointer; }
 .le-pages button small { font-size: .72rem; color: #8a8496; background: #f3f0f8; border-radius: 6px; padding: 0 6px; }
 .le-pages button[aria-pressed="true"] { background: #5B2096; color: #fff; border-color: #5B2096; }
