@@ -110,16 +110,17 @@ export { Offerings, Tools, Fit, WorkStories };`);
   assert.match(ws, /من محاضراتنا/);
 });
 
-test('testimonials: a client shows with its video and a challenge or solution; nothing invented', async () => {
+test('testimonials: a client shows with its video and its name (Nov 25: even before its texts are written); nothing invented', async () => {
   const { testimonialCards } = await bundle('src/lib/testimonials.ts', 'testimonials.mjs');
   assert.match(read('src/components/pages/Proof.tsx'), /testimonialCards\(ctx\.cases, s\.order\)/);
   const mk = (key, data) => ({ key, slug: key, href: '/ar/work/' + key + '/', data: { client: key, featured: true, ...data } });
   const cards = testimonialCards([
     mk('a', { tvideo: { video: '/a.mp4' }, problem: 'تحدي', did: ['حل'] }),
-    mk('b', { tvideo: { video: '/b.mp4' } }), // an ad with no challenge/solution: not a testimonial card
+    mk('b', { tvideo: { video: '/b.mp4' } }), // a video with no texts yet: a card (Nov 25, 2026), its texts left out
     mk('c', { problem: 'تحدي' }), // no video
   ]);
-  assert.deepEqual(cards.map((c) => c.key), ['a']);
+  assert.deepEqual(cards.map((c) => c.key), ['a', 'b']);
+  assert.equal(cards[1].challenge, '');
   assert.equal(cards[0].challenge, 'تحدي');
   assert.equal(cards[0].solution, 'حل');
 });

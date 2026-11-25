@@ -196,7 +196,7 @@ const STORIES = { eyebrow: L('من شغلنا، ورا الكواليس'), title
 sections.push(keep('kworkhome', STORIES));
 sections.push(keep('kstorieshome'));
 // «النتائج»: مشوار first, then مساحات, then النون (the order of the testimonial cards; Mashwar is a client record below)
-const PROOF = { eyebrow: L('آراء العملاء'), title: L('نتائج تهمّ المدير والمانح'), lead: T('لكل حالة: التحدي، وما فعلناه، والنتيجة.'), order: ['kpmishwar', 'kp0025', 'kp0031'] };
+const PROOF = { eyebrow: L('آراء العملاء'), title: L('نتائج تهمّ المدير والمانح'), lead: T('لكل حالة: التحدي، وما فعلناه، والنتيجة.'), order: ['kpmishwar', 'kp0025', 'kp0031'], limit: 4 };
 sections.push(keep('kp0005', PROOF));
 // «النماذج الحيّة» replaces «منتجاتنا»
 const prod = keep('kproducts');

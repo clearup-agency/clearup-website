@@ -30,10 +30,10 @@ const caseRow = (id, name, extra = {}) => ({ id, page: 'cases', type: 'caseStudy
   videos: [{ _key: 'v' + id, _type: 'video', url: 'https://www.instagram.com/reel/' + id + '/', file: { _type: 'file', url: '/media/' + id + '.mp4' } }], ...extra } });
 function snap(homeProof = {}, more = []) {
   return snapshotToRaw({ settings: seed.settings, sections: [
-    { id: 'hp', page: 'home', type: 'proofSection', hidden: false, data: { title: ls('عملاؤنا يحكون'), all: ls('كل الأعمال'), limit: 3, ...homeProof } },
+    { id: 'hp', page: 'home', type: 'proofSection', hidden: false, data: { title: ls('عملاؤنا يحكون'), all: ls('كل الأعمال'), ...homeProof } },
     { id: 'wp', page: 'work', type: 'proofSection', hidden: false, data: { title: ls('عملاؤنا يحكون') } },
     caseRow('c1', 'مساحات'), caseRow('c2', 'ثوب وطرحة'), caseRow('c3', 'النون'),
-    // an ad with placeholder words only: not a testimonial (as today)
+    // its texts still [placeholders]: a card all the same since Nov 25, 2026 (its video and its name)
     caseRow('c4', 'إعمار كلين', { problem: lt('[المشكلة]'), summary: ls('إعلان من إنتاجنا') }),
     ...more,
   ] });
@@ -47,18 +47,18 @@ function shown(raw, page) {
   return page === 'home' ? T.homeCards(all, s) : all;
 }
 
-test('nothing set: Home and «أعمالنا» show exactly what they showed before (first 3, the clients order)', () => {
-  assert.deepEqual(names(shown(snap(), 'home')), ['مساحات', 'ثوب وطرحة', 'النون']);
-  assert.deepEqual(names(shown(snap(), 'work')), ['مساحات', 'ثوب وطرحة', 'النون']);
-  assert.equal(T.homeCount(undefined), 3);
-  assert.equal(T.homeCount(0), 3);
+test('nothing set: Home shows the first 4 (Nov 25, 2026), «أعمالنا» all of them, in the clients order', () => {
+  assert.deepEqual(names(shown(snap(), 'home')), ['مساحات', 'ثوب وطرحة', 'النون', 'إعمار كلين']);
+  assert.deepEqual(names(shown(snap(), 'work')), ['مساحات', 'ثوب وطرحة', 'النون', 'إعمار كلين']);
+  assert.equal(T.homeCount(undefined), 4);
+  assert.equal(T.homeCount(0), 4);
   assert.equal(T.homeCount(5), 5);
 });
 
-test('a 4th and 5th video: «أعمالنا» shows all; Home keeps its 3 until switched on; the count caps Home', () => {
+test('a 5th and 6th video: «أعمالنا» shows all; Home keeps its first 4 until switched on; the count caps Home', () => {
   const more = [caseRow('c5', 'عميل خامس'), caseRow('c6', 'عميل سادس', { problem: lt(''), testimonial: { quote: lt('جملة قصيرة'), name: ls('سارة') } })];
-  assert.deepEqual(names(shown(snap({}, more), 'work')), ['مساحات', 'ثوب وطرحة', 'النون', 'عميل خامس', 'عميل سادس']);
-  assert.deepEqual(names(shown(snap({}, more), 'home')), ['مساحات', 'ثوب وطرحة', 'النون']);
+  assert.deepEqual(names(shown(snap({}, more), 'work')), ['مساحات', 'ثوب وطرحة', 'النون', 'إعمار كلين', 'عميل خامس', 'عميل سادس']);
+  assert.deepEqual(names(shown(snap({}, more), 'home')), ['مساحات', 'ثوب وطرحة', 'النون', 'إعمار كلين']);
   // a quote-only testimonial (video + one short line) is a card; its short line is the quote
   const six = shown(snap({}, more), 'work').find((c) => c.client === 'عميل سادس');
   assert.equal(six.short, 'جملة قصيرة');
@@ -71,8 +71,8 @@ test('a 4th and 5th video: «أعمالنا» shows all; Home keeps its 3 until 
 
 test('drag order = the order on Home and on «أعمالنا» (stored on Home\'s section, read by both)', () => {
   const raw = snap({ order: ['c3', 'c1', 'c2'] });
-  assert.deepEqual(names(shown(raw, 'home')), ['النون', 'مساحات', 'ثوب وطرحة']);
-  assert.deepEqual(names(shown(raw, 'work')), ['النون', 'مساحات', 'ثوب وطرحة']);
+  assert.deepEqual(names(shown(raw, 'home')), ['النون', 'مساحات', 'ثوب وطرحة', 'إعمار كلين']);
+  assert.deepEqual(names(shown(raw, 'work')), ['النون', 'مساحات', 'ثوب وطرحة', 'إعمار كلين']);
   // ids not in the order keep their place after it; a story that moved into «العملاء» keeps its case id
   assert.deepEqual(T.sortByOrder([{ ids: ['x'] }, { ids: ['y'] }, { ids: ['z', 'kcz'] }], ['kcz']).map((c) => c.ids[0]), ['z', 'x', 'y']);
 });

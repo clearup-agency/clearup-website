@@ -6,7 +6,7 @@ const txt = (v: unknown) => (filled(v) ? String(v).trim() : '');
 /** How many testimonial videos «أعمالنا» lists at most, and Home's default count (Nov 9, 2026 — Mohamed: keep
  *  adding videos from the admin; Home shows a few, «أعمالنا» shows them all). */
 export const TESTIMONIALS_MAX = 50;
-export const HOME_TESTIMONIALS = 3;
+export const HOME_TESTIMONIALS = 4; // Nov 25, 2026 (Mohamed): the first 4 in the admin's order on Home
 
 export type TestimonialCard = ReturnType<typeof cardOf>;
 
@@ -32,13 +32,15 @@ const strings = (v: unknown): string[] => (Array.isArray(v) ? v.filter((x): x is
 
 /** Every client's testimonial card: the client speaking on video, then the challenge and what ClearUp did — all
  *  read from the client record (the «العملاء» screen + the older case rows), written once. A client shows here
- *  when it has a video and a challenge, a solution or a quote; nothing is invented (an empty part is left out).
+ *  when it has a video and a name; nothing is invented (an empty part is left out).
  *  `order` = the admin's drag order (ids); clients not in it keep the clients list's order, after it. */
 export function testimonialCards(cases: PageCtx['cases'], order?: unknown) {
   const list = cases
     .filter((c) => !c.hidden && c.data.featured !== false && c.data.tvideo)
     .map(cardOf)
-    .filter((c) => c.client && (c.challenge || c.solution || c.quote));
+    // Nov 25, 2026 (Mohamed: «أعمالنا» showed 4 of the 5 works in the admin): a client with its video and its name
+    // shows even before its texts are written (Emmar Clean's are still [placeholders]); the card shows what is filled
+    .filter((c) => c.client);
   return sortByOrder(list, order).slice(0, TESTIMONIALS_MAX);
 }
 
